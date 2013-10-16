@@ -3,6 +3,8 @@ iUTAHData
 
 This project contains the code for the iUTAH Modeling and Data Federation website - data.iutahepscor.org.
 
+<p align="center"><img src="https://github.com/UCHIC/iUTAHData/raw/master/doc/images/data.jpg"></p>
+
 Sponsors
 ---------
 
