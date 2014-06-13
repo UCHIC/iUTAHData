@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>iUTAH | {% if requested %}
+        {{ requested }}
+    {% else %}
+        Home
+    {% endif %}
+        {% if subpage_name %}
+            | {{ subpage_name }}
+        {% endif %}
+    </title>
+    <link rel="shortcut icon" href="{% static "mdfserver/img/favicon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "mdfserver/img/favicon.ico" %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static  "mdfserver/css/bootstrap.css" %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static  "mdfserver/css/custom_style.css" %}" type="text/css"/>
+
+</head>
+<body>
+
+<div id="page-header">
+
+
+    {% if pages %}
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="center_header">
+                    <div id="title_logo">
+                        <a id="home_linker" href="{% url 'index' %}">
+                            <img id="iutah_logo" src="{% static "mdfserver/img/iutah_logo.png" %}" alt="iUtah Logo"/>
+
+                            <h1 id="main_title">Modeling and Data Federation</h1>
+
+                            <h4 id="second_title">innovative Urban Transitions and Aridregion Hydro-sustainability</h4>
+                        </a>
+                    </div>
+                    <div class="container">
+                        <ul class="nav">
+                            <li {% if not requested %}class="active"{% else %} class="dropdown" {% endif %}>
+                                <a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a>
+                            </li>
+                            {% for page in pages %}
+                                <li {% if requested == page.title %}
+                                    class="dropdown active"
+                                {% else %}
+                                    class="dropdown"
+                                {% endif %} >
+                                    {% if page.content != 'none' and page.content != '<p>none</p>' %}
+                                        <a class="dropdown-toggle"
+                                           data-hover="dropdown" href="{% url 'pages' page.title %}">
+                                            {{ page.title }}
+                                            <b class="caret"></b>
+                                        </a>
+                                    {% else %}
+                                        <a class="dropdown-toggle" data-hover="dropdown">
+                                            {{ page.title }}
+                                            <b class="caret"></b>
+                                        </a>
+                                    {% endif %}
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        {% for subpage in page.subpage_set.all %}
+                                            <li>
+                                                <a href="{% url 'subpages' page subpage.title %}">
+                                                    {{ subpage.title }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="container">
+            <div id="spacer">
+
+                {% if requested %}
+                    {% block content %}{% endblock %}
+                {% else %}
+                    {% block unique_content %}{% endblock %}
+                {% endif %}
+            </div>
+        </div>
+        <footer style="height: 220px" class="navbar-inner">
+            <div class="center_header">
+                {% if not requested %}
+                    {% block links %} {% endblock %}
+                {% endif %}
+                <div id="footer-left-image">
+                    <a href="http://utepscor.org/" target="_blank"><img
+                            src="{% static "mdfserver/img/epscor_logo.jpg" %}" alt="Utah EPSCoR"
+                            width="156"
+                            height="73"></a>
+                </div>
+                <div id="footer-text">
+                    <p>This project is funded through <a
+                            href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1208732"
+                            target="_blank">EPS - 1208732</a>. Any opinions, findings, and
+                        conclusions or recommendations expressed in this material are those of the author(s) and do not
+                        necessarily reflect the views of the National Science Foundation.</p>
+                </div>
+                <aside id="footer-right-image">
+                    <a href="http://www.nsf.gov/div/index.jsp?div=EPSC" target="_blank">
+                        <img src="{% static "mdfserver/img/nsf1.png" %}" alt="National Science Foundation" width="80"
+                             height="80">
+                    </a>
+                </aside>
+            </div>
+        </footer>
+
+
+    {% else %}
+        <p>The website doesn't have any content or there was an error.</p>
+    {% endif %}
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="{% static "mdfserver/js/bootstrap.js" %}"></script>
+<script src="{% static "mdfserver/js/dropdown-hover.js" %}"></script>
+<script src="{% static "mdfserver/js/code.js" %}"></script>
+
+</body>
+</html>
+
