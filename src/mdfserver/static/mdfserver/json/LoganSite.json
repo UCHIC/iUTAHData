@@ -1,0 +1,2368 @@
+{
+			"LR_FB_C": {
+				"info": {
+					"code": "LR_FB_C",
+					"name": "Climate Station at Franklin Basin",
+					"latitude": "41.949815",
+					"longitude": "-111.581352",
+					"lat_long_datum": "WGS84",
+					"elevation": "2109.52",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "None",
+					"type": "Land"
+					},
+
+				"update_time": {
+					"min": "2014-02-27 12:45:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_Avg",
+							"values": [13.76, 18.07, 18.62, 18.66, 18.63, 18.9, 18.83, 19.55, 19.51, 19.44]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH",
+							"values": [81.8, 41.21, 37.12, 35.61, 36.77, 35.13, 34.44, 30.1, 33.3, 37.5]
+							},
+							{
+							"name": "Temperature, dew point",
+							"unit": "degC",
+							"code": "DewPt_Avg",
+							"values": [6.756, 3.856, 3.362, 3.433, 3.149, 3.217, 2.609, 2.351, 2.711, 3.298]
+							},
+							{
+							"name": "Vapor pressure",
+							"unit": "kPa",
+							"code": "VaporPress_Avg",
+							"values": [0.99, 0.805, 0.777, 0.782, 0.766, 0.769, 0.738, 0.725, 0.743, 0.774]
+							},
+							{
+							"name": "Barometric pressure",
+							"unit": "kPa",
+							"code": "BP_Avg",
+							"values": [79.02, 78.99, 79.0, 79.01, 79.02, 79.04, 79.05, 79.06, 79.07, 79.09]
+							},
+							{
+							"name": "Wind speed",
+							"unit": "m/s",
+							"code": "WindSp_Avg",
+							"values": [2.014, 1.997, 1.797, 2.033, 2.039, 2.059, 2.068, 0.824, 1.409, 1.666]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Avg",
+							"values": [326.3, 313.5, 322.7, 312.4, 312.9, 316.4, 288.7, 105.2, 202.8, 134.7]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Std",
+							"values": [25.27, 26.15, 46.11, 22.94, 18.93, 22.38, 57.89, 75.06, 41.13, 48.67]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "cm",
+							"code": "Precip_Tot",
+							"values": [45.21, 45.2, 45.2, 45.19, 45.19, 45.19, 45.19, 45.23, 45.2, 45.35]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "Hz",
+							"code": "Precip_Freq",
+							"values": [2308.0, 2307.0, 2307.0, 2307.0, 2307.0, 2307.0, 2307.0, 2308.0, 2307.0, 2310.0]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_Avg",
+							"values": [0.791, 3.969, 1.223, 1.402, 2.756, 0.304, 0.92, 3.751, 0.876, 0.059]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "JuddTemp_Avg",
+							"values": [14.96, 18.84, 19.56, 19.86, 19.87, 20.25, 20.41, 21.54, 20.94, 20.89]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_NR01_Avg",
+							"values": [12.58, 101.4, 223.7, 339.3, 267.4, 372.5, 334.9, 487.0, 999.0, 924.0]
+							},
+							{
+							"name": "Radiation, outgoing shortwave",
+							"unit": "W/m^2",
+							"code": "SWOut_NR01_Avg",
+							"values": [5.1, 13.32, 32.9, 51.74, 40.64, 55.88, 47.69, 70.61, 149.9, 139.8]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_Cor_NR01_Avg",
+							"values": [360.4, 361.2, 356.3, 352.0, 349.5, 346.4, 342.6, 332.6, 314.3, 307.5]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_Cor_NR01_Avg",
+							"values": [368.6, 414.1, 428.7, 430.9, 430.8, 441.6, 443.8, 472.6, 502.9, 493.0]
+							},
+							{
+							"name": "Radiation, net",
+							"unit": "W/m^2",
+							"code": "NetRad_NR01_Avg",
+							"values": [-0.716, 35.18, 118.4, 208.6, 145.5, 221.4, 186.0, 276.3, 660.4, 599.2]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_UnCor_NR01_Avg",
+							"values": [-26.26, -51.01, -60.61, -63.86, -67.06, -72.95, -82.6, -105.0, -121.2, -123.6]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_UnCor_NR01_Avg",
+							"values": [-18.06, 1.892, 11.8, 15.12, 14.26, 22.24, 18.68, 35.11, 67.44, 61.9]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_NR01_Avg",
+							"values": [14.19, 18.84, 19.67, 19.49, 19.62, 20.11, 21.11, 23.23, 22.89, 22.15]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_SP230_Avg",
+							"values": [26.73, 113.4, 237.2, 344.9, 273.2, 372.5, 335.7, 480.1, 979.0, 902.0]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Heater_on",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "DeltaTemp",
+							"values": [7.515, 15.0, 16.32, 16.05, 16.47, 16.89, 18.53, 20.9, 20.17, 18.84]
+							},
+							{
+							"name": "Radiation, incoming PAR",
+							"unit": "umol/m^2 s",
+							"code": "PARIn_Avg",
+							"values": [56.38, 230.9, 470.6, 681.8, 538.9, 745.7, 677.8, 966.0, 1936.0, 1790.0]
+							},
+							{
+							"name": "Radiation, outgoing PAR",
+							"unit": "umol/m^2 s",
+							"code": "PAROut_Avg",
+							"values": [3.454, 13.5, 27.13, 38.99, 31.89, 42.31, 38.35, 52.85, 102.2, 94.8]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "TargTemp_SI111_Avg",
+							"values": [8.66, 19.3, 22.32, 23.01, 22.72, 24.83, 24.88, 30.44, 36.3, 34.41]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_SI111_Avg",
+							"values": [13.95, 19.26, 20.11, 19.88, 20.19, 21.03, 22.72, 25.66, 25.03, 23.59]
+							},
+							{
+							"name": "Slope",
+							"unit": "-",
+							"code": "m_SI111",
+							"values": [1499410000.0, 1575884000.0, 1589096000.0, 1594564000.0, 1590594000.0, 1597557000.0, 1605200000.0, 1637993000.0, 1657654000.0, 1635309000.0]
+							},
+							{
+							"name": "Intercept",
+							"unit": "-",
+							"code": "b_SI111",
+							"values": [-2114288.0, 123530.5, 513170.5, 674650.5, 557403.0, 763103.5, 989109.0, 1961491.0, 2546361.0, 1881753.0]
+							},
+							{
+							"name": "Voltage",
+							"unit": "mV",
+							"code": "TargV_SI111_Avg",
+							"values": [-0.314, 0.003, 0.142, 0.203, 0.163, 0.246, 0.139, 0.318, 0.766, 0.731]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_5cm_Avg",
+							"values": [15.27, 15.05, 15.15, 15.15, 15.27, 15.32, 15.21, 15.15, 15.5, 15.44]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_5cm_Avg",
+							"values": [22.93, 23.48, 23.73, 24.31, 24.83, 25.36, 25.92, 25.45, 24.84, 24.29]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_5cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_5cm_Avg",
+							"values": [7.839, 7.725, 7.778, 7.781, 7.838, 7.858, 7.81, 7.78, 7.943, 7.919]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_10cm_Avg",
+							"values": [20.61, 20.61, 20.55, 20.61, 20.61, 20.61, 20.68, 20.68, 20.68, 20.73]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_10cm_Avg",
+							"values": [18.34, 18.27, 18.15, 17.98, 17.73, 17.41, 17.02, 16.63, 16.24, 15.84]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_10cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_10cm_Avg",
+							"values": [10.59, 10.59, 10.56, 10.59, 10.59, 10.59, 10.62, 10.62, 10.62, 10.66]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_20cm_Avg",
+							"values": [21.72, 21.55, 21.67, 21.78, 21.55, 21.44, 21.54, 21.71, 21.77, 21.84]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_20cm_Avg",
+							"values": [12.86, 12.73, 12.6, 12.46, 12.35, 12.19, 12.08, 11.94, 11.83, 11.72]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_20cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_20cm_Avg",
+							"values": [11.22, 11.12, 11.18, 11.25, 11.13, 11.06, 11.12, 11.21, 11.25, 11.28]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_50cm_Avg",
+							"values": [26.72, 26.65, 26.55, 26.49, 26.87, 26.83, 26.72, 26.6, 26.65, 26.72]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_50cm_Avg",
+							"values": [9.5, 9.52, 9.52, 9.52, 9.54, 9.54, 9.54, 9.52, 9.54, 9.54]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_50cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_50cm_Avg",
+							"values": [14.28, 14.25, 14.17, 14.13, 14.39, 14.36, 14.28, 14.21, 14.25, 14.28]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_100cm_Avg",
+							"values": [33.49, 33.61, 33.39, 33.49, 33.6, 33.43, 33.53, 33.61, 33.39, 33.49]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_100cm_Avg",
+							"values": [6.8, 6.819, 6.801, 6.8, 6.8, 6.771, 6.818, 6.801, 6.8, 6.772]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_100cm_Avg",
+							"values": [0.18, 0.132, 0.179, 0.17, 0.151, 0.17, 0.16, 0.112, 0.159, 0.16]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_100cm_Avg",
+							"values": [19.09, 19.18, 19.01, 19.09, 19.18, 19.05, 19.14, 19.18, 19.01, 19.09]
+							},
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [13.15, 13.37, 13.46, 13.45, 13.36, 13.37, 13.3, 13.3, 13.47, 13.37]
+							},
+							{
+							"name": "Temperature, datalogger",
+							"unit": "degC",
+							"code": "Panel_Temp",
+							"values": [20.97, 23.19, 23.91, 24.24, 24.86, 25.68, 26.68, 27.85, 27.56, 26.94]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [46.07, 38.17, 36.22, 36.12, 36.36, 36.04, 35.92, 28.09, 23.34, 24.8]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Scan Counter",
+							"unit": "#",
+							"code": "n",
+							"values": [87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "JuddOffset",
+							"values": [329.7, 329.7, 329.7, 329.7, 329.7, 329.7, 329.7, 329.7, 329.7, 329.7]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_1",
+							"values": [2.603, 1.021, 3.293, 5.398, 0.683, 3.619, 1.293, -0.431, 2.476, 3.085]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_2",
+							"values": [3.714, 0.897, 1.813, 0.874, 1.958, 3.866, 1.417, 0.638, 5.191, 1.193]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_3",
+							"values": [3.138, 2.131, 2.224, 2.643, 3.48, 2.673, 0.512, 0.72, 0.996, 2.838]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Avg",
+							"values": [13.28, 17.81, 18.37, 18.41, 18.38, 18.64, 18.56, 19.24, 19.15, 19.16]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Max",
+							"values": [17.34, 18.25, 18.71, 19.49, 18.73, 19.33, 19.08, 20.71, 20.49, 20.95]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Min",
+							"values": [10.25, 17.28, 18.03, 18.17, 18.12, 18.13, 18.2, 18.53, 18.43, 18.13]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "Precip_offset",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "cm",
+							"code": "Precip_HrDiff",
+							"values": [0.01, -0.01, -0.01, -0.01, -0.01, 0.15, 0.15, 0.15, 0.15, -0.01]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETr",
+							"values": [0.07411211, 0.14339, 0.160187, 0.1916437, 0.181137, 0.201099, 0.1979271, 0.1514686, 0.2766786, 0.2747752]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETo",
+							"values": [0.04484713, 0.09051954, 0.1079713, 0.1325733, 0.1221439, 0.1398105, 0.135718, 0.1197583, 0.2230836, 0.2162635]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "InletTemp_avg",
+							"values": [14.97, 19.34, 20.96, 20.83, 20.91, 21.64, 22.57, 25.92, 26.34, 25.52]
+							},
+							{
+							"name": "Frequency of rotation",
+							"unit": "rpm",
+							"code": "Tachometer_TS100",
+							"values": [4708.0, 4760.0, 4756.0, 4753.0, 4750.0, 4746.0, 4735.0, 4733.0, 4731.0, 4816.0]
+							},
+							{
+							"name": "Counter",
+							"unit": "#",
+							"code": "GeonorHeater_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Counter",
+							"unit": "#",
+							"code": "GeonorHeater_Manual_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							}
+					]
+
+			},
+
+			"LR_GC_C": {
+				"info": {
+					"code": "LR_GC_C",
+					"name": "Climate Station at Logan River Golf Course",
+					"latitude": "41.705643",
+					"longitude": "-111.854268",
+					"lat_long_datum": "WGS84",
+					"elevation": "1364.89",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "None",
+					"type": "Land"
+					},
+
+				"update_time": {
+					"min": "2014-01-27 13:15:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_Avg",
+							"values": [23.4, 22.46, 21.93, 22.16, 22.0, 22.32, 23.04, 22.62, 22.22, 21.81]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH",
+							"values": [35.43, 32.17, 36.11, 44.44, 35.17, 39.5, 41.66, 37.59, 33.22, 38.68]
+							},
+							{
+							"name": "Temperature, dew point",
+							"unit": "degC",
+							"code": "DewPt_Avg",
+							"values": [6.413, 6.537, 7.57, 7.022, 6.676, 7.212, 6.379, 6.502, 6.758, 6.821]
+							},
+							{
+							"name": "Vapor pressure",
+							"unit": "kPa",
+							"code": "VaporPress_Avg",
+							"values": [0.963, 0.97, 1.042, 1.004, 0.98, 1.017, 0.962, 0.969, 0.986, 0.991]
+							},
+							{
+							"name": "Barometric pressure",
+							"unit": "kPa",
+							"code": "BP_Avg",
+							"values": [86.2, 86.2, 86.2, 86.2, 86.2, 86.3, 86.3, 86.3, 86.3, 86.3]
+							},
+							{
+							"name": "Wind speed",
+							"unit": "m/s",
+							"code": "WindSp_Avg",
+							"values": [1.914, 2.198, 0.855, 0.725, 0.4, 0.974, 1.1, 1.078, 1.166, 0.891]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Avg",
+							"values": [132.1, 123.7, 80.3, 87.6, 310.6, 303.7, 207.9, 273.7, 348.4, 279.3]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Std",
+							"values": [22.72, 17.54, 24.39, 22.38, 11.89, 17.53, 61.17, 51.63, 82.4, 34.67]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "cm",
+							"code": "Precip_Tot",
+							"values": [11.77887, 11.7805, 11.77745, 11.77891, 11.77893, 11.77741, 11.78047, 11.78057, 11.78213, 11.78376]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "Hz",
+							"code": "Precip_Freq",
+							"values": [1921.047, 1921.098, 1921.003, 1921.049, 1921.049, 1921.002, 1921.097, 1921.1, 1921.148, 1921.198]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_Avg",
+							"values": [-0.493, 0.422, -1.327, 2.061, -1.822, 1.375, 2.462, 2.189, 3.709, 2.772]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "JuddTemp_Avg",
+							"values": [25.09, 23.49, 22.92, 23.49, 23.75, 24.19, 24.44, 24.48, 23.52, 23.61]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_NR01_Avg",
+							"values": [842.0, 380.0, 286.7, 199.2, 224.3, 318.2, 842.0, 960.0, 901.0, 695.4]
+							},
+							{
+							"name": "Radiation, outgoing shortwave",
+							"unit": "W/m^2",
+							"code": "SWOut_NR01_Avg",
+							"values": [185.7, 89.0, 67.01, 49.98, 53.62, 65.19, 165.6, 189.5, 183.7, 144.7]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_Cor_NR01_Avg",
+							"values": [357.5, 348.8, 356.3, 366.4, 364.0, 353.4, 344.7, 338.9, 339.5, 337.8]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_Cor_NR01_Avg",
+							"values": [446.2, 419.6, 420.3, 418.6, 422.3, 428.1, 455.4, 454.3, 449.1, 439.8]
+							},
+							{
+							"name": "Radiation, net",
+							"unit": "W/m^2",
+							"code": "NetRad_NR01_Avg",
+							"values": [568.2, 220.3, 155.7, 97.0, 112.3, 178.3, 565.8, 655.2, 608.1, 448.7]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_UnCor_NR01_Avg",
+							"values": [-90.6, -89.4, -80.9, -73.53, -76.93, -97.5, -115.5, -118.2, -111.4, -110.8]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_UnCor_NR01_Avg",
+							"values": [-1.933, -18.57, -16.84, -21.36, -18.64, -22.72, -4.874, -2.809, -1.718, -8.77]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_NR01_Avg",
+							"values": [25.0, 23.34, 23.17, 23.64, 23.81, 25.46, 27.01, 26.5, 25.46, 25.09]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_SP230_Avg",
+							"values": [827.0, 383.0, 299.4, 217.2, 237.5, 323.8, 819.0, 930.0, 873.0, 680.4]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Heater_on",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "DeltaTemp",
+							"values": [18.56, 16.8, 15.6, 16.63, 17.14, 18.27, 20.64, 19.99, 18.69, 18.27]
+							},
+							{
+							"name": "Radiation, incoming PAR",
+							"unit": "umol/m^2 s",
+							"code": "PARIn_Avg",
+							"values": [1549.0, 713.9, 552.9, 381.6, 423.4, 607.5, 1563.0, 1782.0, 1660.0, 1290.0]
+							},
+							{
+							"name": "Radiation, outgoing PAR",
+							"unit": "umol/m^2 s",
+							"code": "PAROut_Avg",
+							"values": [87.4, 45.41, 35.79, 27.1, 29.84, 38.56, 85.8, 97.1, 92.2, 74.39]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "TargTemp_SI111_Avg",
+							"values": [25.41, 19.75, 20.06, 19.55, 20.39, 21.41, 27.36, 27.43, 26.59, 24.39]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_SI111_Avg",
+							"values": [25.64, 23.75, 23.76, 24.34, 24.68, 27.07, 28.81, 28.07, 26.69, 26.28]
+							},
+							{
+							"name": "Slope",
+							"unit": "-",
+							"code": "m_SI111",
+							"values": [1621748000.0, 1583431000.0, 1580598000.0, 1581805000.0, 1589132000.0, 1599906000.0, 1636275000.0, 1636129000.0, 1632784000.0, 1610747000.0]
+							},
+							{
+							"name": "Intercept",
+							"unit": "-",
+							"code": "b_SI111",
+							"values": [6560605.0, 5367228.0, 5278411.0, 5316264.0, 5545696.0, 5882079.0, 7009454.0, 7004961.0, 6901762.0, 6219424.0]
+							},
+							{
+							"name": "Voltage",
+							"unit": "mV",
+							"code": "TargV_SI111_Avg",
+							"values": [-0.019, -0.263, -0.244, -0.314, -0.282, -0.37, -0.099, -0.046, -0.01, -0.128]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_5cm_Avg",
+							"values": [11.84, 11.84, 11.89, 11.84, 11.96, 11.89, 11.96, 12.02, 11.96, 11.78]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_5cm_Avg",
+							"values": [20.16, 20.46, 21.14, 22.03, 23.03, 23.06, 21.71, 20.53, 19.71, 19.34]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_5cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_5cm_Avg",
+							"values": [6.3, 6.301, 6.319, 6.301, 6.349, 6.321, 6.35, 6.369, 6.351, 6.272]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_10cm_Avg",
+							"values": [20.2, 19.98, 19.97, 20.2, 20.14, 20.14, 20.04, 20.14, 20.21, 20.31]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_10cm_Avg",
+							"values": [14.63, 14.51, 14.29, 14.06, 13.78, 13.55, 13.31, 13.1, 12.9, 12.66]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_10cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_10cm_Avg",
+							"values": [10.35, 10.24, 10.24, 10.36, 10.33, 10.33, 10.27, 10.33, 10.36, 10.43]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_20cm_Avg",
+							"values": [22.48, 22.54, 22.54, 22.6, 22.54, 22.59, 22.48, 22.6, 22.6, 22.49]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_20cm_Avg",
+							"values": [12.2, 12.16, 12.11, 12.05, 12.02, 11.98, 11.93, 11.91, 11.91, 11.89]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_20cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_20cm_Avg",
+							"values": [11.66, 11.69, 11.69, 11.73, 11.69, 11.73, 11.66, 11.73, 11.73, 11.66]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_50cm_Avg",
+							"values": [30.8, 30.47, 30.96, 30.92, 30.97, 31.02, 31.85, 30.77, 30.86, 30.8]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_50cm_Avg",
+							"values": [11.1, 11.08, 11.12, 11.12, 11.1, 11.1, 11.15, 11.1, 11.12, 11.12]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_50cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.019, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_50cm_Avg",
+							"values": [17.09, 16.86, 17.21, 17.18, 17.22, 17.26, 17.86, 17.07, 17.13, 17.09]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_100cm_Avg",
+							"values": [52.43, 52.12, 52.42, 52.37, 52.6, 52.18, 52.6, 52.37, 52.37, 52.61]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_100cm_Avg",
+							"values": [9.38, 9.38, 9.38, 9.38, 9.38, 9.38, 9.36, 9.38, 9.36, 9.38]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_100cm_Avg",
+							"values": [0.46, 0.479, 0.461, 0.461, 0.46, 0.48, 0.47, 0.461, 0.47, 0.489]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_100cm_Avg",
+							"values": [35.94, 35.65, 35.93, 35.88, 36.1, 35.71, 36.1, 35.88, 35.88, 36.11]
+							},
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [13.23, 13.34, 13.32, 13.3, 13.29, 13.24, 13.22, 13.24, 13.23, 13.29]
+							},
+							{
+							"name": "Temperature, datalogger",
+							"unit": "degC",
+							"code": "Panel_Temp",
+							"values": [27.14, 26.68, 27.04, 27.83, 28.7, 29.97, 30.8, 30.28, 29.82, 29.8]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [31.78, 39.28, 41.16, 41.48, 40.23, 36.25, 26.67, 27.06, 29.07, 31.23]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Scan Counter",
+							"unit": "#",
+							"code": "n",
+							"values": [87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0, 87.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "JuddOffset",
+							"values": [344.5, 344.5, 344.5, 344.5, 344.5, 344.5, 344.5, 344.5, 344.5, 344.5]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_1",
+							"values": [1.406, -0.903, 0.513, -0.627, 1.912, -2.985, 2.581, -0.518, 2.987, 3.07]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_2",
+							"values": [1.694, -0.243, 0.885, -1.741, 1.211, 0.437, 2.54, 2.492, 3.564, 3.771]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_3",
+							"values": [-0.079, -1.521, -0.311, -0.503, 1.5, -1.542, 2.416, 3.482, 1.997, 3.565]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Avg",
+							"values": [23.02, 22.18, 21.61, 21.8, 21.65, 21.77, 22.4, 22.01, 21.62, 21.3]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Max",
+							"values": [23.81, 22.64, 22.08, 22.09, 21.92, 22.24, 23.22, 23.5, 22.82, 22.37]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Min",
+							"values": [22.27, 21.68, 20.58, 21.06, 21.29, 21.29, 21.91, 21.67, 21.13, 20.98]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "Precip_offset",
+							"values": [-9.33, -9.33, -9.33, -9.33, -9.33, -9.33, -9.33, -9.33, -9.33, -9.33]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "cm",
+							"code": "Precip_HrDiff",
+							"values": [0.001565933, -0.004725456, -0.004725456, -0.004725456, -0.004725456, -0.004826546, -0.004826546, -0.004826546, -0.004826546, -0.006402969]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETr",
+							"values": [0.2846411, 0.2037244, 0.1110303, 0.08899805, 0.07483096, 0.1246126, 0.2377828, 0.2569518, 0.2467624, 0.1916942]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETo",
+							"values": [0.224524, 0.1452412, 0.08662362, 0.06798842, 0.06148018, 0.09628428, 0.1982632, 0.2172885, 0.2066566, 0.1610811]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "InletTemp_avg",
+							"values": [27.47994, 24.33108, 23.77484, 24.35813, 24.84233, 27.43143, 31.53337, 30.27789, 29.1558, 28.04189]
+							},
+							{
+							"name": "Frequency of rotation",
+							"unit": "rpm",
+							"code": "Tachometer_TS100",
+							"values": [4695.0, 4701.0, 4715.0, 4707.0, 4697.0, 4677.0, 4663.0, 4676.0, 4687.0, 4692.0]
+							},
+							{
+							"name": "Counter",
+							"unit": "#",
+							"code": "GeonorHeater_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Counter",
+							"unit": "#",
+							"code": "GeonorHeater_Manual_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							}
+					]
+
+			},
+
+			"LR_MainStreet_BA": {
+				"info": {
+					"code": "LR_MainStreet_BA",
+					"name": "Logan River at Main Street (Highway 89/91) Bridge",
+					"latitude": "41.721091",
+					"longitude": "-111.835096",
+					"lat_long_datum": "WGS84",
+					"elevation": "1377.0",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "None",
+					"type": "Stream"
+					},
+
+				"update_time": {
+					"min": "2013-12-04 15:00:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [13.88, 13.79, 13.71, 13.69, 13.74, 13.81, 13.93, 14.06, 14.04, 13.97]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [22.67, 23.71, 23.95, 23.91, 23.44, 22.36, 20.74, 20.06, 20.74, 22.06]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_EXO",
+							"values": [8.7, 8.55, 8.46, 8.43, 8.45, 8.43, 8.42, 8.34, 8.24, 8.16]
+							},
+							{
+							"name": "Specific Conductance",
+							"unit": "uS/cm",
+							"code": "SpCond",
+							"values": [291.9, 291.8, 291.7, 291.4, 290.8, 290.3, 290.0, 289.7, 289.5, 289.8]
+							},
+							{
+							"name": "pH",
+							"unit": "pH",
+							"code": "pH",
+							"values": [8.36, 8.35, 8.34, 8.33, 8.33, 8.33, 8.35, 8.33, 8.34, 8.32]
+							},
+							{
+							"name": "Oxygen, dissolved",
+							"unit": "mg/L",
+							"code": "ODO",
+							"values": [10.16, 10.13, 10.11, 10.1, 10.13, 10.18, 10.29, 10.36, 10.35, 10.34]
+							},
+							{
+							"name": "Oxygen, dissolved percent of saturation",
+							"unit": "% Sat",
+							"code": "ODO_Sat",
+							"values": [87.3, 86.8, 86.4, 86.3, 86.5, 86.9, 87.9, 88.3, 88.0, 87.7]
+							},
+							{
+							"name": "Oxygen, dissolved, transducer signal",
+							"unit": "% Sat",
+							"code": "ODO_Local",
+							"values": [102.8, 102.1, 101.7, 101.6, 101.9, 102.3, 103.4, 103.9, 103.6, 103.3]
+							},
+							{
+							"name": "Time Stamp",
+							"unit": "hhmm",
+							"code": "EXOTime",
+							"values": [210248.0, 204748.0, 203248.0, 201748.0, 200248.0, 194748.0, 193248.0, 191748.0, 190248.0, 184748.0]
+							},
+							{
+							"name": "Electric Power",
+							"unit": "V",
+							"code": "EXOVolt",
+							"values": [13.53, 13.45, 13.37, 13.35, 13.39, 13.46, 13.59, 13.71, 13.69, 13.64]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbAvg",
+							"values": [10.61, 10.58, 11.22, 11.18, 11.21, 11.45, 12.3, 11.71, 12.51, 12.76]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMed",
+							"values": [10.47, 10.47, 10.82, 10.85, 10.96, 11.13, 11.65, 11.33, 12.19, 12.61]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMin",
+							"values": [8.28, 8.53, 9.16, 8.59, 9.19, 9.13, 8.66, 9.87, 10.08, 10.55]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMax",
+							"values": [20.35, 19.99, 22.41, 24.51, 17.36, 19.19, 36.32, 18.64, 22.35, 18.56]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbVar",
+							"values": [2.696, 2.295, 3.344, 4.527, 2.197, 2.329, 10.25, 2.442, 2.854, 1.479]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbBES",
+							"values": [10.44, 10.38, 10.89, 10.82, 10.96, 11.21, 11.66, 11.39, 12.22, 12.63]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_Turb",
+							"values": [8.7, 8.5, 8.5, 8.4, 8.4, 8.4, 8.4, 8.3, 8.2, 8.1]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "TurbWipe",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Gage height",
+							"unit": "cm",
+							"code": "Stage",
+							"values": [82.7, 84.2, 84.9, 84.9, 85.0, 84.1, 83.4, 82.6, 83.2, 83.2]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_PT",
+							"values": [8.62, 8.46, 8.38, 8.37, 8.38, 8.36, 8.35, 8.26, 8.16, 8.09]
+							},
+							{
+							"name": "NaN Counter",
+							"unit": "#",
+							"code": "StageNaNCounter",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "StageOffset",
+							"values": [7.34, 7.34, 7.34, 7.34, 7.34, 7.34, 7.34, 7.34, 7.34, 7.34]
+							}
+					]
+
+			},
+
+			"LR_Mendon_AA": {
+				"info": {
+					"code": "LR_Mendon_AA",
+					"name": "Logan River at Mendon Road (600 South)",
+					"latitude": "41.720533",
+					"longitude": "-111.886928",
+					"lat_long_datum": "WGS84",
+					"elevation": "1353.469604",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "",
+					"type": "Stream"
+					},
+
+				"update_time": {
+					"min": "2013-10-11 15:15:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [13.62, 13.6, 13.62, 13.55, 13.61, 13.6, 13.62, 13.63, 13.65, 14.05]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [29.47, 33.6, 34.81, 34.81, 32.92, 27.01, 22.85, 25.74, 30.71, 33.87]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_EXO",
+							"values": [10.12, 10.0, 9.96, 9.95, 9.92, 9.89, 9.84, 9.76, 9.67, 9.59]
+							},
+							{
+							"name": "Specific Conductance",
+							"unit": "uS/cm",
+							"code": "SpCond",
+							"values": [322.9, 320.0, 318.9, 318.8, 319.0, 318.4, 317.6, 317.9, 318.3, 318.1]
+							},
+							{
+							"name": "pH",
+							"unit": "pH",
+							"code": "pH",
+							"values": [8.35, 8.34, 8.34, 8.34, 8.33, 8.33, 8.32, 8.31, 8.3, 8.3]
+							},
+							{
+							"name": "Oxygen, dissolved",
+							"unit": "mg/L",
+							"code": "ODO",
+							"values": [9.94, 9.97, 10.0, 10.02, 10.04, 10.07, 10.09, 10.07, 10.06, 10.06]
+							},
+							{
+							"name": "Oxygen, dissolved percent of saturation",
+							"unit": "% Sat",
+							"code": "ODO_Sat",
+							"values": [88.4, 88.4, 88.6, 88.7, 88.8, 89.0, 89.1, 88.8, 88.5, 88.3]
+							},
+							{
+							"name": "Oxygen, dissolved, transducer signal",
+							"unit": "% Sat",
+							"code": "ODO_Local",
+							"values": [104.9, 105.0, 105.2, 105.4, 105.5, 105.7, 105.8, 105.5, 105.1, 104.9]
+							},
+							{
+							"name": "Time Stamp",
+							"unit": "hhmm",
+							"code": "EXOTime",
+							"values": [205957.0, 204457.0, 202957.0, 201457.0, 195957.0, 194457.0, 192957.0, 191457.0, 185957.0, 184457.0]
+							},
+							{
+							"name": "Electric Power",
+							"unit": "V",
+							"code": "EXOVolt",
+							"values": [13.28, 13.27, 13.26, 13.19, 13.23, 13.24, 13.29, 13.28, 13.32, 13.72]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbAvg",
+							"values": [13.94, 14.11, 14.42, 14.38, 15.26, 15.09, 15.11, 15.51, 15.39, 16.52]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMed",
+							"values": [13.37, 13.76, 13.66, 14.14, 14.84, 14.98, 14.88, 15.54, 15.07, 16.26]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMin",
+							"values": [10.92, 11.21, 10.41, 10.97, 11.65, 12.38, 11.54, 12.57, 11.12, 11.72]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMax",
+							"values": [22.04, 20.91, 50.75, 34.13, 24.02, 20.3, 19.22, 20.28, 24.03, 26.05]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbVar",
+							"values": [4.1, 3.258, 20.59, 8.32, 4.067, 2.464, 2.949, 2.71, 5.015, 6.279]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbBES",
+							"values": [13.52, 13.85, 13.71, 14.01, 14.93, 14.94, 14.96, 15.42, 15.17, 16.32]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_Turb",
+							"values": [10.1, 10.0, 10.0, 9.9, 9.9, 9.9, 9.8, 9.7, 9.7, 9.6]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "TurbWipe",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Gage height",
+							"unit": "cm",
+							"code": "Stage",
+							"values": [123.0, 123.3, 124.6, 125.7, 126.3, 126.2, 126.6, 126.3, 126.4, 126.3]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_PT",
+							"values": [10.03, 9.92, 9.89, 9.88, 9.85, 9.82, 9.75, 9.67, 9.59, 9.52]
+							},
+							{
+							"name": "NaN Counter",
+							"unit": "#",
+							"code": "StageNaNCounter",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "StageOffset",
+							"values": [9.94, 9.94, 9.94, 9.94, 9.94, 9.94, 9.94, 9.94, 9.94, 9.94]
+							},
+							{
+							"name": "Blue-green algae (cyanobacteria), phycocyanin",
+							"unit": "RFU",
+							"code": "BGA",
+							"values": [0.05, 0.03, 0.05, 0.03, 0.03, 0.04, 0.04, 0.03, 0.06, 0.06]
+							},
+							{
+							"name": "Chlorophyll Fluorescence",
+							"unit": "RFU",
+							"code": "Chlorophyll",
+							"values": [0.75, 0.87, 0.9, 0.9, 0.86, 0.83, 0.73, 0.73, 0.81, 0.8]
+							},
+							{
+							"name": "Colored Dissolved Organic Matter",
+							"unit": "QSU",
+							"code": "fDOM",
+							"values": [14.6, 14.65, 14.54, 14.52, 14.44, 14.55, 14.68, 14.71, 15.16, 15.1]
+							}
+					]
+
+			},
+
+			"LR_TG_C": {
+				"info": {
+					"code": "LR_TG_C",
+					"name": "Climate Station at Tony Grove",
+					"latitude": "41.885493",
+					"longitude": "-111.568767",
+					"lat_long_datum": "WGS84",
+					"elevation": "1927.86",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "None",
+					"type": "Land"
+					},
+
+				"update_time": {
+					"min": "2014-04-29 11:15:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_Avg",
+							"values": [19.49, 20.2, 20.71, 21.98, 21.92, 20.89, 21.33, 20.98, 21.18, 20.49]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH",
+							"values": [33.69, 33.1, 30.88, 28.49, 24.34, 28.26, 26.59, 30.95, 30.92, 37.81]
+							},
+							{
+							"name": "Temperature, dew point",
+							"unit": "degC",
+							"code": "DewPt_Avg",
+							"values": [3.611, 2.765, 2.632, 3.816, 2.025, 2.535, 1.827, 1.91, 2.879, 2.681]
+							},
+							{
+							"name": "Vapor pressure",
+							"unit": "kPa",
+							"code": "VaporPress_Avg",
+							"values": [0.791, 0.746, 0.739, 0.804, 0.71, 0.734, 0.698, 0.702, 0.753, 0.742]
+							},
+							{
+							"name": "Barometric pressure",
+							"unit": "kPa",
+							"code": "BP_Avg",
+							"values": [80.6, 80.6, 80.6, 80.6, 80.6, 80.7, 80.7, 80.7, 80.7, 80.7]
+							},
+							{
+							"name": "Wind speed",
+							"unit": "m/s",
+							"code": "WindSp_Avg",
+							"values": [1.092, 0.463, 0.62, 1.569, 1.398, 0.641, 1.047, 1.072, 1.451, 1.395]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Avg",
+							"values": [33.65, 54.5, 330.4, 290.5, 136.7, 251.4, 37.46, 169.7, 233.3, 164.7]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Std",
+							"values": [38.52, 78.84, 43.88, 49.33, 71.75, 67.73, 65.91, 67.52, 29.68, 49.63]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_Avg",
+							"values": [11.57, 11.27, 8.67, 10.44, -0.472, 7.979, 3.875, 5.528, 7.303, 9.29]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "JuddTemp_Avg",
+							"values": [20.72, 21.85, 22.95, 24.45, 23.11, 23.51, 22.22, 22.46, 21.99, 21.92]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_NR01_Avg",
+							"values": [60.9, 109.7, 208.0, 869.0, 1202.0, 493.2, 1047.0, 730.7, 1053.0, 936.0]
+							},
+							{
+							"name": "Radiation, outgoing shortwave",
+							"unit": "W/m^2",
+							"code": "SWOut_NR01_Avg",
+							"values": [7.413, 15.24, 27.44, 121.9, 172.0, 65.43, 147.1, 101.3, 149.8, 134.7]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_Cor_NR01_Avg",
+							"values": [371.2, 371.0, 369.0, 361.3, 331.4, 321.0, 319.8, 314.6, 312.5, 310.7]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_Cor_NR01_Avg",
+							"values": [415.9, 425.4, 442.1, 508.3, 522.3, 459.6, 511.9, 482.0, 511.2, 492.5]
+							},
+							{
+							"name": "Radiation, net",
+							"unit": "W/m^2",
+							"code": "NetRad_NR01_Avg",
+							"values": [8.73, 40.05, 107.4, 599.9, 839.0, 289.2, 707.4, 462.0, 704.7, 619.8]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_UnCor_NR01_Avg",
+							"values": [-51.2, -60.37, -72.27, -91.9, -118.9, -122.9, -129.6, -127.8, -132.6, -127.0]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_UnCor_NR01_Avg",
+							"values": [-6.438, -5.973, 0.863, 55.09, 72.01, 15.76, 62.46, 39.59, 66.11, 54.82]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_NR01_Avg",
+							"values": [20.63, 22.19, 23.86, 25.85, 25.38, 24.3, 25.22, 24.06, 24.51, 23.26]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_SP230_Avg",
+							"values": [72.85, 125.7, 227.4, 863.0, 1169.0, 487.0, 1019.0, 715.2, 1028.0, 916.0]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Heater_on",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "DeltaTemp",
+							"values": [17.02, 19.42, 21.23, 22.04, 23.35, 21.76, 23.4, 22.15, 21.63, 20.58]
+							},
+							{
+							"name": "Radiation, incoming PAR",
+							"unit": "umol/m^2 s",
+							"code": "PARIn_Avg",
+							"values": [142.5, 238.2, 423.6, 1619.0, 2210.0, 951.0, 1942.0, 1379.0, 1956.0, 1750.0]
+							},
+							{
+							"name": "Radiation, outgoing PAR",
+							"unit": "umol/m^2 s",
+							"code": "PAROut_Avg",
+							"values": [8.86, 15.5, 25.71, 90.8, 123.0, 53.45, 107.4, 76.48, 107.7, 97.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "TargTemp_SI111_Avg",
+							"values": [19.6, 21.43, 24.84, 37.21, 40.1, 28.2, 38.57, 33.2, 39.14, 35.72]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_SI111_Avg",
+							"values": [20.91, 22.41, 24.15, 27.0, 26.61, 25.69, 26.34, 24.81, 25.36, 24.43]
+							},
+							{
+							"name": "Slope",
+							"unit": "-",
+							"code": "m_SI111",
+							"values": [1630336000.0, 1648438000.0, 1663898000.0, 1692231000.0, 1719481000.0, 1686863000.0, 1710608000.0, 1686469000.0, 1686184000.0, 1682399000.0]
+							},
+							{
+							"name": "Intercept",
+							"unit": "-",
+							"code": "b_SI111",
+							"values": [2419487.0, 2870587.0, 3257932.0, 3972291.0, 4664450.0, 3836517.0, 4438564.0, 3826578.0, 3819377.0, 3723755.0]
+							},
+							{
+							"name": "Voltage",
+							"unit": "mV",
+							"code": "TargV_SI111_Avg",
+							"values": [-0.083, -0.063, 0.042, 0.684, 0.91, 0.165, 0.821, 0.548, 0.929, 0.749]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_5cm_Avg",
+							"values": [14.62, 14.57, 14.62, 14.67, 14.62, 14.51, 14.67, 14.62, 14.68, 14.74]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_5cm_Avg",
+							"values": [24.03, 24.32, 23.93, 23.26, 23.01, 22.46, 21.91, 21.16, 20.44, 19.89]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_5cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_5cm_Avg",
+							"values": [7.528, 7.501, 7.528, 7.556, 7.529, 7.484, 7.557, 7.53, 7.559, 7.588]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_10cm_Avg",
+							"values": [20.02, 19.97, 20.13, 19.97, 19.97, 19.97, 20.03, 19.86, 20.08, 20.03]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_10cm_Avg",
+							"values": [18.47, 18.1, 17.69, 17.27, 16.86, 16.42, 15.95, 15.49, 15.05, 14.62]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_10cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_10cm_Avg",
+							"values": [10.27, 10.24, 10.32, 10.24, 10.24, 10.24, 10.27, 10.17, 10.29, 10.27]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_20cm_Avg",
+							"values": [23.52, 23.41, 23.41, 23.41, 23.56, 23.42, 23.36, 23.47, 23.41, 23.52]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_20cm_Avg",
+							"values": [13.04, 12.83, 12.64, 12.44, 12.25, 12.08, 11.92, 11.74, 11.61, 11.45]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_20cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_20cm_Avg",
+							"values": [12.27, 12.21, 12.21, 12.21, 12.31, 12.21, 12.18, 12.25, 12.21, 12.27]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_50cm_Avg",
+							"values": [24.7, 24.53, 24.54, 24.74, 24.91, 24.64, 24.63, 24.53, 25.08, 24.87]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_50cm_Avg",
+							"values": [10.05, 10.05, 10.08, 10.08, 10.1, 10.1, 10.1, 10.12, 10.15, 10.17]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_50cm_Avg",
+							"values": [0.43, 0.43, 0.458, 0.45, 0.413, 0.439, 0.431, 0.44, 0.422, 0.43]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_50cm_Avg",
+							"values": [13.0, 12.89, 12.9, 13.03, 13.13, 12.96, 12.96, 12.89, 13.23, 13.1]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_100cm_Avg",
+							"values": [22.49, 22.4, 23.08, 22.88, 22.74, 22.61, 22.6, 22.77, 22.56, 22.43]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_100cm_Avg",
+							"values": [8.58, 8.48, 8.56, 8.56, 8.48, 8.56, 8.58, 8.58, 8.56, 8.58]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_100cm_Avg",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_100cm_Avg",
+							"values": [11.67, 11.63, 12.02, 11.89, 11.83, 11.74, 11.73, 11.82, 11.7, 11.63]
+							},
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [13.35, 13.62, 13.58, 13.56, 13.53, 13.57, 13.59, 13.58, 13.61, 13.61]
+							},
+							{
+							"name": "Temperature, datalogger",
+							"unit": "degC",
+							"code": "Panel_Temp",
+							"values": [25.04, 27.06, 28.89, 30.26, 29.58, 28.82, 29.85, 29.18, 29.68, 28.4]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [24.75, 23.46, 21.68, 18.13, 17.8, 20.32, 15.2, 17.39, 15.07, 16.64]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [-9999.0, -9999.0, -9999.0, -9999.0, -9999.0, -9999.0, -9999.0, -9999.0, -9999.0, -9999.0]
+							},
+							{
+							"name": "Scan Counter",
+							"unit": "#",
+							"code": "n",
+							"values": [90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "JuddOffset",
+							"values": [305.0, 305.0, 305.0, 305.0, 305.0, 305.0, 305.0, 305.0, 305.0, 305.0]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_1",
+							"values": [10.88, 11.57, 10.88, 8.83, 10.88, 2.674, 3.358, 4.042, 5.068, 1.648]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_2",
+							"values": [10.88, 12.25, 10.88, 8.83, 9.86, 1.99, 1.306, 6.778, 4.726, 4.042]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_3",
+							"values": [10.88, 12.25, 11.22, 9.17, 10.54, 2.674, 2.674, 0.622, 7.462, 8.15]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Avg",
+							"values": [19.27, 19.99, 20.42, 21.69, 21.57, 20.62, 21.02, 20.69, 20.97, 20.17]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Max",
+							"values": [19.84, 20.27, 21.04, 23.61, 23.67, 21.86, 22.32, 21.58, 23.05, 21.79]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Min",
+							"values": [18.45, 19.58, 20.05, 20.59, 20.5, 20.08, 20.01, 20.07, 19.84, 19.42]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETr",
+							"values": [0.0998225, 0.06555182, 0.09981256, 0.2971403, 0.3427457, 0.1525486, 0.2893811, 0.231702, 0.3149093, 0.2861823]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETo",
+							"values": [0.06201192, 0.04660579, 0.07332009, 0.2291293, 0.2748163, 0.1219028, 0.2364412, 0.1821222, 0.2497479, 0.2255726]
+							},
+							{
+							"name": "Frequency of rotation",
+							"unit": "rpm",
+							"code": "Tachometer_TS100",
+							"values": [4836.0, 4865.0, 4844.0, 4834.0, 4847.0, 4850.0, 4851.0, 4847.0, 4843.0, 4857.0]
+							}
+					]
+
+			},
+
+			"LR_TWDEF_C": {
+				"info": {
+					"code": "LR_TWDEF_C",
+					"name": "Climate Station at TW Daniels Experimental Forest",
+					"latitude": "41.864805",
+					"longitude": "-111.507494",
+					"lat_long_datum": "WGS84",
+					"elevation": "2629.2",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "None",
+					"type": "Land"
+					},
+
+				"update_time": {
+					"min": "2014-01-07 11:15:00",
+					"max": "2014-05-23 13:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_Avg",
+							"values": [14.82, 13.97, 13.87, 13.6, 13.25, 13.61, 12.9, 12.69, 12.55, 12.62]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH",
+							"values": [50.54, 50.78, 50.07, 50.07, 50.31, 49.42, 49.42, 49.02, 48.74, 49.02]
+							},
+							{
+							"name": "Temperature, dew point",
+							"unit": "degC",
+							"code": "DewPt_Avg",
+							"values": [4.745, 3.754, 3.64, 3.329, 2.914, 3.328, 2.514, 2.255, 2.102, 2.179]
+							},
+							{
+							"name": "Vapor pressure",
+							"unit": "kPa",
+							"code": "VaporPress_Avg",
+							"values": [0.856, 0.799, 0.793, 0.775, 0.753, 0.775, 0.732, 0.718, 0.711, 0.715]
+							},
+							{
+							"name": "Barometric pressure",
+							"unit": "kPa",
+							"code": "BP_Avg",
+							"values": [74.33, 74.35, 74.37, 74.38, 74.39, 74.41, 74.42, 74.43, 74.44, 74.45]
+							},
+							{
+							"name": "Wind speed",
+							"unit": "m/s",
+							"code": "WindSp_Avg",
+							"values": [0.879, 0.846, 0.654, 0.557, 0.445, 0.849, 0.589, 0.723, 0.767, 0.939]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Avg",
+							"values": [130.0, 204.1, 140.8, 111.4, 111.2, 35.68, 225.2, 171.5, 129.1, 71.65]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_Std",
+							"values": [50.34, 84.4, 81.2, 78.29, 58.36, 61.54, 75.69, 80.9, 68.2, 78.42]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "cm",
+							"code": "Precip_Tot",
+							"values": [41.72, 41.72, 41.72, 41.72, 41.71, 41.72, 41.73, 41.72, 41.72, 41.73]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "Hz",
+							"code": "Precip_Freq",
+							"values": [2343.0, 2343.0, 2343.0, 2343.0, 2343.0, 2343.0, 2343.0, 2343.0, 2343.0, 2343.0]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_Avg",
+							"values": [82.3, 83.0, 82.4, 83.6, 82.4, 83.3, 83.4, 83.1, 84.2, 83.7]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "JuddTemp_Avg",
+							"values": [18.14, 17.09, 16.53, 15.63, 15.68, 15.44, 15.55, 14.77, 14.47, 14.47]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_NR01_Avg",
+							"values": [1103.0, 1068.0, 937.0, 945.0, 671.8, 972.0, 879.0, 877.0, 743.5, 851.0]
+							},
+							{
+							"name": "Radiation, outgoing shortwave",
+							"unit": "W/m^2",
+							"code": "SWOut_NR01_Avg",
+							"values": [553.8, 535.0, 469.8, 475.7, 338.1, 487.1, 442.2, 443.4, 375.4, 430.1]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_Cor_NR01_Avg",
+							"values": [288.4, 286.2, 287.5, 289.0, 287.9, 288.1, 287.6, 285.3, 283.3, 280.8]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_Cor_NR01_Avg",
+							"values": [325.9, 326.1, 325.5, 325.7, 324.8, 325.5, 326.1, 325.2, 325.5, 324.4]
+							},
+							{
+							"name": "Radiation, net",
+							"unit": "W/m^2",
+							"code": "NetRad_NR01_Avg",
+							"values": [511.4, 493.2, 428.9, 433.1, 296.7, 447.2, 398.2, 393.6, 325.9, 377.5]
+							},
+							{
+							"name": "Radiation, incoming longwave",
+							"unit": "W/m^2",
+							"code": "LWIn_UnCor_NR01_Avg",
+							"values": [-147.3, -142.0, -138.2, -133.7, -131.1, -134.4, -127.8, -126.1, -129.2, -131.1]
+							},
+							{
+							"name": "Radiation, outgoing longwave",
+							"unit": "W/m^2",
+							"code": "LWOut_UnCor_NR01_Avg",
+							"values": [-109.9, -102.1, -100.3, -97.1, -94.1, -97.0, -89.3, -86.3, -87.0, -87.5]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_NR01_Avg",
+							"values": [22.93, 21.64, 21.22, 20.7, 20.03, 20.65, 19.41, 18.71, 18.91, 18.81]
+							},
+							{
+							"name": "Radiation, incoming shortwave",
+							"unit": "W/m^2",
+							"code": "SWIn_SP230_Avg",
+							"values": [1065.0, 1033.0, 908.0, 918.0, 657.9, 945.0, 857.0, 854.0, 727.9, 831.0]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Heater_on",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "DeltaTemp",
+							"values": [18.18, 17.89, 17.58, 17.38, 17.12, 17.32, 16.89, 16.46, 16.8, 16.63]
+							},
+							{
+							"name": "Radiation, incoming PAR",
+							"unit": "umol/m^2 s",
+							"code": "PARIn_Avg",
+							"values": [2074.0, 2012.0, 1774.0, 1790.0, 1288.0, 1834.0, 1662.0, 1653.0, 1412.0, 1608.0]
+							},
+							{
+							"name": "Radiation, outgoing PAR",
+							"unit": "umol/m^2 s",
+							"code": "PAROut_Avg",
+							"values": [1304.0, 1259.0, 1110.0, 1120.0, 808.0, 1144.0, 1038.0, 1035.0, 884.0, 1007.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "TargTemp_SI111_Avg",
+							"values": [0.652, 0.623, 0.631, 0.625, 0.59, 0.519, 0.609, 0.69, 0.421, 0.527]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "Temp_SI111_Avg",
+							"values": [24.31, 22.85, 22.41, 21.57, 20.8, 21.41, 20.31, 19.12, 19.15, 18.88]
+							},
+							{
+							"name": "Slope",
+							"unit": "-",
+							"code": "m_SI111",
+							"values": [1558714000.0, 1539360000.0, 1532334000.0, 1525625000.0, 1513367000.0, 1515066000.0, 1512592000.0, 1499186000.0, 1491304000.0, 1494524000.0]
+							},
+							{
+							"name": "Intercept",
+							"unit": "-",
+							"code": "b_SI111",
+							"values": [7844140.0, 6816984.0, 6449050.0, 6100277.0, 5469772.0, 5556636.0, 5430191.0, 4751691.0, 4358058.0, 4518349.0]
+							},
+							{
+							"name": "Voltage",
+							"unit": "mV",
+							"code": "TargV_SI111_Avg",
+							"values": [-1.431, -1.347, -1.32, -1.271, -1.228, -1.267, -1.197, -1.122, -1.139, -1.117]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_5cm_Avg",
+							"values": [39.0, 38.94, 38.87, 38.56, 38.38, 38.8, 38.39, 38.37, 38.37, 38.38]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_5cm_Avg",
+							"values": [0.051, 0.069, 0.05, 0.051, 0.051, 0.05, 0.05, 0.051, 0.051, 0.069]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_5cm_Avg",
+							"values": [0.699, 0.681, 0.681, 0.708, 0.7, 0.671, 0.671, 0.689, 0.672, 0.68]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_5cm_Avg",
+							"values": [23.58, 23.53, 23.46, 23.2, 23.05, 23.4, 23.06, 23.04, 23.04, 23.04]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_10cm_Avg",
+							"values": [38.23, 38.47, 38.44, 38.53, 38.53, 38.54, 38.33, 38.59, 38.65, 38.45]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_10cm_Avg",
+							"values": [-4.1, -4.099, -4.098, -4.1, -4.127, -4.1, -4.099, -4.099, -4.1, -4.1]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_10cm_Avg",
+							"values": [0.62, 0.602, 0.619, 0.638, 0.602, 0.619, 0.639, 0.611, 0.629, 0.621]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_10cm_Avg",
+							"values": [22.91, 23.12, 23.09, 23.18, 23.17, 23.18, 23.0, 23.22, 23.28, 23.09]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_20cm_Avg",
+							"values": [36.15, 36.0, 35.99, 36.06, 36.16, 36.16, 36.17, 36.34, 36.55, 36.56]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_20cm_Avg",
+							"values": [0.069, 0.051, 0.051, 0.051, 0.069, 0.051, 0.051, 0.069, 0.051, 0.05]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_20cm_Avg",
+							"values": [0.532, 0.54, 0.522, 0.53, 0.54, 0.531, 0.558, 0.559, 0.541, 0.531]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_20cm_Avg",
+							"values": [21.19, 21.07, 21.06, 21.12, 21.2, 21.2, 21.21, 21.34, 21.51, 21.52]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_50cm_Avg",
+							"values": [42.09, 42.15, 42.25, 42.16, 42.21, 42.42, 42.53, 42.69, 42.7, 42.75]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_50cm_Avg",
+							"values": [0.051, 0.051, 0.051, 0.051, 0.05, 0.051, 0.051, 0.051, 0.051, 0.069]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_50cm_Avg",
+							"values": [0.669, 0.679, 0.661, 0.688, 0.707, 0.69, 0.662, 0.68, 0.662, 0.689]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_50cm_Avg",
+							"values": [26.36, 26.41, 26.51, 26.42, 26.48, 26.66, 26.77, 26.92, 26.92, 26.97]
+							},
+							{
+							"name": "Volumetric water content",
+							"unit": "-",
+							"code": "VWC_100cm_Avg",
+							"values": [45.39, 45.18, 45.56, 45.52, 45.68, 45.68, 45.76, 45.7, 45.85, 45.91]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "SoilTemp_100cm_Avg",
+							"values": [-4.039, -4.039, -4.039, -4.012, -4.039, -4.039, -4.039, -4.039, -4.04, -4.039]
+							},
+							{
+							"name": "Bulk electrical conductivity",
+							"unit": "dS/m",
+							"code": "SoilCond_100cm_Avg",
+							"values": [1.019, 1.011, 1.011, 1.01, 1.019, 1.01, 1.01, 1.01, 1.01, 1.01]
+							},
+							{
+							"name": "Permittivity",
+							"unit": "-",
+							"code": "Permittivity_100cm_Avg",
+							"values": [29.42, 29.22, 29.57, 29.53, 29.69, 29.69, 29.76, 29.71, 29.84, 29.9]
+							},
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [12.2, 12.08, 11.74, 11.84, 11.62, 11.71, 11.64, 11.71, 11.68, 11.72]
+							},
+							{
+							"name": "Temperature, datalogger",
+							"unit": "degC",
+							"code": "Panel_Temp",
+							"values": [23.78, 23.7, 24.6, 25.04, 24.98, 25.67, 24.78, 24.75, 25.01, 25.28]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [36.43, 31.21, 23.0, 22.05, 25.17, 21.1, 23.47, 23.61, 24.36, 22.52]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [-7999.0, -7999.0, -7999.0, -7999.0, -7999.0, -7999.0, -7999.0, -7999.0, -7999.0, -7999.0]
+							},
+							{
+							"name": "Scan Counter",
+							"unit": "#",
+							"code": "n",
+							"values": [90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0, 90.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "JuddOffset",
+							"values": [348.0, 348.0, 348.0, 348.0, 348.0, 348.0, 348.0, 348.0, 348.0, 348.0]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_1",
+							"values": [82.3, 82.3, 83.0, 83.0, 82.3, 83.0, 84.0, 84.4, 82.0, 83.7]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_2",
+							"values": [81.7, 81.0, 83.0, 83.0, 82.3, 82.3, 83.7, 83.7, 83.7, 83.0]
+							},
+							{
+							"name": "Snow depth",
+							"unit": "cm",
+							"code": "JuddDepth_3",
+							"values": [81.3, 82.0, 83.0, 83.4, 83.4, 83.0, 83.7, 82.3, 84.0, 84.4]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Avg",
+							"values": [14.18, 13.34, 13.22, 12.97, 12.7, 12.92, 12.27, 12.06, 11.94, 11.98]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Max",
+							"values": [14.86, 14.41, 14.25, 13.75, 13.37, 14.05, 12.89, 12.72, 12.65, 12.83]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_ST110_Min",
+							"values": [12.87, 11.68, 11.96, 11.75, 11.05, 10.59, 11.47, 10.86, 10.96, 10.54]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "Precip_offset",
+							"values": [-5.2, -5.2, -5.2, -5.2, -5.2, -5.2, -5.2, -5.2, -5.2, -5.2]
+							},
+							{
+							"name": "Precipitation",
+							"unit": "cm",
+							"code": "Precip_HrDiff",
+							"values": [0.01, 0.0, -0.01, -0.01, 0.0, 0.0, 0.0, 0.0, 0.01, -0.01]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETr",
+							"values": [0.2311071, 0.2218729, 0.1936164, 0.1907392, 0.139612, 0.2063383, 0.1789619, 0.1827727, 0.162595, 0.1866211]
+							},
+							{
+							"name": "Evapotranspiration, potential",
+							"unit": "mm",
+							"code": "Evapotrans_ETo",
+							"values": [0.200449, 0.1924639, 0.1693202, 0.168386, 0.1224636, 0.1778815, 0.1568244, 0.1580587, 0.1383622, 0.1579696]
+							},
+							{
+							"name": "Temperature, sensor",
+							"unit": "degC",
+							"code": "InletTemp_avg",
+							"values": [25.43743, 23.59244, 22.79376, 22.15609, 21.12897, 23.02769, 22.20649, 20.85909, 20.96785, 21.07007]
+							},
+							{
+							"name": "Frequency of rotation",
+							"unit": "rpm",
+							"code": "Tachometer_TS100",
+							"values": [4422.0, 4372.0, 4330.0, 4301.0, 4274.0, 4269.0, 4271.0, 4267.0, 4259.0, 4262.0]
+							},
+							{
+							"name": "Counter",
+							"unit": "#",
+							"code": "GeonorHeater_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Counter",
+							"unit": "#",
+							"code": "GeonorHeater_Manual_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							}
+					]
+
+			},
+
+			"LR_WaterLab_AA": {
+				"info": {
+					"code": "LR_WaterLab_AA",
+					"name": "Logan River at the Utah Water Research Laboratory west bridge",
+					"latitude": "41.739034",
+					"longitude": "-111.795742",
+					"lat_long_datum": "WGS84",
+					"elevation": "1414.0",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "",
+					"type": "Stream"
+					},
+
+				"update_time": {
+					"min": "2013-10-02 13:15:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [14.05, 14.08, 14.0, 13.97, 13.86, 13.86, 13.96, 14.0, 14.06, 14.07]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [27.2, 31.06, 33.84, 34.04, 33.96, 30.17, 23.07, 20.2, 24.59, 27.4]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_EXO",
+							"values": [8.64, 8.55, 8.46, 8.41, 8.32, 8.23, 8.19, 8.14, 8.03, 7.92]
+							},
+							{
+							"name": "Specific Conductance",
+							"unit": "uS/cm",
+							"code": "SpCond",
+							"values": [291.5, 291.1, 290.2, 290.6, 290.6, 290.3, 289.9, 289.7, 289.0, 289.1]
+							},
+							{
+							"name": "pH",
+							"unit": "pH",
+							"code": "pH",
+							"values": [8.39, 8.39, 8.38, 8.39, 8.38, 8.38, 8.37, 8.37, 8.37, 8.35]
+							},
+							{
+							"name": "Oxygen, dissolved",
+							"unit": "mg/L",
+							"code": "ODO",
+							"values": [10.12, 10.18, 10.18, 10.22, 10.21, 10.24, 10.28, 10.33, 10.36, 10.36]
+							},
+							{
+							"name": "Oxygen, dissolved percent of saturation",
+							"unit": "% Sat",
+							"code": "ODO_Sat",
+							"values": [86.9, 87.2, 87.0, 87.2, 87.0, 87.0, 87.3, 87.6, 87.6, 87.4]
+							},
+							{
+							"name": "Oxygen, dissolved, transducer signal",
+							"unit": "% Sat",
+							"code": "ODO_Local",
+							"values": [102.6, 103.0, 102.8, 103.1, 102.8, 102.8, 103.1, 103.4, 103.5, 103.2]
+							},
+							{
+							"name": "Time Stamp",
+							"unit": "hhmm",
+							"code": "EXOTime",
+							"values": [205314.0, 203814.0, 202314.0, 200814.0, 195314.0, 193814.0, 192314.0, 190814.0, 185314.0, 183814.0]
+							},
+							{
+							"name": "Electric Power",
+							"unit": "V",
+							"code": "EXOVolt",
+							"values": [13.56, 13.65, 13.53, 13.49, 13.37, 13.39, 13.48, 13.57, 13.64, 13.64]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbAvg",
+							"values": [7.83, 8.43, 9.31, 8.65, 10.54, 8.82, 9.13, 9.47, 9.89, 10.45]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMed",
+							"values": [7.69, 7.96, 8.2, 8.17, 8.56, 8.6, 8.89, 9.17, 9.19, 9.51]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMin",
+							"values": [6.64, 6.76, 6.65, 7.28, 7.2, 7.51, 7.65, 8.16, 7.86, 8.35]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbMax",
+							"values": [11.51, 23.59, 31.94, 16.15, 79.77, 17.85, 16.77, 18.4, 38.42, 49.39]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbVar",
+							"values": [0.694, 4.789, 12.78, 2.757, 100.2, 1.612, 1.574, 1.733, 10.84, 20.26]
+							},
+							{
+							"name": "Turbidity",
+							"unit": "NTU",
+							"code": "TurbBES",
+							"values": [7.65, 7.97, 8.31, 8.2, 8.61, 8.59, 8.88, 9.2, 9.23, 9.62]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_Turb",
+							"values": [8.6, 8.5, 8.4, 8.4, 8.3, 8.2, 8.2, 8.1, 8.0, 7.9]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "TurbWipe",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Gage height",
+							"unit": "cm",
+							"code": "Stage",
+							"values": [84.6, 84.9, 84.8, 84.8, 85.0, 85.1, 84.9, 84.7, 84.3, 83.5]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "WaterTemp_PT",
+							"values": [8.62, 8.52, 8.45, 8.39, 8.3, 8.21, 8.17, 8.12, 7.992, 7.906]
+							},
+							{
+							"name": "NaN Counter",
+							"unit": "#",
+							"code": "StageNaNCounter",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Offset",
+							"unit": "cm",
+							"code": "StageOffset",
+							"values": [-19.1, -19.1, -19.1, -19.1, -19.1, -19.1, -19.1, -19.1, -19.1, -19.1]
+							},
+							{
+							"name": "Blue-green algae (cyanobacteria), phycocyanin",
+							"unit": "RFU",
+							"code": "BGA",
+							"values": [-0.02, -0.01, -0.04, -0.03, -0.02, -0.03, -0.01, -0.02, -0.03, -0.05]
+							},
+							{
+							"name": "Chlorophyll Fluorescence",
+							"unit": "RFU",
+							"code": "Chlorophyll",
+							"values": [0.35, 0.35, 0.36, 0.36, 0.43, 0.41, 0.37, 0.32, 0.29, 0.35]
+							},
+							{
+							"name": "Colored Dissolved Organic Matter",
+							"unit": "QSU",
+							"code": "fDOM",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							}
+					]
+
+			},
+
+			"LR_Wilkins_R": {
+				"info": {
+					"code": "LR_Wilkins_R",
+					"name": "Wilkins Repeater",
+					"latitude": "41.905986",
+					"longitude": "-111.553771",
+					"lat_long_datum": "WGS84",
+					"elevation": "2133.6",
+					"local_x": "None",
+					"local_y": "None",
+					"local_projection": "None",
+					"pos_accuracy": "None",
+					"state": "Utah",
+					"county": "Cache",
+					"comments": "None",
+					"type": "Land"
+					},
+
+				"update_time": {
+					"min": "2014-05-16 10:15:00",
+					"max": "2014-05-23 14:00:00"
+					},
+
+				"vars": [
+							{
+							"name": "Battery voltage",
+							"unit": "V",
+							"code": "BattVolt",
+							"values": [13.65, 13.72, 13.7, 13.64, 13.65, 13.66, 13.66, 13.66, 13.67, 13.7]
+							},
+							{
+							"name": "Temperature, datalogger",
+							"unit": "degC",
+							"code": "Panel_Temp",
+							"values": [23.2, 24.75, 26.37, 27.78, 27.63, 27.1, 26.76, 26.73, 26.21, 25.47]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_enc",
+							"values": [23.63, 22.29, 20.89, 18.3, 11.08, 12.48, 11.94, 12.61, 10.45, 11.01]
+							},
+							{
+							"name": "Indicator",
+							"unit": "code",
+							"code": "Door_Tot",
+							"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+							},
+							{
+							"name": "Temperature",
+							"unit": "degC",
+							"code": "AirTemp_HMP50_Avg",
+							"values": [17.5, 18.19, 18.61, 19.78, 21.56, 21.02, 20.37, 20.24, 20.64, 20.15]
+							},
+							{
+							"name": "Relative Humidity",
+							"unit": "%",
+							"code": "RH_HMP51",
+							"values": [36.47, 39.16, 33.04, 32.44, 28.84, 27.31, 31.18, 30.01, 31.28, 27.55]
+							},
+							{
+							"name": "Wind Speed",
+							"unit": "m/s",
+							"code": "WindSp_S_WVT",
+							"values": [2.223, 2.19, 2.234, 2.411, 1.366, 1.736, 1.862, 1.265, 1.311, 0.827]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_D1_WVT",
+							"values": [325.6, 283.8, 277.9, 265.4, 240.2, 138.4, 195.3, 228.8, 209.4, 230.0]
+							},
+							{
+							"name": "Wind direction",
+							"unit": "deg",
+							"code": "WindDir_SD1_WVT",
+							"values": [43.79, 28.51, 25.42, 33.94, 74.05, 45.45, 47.16, 48.89, 42.28, 59.64]
+							}
+					]
+
+			}
+
+}
