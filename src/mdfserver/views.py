@@ -1,6 +1,6 @@
 import json
 
-from mdfiutah.settings.base import *
+from iUTAHData.settings.base import *
 from django.shortcuts import render
 from django.conf import settings
 
@@ -45,3 +45,4 @@ def river_dynamic(request, database, site_code):
     pages_in_server = Page.objects.all().order_by('-title')[:5]
     context = {'pages': pages_in_server, 'river_data': data_river[site_code], 'site_code': site_code }
     return render(request, 'mdfserver/river_dynamic.html', context)
+
