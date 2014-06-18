@@ -84,8 +84,12 @@ jQuery(document).ready(function ($) {
         drawSeries();
     }
 
-    $('.carousel').carousel({
+    $('#data-watershed-gallery').carousel({
          interval: 4500
+       });
+
+    $('#data-watershed-gallery-modal').carousel({
+         interval: false
        });
 
 });
