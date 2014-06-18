@@ -64,7 +64,51 @@
 
 
 
+<div id="the_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal_image" id="modal_contents">
+           <!--<img class="img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">-->
 
+          <div id="data-watershed-gallery-modal" class="carousel slide watershed-image-gallery">
+        <div id="carousel_displayer" class="carousel-inner" data-toggle="modal" data-target=".bs-example-modal-lg" style="border: 1px solid rgb(64, 64, 64);">
+            <div class="item active">
+                <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">
+            </div>
+            <div class="item">
+                <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_130717.jpg" %}" alt=""
+                     >
+            </div>
+            <div class="item">
+                <img class="display img-responsive" src="{% static "mdfserver/img/RB_KF_A_130819.jpg" %}" alt=""
+                     >
+            </div>
+            <div class="item">
+                <img class="display img-responsive" src="{% static "mdfserver/img/RB_KF_C_130722.jpg" %}" alt=""
+                     >
+            </div>
+            <div class="item">
+                <img class="display img-responsive" src="{% static "mdfserver/img/ReservoirTower_130626 (1).jpg" %}"
+                     alt=""
+                     >
+                <!-- <img src="{% static "mdfserver/img/big_image.jpg" %}" alt="iUTAH Epscor" class="img-responsive">-->
+            </div>
+        </div>
+
+        <!--<div class="carousel-caption" style="height: 19px; padding: 7px;">
+            <p style="color: #BBB; padding-bottom: 0px;">Multiple instruments are used to collect data.</p>
+        </div> -->
+        <a class="carousel-control left" href="#data-watershed-gallery-modal" data-slide="prev">
+            <span class="icon-prev">‹</span>
+        </a>
+        <a class="carousel-control right" href="#data-watershed-gallery-modal" data-slide="next">
+            <span class="icon-next">›</span>
+        </a>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -77,10 +121,9 @@
             <li data-target="#data-watershed-gallery" data-slide-to="3"></li>
             <li data-target="#data-watershed-gallery" data-slide-to="4"></li>
         </ol>
-        <div class="carousel-inner" style="border: 1px solid rgb(64, 64, 64);">
+        <div class="carousel-inner" data-toggle="modal" onclick="changeModal();" data-target=".bs-example-modal-lg" style="border: 1px solid rgb(64, 64, 64);">
             <div class="item active">
-                <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt=""
-                     >
+                <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">
             </div>
             <div class="item">
                 <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_130717.jpg" %}" alt=""
@@ -131,9 +174,10 @@
         <h3 style="margin-top: 0px;">Most Recent Instantaneous Measurements</h3>
         <h4 style="margin-bottom: 0px;">Data update time: {{ river_data.update_time.max }}, latest ten values graphed. </h4>
 
-        <p class="disclaimer" id="dyn_disclaimer">The data presented here is provisional and subject to revision</p>
+        <p id="dyn_disclaimer"></p>
 
-        <p id="plot_prompt">Click a box to plot a variable &#x25BC;</p>
+        <p id="warning_sign" class="disclaimer">The data presented here is provisional and subject to revision</p>
+    <br>
         {% for var in river_data.vars %}{# This for loop should be populated by the data or it should be hard coded. #}
             <div class="data_box">
                 <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
@@ -149,8 +193,9 @@
             </div>
         {% endfor %}
         <p class="disclaimer" style="clear: both; margin-bottom: 37px; margin-left: 17px">WARNING: These data may be
-            provisional and subject to revision. The data are released on the condition that neither iUTAH may be held
-            liable for any damages resulting from its use.</p>
+            provisional and subject to revision. The data are released on the condition that neither iUTAH, Utah State
+            University, Brigham Young University, nor the University of Utah may be held liable for any damages resulting
+            from their use.</p>
     </div>
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGtObe6Ic1FeiDvC9Oxt3oWc-HWk8wuTk&sensor=false">

@@ -18,6 +18,42 @@
   stroke-width: 1.5px;
 }
 
+#modal_contents img
+{
+   height: 600px;
+    /*margin-left: -311px;*//
+}
+
+#the_modal
+{
+    text-align: center;
+    left: auto;
+    width: 937px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+#data-watershed-gallery-modal
+{
+    height: 600px;
+    overflow: hidden;
+    width: 84%;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#data-watershed-gallery-modal img.display
+{
+    width: auto;
+    min-height: auto;
+}
+
+.modal.fade.in {
+    top: 12.6%;
+}
+
 #iutah_logo {
     float: left;
     clear: both;
@@ -905,6 +941,7 @@ p.indent{
     /* margin-right: 21.82%; */
     height: 344px;
     margin-top: 25px;
+    margin-right: 2px;
     width: 43%;
 
 }
@@ -949,7 +986,7 @@ p.indent{
     /*border: 1px solid #000000;*/
     /*width: 45%;*/
     padding: 0px 15px;
-    width: 104.2%;
+    width: 102.9%;
 }
 
 .most_recent>p
@@ -966,7 +1003,7 @@ p.indent{
     padding-bottom: 0px;
 }
 
-#plot_prompt
+#warning_sign
 {
     width: 230px;
     font-weight: bold;
@@ -982,16 +1019,12 @@ p.indent{
     position: relative;
     top: -16px;
     left: 29px;
-}
 
-#dyn_disclaimer
-{
+    /*from dyn-*/
     padding-bottom: 9px;
     margin-left: 0px;
     display: inline-block;
 }
-
-
 
 .var_name
 {
