@@ -17,9 +17,8 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
 sm = ServiceManager()
 
-dump_location = "C:\\iUtahDataCollector\\DataParser\\tempfiles\\"
-static_folder = "C:\inetpub\wwwroot\mdf\static\mdfserver\json"
-log_file = "C:\\dataparserlog.txt"
+dump_location = "C:\\inetpub\\wwwroot\\mdf\\iutah\\mdfserver\\static\\mdfserver\\json\\"
+static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
 
 def handleConnection(database, text_file):
     sm._current_connection= {'engine':'mssql', 'user':'webapplication' , 'password':'W3bAppl1c4t10n!', 'address':'iutahdbs.uwrl.usu.edu', 'db':database}
@@ -72,10 +71,10 @@ def handleConnection(database, text_file):
             
             #put variable values in here
             loginfo += "\t\t\t\t\t\t\t\t   Now getting values for "+ var.name +"\n"
-            var_values = ss.get_ten_values_by_site_id_and_var_id(site.id, var.id)
-            for x in range(0, 10):
+            var_values = ss.get_ninety_six_values_by_site_id_and_var_id(site.id, var.id)
+            for x in range(0, 96):
                 file_str += str(var_values[x].data_value)
-                if x != 9:
+                if x != 95:
                      file_str += ", "
             
             file_str += "]\n"
@@ -91,7 +90,7 @@ def handleConnection(database, text_file):
             file_str += ","
         file_str += "\n\n"
     logger.info("Finished getting sites for " + database)
-    text_file.write(file_str)    
+    text_file.write(file_str)
     pass
 
 
