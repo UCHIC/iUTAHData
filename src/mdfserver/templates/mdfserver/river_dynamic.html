@@ -71,7 +71,7 @@
            <!--<img class="img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">-->
 
           <div id="data-watershed-gallery-modal" class="carousel slide watershed-image-gallery">
-        <div id="carousel_displayer" class="carousel-inner" data-toggle="modal" data-target=".bs-example-modal-lg" style="border: 1px solid rgb(64, 64, 64);">
+        <div id="carousel_displayer" class="carousel-inner" data-toggle="modal" data-target=".bs-example-modal-lg">
             <div class="item active">
                 <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">
             </div>
@@ -121,7 +121,7 @@
             <li data-target="#data-watershed-gallery" data-slide-to="3"></li>
             <li data-target="#data-watershed-gallery" data-slide-to="4"></li>
         </ol>
-        <div class="carousel-inner" data-toggle="modal" onclick="changeModal();" data-target=".bs-example-modal-lg" style="border: 1px solid rgb(64, 64, 64);">
+        <div class="carousel-inner" data-toggle="modal" onclick="changeModal();" data-target=".bs-example-modal-lg">
             <div class="item active">
                 <img class="display img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">
             </div>
@@ -146,7 +146,7 @@
         </div>
 
         <div class="carousel-caption" style="height: 19px; padding: 7px;">
-            <p style="color: #BBB; padding-bottom: 0px;">Multiple instruments are used to collect data.</p>
+            <p style="color: #BBB; padding-bottom: 0px; text-align: center">Multiple instruments are used to collect data.</p>
         </div>
         <a class="carousel-control left" href="#data-watershed-gallery" data-slide="prev">
             <span class="icon-prev">‹</span>
@@ -171,8 +171,8 @@
     </div>-->
     <div class="most_recent">
         <!--<div class="info_space"></div>-->
-        <h3 style="margin-top: 0px;">Most Recent Instantaneous Measurements</h3>
-        <h4 style="margin-bottom: 0px;">Data update time: {{ river_data.update_time.max }}, latest ten values graphed. </h4>
+        <h3 style="margin-top: 18px;">Most Recent Instantaneous Measurements</h3>
+        <h4 style="margin-bottom: -43px;">Data update time: {{ river_data.update_time.max }}, latest ten values graphed. </h4>
 
         <p id="dyn_disclaimer"></p>
 
