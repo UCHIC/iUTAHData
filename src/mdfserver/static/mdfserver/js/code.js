@@ -88,6 +88,10 @@ jQuery(document).ready(function ($) {
          interval: 4500
        });
 
+    $('#big_image').carousel({
+         interval: 4500
+       });
+
     $('#data-watershed-gallery-modal').carousel({
          interval: false
        });
