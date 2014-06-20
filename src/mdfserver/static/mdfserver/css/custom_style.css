@@ -183,6 +183,10 @@
     margin-left: -16%;
 }
 
+#big_image img {
+    width: 100%;
+}
+
 .image_msg {
     margin-top: -40px;
     width: 940px;
