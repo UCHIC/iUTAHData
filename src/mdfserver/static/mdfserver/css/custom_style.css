@@ -134,9 +134,9 @@
 }
 
 .carousel-inner img{
-    width: 940px;
+    /*width: 940px;
     min-height: 404px;
-    min-height: 441px;
+    min-height: 441px;*/
 }
 
 .carousel-control.right {
@@ -170,7 +170,7 @@
 
 #big_image
 {
-    width: 940px;
+    width: 939px;
     height: 404px;
     height: 441px;
     overflow: hidden;
@@ -569,6 +569,7 @@ footer {
 #data-watershed-gallery img.display
 {
     width: auto;
+    height: 342px;
     min-height: 342px;
 }
 
@@ -738,8 +739,9 @@ img.display {
     margin: 0 auto;
     display: block;
     z-index: -10;
-    width: 405px;
-    min-height: 326px;
+    /* width: 405px; */
+    height: 309px;
+    /* min-height: 326px; */
 }
 
 img.thumbnail {
