@@ -43,6 +43,6 @@ def subpages(request, pages_passed, subpage):
 def river_dynamic(request, database, site_code):
     data_river = deserializeJSON(database)
     pages_in_server = Page.objects.all().order_by('-title')[:5]
-    context = {'pages': pages_in_server, 'river_data': data_river[site_code], 'site_code': site_code }
+    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river[site_code], 'site_code': site_code }
     return render(request, 'mdfserver/river_dynamic.html', context)
 

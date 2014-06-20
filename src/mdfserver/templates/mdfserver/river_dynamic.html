@@ -43,13 +43,13 @@
                 <th>Elevation</th>
                 <td>{{ river_data.info.elevation }}</td>
                 <th>Watershed</th>
-                <td>{{ river_data.info.watershed }}</td>
+                <td>{% if site == 'iUTAH_RedButte_OD' %}{{ site|slice:"6:14" }}{% else %}{{ site|slice:"6:11" }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Local X</th>
                 <td>{{ river_data.info.local_x }}</td>
                 <th>Site Type</th>
-                <td>{{ river_data.info.site_type }}</td>
+                <td>{{ river_data.info.type }}</td>
             </tr>
             <tr>
                 <th>Local Y</th>
