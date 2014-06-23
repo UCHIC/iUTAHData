@@ -17,7 +17,7 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
 sm = ServiceManager()
 
-dump_location = "C:\\inetpub\\wwwroot\\mdf\\iutah\\mdfserver\\static\\mdfserver\\json\\"
+dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
 static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
 
 def handleConnection(database, text_file):
@@ -88,8 +88,8 @@ def handleConnection(database, text_file):
                          
                 file_str += "]\n"
                 file_str += "\t\t\t\t\t\t\t}"
-                if variables[len(variables)-1].id != var.id:
-                   file_str += ",\n"      
+                #if variables[len(variables)-1].id != var.id:
+                file_str += ",\n"      
 
         if not novars:
             file_str = file_str[:-2]

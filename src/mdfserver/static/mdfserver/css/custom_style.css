@@ -313,13 +313,22 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+table
+{
+    border: 1px dotted #fff;
+}
 
 .site_data table th{
     text-align:right;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .site_data table td{
     padding-left:5px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
 }
 
 .site_data table{
@@ -331,7 +340,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 th {
-    padding: 7px 25px;
+    padding: 7px 11px;
     font-weight: bold;
     font-size: 14px;
 }
