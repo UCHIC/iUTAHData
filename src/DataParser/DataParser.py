@@ -184,12 +184,6 @@ def databaseParser(database, location):
     text_file.close()
     logger.info("Finished creating " + location + " JSON file. ")
 
-#def organizeDatabase(database, example_array):
-#    organized_array = []
-#
-#    for var_code in example_array:
-
-
 
 dataParser()
 
