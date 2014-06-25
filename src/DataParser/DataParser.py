@@ -64,7 +64,7 @@ def handleConnection(database, text_file):
         loginfo = "\n"
         
         if site.type == "Stream":
-            vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM ', 'Stage' ]
+            vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
         else:
             vars_to_show = [
                 'AirTemp_ST110_Avg',
@@ -75,7 +75,8 @@ def handleConnection(database, text_file):
                 'WindSp_Avg',
                 'WindDir_Avg',
                 'Precip_Tot_Avg',
-                'JuddDepth_Avg ',
+                'Rain_Tot',
+                'JuddDepth_Avg',
                 'SWOut_NR01_Avg',
                 'SWIn_NR01_Avg',
                 'LWOut_Cor_NR01_Avg',
@@ -84,23 +85,23 @@ def handleConnection(database, text_file):
                 'Evapotrans_ETr',
                 'VWC_5cm_Avg',
                 'VWC_10cm_Avg',
-                'VWC_20cm_Avg ',
+                'VWC_20cm_Avg',
                 'VWC_50cm_Avg',
                 'VWC_100cm_Avg',
                 'SoilTemp_5cm_Avg',
-                'SoilTemp_10cm_Avg ',
+                'SoilTemp_10cm_Avg',
                 'SoilTemp_20cm_Avg',
                 'SoilTemp_50cm_Avg',
                 'SoilTemp_100cm_Avg',
-                'SoilCond_5cm_Avg ',
+                'SoilCond_5cm_Avg',
                 'SoilCond_10cm_Avg',
                 'SoilCond_20cm_Avg',
                 'SoilCond_50cm_Avg',
-                'SoilCond_100cm_Avg ',
+                'SoilCond_100cm_Avg',
                 'Permittivity_5cm_Avg',
                 'Permittivity_10cm_Avg',
                 'Permittivity_20cm_Avg',
-                'Permittivity_50cm_Avg ',
+                'Permittivity_50cm_Avg',
                 'Permittivity_100cm_Avg'
             ]
 
@@ -181,6 +182,12 @@ def databaseParser(database, location):
     text_file.write("}")
     text_file.close()
     logger.info("Finished creating " + location + " JSON file. ")
+
+#def organizeDatabase(database, example_array):
+#    organized_array = []
+#
+#    for var_code in example_array:
+
 
 
 dataParser()
