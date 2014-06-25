@@ -1,7 +1,8 @@
 from iUTAHData.settings.base import *
 
-DATABASE_PATH = os.path.join(BASE_DIR, os.pardir, 'db.sqlite3')
+DATABASE_PATH = os.path.join('db.sqlite3')
 DATABASES['default']['NAME'] = DATABASE_PATH;
+#BASE_DIR, os.pardir,
 
 DEBUG = True
 TEMPLATE_DEBUG = True
