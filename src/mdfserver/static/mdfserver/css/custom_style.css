@@ -1,31 +1,29 @@
 /*Custom Style File*/
 
-
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 .x.axis path {
-  display: none;
+    display: none;
 }
 
 .line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
 }
 
-#modal_contents img
-{
-   height: 600px;
-    /*margin-left: -311px;*//
+#modal_contents img {
+    height: 600px;
+    /*margin-left: -311px;*/
+/
 }
 
-#the_modal
-{
+#the_modal {
     text-align: center;
     left: auto;
     width: 937px;
@@ -37,16 +35,13 @@
 
 }
 
-.modal.fade
-{
+.modal.fade {
     top: -68%;
     left: -120%;
     height: 1px;
 }
 
-
-#data-watershed-gallery-modal
-{
+#data-watershed-gallery-modal {
     height: 600px;
     overflow: hidden;
     width: 84%;
@@ -55,12 +50,10 @@
     margin-right: auto;
 }
 
-#data-watershed-gallery-modal img.display
-{
+#data-watershed-gallery-modal img.display {
     width: auto;
     /*min-height: auto;*/
 }
-
 
 .modal.fade.in {
     top: 12.6%;
@@ -91,12 +84,11 @@
     height: 400px;
 }
 
-#map-canvas img
-{
+#map-canvas img {
     position: fixed;
     top: 0;
     left: 0;
-   width: 50px;
+    width: 50px;
 }
 
 #main_title, #second_title {
@@ -126,33 +118,33 @@
     z-index: 10;
 }
 
-.carousel-inner
-{
+.carousel-inner {
     height: inherit !important;
     width: 100%;
     background: #444;
 }
 
-.carousel-inner img{
+.carousel-inner img {
     /*width: 940px;
     min-height: 404px;
     min-height: 441px;*/
 }
 
 .carousel-control.right {
-    right: 22px; !important
+    right: 22px;
+!important
 }
 
-.carousel-control span{
-    width:auto;
-    height:auto;
+.carousel-control span {
+    width: auto;
+    height: auto;
 }
 
-.carousel-control.right span{
+.carousel-control.right span {
     margin-left: 9px;
 }
-.carousel-control
-{
+
+.carousel-control {
     top: 46%;
     padding-top: 4px;
     padding-right: 5px;
@@ -161,15 +153,13 @@
     border-radius: 71px;
 }
 
-.carousel-caption
-{
+.carousel-caption {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     color: #333;
 }
 
-#big_image
-{
+#big_image {
     width: 939px;
     height: 404px;
     height: 441px;
@@ -220,7 +210,6 @@
 
 /*Experimenting from here on*/
 
-
 * {
     margin: 0;
     padding: 0;
@@ -247,7 +236,7 @@ article, aside, figure, footer, header, hgroup, nav, section {
 body {
     font: normal .80em arial, sans-serif;
     color: #444;
-   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
     background-color: #C2DBE8;
     /* IE10 Consumer Preview*/
     background-image: -ms-linear-gradient(top, #FFFFFF 0%, #F5F5F5 100%);
@@ -302,8 +291,7 @@ img {
     max-width: 1800px;
 }
 
-a img
-{
+a img {
     max-width: 100%;
 }
 
@@ -313,30 +301,29 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-table
-{
+table {
     border: 1px dotted #fff;
 }
 
-.site_data table th{
-    text-align:right;
+.site_data table th {
+    text-align: right;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
 }
 
-.site_data table td{
-    padding-left:5px;
+.site_data table td {
+    padding-left: 5px;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     border-right: 1px solid white;
 }
 
-.site_data table{
+.site_data table {
     margin-top: 25px;
     height: 344px;
-    border-collapse:collapse;
-    border:1px solid #ddd;
-    background:#e7e7e7;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background: #e7e7e7;
 }
 
 th {
@@ -345,8 +332,7 @@ th {
     font-size: 14px;
 }
 
-
-.plain-table{
+.plain-table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
     margin: 20px 0px;
@@ -355,57 +341,54 @@ th {
     border: 1px solid #ddd;
 }
 
-.plain-table a{
-    color:#444;
-    text-decoration:underline;
+.plain-table a {
+    color: #444;
+    text-decoration: underline;
 
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
 }
-
-
 
 td {
     padding: 7px 25px;
     border-top: 1px dashed #fff;
 }
 
-
-
 h1, h2, h3 {
-  font: normal 180% "Lucida Sans Unicode", "Lucida Grande", sans-serif ;
+    font: normal 180% "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 
 }
 
 h3 {
-  font-size: 140%;
-  padding: 5px 0 0 0;
+    font-size: 140%;
+    padding: 5px 0 0 0;
 }
 
 h4, h6 {
-  color: #F67400;
-  padding: 0 0 5px 0;
-  font: normal 130% arial, sans-serif;
+    color: #F67400;
+    padding: 0 0 5px 0;
+    font: normal 130% arial, sans-serif;
 }
 
 h5, h6 {
-  color: #555;
-  font: italic 95% arial, sans-serif;
-  letter-spacing: normal;
-  padding: 0 0 15px 0;
-}
-a, a:hover {
-  outline: none;
-  text-decoration: underline;
-  color: inherit;
+    color: #555;
+    font: italic 95% arial, sans-serif;
+    letter-spacing: normal;
+    padding: 0 0 15px 0;
 }
 
-a{
+a, a:hover {
+    outline: none;
+    text-decoration: underline;
+    color: inherit;
+}
+
+a {
     text-decoration: none;
 }
 
 a:hover {
-  color: #00A5E3;
+    color: #00A5E3;
 }
 
 .region-content {
@@ -422,8 +405,6 @@ strong {
 a {
     color: #6F8A9E;
 }
-
-
 
 h1 {
     font-size: 29px;
@@ -485,7 +466,7 @@ footer {
 
     background: -webkit-linear-gradient(#444, #222);
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 px 2 px 2 px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
     border: 1px solid #222;
 }
@@ -567,9 +548,7 @@ footer {
     width: 66%;
 }
 
-
-#data-watershed-gallery
-{
+#data-watershed-gallery {
     position: relative;
     display: inline-block;
     height: 344px;
@@ -579,15 +558,11 @@ footer {
 
 }
 
-#data-watershed-gallery img.display
-{
+#data-watershed-gallery img.display {
     width: auto;
     height: 342px;
     min-height: 342px;
 }
-
-
-
 
 .thumbnail {
     background: rgba(0, 0, 0, 0.2);
@@ -606,35 +581,30 @@ footer {
     background: rgba(0, 0, 0, 0.2);
 }
 
-.info_space
-{
+.info_space {
     width: 903px;
     height: 351px;
     float: right;
 }
 
-.most_recent
-{
+.most_recent {
     padding: 0px 15px;
     width: 102.9%;
 }
 
-.most_recent>p
-{
-   padding: 0px;
-   margin: 0px;
-   margin-left: 237px;
+.most_recent > p {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 237px;
 }
 
-.most_recent h4
-{
+.most_recent h4 {
     margin-top: -6px;
     margin-bottom: -10px;
     padding-bottom: 0px;
 }
 
-#warning_sign
-{
+#warning_sign {
     width: 279px;
     font-weight: bold;
     display: inline-block;
@@ -652,18 +622,18 @@ footer {
     display: inline-block;
 }
 
-.var_name
-{
-       max-width: 30%;
-        min-width: 128px;
-       float: left;
-       text-align: center;
-       line-height: 16px;
-       padding: 0px;
+.var_name {
+    max-width: 30%;
+    min-width: 128px;
+    height: 34px;
+    float: left;
+    text-align: center;
+    line-height: 16px;
+    padding: 0px;
 }
 
-.var_value{
-    margin-top: 5px;
+.var_value {
+    margin-top: -4px;
     min-width: 135px;
     float: left;
     padding-left: 27%;
@@ -671,18 +641,18 @@ footer {
     font-size: 1.5em;
 }
 
-svg{
+svg {
     position: absolute;
+    top: 0;
+    left: 0;
     box-shadow: inset 0 0 6px #AAA;
 }
 
-
-#map-canvas
-{
+#map-canvas {
     margin-bottom: 20px;
 }
 
-.data_box{
+.data_box {
     border: 1px solid #808080;
     float: left;
     width: 30%;
@@ -692,17 +662,17 @@ svg{
     margin-right: 4.3%;
     box-shadow: -2px 2px 5px 1px #ccc;
     padding: 2px;
-    border-radius:3px;
+    border-radius: 3px;
 }
 
-.data_box:hover{
+.data_box:hover {
     cursor: pointer;
     box-shadow: -0px 1px 8px 1px #8B8B8B;
 }
 
-.graphContainer{
+.graphContainer {
     position: relative;
-    top: 34px;
+    top: -42.3px;
     left: 131px;
     border: 1px solid #808080;
     width: 150px;
@@ -710,43 +680,35 @@ svg{
     margin-top: -33px;
 }
 
-.data_box div
-{
+.data_box div {
     width: 50%;
 }
 
-.data_box div p
-{
+.data_box div p {
     text-align: center;
-    line-height: 16px;
+    line-height: 12px;
     padding: 0px;
     padding-top: 2px;
 
 }
 
-.data_box div p + p
-{
+.data_box div p + p {
     font-weight: bold;
     font-size: 1.5em;
 }
 
-.data_box a
-{
+.data_box a {
     text-decoration: none;
     font: normal arial, sans-serif;
     color: #444;
 }
 
-.site_data
-{
+.site_data {
     width: 53%;
     padding: 0px 0px;
     position: relative;
     display: inline-block;
 }
-
-
-
 
 img.display {
     margin: 0 auto;
@@ -846,8 +808,8 @@ div.leftCollagePanel {
     padding: 2px;
     float: inherit;
 }
-.navbar
-{
+
+.navbar {
     margin-bottom: 0px;
 }
 

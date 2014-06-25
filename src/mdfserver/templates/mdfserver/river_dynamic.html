@@ -11,7 +11,7 @@
             <tbody>
             <tr>
                 <th>Site Code</th>
-                <td>{{ river_data.info.code }}</td>
+                <td style="border-right: 1px solid #e7e7e7;">{{ river_data.info.code }}</td>
                 <th></th>
                 <td></td>
             </tr>
@@ -42,20 +42,20 @@
             <tr>
                 <th>Elevation</th>
                 <td>{{ river_data.info.elevation }}</td>
-                <th>Watershed</th>
-                <td>{% if site == 'iUTAH_RedButte_OD' %}{{ site|slice:"6:14" }}{% else %}{{ site|slice:"6:11" }}{% endif %}</td>
+                <th>Comments</th>
+                <td>{{ river_data.info.comments }}</td>
             </tr>
             <tr>
                 <th>Local X</th>
                 <td>{{ river_data.info.local_x }}</td>
-                <th>Site Type</th>
-                <td>{{ river_data.info.type }}</td>
+                <th>Watershed</th>
+                <td>{% if site == 'iUTAH_RedButte_OD' %}{{ site|slice:"6:14" }}{% else %}{{ site|slice:"6:11" }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Local Y</th>
                 <td>{{ river_data.info.local_y }}</td>
-                <td></td>
-                <td></td>
+                <th>Site Type</th>
+                <td>{{ river_data.info.type }}</td>
             </tr>
             </tbody>
         </table>
@@ -180,10 +180,12 @@
                 <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
                    target="_blank">
                     <div>
-                        <p class="var_name">{{ var.name }}, <span>{{ var.unit }}</span></p>
+                        <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span></p>
                         <br>
 
                         <p class="var_value">{{ var.values.0 }}</p>
+                        <br>
+                        <p style="clear: both;"> <span style="margin-left: -10px;">{{ var.unit }}</span></p>
                     </div>
                     <div id="graph{{ forloop.counter0 }}" class="graphContainer"></div>
                 </a>

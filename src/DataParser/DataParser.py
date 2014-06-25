@@ -66,21 +66,59 @@ def handleConnection(database, text_file):
         if site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM ', 'Stage' ]
         else:
-            vars_to_show = ['AirTemp_ST110_Avg', 'BP_Avg', 'RH', 'DewPt_Avg', 'VaporPress_Avg', 'WindSp_Avg', 'WindDir_Avg', 'Precip_Tot_Avg', 'JuddDepth_Avg ', 'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'LWOut_Cor_NR01_Avg', 'LWIn_Cor_NR01_Avg', 'Evapotrans_ETo', 'Evapotrans_ETr', 'VWC_5cm_Avg', 'VWC_10cm_Avg', 'VWC_20cm_Avg ', 'VWC_50cm_Avg', 'VWC_100cm_Avg', 'SoilTemp_5cm_Avg', 'SoilTemp_10cm_Avg ', 'SoilTemp_20cm_Avg', 'SoilTemp_50cm_Avg', 'SoilTemp_100cm_Avg', 'SoilCond_5cm_Avg ', 'SoilCond_10cm_Avg', 'SoilCond_20cm_Avg', 'SoilCond_50cm_Avg', 'SoilCond_100cm_Avg ', 'Permittivity_5cm_Avg', 'Permittivity_10cm_Avg', 'Permittivity_20cm_Avg', 'Permittivity_50cm_Avg ', 'Permittivity_100cm_Avg' ]
+            vars_to_show = [
+                'AirTemp_ST110_Avg',
+                'BP_Avg',
+                'RH',
+                'DewPt_Avg',
+                'VaporPress_Avg',
+                'WindSp_Avg',
+                'WindDir_Avg',
+                'Precip_Tot_Avg',
+                'JuddDepth_Avg ',
+                'SWOut_NR01_Avg',
+                'SWIn_NR01_Avg',
+                'LWOut_Cor_NR01_Avg',
+                'LWIn_Cor_NR01_Avg',
+                'Evapotrans_ETo',
+                'Evapotrans_ETr',
+                'VWC_5cm_Avg',
+                'VWC_10cm_Avg',
+                'VWC_20cm_Avg ',
+                'VWC_50cm_Avg',
+                'VWC_100cm_Avg',
+                'SoilTemp_5cm_Avg',
+                'SoilTemp_10cm_Avg ',
+                'SoilTemp_20cm_Avg',
+                'SoilTemp_50cm_Avg',
+                'SoilTemp_100cm_Avg',
+                'SoilCond_5cm_Avg ',
+                'SoilCond_10cm_Avg',
+                'SoilCond_20cm_Avg',
+                'SoilCond_50cm_Avg',
+                'SoilCond_100cm_Avg ',
+                'Permittivity_5cm_Avg',
+                'Permittivity_10cm_Avg',
+                'Permittivity_20cm_Avg',
+                'Permittivity_50cm_Avg ',
+                'Permittivity_100cm_Avg'
+            ]
 
         novars = True
-        for var in variables:
-            if var.code in vars_to_show:
+        for var_sel in vars_to_show:
+            var_print = next((var for var in variables if var.code == var_sel), None)
+
+            if var_print is not None:
                 novars = False
                 file_str += "\t\t\t\t\t\t\t{\n"
-                file_str += "\t\t\t\t\t\t\t\"name\": \""+ str(var.name) + "\",\n"
-                file_str += "\t\t\t\t\t\t\t\"unit\": \"" + str(var.variable_unit.abbreviation)+ "\",\n"
-                file_str += "\t\t\t\t\t\t\t\"code\": \"" + str(var.code)+ "\",\n"
+                file_str += "\t\t\t\t\t\t\t\"name\": \""+ str(var_print.name) + "\",\n"
+                file_str += "\t\t\t\t\t\t\t\"unit\": \"" + str(var_print.variable_unit.abbreviation)+ "\",\n"
+                file_str += "\t\t\t\t\t\t\t\"code\": \"" + str(var_print.code)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"values\": [" 
                 
                 #put variable values in here
-                loginfo += "\t\t\t\t\t\t\t\t   Now getting values for "+ var.name +"\n"
-                var_values = ss.get_ninety_six_values_by_site_id_and_var_id(site.id, var.id)
+                loginfo += "\t\t\t\t\t\t\t\t   Now getting values for "+ var_print.name +"\n"
+                var_values = ss.get_ninety_six_values_by_site_id_and_var_id(site.id, var_print.id)
                 for x in range(0, 96):
                     file_str += str(var_values[x].data_value)
                     if x != 95:
@@ -89,7 +127,9 @@ def handleConnection(database, text_file):
                 file_str += "]\n"
                 file_str += "\t\t\t\t\t\t\t}"
                 #if variables[len(variables)-1].id != var.id:
-                file_str += ",\n"      
+                file_str += ",\n"
+            else:
+                loginfo += "\t\t\t\t\t\t\t\t\t   Var code \"" + var_sel + "\" not found in site: " + site.code
 
         if not novars:
             file_str = file_str[:-2]
@@ -141,6 +181,7 @@ def databaseParser(database, location):
     text_file.write("}")
     text_file.close()
     logger.info("Finished creating " + location + " JSON file. ")
+
 
 dataParser()
 
