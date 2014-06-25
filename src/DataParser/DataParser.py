@@ -20,6 +20,7 @@ sm = ServiceManager()
 dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
 static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
 
+#all the tabs and spaces are added for easier debugging. Don't judge... the performance increase for taking them down is not even significant.
 def handleConnection(database, text_file):
     sm._current_connection= {'engine':'mssql', 'user':'webapplication' , 'password':'W3bAppl1c4t10n!', 'address':'iutahdbs.uwrl.usu.edu', 'db':database}
     ss = sm.get_series_service()
