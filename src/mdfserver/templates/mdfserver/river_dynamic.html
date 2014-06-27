@@ -179,7 +179,8 @@
                         <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span></p>
                         <br>
 
-                        <p class="var_value"{% if var.name|length >= 39 %} style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
+                        <p class="var_value"{% if var.name|length >= 39 %}
+                           style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
                         <br>
 
                         <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
@@ -206,16 +207,9 @@
     <script src="{% static "mdfserver/js/graphs.js" %}"></script>
 {% endblock %}
 
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
--->
+
+
+
 
 
