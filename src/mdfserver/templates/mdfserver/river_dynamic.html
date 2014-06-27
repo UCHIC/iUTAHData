@@ -176,10 +176,10 @@
                 <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
                    target="_blank">
                     <div>
-                        <p class="var_name" {% if var.name|length >= 39 %} style="font-size: 8px;"{% endif %} >{{ var.name }}<br><span {% if var.name|length >= 39 %} style="font-size: 0.96em;"{% else %}style="font-size: 0.66em;"{% endif %}>{{ var.code }}</span></p>
+                        <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span></p>
                         <br>
 
-                        <p class="var_value">{{ var.values.0|floatformat:-3 }}</p>
+                        <p class="var_value"{% if var.name|length >= 39 %} style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
                         <br>
 
                         <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
