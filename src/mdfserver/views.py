@@ -25,6 +25,20 @@ def deserializeJSON(database):
 
     return data
 
+def prepareForHeading(river_data, type):
+    found = False
+    for idx, variables in enumerate(river_data['vars']):
+        if(variables['sample'] == type and not found):
+            found = True
+        else:
+            if(variables['sample'] == type and found):
+                river_data['vars'][idx]['sample'] = type + "_f"
+    print river_data
+    return river_data
+
+
+
+
 def index(request):
     pages_in_server = Page.objects.all().order_by('-title')[:5]
     context = {'pages': pages_in_server}
@@ -43,6 +57,8 @@ def subpages(request, pages_passed, subpage):
 def river_dynamic(request, database, site_code):
     data_river = deserializeJSON(database)
     pages_in_server = Page.objects.all().order_by('-title')[:5]
-    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river[site_code], 'site_code': site_code }
+    data_river = prepareForHeading(data_river[site_code], "Soil")
+    data_river = prepareForHeading(data_river, "Air")
+    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river }
     return render(request, 'mdfserver/river_dynamic.html', context)
 

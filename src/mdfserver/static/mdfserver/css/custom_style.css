@@ -518,6 +518,14 @@ ul.gamut_list {
     list-style-type: circle;
 }
 
+.no_data_msg p
+{
+    text-align: center;
+    color: #BA0000;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 .sideIMGR img {
     margin-top: -14px;
     height: 336px;

@@ -171,7 +171,14 @@
 
         <p id="warning_sign" class="disclaimer">The data presented here are provisional and subject to revision</p>
         <br>
+
         {% for var in river_data.vars %}
+            {% if var.sample == "Air" %}
+                <h3 style="clear: both; margin-top: -10px;">Standard Variables</h3>
+            {% endif %}
+            {% if var.sample == "Soil" %}
+                <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3>
+            {% endif %}
             <div class="data_box">
                 <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
                    target="_blank">
@@ -188,7 +195,10 @@
                     <div id="graph{{ forloop.counter0 }}" class="graphContainer"></div>
                 </a>
             </div>
+            {% empty %}
+            <div class="no_data_msg"><p>Sorry. No data found for this site</p></div>
         {% endfor %}
+
         <p class="disclaimer" style="clear: both; margin-bottom: 37px; margin-left: 17px;width: 877px;">WARNING: These
             data may be
             provisional and subject to revision. The data are released on the condition that neither iUTAH, Utah State
