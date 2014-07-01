@@ -33,7 +33,6 @@ def prepareForHeading(river_data, type):
         else:
             if(variables['sample'] == type and found):
                 river_data['vars'][idx]['sample'] = type + "_f"
-    print river_data
     return river_data
 
 
