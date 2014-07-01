@@ -63,20 +63,18 @@ def handleConnection(database, text_file):
         variables = ss.get_variables_by_site_code(site.code)
         logger.info("Started getting variables for site: " + site.name + " in " + database)
         loginfo = "\n"
-        
-        if site.type == "Stream":
+        if site.name == "LR_Wilkins_R":
+            vars_to_show = ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_DV1_WVT']
+        elif site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
         else:
             vars_to_show = [
-                'AirTemp_ST110_Avg',
                 'BP_Avg',
                 'RH',
                 'DewPt_Avg',
                 'VaporPress_Avg',
                 'WindSp_Avg',
                 'WindDir_Avg',
-                'Precip_Tot_Avg',
-                'Rain_Tot',
                 'JuddDepth_Avg',
                 'SWOut_NR01_Avg',
                 'SWIn_NR01_Avg',
@@ -106,6 +104,13 @@ def handleConnection(database, text_file):
                 'Permittivity_100cm_Avg'
             ]
 
+            if database = 'iUTAH_Provo_OD':
+                vars_to_show.insert(0, 'AirTemp_Avg')
+                vars_to_show.insert(7, 'Rain_Tot')
+            else:
+                vars_to_show.insert(0, 'AirTemp_ST110_Avg')
+                vars_to_show.insert(7, 'Precip_Tot_Avg')
+
         novars = True
         for var_sel in vars_to_show:
             var_print = next((var for var in variables if var.code == var_sel), None)
@@ -117,6 +122,7 @@ def handleConnection(database, text_file):
                 file_str += "\t\t\t\t\t\t\t\"unit\": \"" + str(var_print.variable_unit.abbreviation)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"code\": \"" + str(var_print.code)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"sample\": \"" + str(var_print.sample_medium)+ "\",\n"
+                print "Whaaaaaaaaaaaaaaaat?: " + str(var_print.sample_medium)
                 file_str += "\t\t\t\t\t\t\t\"values\": [" 
                 
                 #put variable values in here
