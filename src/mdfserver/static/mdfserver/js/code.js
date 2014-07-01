@@ -81,6 +81,7 @@ jQuery(document).ready(function ($) {
 
     if (document.URL.indexOf("river_info") != -1)
     {
+        document.title = "iUTAH | Site Information";
         drawSeries();
     }
 
