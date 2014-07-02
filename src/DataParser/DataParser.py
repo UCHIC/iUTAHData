@@ -122,7 +122,6 @@ def handleConnection(database, text_file):
                 file_str += "\t\t\t\t\t\t\t\"unit\": \"" + str(var_print.variable_unit.abbreviation)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"code\": \"" + str(var_print.code)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"sample\": \"" + str(var_print.sample_medium)+ "\",\n"
-                print "Whaaaaaaaaaaaaaaaat?: " + str(var_print.sample_medium)
                 file_str += "\t\t\t\t\t\t\t\"values\": [" 
                 
                 #put variable values in here
