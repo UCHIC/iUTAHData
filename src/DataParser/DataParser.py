@@ -63,7 +63,7 @@ def handleConnection(database, text_file):
         variables = ss.get_variables_by_site_code(site.code)
         logger.info("Started getting variables for site: " + site.name + " in " + database)
         loginfo = "\n"
-        if site.name == "LR_Wilkins_R":
+        if site.code == "LR_Wilkins_R":
             vars_to_show = ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_DV1_WVT']
         elif site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
@@ -122,6 +122,7 @@ def handleConnection(database, text_file):
                 file_str += "\t\t\t\t\t\t\t\"unit\": \"" + str(var_print.variable_unit.abbreviation)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"code\": \"" + str(var_print.code)+ "\",\n"
                 file_str += "\t\t\t\t\t\t\t\"sample\": \"" + str(var_print.sample_medium)+ "\",\n"
+                print "Site Code: " + site.code + ", Var Codes: "+ vars_to_show + "(type: " + site.type + ")"
                 file_str += "\t\t\t\t\t\t\t\"values\": [" 
                 
                 #put variable values in here
