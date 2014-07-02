@@ -104,7 +104,7 @@ def handleConnection(database, text_file):
                 'Permittivity_100cm_Avg'
             ]
 
-            if database = 'iUTAH_Provo_OD':
+            if database == 'iUTAH_Provo_OD':
                 vars_to_show.insert(0, 'AirTemp_Avg')
                 vars_to_show.insert(7, 'Rain_Tot')
             else:
