@@ -64,7 +64,7 @@ def handleConnection(database, text_file):
         logger.info("Started getting variables for site: " + site.name + " in " + database)
         loginfo = "\n"
         if site.code == "LR_Wilkins_R":
-            vars_to_show = ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_DV1_WVT']
+            vars_to_show = ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_D1_WVT']
         elif site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
         else:
