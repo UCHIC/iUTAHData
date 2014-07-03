@@ -6,6 +6,7 @@ from django.conf import settings
 
 # Create your views here.
 from django.http import HttpResponse
+from django.contrib.staticfiles import finders
 from mdfserver.models import Page, Subpage
 
 # Getting dynamic content when
@@ -56,8 +57,14 @@ def subpages(request, pages_passed, subpage):
 def river_dynamic(request, database, site_code):
     data_river = deserializeJSON(database)
     pages_in_server = Page.objects.all().order_by('-title')[:5]
+    pics = []
+    counter = 1
+    while finders.find('mdfserver/img/'+ database + '/'+site_code+'/Site'+ str(counter)+'.jpg') != None:
+        pics.append('Site'+str(counter)+'.jpg')
+        counter += 1
+
     data_river = prepareForHeading(data_river[site_code], "Soil")
     data_river = prepareForHeading(data_river, "Air")
-    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river }
+    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics }
     return render(request, 'mdfserver/river_dynamic.html', context)
 
