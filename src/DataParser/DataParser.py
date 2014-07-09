@@ -65,6 +65,10 @@ def handleConnection(database, text_file):
         loginfo = "\n"
         if site.code == "LR_Wilkins_R":
             vars_to_show = ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_D1_WVT']
+        elif site.code == "RB_ARBR_USGS":
+            vars_to_show = ['USGSTemp', 'USGSStage', 'USGSDischarge']
+        elif site.code == "PR_BJ_CUWCD" or site.code == "PR_CH_CUWCD" or site.code == "PR_LM_CUWCD":
+            vars_to_show = ['CUWCDDischarge']
         elif site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
         else:
@@ -76,8 +80,11 @@ def handleConnection(database, text_file):
                 'WindSp_Avg',
                 'WindDir_Avg',
                 'JuddDepth_Avg',
+                'PARIn_Avg',
+                'PAROut_Avg',
                 'SWOut_NR01_Avg',
                 'SWIn_NR01_Avg',
+                'NetRad_NR01_Avg',
                 'LWOut_Cor_NR01_Avg',
                 'LWIn_Cor_NR01_Avg',
                 'Evapotrans_ETo',
@@ -92,11 +99,6 @@ def handleConnection(database, text_file):
                 'SoilTemp_20cm_Avg',
                 'SoilTemp_50cm_Avg',
                 'SoilTemp_100cm_Avg',
-                'SoilCond_5cm_Avg',
-                'SoilCond_10cm_Avg',
-                'SoilCond_20cm_Avg',
-                'SoilCond_50cm_Avg',
-                'SoilCond_100cm_Avg',
                 'Permittivity_5cm_Avg',
                 'Permittivity_10cm_Avg',
                 'Permittivity_20cm_Avg',
