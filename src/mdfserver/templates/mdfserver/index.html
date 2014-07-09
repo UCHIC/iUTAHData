@@ -42,14 +42,14 @@
                                 <a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a>
                             </li>
                             {% for page in pages %}
-                                <li {% if requested == page.title %}
+                                <li {% if requested == page.url %}
                                     class="dropdown active"
                                 {% else %}
                                     class="dropdown"
                                 {% endif %} >
                                     {% if page.content != 'none' and page.content != '<p>none</p>' %}
                                         <a class="dropdown-toggle"
-                                           data-hover="dropdown" href="{% url 'pages' page.title %}">
+                                           data-hover="dropdown" href="{% url 'pages' page.url %}">
                                             {{ page.title }}
                                             <b class="caret"></b>
                                         </a>
@@ -62,7 +62,7 @@
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         {% for subpage in page.subpage_set.all %}
                                             <li>
-                                                <a href="{% url 'subpages' page subpage.title %}">
+                                                <a href="{% url 'subpages' page subpage.url %}">
                                                     {{ subpage.title }}
                                                 </a>
                                             </li>

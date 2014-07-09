@@ -18,6 +18,7 @@ class PageAdmin(admin.ModelAdmin):
 
     fieldsets = [
     (None,      {'fields': ['title']}),
+    (None,      {'fields': ['url']}),
     ('Content', {'fields': ['content']}),
         ('Sub Pages', {'fields': [], 'classes':['collapse']}),
     ]

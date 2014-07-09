@@ -78,11 +78,17 @@
                             <div class="item active">
                                 <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;" class="display img-responsive"
                                 src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
-                                <p>No images availabe for this site, sorry.</p>
+                                <p>No images available for this site, sorry.</p>
                             </div>
                         {% endif %}
+                        <div class="item active">
+                                    <img class="display img-responsive"
+                                         src="
+                                                 {% static "mdfserver/img/epscor_logo.jpg" %}"
+                                         alt="">
+                                </div>
                             {% for picture in pics %}
-                                <div class="item active">
+                                <div class="item">
                                     <img class="display img-responsive"
                                          src="
                                                  {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"

@@ -309,6 +309,8 @@ table {
     text-align: right;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+        text-align: left    ;
+
 }
 
 .site_data table td {
@@ -316,20 +318,24 @@ table {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     border-right: 1px solid white;
+    text-align: left       ;
+
 }
 
 .site_data table {
     margin-top: 25px;
     height: 344px;
     border-collapse: collapse;
-    border: 1px solid #ddd;
-    background: #e7e7e7;
+    /*border: 1px solid #ddd;*/
+    background: white;/*#e7e7e7;*/
+    box-shadow:        1px 1px 1px 1px #ccc;
 }
 
 th {
     padding: 7px 11px;
     font-weight: bold;
     font-size: 14px;
+
 }
 
 .plain-table {
@@ -352,7 +358,7 @@ th {
 td {
     padding: 7px 25px;
     border-top: 1px dashed #fff;
-}
+ }
 
 h1, h2, h3 {
     font: normal 180% "Lucida Sans Unicode", "Lucida Grande", sans-serif;

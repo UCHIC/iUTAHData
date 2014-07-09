@@ -4,14 +4,14 @@
     <div style="border: 1px solid rgb(220, 225, 230); padding-left: 20px; padding-right: 20px">
         {% for page in pages %}
             {% if subpage_name %}
-                {% if requested == page.title %}
+                {% if requested == page.url %}
                     {% for subpage in page.subpage_set.all %}
-                        {% if subpage_name|cut:" " == subpage|cut:" " %}
+                        {% if subpage_name|cut:" " == subpage.url|cut:" " %}
                             {{ subpage.content | safe }}
                         {% endif %}
                     {% endfor %}
                 {% endif %}
-            {% elif requested == page.title %}
+            {% elif requested == page.url %}
                 {{ page.content | safe }}
             {% endif %}
         {% endfor %}
@@ -121,9 +121,9 @@
                                                         updated location information for each site in the iUTAH GAMUT
                                                         network.
                                                         <br>Check out sites located in the <a
-                                                                href="/mdf/Data/Logan River/">Logan River</a>, <a
-                                                                href="/mdf/Data/Provo River/">Provo River</a> and <a
-                                                                href="/mdf/Data/Red Butte Creek/">Red Butte Creek</a>
+                                                                href="/mdf/Data/Logan_River/">Logan River</a>, <a
+                                                                href="/mdf/Data/Provo_River/">Provo River</a> and <a
+                                                                href="/mdf/Data/Red_Butte/">Red Butte Creek</a>
                                                         watersheds.
                                                     </p>
 
@@ -162,15 +162,15 @@
         </div>
         <div class="linksbox">
             <ul>
-                <li><a href="/mdf/Data/Gamut Network Overview">GAMUT Data Overview</a></li>
+                <li><a href="/mdf/Data/Gamut_Network">GAMUT Data Overview</a></li>
                 <li><a href="http://data.iutahepscor.org/tsa/" target="_blank">GAMUT Data Viewer</a></li>
-                <li><a href="/mdf/Development/Software Development">Software Development</a></li>
+                <li><a href="/mdf/Development/Software_Development">Software Development</a></li>
             </ul>
         </div>
         <div class="linksbox lastbox">
             <ul>
                 <li><a href="/mdf/About/Documentation">Documentation</a></li>
-                <li><a href="/mdf/About/Training Materials">Training Materials</a></li>
+                <li><a href="/mdf/About/Training_Materials">Training Materials</a></li>
                 <li><a href="/mdf/About/Personnel">Contact Us</a></li>
             </ul>
         </div>
