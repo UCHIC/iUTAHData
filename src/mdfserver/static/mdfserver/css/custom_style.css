@@ -143,6 +143,18 @@
    /* top: 6%;*/top: 0.11cm;
 }
 
+@media screen\0{
+.carousel-control span {
+    top: 0.2cm;!important
+}
+}
+
+@-moz-document url-prefix() {
+   .carousel-control span {
+    top: 0.2cm;!important
+}
+}
+
 .carousel-control.right span {
     margin-left: 9px;
     left: 2px;
@@ -312,7 +324,7 @@ table {
 .site_data table th {
     text-align: right;
     border: 1px solid #e7e7e7;
-    border-right: 1px solid white;
+    border-right: 1px solid transparent;
     text-align: left;
 
 }
