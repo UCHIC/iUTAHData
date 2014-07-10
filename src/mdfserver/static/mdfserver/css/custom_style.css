@@ -309,7 +309,7 @@ table {
     text-align: right;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
-        text-align: left    ;
+    text-align: left;
 
 }
 
@@ -318,7 +318,7 @@ table {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     border-right: 1px solid white;
-    text-align: left       ;
+    text-align: left;
 
 }
 
@@ -327,8 +327,8 @@ table {
     height: 344px;
     border-collapse: collapse;
     /*border: 1px solid #ddd;*/
-    background: white;/*#e7e7e7;*/
-    box-shadow:        1px 1px 1px 1px #ccc;
+    background: white; /*#e7e7e7;*/
+    box-shadow: 1px 1px 1px 1px #ccc;
 }
 
 th {
@@ -358,7 +358,7 @@ th {
 td {
     padding: 7px 25px;
     border-top: 1px dashed #fff;
- }
+}
 
 h1, h2, h3 {
     font: normal 180% "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -383,13 +383,12 @@ h5, h6 {
     padding: 0 0 15px 0;
 }
 
-.icon-prev, .icon-next
-{
-    vertical-align: middle;!important
+.icon-prev, .icon-next {
+    vertical-align: middle;
+!important
 }
 
-[class^='icon-'], [class*=' icon-']
-{
+[class^='icon-'], [class*=' icon-'] {
     margin-top: -14px;
     padding-bottom: 14px;
 }
@@ -535,14 +534,14 @@ ul.gamut_list {
     list-style-type: circle;
 }
 
-.no_data_msg p
-{
+.no_data_msg p {
     text-align: center;
     color: #BA0000;
     padding: 15px;
     border: 1px solid black;
     border-radius: 5px;
 }
+
 .sideIMGR img {
     margin-top: -14px;
     height: 336px;
@@ -709,6 +708,15 @@ svg {
 #map-canvas {
     margin-bottom: 20px;
 }
+
+/*@-moz-document url-prefix() {*/
+    #map-canvas img {
+        position: static;
+        top: 0px;
+        left: 0px;
+        width: 50px;
+    }
+/*}*/
 
 .data_box {
     border: 1px solid #808080;
