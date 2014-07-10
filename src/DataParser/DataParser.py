@@ -90,20 +90,25 @@ def handleConnection(database, text_file):
                 'Evapotrans_ETo',
                 'Evapotrans_ETr',
                 'VWC_5cm_Avg',
-                'VWC_10cm_Avg',
-                'VWC_20cm_Avg',
-                'VWC_50cm_Avg',
-                'VWC_100cm_Avg',
                 'SoilTemp_5cm_Avg',
-                'SoilTemp_10cm_Avg',
-                'SoilTemp_20cm_Avg',
-                'SoilTemp_50cm_Avg',
-                'SoilTemp_100cm_Avg',
                 'Permittivity_5cm_Avg',
+
+                'VWC_10cm_Avg',
+                'SoilTemp_10cm_Avg',
                 'Permittivity_10cm_Avg',
+
+                'VWC_20cm_Avg',
+                'SoilTemp_20cm_Avg',
                 'Permittivity_20cm_Avg',
+
+                'VWC_50cm_Avg',
+                'SoilTemp_50cm_Avg',
                 'Permittivity_50cm_Avg',
+
+                'VWC_100cm_Avg',
+                'SoilTemp_100cm_Avg',
                 'Permittivity_100cm_Avg'
+
             ]
 
             if database == 'iUTAH_Provo_OD':

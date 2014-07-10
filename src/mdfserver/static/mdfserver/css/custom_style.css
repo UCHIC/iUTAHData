@@ -383,6 +383,17 @@ h5, h6 {
     padding: 0 0 15px 0;
 }
 
+.icon-prev, .icon-next
+{
+    vertical-align: middle;!important
+}
+
+[class^='icon-'], [class*=' icon-']
+{
+    margin-top: -14px;
+    padding-bottom: 14px;
+}
+
 a, a:hover {
     outline: none;
     text-decoration: underline;
