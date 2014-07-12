@@ -74,23 +74,28 @@
                     <div id="data-watershed-gallery-modal" class="carousel slide watershed-image-gallery">
                         <div id="carousel_displayer" class="carousel-inner" data-toggle="modal"
                              data-target=".bs-example-modal-lg">
-                        {% if pics|length == 0 %}
-                            <div class="item active">
-                                <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;" class="display img-responsive"
-                                src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
-                                <p>No images available for this site, sorry.</p>
-                            </div>
-                        {% endif %}
-                        <div class="item active">
-                                    <img class="display img-responsive"
-                                         src="
-                                                 {% static "mdfserver/img/epscor_logo.jpg" %}"
-                                         alt="">
+                            {% if pics|length == 0 %}
+                                <div class="item active">
+                                    <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
+                                         class="display img-responsive"
+                                         src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
+
+                                    <p>No images available for this site, sorry.</p>
                                 </div>
+                            {% endif %}
+                            <div class="item active">
+                                <img class="display img-responsive"
+                                     src="
+                                                 {% static "mdfserver/img/epscor_logo.jpg" %}"
+                                     alt="">
+                            </div>
                             {% for picture in pics %}
                                 <div class="item">
                                     <img class="display img-responsive"
                                          src="
+
+
+
                                                  {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
                                          alt="">
                                 </div>
@@ -100,14 +105,14 @@
                         <!--<div class="carousel-caption" style="height: 19px; padding: 7px;">
                             <p style="color: #BBB; padding-bottom: 0px;">Multiple instruments are used to collect data.</p>
                         </div> -->
-                    {% if pics|length >= 2 %}
-                        <a class="carousel-control left" href="#data-watershed-gallery-modal" data-slide="prev">
-                            <span class="icon-prev">‹</span>
-                        </a>
-                        <a class="carousel-control right" href="#data-watershed-gallery-modal" data-slide="next">
-                            <span class="icon-next">›</span>
-                        </a>
-                    {% endif %}
+                        {% if pics|length >= 2 %}
+                            <a class="carousel-control left" href="#data-watershed-gallery-modal" data-slide="prev">
+                                <span class="icon-prev">‹</span>
+                            </a>
+                            <a class="carousel-control right" href="#data-watershed-gallery-modal" data-slide="next">
+                                <span class="icon-next">›</span>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -127,13 +132,15 @@
             {% endfor %}
         </ol>
         <div class="carousel-inner" data-toggle="modal" onclick="changeModal();" data-target=".bs-example-modal-lg">
-        {% if pics|length == 0 %}
-            <div class="item active">
-                    <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;" class="display img-responsive"
+            {% if pics|length == 0 %}
+                <div class="item active">
+                    <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
+                         class="display img-responsive"
                          src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
-            <p>No images availabe for this site, sorry.</p>
-            </div>
-        {% endif %}
+
+                    <p>No images availabe for this site, sorry.</p>
+                </div>
+            {% endif %}
             {% for picture in pics %}
                 <div class="item">
                     <img class="display img-responsive"
@@ -147,13 +154,13 @@
                 data.</p>
         </div>
         {% if pics|length >= 2 %}
-        <a class="carousel-control left" href="#data-watershed-gallery" data-slide="prev">
-            <span class="icon-prev">‹</span>
-        </a>
-        <a class="carousel-control right" href="#data-watershed-gallery" data-slide="next">
-            <span class="icon-next">›</span>
-        </a>
-    {% endif %}
+            <a class="carousel-control left" href="#data-watershed-gallery" data-slide="prev">
+                <span class="icon-prev">‹</span>
+            </a>
+            <a class="carousel-control right" href="#data-watershed-gallery" data-slide="next">
+                <span class="icon-next">›</span>
+            </a>
+        {% endif %}
     </div>
 
     <div class="most_recent">
@@ -192,6 +199,58 @@
         {% empty %}
             <div class="no_data_msg"><p>Sorry. No data found for this site</p></div>
         {% endfor %}
+
+        {% if xtra_site != "none" %}
+            {% if river_data.info.code == "RB_ARBR_AA" %}
+                <h3 style="clear: both; margin-top: -10px;">Variables Measured by USGS (United States Geological
+                    Survey)</h3>
+            {% elif river_data.info.code == "PR_BJ_AA" or river_data.info.code == "PR_CH_AA" or river_data.info.code == "PR_LM_BA" %}
+                <h3 style="clear: both; margin-top: -10px;">Variables Measured by CUWCD (Central Utah Water Conservancy
+                    District)</h3>
+            {% endif %}
+            {% for var in xtra_site.vars %}
+                <div class="data_box">
+                    <a href="http://data.iutahepscor.org/tsa/?sitecode={{ xtra_site.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
+                       target="_blank">
+                        <div>
+                            <p class="var_name">{{ var.name }}<br><span
+                                    style="font-size: 0.66em;">{{ var.code }}</span>
+                            </p>
+                            <br>
+
+                            <p class="var_value"{% if var.name|length >= 39 %}
+                               style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
+                            <br>
+
+                            <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
+                        </div>
+                        <div id="graphx{{ forloop.counter0 }}" class="graphContainer"></div>
+                    </a>
+                </div>
+            {% endfor %}
+
+
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <p class="disclaimer" style="clear: both; margin-bottom: 37px; margin-left: 17px;width: 877px;">WARNING: These
             data may be

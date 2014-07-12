@@ -33,12 +33,22 @@ function drawSeries() {
     //console.log("site: " + site + "\n");
 
 
-
     $.getJSON("/mdf/static/mdfserver/json/" + site + "Site.json").done(function (data) {
         var graphCounter = -1;
         var captureRegex = new RegExp(database + "/(.[^/]*)/", "g");
         d = captureRegex.exec(document.URL)[1];
-        //console.log("site:" + d);
+
+        var include = "none";
+        if (d == "RB_ARBR_AA") {
+            include = "RB_ARBR_USGS";
+        } else if (d == "PR_BJ_AA") {
+            include = "PR_BJ_CUWCD";
+        } else if (d == "PR_CH_AA") {
+            include = "PR_CH_CUWCD";
+        } else if (d == "PR_LM_BA") {
+            include = "PR_UM_CUWCD";
+        }
+
         for (var i = 0; i < data[d].vars.length; i++) {
             //console.log(data[d].vars[i]['values']);
             var myData = [];
@@ -65,8 +75,37 @@ function drawSeries() {
                 .attr("class", "line")
                 .attr("d", line);
         }
-    });
 
+
+        if (include != "none") {
+            graphCounter = -1;
+            for (var i = 0; i < data[include].vars.length; i++) {
+                var myData = [];
+                var counter = 0;
+                data[include].vars[i]['values'].forEach(function (value) {
+                    myData.push({"value": value, "index": ++counter});
+                });
+
+                var svg = d3.select("#graphx" + ++graphCounter).append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                x.domain(d3.extent(myData, function (include) {
+                    return include.index;
+                }));
+                y.domain(d3.extent(myData, function (include) {
+                    return include.value;
+                }));
+
+                svg.append("path")
+                    .datum(myData)
+                    .attr("class", "line")
+                    .attr("d", line);
+            }
+        }
+    });
 
 
 }

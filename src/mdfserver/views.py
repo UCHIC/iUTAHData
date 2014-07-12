@@ -63,8 +63,21 @@ def river_dynamic(request, database, site_code):
         pics.append('Site'+str(counter)+'.jpg')
         counter += 1
 
+    xtra_site = "none"
+    if site_code == "RB_ARBR_AA":
+        xtra_site = data_river['RB_ARBR_USGS']
+    else:
+        if site_code == "PR_BJ_AA":
+            xtra_site = data_river['PR_BJ_CUWCD']
+        else:
+            if site_code == "PR_CH_AA":
+                xtra_site = data_river['PR_CH_CUWCD']
+            else:
+                if site_code == "PR_LM_BA":
+                    xtra_site = data_river['PR_UM_CUWCD']
+
     data_river = prepareForHeading(data_river[site_code], "Soil")
     data_river = prepareForHeading(data_river, "Air")
-    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics }
+    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics, 'xtra_site': xtra_site }
     return render(request, 'mdfserver/river_dynamic.html', context)
 
