@@ -200,7 +200,7 @@
             <div class="no_data_msg"><p>Sorry. No data found for this site</p></div>
         {% endfor %}
 
-        {% if xtra_site != "none" %}
+        {% if xtra_site != "none" and xtra_site.vars %}
             {% if river_data.info.code == "RB_ARBR_AA" %}
                 <h3 style="clear: both; margin-top: -10px;">Variables Measured by USGS (United States Geological
                     Survey)</h3>
@@ -227,6 +227,8 @@
                         <div id="graphx{{ forloop.counter0 }}" class="graphContainer"></div>
                     </a>
                 </div>
+                {% empty %}
+                <p style="margin-left: 21px;color: red;margin-bottom: 9px">No data found.</p>
             {% endfor %}
 
 
