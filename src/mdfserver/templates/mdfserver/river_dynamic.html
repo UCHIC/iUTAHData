@@ -1,7 +1,7 @@
 {% extends "mdfserver/index.html" %}
 {% load static %}
 {% block unique_content %}
-    <div class="container"><select id="site_select" onchange="javascript:site_selected(this)">
+    <div class="container" id="site_select"><select id="st_select" onchange="javascript:site_selected(this)">
         <option value="" disabled="disabled" selected="selected">See other sites</option>
         {% for nav_site in db_sites %}
             <option value="{{ nav_site }}">{{ nav_site }}</option>

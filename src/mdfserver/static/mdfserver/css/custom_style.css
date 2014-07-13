@@ -148,7 +148,11 @@
     position: fixed;
     z-index: 20;
     top: 86px;
-    left: 63.2%;
+}
+
+#st_select
+{
+    float:right;
 }
 
 @media screen\0 {
