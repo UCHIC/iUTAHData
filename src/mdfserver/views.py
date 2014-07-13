@@ -76,8 +76,9 @@ def river_dynamic(request, database, site_code):
                 if site_code == "PR_LM_BA":
                     xtra_site = data_river['PR_UM_CUWCD']
 
+    db_sites = data_river.keys()
     data_river = prepareForHeading(data_river[site_code], "Soil")
     data_river = prepareForHeading(data_river, "Air")
-    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics, 'xtra_site': xtra_site }
+    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics, 'xtra_site': xtra_site, 'db_sites': db_sites }
     return render(request, 'mdfserver/river_dynamic.html', context)
 

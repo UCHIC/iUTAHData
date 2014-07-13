@@ -140,19 +140,29 @@
     height: auto;
     position: absolute;
     left: 7px;
-   /* top: 6%;*/top: 0.11cm;
+    /* top: 6%;*/
+    top: 0.11cm;
 }
 
-@media screen\0{
-.carousel-control span {
-    top: 0.2cm;!important
+#site_select {
+    position: fixed;
+    z-index: 20;
+    top: 86px;
+    right: 480px;
 }
+
+@media screen\0 {
+    .carousel-control span {
+        top: 0.2cm;
+    !important
+    }
 }
 
 @-moz-document url-prefix() {
-   .carousel-control span {
-    top: 0.2cm;!important
-}
+    .carousel-control span {
+        top: 0.2cm;
+    !important
+    }
 }
 
 .carousel-control.right span {
@@ -723,12 +733,13 @@ svg {
 }
 
 /*@-moz-document url-prefix() {*/
-    #map-canvas img {
-        position: static;
-        top: 0px;
-        left: 0px;
-        width: 50px;
-    }
+#map-canvas img {
+    position: static;
+    top: 0px;
+    left: 0px;
+    width: 50px;
+}
+
 /*}*/
 
 .data_box {

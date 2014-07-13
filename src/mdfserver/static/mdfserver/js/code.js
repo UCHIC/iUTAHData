@@ -33,6 +33,12 @@ jQuery(document).ready(function ($) {
 
 });
 
+function site_selected(element)
+{
+    console.log(element.value);
+    window.location.href = "../"+element.value;
+}
+
 
 
 
