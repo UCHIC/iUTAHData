@@ -148,6 +148,7 @@
     position: fixed;
     z-index: 20;
     top: 86px;
+    height: 0px;
 }
 
 #st_select
