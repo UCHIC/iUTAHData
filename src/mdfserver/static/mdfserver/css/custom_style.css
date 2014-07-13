@@ -148,7 +148,7 @@
     position: fixed;
     z-index: 20;
     top: 86px;
-    right: 480px;
+    left: 63.2%;
 }
 
 @media screen\0 {
