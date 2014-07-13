@@ -1,12 +1,12 @@
 {% extends "mdfserver/index.html" %}
 {% load static %}
 {% block unique_content %}
-    <select id="site_select" onchange="javascript:site_selected(this)">
+    <div class="container"><select id="site_select" onchange="javascript:site_selected(this)">
         <option value="" disabled="disabled" selected="selected">See other sites</option>
         {% for nav_site in db_sites %}
             <option value="{{ nav_site }}">{{ nav_site }}</option>
         {% endfor %}
-    </select>
+    </select></div>
     <!-- <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3> -->
     <div id="map-canvas"></div>
     <h1 style="padding-left: 15px">
