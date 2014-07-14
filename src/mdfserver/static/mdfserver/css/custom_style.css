@@ -35,6 +35,25 @@
 
 }
 
+#correct_h2 {
+    margin-top: 96px;
+}
+
+#gamut_image {
+    height: 486px;
+    overflow: hidden;
+}
+
+#data_flow {
+    width: 900px;
+    margin-top: -80px;
+}
+
+div ul {
+    margin-top: -24px;
+    margin-bottom: 24px;
+}
+
 .modal.fade {
     top: -68%;
     left: -120%;
@@ -151,12 +170,11 @@
     height: 0px;
 }
 
-#st_select
-{
-    float:right;
+#st_select {
+    float: right;
 }
 
-@media screen\0 {
+@media screen\0  {
     .carousel-control span {
         top: 0.2cm;
     !important
