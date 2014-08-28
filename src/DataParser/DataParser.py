@@ -134,9 +134,12 @@ def handleConnection(database, text_file):
                 #put variable values in here
                 loginfo += "\t\t\t\t\t\t\t\t   Now getting values for "+ var_print.name +"\n"
                 var_values = ss.get_ninety_six_values_by_site_id_and_var_id(site.id, var_print.id)
-                for x in range(0, 96):
+                threshold = 96
+                if len(var_values) < threshold:
+                    threshold = len(var_values)
+                for x in range(0, threshold):
                     file_str += str(var_values[x].data_value)
-                    if x != 95:
+                    if x != threshold-1:
                          file_str += ", "
                          
                 file_str += "]\n"
