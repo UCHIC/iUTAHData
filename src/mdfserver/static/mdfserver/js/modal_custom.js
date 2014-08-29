@@ -22,6 +22,12 @@ var changeModal = function()
 
     });
 
+    var myElements = document.querySelectorAll(".modal-dialog.modal-lg");
+
+    for (var i = 0; i < myElements.length; i++) {
+        myElements[i].style.width = 'auto';
+    }
+
     /*var sel_image = document.getElementsByClassName('item active')[0];
     var modal = document.getElementById('modal_contents');
 

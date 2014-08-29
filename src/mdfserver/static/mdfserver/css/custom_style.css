@@ -23,6 +23,10 @@
 /
 }
 
+.modal-dialog.modal-lg {
+width: 0px;
+}
+
 #the_modal {
     text-align: center;
     left: auto;
