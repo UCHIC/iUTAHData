@@ -1,12 +1,22 @@
 jQuery(document).ready(function ($) {
 
-    //This function is to solve this problem: when selected the dynamic content (river_info) the home page was selected, because of the similitude of how they work.
+    //This function is to solve this problem: when selected the dynamic content (river_info) the home page was selected in the navbar, because of the similitude of how the homepage and dynamic pages work.
     $("#map-canvas").ready(function menuActive() {
         if (document.getElementById("map-canvas")) {
             $("li.active").addClass("dropdown");
             $("li").removeClass("active");
-            var dataLI = $('li:contains("Data")');
-            dataLI.addClass("active");
+            var dataLI = $('li.dropdown:contains("Data")');
+            var count = 0;
+            var toGetOut = [];
+            var i, len = dataLI.length;
+            for(i = 0; i<len; i++)
+            {
+                if(dataLI[i].getElementsByTagName('a')[0].innerText === "Data ")
+                {
+                    dataLI[i].className = dataLI[i].className + " active";
+                }
+            }
+
             $('.dropdown-menu li.active').removeClass("active"); //removes active from data policy menu item.
 
 
