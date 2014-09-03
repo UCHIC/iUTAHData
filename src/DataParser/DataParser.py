@@ -67,7 +67,7 @@ def handleConnection(database, text_file):
             vars_to_show = ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_D1_WVT']
         elif site.code == "RB_ARBR_USGS":
             vars_to_show = ['USGSTemp', 'USGSStage', 'USGSDischarge']
-        elif site.code == "PR_BJ_CUWCD" or site.code == "PR_CH_CUWCD" or site.code == "PR_LM_CUWCD":
+        elif site.code == "PR_BJ_CUWCD" or site.code == "PR_CH_CUWCD" or site.code == "PR_LM_CUWCD" or site.code == "PR_UM_CUWCD":
             vars_to_show = ['CUWCDDischarge']
         elif site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
