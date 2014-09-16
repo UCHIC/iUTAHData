@@ -92,10 +92,11 @@
                             <div class="item active">
                                 <img class="display img-responsive"
                                      src="
-                                                 {% static "mdfserver/img/epscor_logo.jpg" %}"
+                                                 {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
                                      alt="">
                             </div>
                             {% for picture in pics %}
+                                {% if forloop.counter0 != 0 %}
                                 <div class="item">
                                     <img class="display img-responsive"
                                          src="
@@ -106,6 +107,7 @@
                                                  {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
                                          alt="">
                                 </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
 
