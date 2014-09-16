@@ -78,17 +78,21 @@ def river_dynamic(request, database, site_code):
 
 
     sites_for_select = ['LR_Mendon_AA',	'LR_MainStreet_BA', 'LR_WaterLab_AA', 'LR_TG_BA', 'LR_FB_BA', 'LR_FB_C',
-                        'LR_GC_C',	'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R', 'PR_BJ_AA', 'PR_CH_AA',
-                        'PR_CH_C', 'PR_LM_BA', 'PR_BD_C', 'PR_TL_C', 'RB_CG_BA', 'RB_FD_AA', 'RB_KF_BA', 'RB_RBG_BA',
-                        'RB_ARBR_C', 'RB_GIRF_C', 'RB_KF_C', 'RB_TM_C']
+                        'LR_GC_C',	'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R',
+                        'PR_BJ_AA', 'PR_CH_AA', 'PR_CH_C', 'PR_LM_BA', 'PR_BD_C', 'PR_TL_C',
+                        'RB_ARBR_AA', 'RB_CG_BA', 'RB_FD_AA', 'RB_KF_BA', 'RB_RBG_BA', 'RB_ARBR_C', 'RB_GIRF_C',
+                        'RB_KF_C', 'RB_TM_C']
 
     db_sites = data_river.keys()
+    approved_sites = [];
 
     for variab in sites_for_select:
-        var_print = next((var for var in db_sites if var.code == variab), None)
+        var_print = next((var for var in db_sites if var == variab), None)
+        if var_print is not None:
+            approved_sites.append(variab)
 
     data_river = prepareForHeading(data_river[site_code], "Soil")
     data_river = prepareForHeading(data_river, "Air")
-    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics, 'xtra_site': xtra_site, 'db_sites': var_print }
+    context = {'pages': pages_in_server, 'site': database, 'river_data': data_river, 'pics': pics, 'xtra_site': xtra_site, 'db_sites': approved_sites }
     return render(request, 'mdfserver/river_dynamic.html', context)
 
