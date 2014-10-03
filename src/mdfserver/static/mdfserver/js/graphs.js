@@ -110,10 +110,6 @@ function drawSeries() {
 
 }
 
-function drawWindRose() {
-    var windspd = "WindSp_Avg";
-    var windir = "WindDir_Avg";
 
-}
 
 

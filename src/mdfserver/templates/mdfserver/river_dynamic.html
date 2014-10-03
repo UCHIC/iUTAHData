@@ -99,12 +99,7 @@
                                 {% if forloop.counter0 != 0 %}
                                 <div class="item">
                                     <img class="display img-responsive"
-                                         src="
-
-
-
-
-                                                 {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
+                                         src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
                                          alt="">
                                 </div>
                                 {% endif %}
@@ -191,7 +186,7 @@
                 <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3>
             {% endif %}
             {% if var.code == "WindSp_Avg" %}
-                <div class="data_box" id="windrose_box" style="height: 312px;border: 1px solid black;">Wind speed found mate!</div>
+                <div class="data_box" id="windrose_box" style="height: 312px;border: 1px solid black;"></div>
             {% elif var.code == "WindDir_Avg" %}
 
             {% else %}
