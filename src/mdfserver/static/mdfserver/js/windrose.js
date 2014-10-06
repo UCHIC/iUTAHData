@@ -50,15 +50,15 @@ if (document.getElementById("windrose_box") != null) {
                 title: {
                     text: 'Wind Speed and Wind Direction (WindSp_Avg & WindDir_Avg)',
                     style: {"line-height": "12px;",
-                            "padding": "0px",
-                            "padding-top": "2px",
-                            "font": "normal .99em arial, sans-serif"
+                        "padding": "0px",
+                        "padding-top": "2px",
+                        "font": "normal .99em arial, sans-serif"
                     }
                 },
 
                 /*subtitle: {
-                    text: 'Source: or.water.usgs.gov'
-                },*/
+                 text: 'Source: or.water.usgs.gov'
+                 },*/
 
                 pane: {
                     size: '85%',
@@ -71,9 +71,9 @@ if (document.getElementById("windrose_box") != null) {
                     itemDistance: 6,
                     padding: 1,
                     itemStyle: {"line-height": "16px;",
-                                "padding-bottom": "5px",
-                                "padding-top": "2px",
-                                "font": "normal .90em arial, sans-serif"
+                        "padding-bottom": "5px",
+                        "padding-top": "2px",
+                        "font": "normal .90em arial, sans-serif"
                     },
                     //y: 100,
                     layout: 'horizontal'
@@ -131,44 +131,33 @@ function drawWindRose() {
     var site = filenames[database];
 
     //categorize data
-     $.getJSON("/mdf/static/mdfserver/json/" + site + "Site.json").done(function (data) {
+    $.getJSON("/mdf/static/mdfserver/json/" + site + "Site.json").done(function (data) {
         var captureRegex = new RegExp(database + "/(.[^/]*)/", "g");
         d = captureRegex.exec(document.URL)[1];
-         /*console.log(d);
 
-         console.log(data[d]);
-         console.log(data[d]['vars']);*/
+        var windSpeedVals = data[d]['vars'].filter(function (element) {
+            return element.code === windspd
+        })[0].values;
+        var windDirVals = data[d]['vars'].filter(function (element) {
+            return element.code === windir
+        })[0].values;
 
-         var windSpeedVals = data[d]['vars'].filter(function(element){return element.code === windspd})[0].values;
-         var windDirVals = data[d]['vars'].filter(function(element){return element.code === windir})[0].values;
+        var tableOfFreq = createWindRoseTableData(windSpeedVals, windDirVals);
 
 
+        console.log(convertFrequenciesToPercentages(tableOfFreq, Math.min(windSpeedVals.length, windDirVals.length)));
 
-
-         //set up table
-
-            /* "<table style=\"display: none\"><tbody>" +
-                 "<tr nowrap=\"\" bgcolor=\"#CCCCFF\">"+
-                // "<th colspan=\"8\" class=\"hdr\">Table of Frequencies (percent)</th></tr>" +
-            "</tbody></table>";
-
-         /*console.log(windSpeedVals);*/
-
-        createWindRoseTableData();
+        //organize data into table
     });
-
-    //organize data into table
 
 
 }
 
-function createWindRoseTableData(range, windSP, windDir)
-{
+function createWindRoseTableData(windSP, windDir) {
     //Here we organize the data in windspd according to the range object
     //and organize the angles according to its cardinal point
     //this is made in arrays to be outputted to tables later.
-    var range = calcRange(windSpeedVals);
-    console.log(getAngleCardinal(293.66));
+    var range = calcRange(windSP);
 
     var tableOfFreq = {
         "N": [0, 0, 0, 0, 0, 0, 0],//last number is for total
@@ -192,14 +181,15 @@ function createWindRoseTableData(range, windSP, windDir)
         "NNW": [0, 0, 0, 0, 0, 0, 0]
     };
 
-    for(var i = 0; i < Math.min(windSP.length, windDir.length); i++)
-    {
+    for (var i = 0; i < Math.min(windSP.length, windDir.length); i++) {
         var curDir = windDir[i];
         var curSpeed = windSP[i];
 
-
+        //getting index for position of value within range:
+        tableOfFreq[getAngleCardinal(curDir)][getIndexForRange(range, curSpeed)] += 1;
     }
 
+    return tableOfFreq;
 
     //CAREFUL: PROCESS ORGANIZATION OF WIND SPEED AND WIND DIRECTION A PAIR AT A TIME TO MAKE SURE
     //THE DIRECTION BELONGS TO THE SPEED
@@ -207,27 +197,55 @@ function createWindRoseTableData(range, windSP, windDir)
     //call createWindRoseTable with the result data from this function
     //Try to return an object with the data for loose coupling
 
+}
 
+function convertFrequenciesToPercentages(tableOfFreq, datalength) {
+    for (var currentDir in tableOfFreq) {
+        tableOfFreq[currentDir][6] = 0;
+        for (var i = 0; i < tableOfFreq[currentDir].length; i++) {
+            if (i !== 6) {
+                tableOfFreq[currentDir][i] /= datalength;
+                tableOfFreq[currentDir][i] *= 100;
+                tableOfFreq[currentDir][i] = parseFloat(tableOfFreq[currentDir][i].toFixed(2));
+                tableOfFreq[currentDir][6] += tableOfFreq[currentDir][i];
+                tableOfFreq[currentDir][6] = parseFloat(tableOfFreq[currentDir][6].toFixed(2));
+            }
+
+        }
+    }
+
+    return tableOfFreq;
+}
+
+function getIndexForRange(range, windspeed) {
+    var testVal = range.step;
+    var index = 0;
+
+    while (windspeed > testVal) {
+        index += 1;
+        testVal += range.step;
+        if (index > 5)
+            break;
+    }
+
+    return index;
 }
 
 //This function will take arrays or whatever createWindRoseTableData makes and create the HTML table
 //that contains the data for the wind rose
-createWindRoseTable()
-{
+function createWindRoseTable() {
     var element = document.createElement("table");
     element.id = "test_table";
-    console.log(document.getElementById("spacer"))
     document.getElementById("spacer").appendChild(element);
 }
 
 //This function takes an angle and returns the cardinal point that it belongs to.
-function getAngleCardinal(angle)
-{
+function getAngleCardinal(angle) {
     //get special case for N, x <11.25 and x > 348.75
-    if(angle < 11.25 || angle > 348.75)
+    if (angle < 11.25 || angle > 348.75)
         return "N";
 
-     var cardinal = "nil";
+    var cardinal = "nil";
 
     //check angle range and assign a value to cardinal.
     var cardinalPointsArr
@@ -238,19 +256,16 @@ function getAngleCardinal(angle)
     ];
 
     var step = 22.5;
-    cardinalPointsArr.forEach(function(cardinal)
-    {
-           currCardinalRange.push(
-               {    "min": currCardinalRange[currCardinalRange.length-1].max + 0.01,
+    cardinalPointsArr.forEach(function (cardinal) {
+            currCardinalRange.push(
+                {    "min": currCardinalRange[currCardinalRange.length - 1].max + 0.01,
                     "max": currCardinalRange[currCardinalRange.length - 1].max + step,
                     "car_point": cardinal});
-                }
+        }
     );
 
-    currCardinalRange.forEach(function(cardinalRange)
-    {
-        if(angle >= cardinalRange.min && angle <= cardinalRange.max)
-        {
+    currCardinalRange.forEach(function (cardinalRange) {
+        if (angle >= cardinalRange.min && angle <= cardinalRange.max) {
             cardinal = cardinalRange.car_point;
         }
     })
@@ -258,11 +273,11 @@ function getAngleCardinal(angle)
     return cardinal;
 }
 
-function calcRange(values)
-{
-    values.sort();
-    var max = Math.round(values[values.length - 1]);
+function calcRange(values) {
+    var tempVals = values.slice();
+    tempVals.sort();
+    var max = Math.round(tempVals[tempVals.length - 1]);
 
 
-    return {step: Math.round(max/6), max: max};
+    return {step: Math.round(max / 6), max: max};
 }
