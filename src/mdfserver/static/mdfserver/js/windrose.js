@@ -49,7 +49,11 @@ if (document.getElementById("windrose_box") != null) {
 
                 title: {
                     text: 'Wind Speed and Wind Direction (WindSp_Avg & WindDir_Avg)',
-                    style: {"line-height": "12px;", "padding": "0px", "padding-top": "2px", "font": "normal .99em arial, sans-serif" }
+                    style: {"line-height": "12px;",
+                            "padding": "0px",
+                            "padding-top": "2px",
+                            "font": "normal .99em arial, sans-serif"
+                    }
                 },
 
                 /*subtitle: {
@@ -66,7 +70,11 @@ if (document.getElementById("windrose_box") != null) {
                     verticalAlign: 'bottom',
                     itemDistance: 6,
                     padding: 1,
-                    itemStyle: {"line-height": "16px;", "padding-bottom": "5px", "padding-top": "2px", "font": "normal .90em arial, sans-serif" },
+                    itemStyle: {"line-height": "16px;",
+                                "padding-bottom": "5px",
+                                "padding-top": "2px",
+                                "font": "normal .90em arial, sans-serif"
+                    },
                     //y: 100,
                     layout: 'horizontal'
                 },
@@ -126,85 +134,27 @@ function drawWindRose() {
      $.getJSON("/mdf/static/mdfserver/json/" + site + "Site.json").done(function (data) {
         var captureRegex = new RegExp(database + "/(.[^/]*)/", "g");
         d = captureRegex.exec(document.URL)[1];
-         console.log(d);
+         /*console.log(d);
 
          console.log(data[d]);
-         console.log(data[d]['vars']);
+         console.log(data[d]['vars']);*/
 
          var windSpeedVals = data[d]['vars'].filter(function(element){return element.code === windspd})[0].values;
          var windDirVals = data[d]['vars'].filter(function(element){return element.code === windir})[0].values;
 
-        var range = calcRange(windSpeedVals);
 
 
-        /*var graphCounter = -1;
-        var include = "none";
-        if (d == "RB_ARBR_AA") {
-            include = "RB_ARBR_USGS";
-        } else if (d == "PR_BJ_AA") {
-            include = "PR_BJ_CUWCD";
-        } else if (d == "PR_CH_AA") {
-            include = "PR_CH_CUWCD";
-        } else if (d == "PR_LM_BA") {
-            include = "PR_UM_CUWCD";
-        }
 
-        for (var i = 0; i < data[d].vars.length; i++) {
-            //console.log(data[d].vars[i]['values']);
-            var myData = [];
-            var counter = 0;
-            data[d].vars[i]['values'].forEach(function (value) {
-                myData.push({"value": value, "index": ++counter});
-            });
+         //set up table
 
-            var svg = d3.select("#graph" + ++graphCounter).append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            /* "<table style=\"display: none\"><tbody>" +
+                 "<tr nowrap=\"\" bgcolor=\"#CCCCFF\">"+
+                // "<th colspan=\"8\" class=\"hdr\">Table of Frequencies (percent)</th></tr>" +
+            "</tbody></table>";
 
-            x.domain(d3.extent(myData, function (d) {
-                return d.index;
-            }));
-            y.domain(d3.extent(myData, function (d) {
-                return d.value;
-            }));
+         /*console.log(windSpeedVals);*/
 
-            svg.append("path")
-                .datum(myData)
-                .attr("class", "line")
-                .attr("d", line);
-        }
-
-
-        if (include != "none") {
-            graphCounter = -1;
-            for (var i = 0; i < data[include].vars.length; i++) {
-                var myData = [];
-                var counter = 0;
-                data[include].vars[i]['values'].forEach(function (value) {
-                    myData.push({"value": value, "index": ++counter});
-                });
-
-                var svg = d3.select("#graphx" + ++graphCounter).append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                x.domain(d3.extent(myData, function (include) {
-                    return include.index;
-                }));
-                y.domain(d3.extent(myData, function (include) {
-                    return include.value;
-                }));
-
-                svg.append("path")
-                    .datum(myData)
-                    .attr("class", "line")
-                    .attr("d", line);
-            }
-        }*/
+        createWindRoseTableData();
     });
 
     //organize data into table
@@ -212,11 +162,107 @@ function drawWindRose() {
 
 }
 
+function createWindRoseTableData(range, windSP, windDir)
+{
+    //Here we organize the data in windspd according to the range object
+    //and organize the angles according to its cardinal point
+    //this is made in arrays to be outputted to tables later.
+    var range = calcRange(windSpeedVals);
+    console.log(getAngleCardinal(293.66));
+
+    var tableOfFreq = {
+        "N": [0, 0, 0, 0, 0, 0, 0],//last number is for total
+        "NNE": [0, 0, 0, 0, 0, 0, 0],
+        "NE": [0, 0, 0, 0, 0, 0, 0],
+        "ENE": [0, 0, 0, 0, 0, 0, 0],
+
+        "E": [0, 0, 0, 0, 0, 0, 0],
+        "ESE": [0, 0, 0, 0, 0, 0, 0],
+        "SE": [0, 0, 0, 0, 0, 0, 0],
+        "SSE": [0, 0, 0, 0, 0, 0, 0],
+
+        "S": [0, 0, 0, 0, 0, 0, 0],
+        "SSW": [0, 0, 0, 0, 0, 0, 0],
+        "SW": [0, 0, 0, 0, 0, 0, 0],
+        "WSW": [0, 0, 0, 0, 0, 0, 0],
+
+        "W": [0, 0, 0, 0, 0, 0, 0],
+        "WNW": [0, 0, 0, 0, 0, 0, 0],
+        "NW": [0, 0, 0, 0, 0, 0, 0],
+        "NNW": [0, 0, 0, 0, 0, 0, 0]
+    };
+
+    for(var i = 0; i < Math.min(windSP.length, windDir.length); i++)
+    {
+        var curDir = windDir[i];
+        var curSpeed = windSP[i];
+
+
+    }
+
+
+    //CAREFUL: PROCESS ORGANIZATION OF WIND SPEED AND WIND DIRECTION A PAIR AT A TIME TO MAKE SURE
+    //THE DIRECTION BELONGS TO THE SPEED
+
+    //call createWindRoseTable with the result data from this function
+    //Try to return an object with the data for loose coupling
+
+
+}
+
+//This function will take arrays or whatever createWindRoseTableData makes and create the HTML table
+//that contains the data for the wind rose
+createWindRoseTable()
+{
+    var element = document.createElement("table");
+    element.id = "test_table";
+    console.log(document.getElementById("spacer"))
+    document.getElementById("spacer").appendChild(element);
+}
+
+//This function takes an angle and returns the cardinal point that it belongs to.
+function getAngleCardinal(angle)
+{
+    //get special case for N, x <11.25 and x > 348.75
+    if(angle < 11.25 || angle > 348.75)
+        return "N";
+
+     var cardinal = "nil";
+
+    //check angle range and assign a value to cardinal.
+    var cardinalPointsArr
+        = [ "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+
+    currCardinalRange = [
+        {"min": 11.25, "max": 33.75, "car_point": "NNE"}
+    ];
+
+    var step = 22.5;
+    cardinalPointsArr.forEach(function(cardinal)
+    {
+           currCardinalRange.push(
+               {    "min": currCardinalRange[currCardinalRange.length-1].max + 0.01,
+                    "max": currCardinalRange[currCardinalRange.length - 1].max + step,
+                    "car_point": cardinal});
+                }
+    );
+
+    currCardinalRange.forEach(function(cardinalRange)
+    {
+        if(angle >= cardinalRange.min && angle <= cardinalRange.max)
+        {
+            cardinal = cardinalRange.car_point;
+        }
+    })
+
+    return cardinal;
+}
+
 function calcRange(values)
 {
     values.sort();
-    var max = values[values.length - 1];
+    var max = Math.round(values[values.length - 1]);
 
 
-    return {step: max/6, max: max};
+    return {step: Math.round(max/6), max: max};
 }
