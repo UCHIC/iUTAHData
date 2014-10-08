@@ -33,93 +33,16 @@ if (document.getElementById("windrose_box") != null) {
     jQuery(document).ready(function ($) {
         $(function () {
 
-            // Parse the data from an inline table using the Highcharts Data plugin
-            $('#windrose_box').highcharts({
-                data: {
-                    table: 'freq',
-                    startRow: 1,
-                    endRow: 17,
-                    endColumn: 7
-                },
-
-                chart: {
-                    polar: true,
-                    type: 'column'
-                },
-
-                title: {
-                    text: 'Wind Speed and Wind Direction (WindSp_Avg & WindDir_Avg)',
-                    style: {"line-height": "12px;",
-                        "padding": "0px",
-                        "padding-top": "2px",
-                        "font": "normal .99em arial, sans-serif"
-                    }
-                },
-
-                /*subtitle: {
-                 text: 'Source: or.water.usgs.gov'
-                 },*/
-
-                pane: {
-                    size: '85%',
-                    center: ["50%", "50%"]
-                },
-
-                legend: {
-                    reversed: true,
-                    verticalAlign: 'bottom',
-                    itemDistance: 6,
-                    padding: 1,
-                    itemStyle: {"line-height": "16px;",
-                        "padding-bottom": "5px",
-                        "padding-top": "2px",
-                        "font": "normal .90em arial, sans-serif"
-                    },
-                    //y: 100,
-                    layout: 'horizontal'
-                },
-
-                xAxis: {
-                    tickmarkPlacement: 'on'
-                },
-
-                yAxis: {
-                    min: 0,
-                    endOnTick: false,
-                    showLastLabel: true,
-                    title: {
-                        text: 'Frequency (%)'
-                    },
-                    labels: {
-                        formatter: function () {
-                            return this.value + '%';
-                        }
-                    }
-                },
-
-                tooltip: {
-                    valueSuffix: '%'
-                },
-
-                plotOptions: {
-                    series: {
-                        stacking: 'normal',
-                        shadow: false,
-                        groupPadding: 0,
-                        pointPlacement: 'on'
-                    }
-                }
-            });
-
-            $('text:contains("Highcharts.com")').remove();
+            drawWindRose($);
 
         });
     });
 
-    drawWindRose();
+
 }
 
-function drawWindRose() {
+function drawWindRose($) {//drawWindRose() has to complete before createWindRoseObject starts.
+
     var windspd = "WindSp_Avg";
     var windir = "WindDir_Avg";
 
@@ -145,13 +68,101 @@ function drawWindRose() {
         var tableOfFreq = createWindRoseTableData(windSpeedVals, windDirVals);
 
 
-        console.log(convertFrequenciesToPercentages(tableOfFreq, Math.min(windSpeedVals.length, windDirVals.length)));
+        tableOfFreq = convertFrequenciesToPercentages(tableOfFreq, Math.min(windSpeedVals.length, windDirVals.length));
+        createWindRoseTable(tableOfFreq, windSpeedVals);
 
         //organize data into table
+
+        //create object
+        createWindRoseObject($);
     });
 
 
 }
+
+function createWindRoseObject($) {
+    // Parse the data from an inline table using the Highcharts Data plugin
+    $('#windrose_box').highcharts({
+        data: {
+            table: 'freq',
+            startRow: 1,
+            endRow: 17,
+            endColumn: 6
+        },
+
+        chart: {
+            polar: true,
+            type: 'column'
+        },
+
+        title: {
+            text: 'Wind Speed and Wind Direction (WindSp_Avg & WindDir_Avg)',
+            style: {"line-height": "12px;",
+                "padding": "0px",
+                "padding-top": "2px",
+                "font": "normal .99em arial, sans-serif"
+            }
+        },
+
+        /*subtitle: {
+         text: 'Source: or.water.usgs.gov'
+         },*/
+
+        pane: {
+            size: '85%'
+        },
+
+        legend: {
+            verticalAlign: 'bottom',
+            itemDistance: 6,
+            padding: 1,
+            itemStyle: {"line-height": "16px;",
+                "padding-bottom": "5px",
+                "padding-top": "2px",
+                "font": "normal .90em arial, sans-serif"
+            },
+            //y: 100,
+            layout: 'horizontal'
+        },
+
+        xAxis: {
+            tickmarkPlacement: 'on'
+        },
+
+        yAxis: {
+            min: 0,
+            endOnTick: false,
+            showLastLabel: true,
+            title: {
+                text: 'Frequency (%)'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value + '%';
+                }
+            },
+            reversedStacks: false
+        },
+
+        tooltip: {
+            valueSuffix: '%'
+        },
+
+        plotOptions: {
+            series: {
+                stacking: 'normal',
+                shadow: false,
+                groupPadding: 0,
+                pointPlacement: 'on'
+            }
+        }
+    });
+
+    $('text:contains("Highcharts.com")').remove();
+    $('.highcharts-background').attr('fill-opacity', '0.0');
+    $('#highcharts-0 svg').css('box-shadow', 'none');
+}
+
 
 function createWindRoseTableData(windSP, windDir) {
     //Here we organize the data in windspd according to the range object
@@ -231,12 +242,46 @@ function getIndexForRange(range, windspeed) {
     return index;
 }
 
-//This function will take arrays or whatever createWindRoseTableData makes and create the HTML table
+//This function will take arrays or whatever createWindRoseTableData makes and populate the HTML table
 //that contains the data for the wind rose
-function createWindRoseTable() {
-    var element = document.createElement("table");
-    element.id = "test_table";
-    document.getElementById("spacer").appendChild(element);
+function createWindRoseTable(freqTable, windSP) {
+    //Populate ranges using step
+    var range = calcRange(windSP);
+    var rangeRow = document.getElementById("ranges").children;
+
+    // for (var i = 5; i > 0; i--) {
+    // rangeRow[i].innerHTML = (6-i)*range.step + " - " + (7-i)*range.step + " m/s";
+    // }
+
+    //Set ranges in table
+    rangeRow[1].innerHTML = "< " + range.step + " m/s";
+    rangeRow[6].innerHTML = "> " + 6 * range.step + " m/s";
+    for (var i = 2; i < 6; i++) {
+        rangeRow[i].innerHTML = (i) * range.step + "-" + (i + 1) * range.step + " m/s";
+    }
+
+    var individualTotals = [0, 0, 0, 0, 0, 0];
+    var row;
+    var rowTotal;
+    //output individual points to table
+    for (var currentDir in freqTable) {
+        //grab table by key
+        row = document.getElementById(currentDir.toLocaleLowerCase()).cells;
+        rowTotal = 0;
+        for (var i = 0; i < freqTable[currentDir].length - 1; i++) {
+            row.item(i+1).innerHTML = freqTable[currentDir][i];
+            rowTotal += Number(freqTable[currentDir][i]);
+            individualTotals[i] += Number(freqTable[currentDir][i]);
+        }
+        row.item(7).innerHTML = rowTotal.toFixed(2);
+    }
+
+    //set totals for the last row.
+    var totalsRow = document.getElementById("total").cells;
+    for(var i = 0; i < individualTotals.length; i++)
+    {
+        totalsRow.item(i+1).innerHTML = individualTotals[i].toFixed(2);
+    }
 }
 
 //This function takes an angle and returns the cardinal point that it belongs to.
