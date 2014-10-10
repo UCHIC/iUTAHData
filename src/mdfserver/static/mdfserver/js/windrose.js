@@ -58,6 +58,12 @@ function drawWindRose($) {//drawWindRose() has to complete before createWindRose
         var captureRegex = new RegExp(database + "/(.[^/]*)/", "g");
         d = captureRegex.exec(document.URL)[1];
 
+        if(d === "LR_Wilkins_R")
+        {
+             windspd = "WindSp_S_WVT";
+             windir = "WindDir_D1_WVT";
+        }
+
         var windSpeedVals = data[d]['vars'].filter(function (element) {
             return element.code === windspd
         })[0].values;
@@ -169,7 +175,6 @@ function createWindRoseTableData(windSP, windDir) {
     //and organize the angles according to its cardinal point
     //this is made in arrays to be outputted to tables later.
     var range = calcRange(windSP);
-
     var tableOfFreq = {
         "N": [0, 0, 0, 0, 0, 0, 0],//last number is for total
         "NNE": [0, 0, 0, 0, 0, 0, 0],
@@ -199,7 +204,7 @@ function createWindRoseTableData(windSP, windDir) {
         //getting index for position of value within range:
         tableOfFreq[getAngleCardinal(curDir)][getIndexForRange(range, curSpeed)] += 1;
     }
-
+    console.log(tableOfFreq);
     return tableOfFreq;
 
     //CAREFUL: PROCESS ORGANIZATION OF WIND SPEED AND WIND DIRECTION A PAIR AT A TIME TO MAKE SURE
@@ -321,8 +326,8 @@ function getAngleCardinal(angle) {
 function calcRange(values) {
     var tempVals = values.slice();
     tempVals.sort();
+
     var max = Math.round(tempVals[tempVals.length - 1]);
 
-
-    return {step: Math.round(max / 6), max: max};
+    return {step: ((max > 2)? Math.round(max / 6) : 1), max: max};
 }

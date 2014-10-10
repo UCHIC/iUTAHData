@@ -185,9 +185,9 @@
             {% if var.sample == "Soil" %}
                 <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3>
             {% endif %}
-            {% if var.code == "WindSp_Avg" %}
+            {% if var.code == "WindSp_Avg" or var.code == "WindSp_S_WVT" %}
                 <div class="data_box" id="windrose_box" style="height: 310px;"></div>
-            {% elif var.code == "WindDir_Avg" %}
+            {% elif var.code == "WindDir_Avg" or var.code == "WindDir_D1_WVT" %}
                 <!-- no need to plot anything for wind direction -->
             {% else %}
             <div class="data_box">
