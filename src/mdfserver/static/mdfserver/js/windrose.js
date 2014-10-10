@@ -125,7 +125,13 @@ function createWindRoseObject($) {
             itemStyle: {"line-height": "16px;",
                 "padding-bottom": "5px",
                 "padding-top": "2px",
-                "font": "normal .90em arial, sans-serif"
+                "font": "normal .85em arial, sans-serif"
+            },
+            itemHoverStyle: {
+                "line-height": "16px;",
+                "padding-bottom": "5px",
+                "padding-top": "2px",
+                "font": "bold .90em arial, sans-serif"
             },
             //y: 100,
             layout: 'horizontal'
