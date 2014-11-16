@@ -191,7 +191,7 @@
                 <!-- no need to plot anything for wind direction -->
             {% else %}
             <div class="data_box">
-                <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
+                <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true&qualitycontrollevel=0"
                    target="_blank">
                     <div>
                         <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span></p>
@@ -223,7 +223,7 @@
             {% endif %}
             {% for var in xtra_site.vars %}
                 <div class="data_box">
-                    <a href="http://data.iutahepscor.org/tsa/?sitecode={{ xtra_site.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true"
+                    <a href="http://data.iutahepscor.org/tsa/?sitecode={{ xtra_site.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true&qualitycontrollevel=0"
                        target="_blank">
                         <div>
                             <p class="var_name">{{ var.name }}<br><span
