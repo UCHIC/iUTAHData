@@ -16,6 +16,9 @@ tool = LoggerTool()
 logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
 sm = ServiceManager()
+ #This variable is to address ocassional 500 errors in the sandbox server.
+ #I think these errors are because the files are being generated in the static folder.
+temp_location = "C:\\json_files\\"
 
 dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
 static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
@@ -164,10 +167,6 @@ def handleConnection(database, text_file):
     text_file.write(file_str)
     pass
 
-
-def moveFile(src, dest):
-    shutil.copy(src, dest)
-
 def dataParser():
     logger.info("\n========================================================\n")
     #logan database is loaded here
@@ -183,15 +182,22 @@ def dataParser():
     logger.info("Finished Program and Provo Site. ")
 
     logger.info("Started moving JSON files to static folder. ")
-    moveFile(dump_location + "LoganSite.json", static_folder)
-    moveFile(dump_location + "ProvoSite.json", static_folder)
-    moveFile(dump_location + "RedButteSite.json", static_folder)
+
+    moveToStaticFolders("LoganSite.json")
+    moveToStaticFolders("ProvoSite.json")
+    moveToStaticFolders("RedButteSite.json")
+
+
     logger.info("Finished moving JSON files to static folder. ")
     logger.info("\n========================================================\n")
 
+def moveToStaticFolders(fileSite):
+    shutil.copy(temp_location + fileSite, static_folder)
+    shutil.copy(temp_location + fileSite, dump_location)
+
 def databaseParser(database, location):
     logger.info("Started "+ location + " JSON File.")
-    text_file = open(dump_location + location +"Site.json", "w")
+    text_file = open(temp_location + location +"Site.json", "w")
     logger.info("Started creating " + location + " JSON file. ")
     #JSON File begins
     text_file.write("{\n")
