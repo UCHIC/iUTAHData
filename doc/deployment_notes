@@ -1,4 +1,5 @@
 When deploying website to a server keep in mind the following
 
-- Create a folder called json_file in C:/ <-- the DataParser.py script utilizes it to
+- Create a folder called json_file in C:/ <-- the DataParser.py script utilizes it to create files there and then
+move them to the static folders.
 - Make sure that the files in the json folder inside the static folder aren't replaced by the files in the repo.
