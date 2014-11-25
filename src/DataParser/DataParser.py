@@ -18,6 +18,8 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 sm = ServiceManager()
  #This variable is to address ocassional 500 errors in the sandbox server.
  #I think these errors are because the files are being generated in the static folder.
+temp_location = "C:\\json_files\\"
+
 dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
 static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
 
@@ -190,12 +192,12 @@ def dataParser():
     logger.info("\n========================================================\n")
 
 def moveToStaticFolders(fileSite):
-    shutil.copy(static_folder + fileSite, dump_location )
-    #shutil.copy(temp_location + fileSite, dump_location)
+    shutil.copy(temp_location + fileSite, static_folder)
+    shutil.copy(temp_location + fileSite, dump_location)
 
 def databaseParser(database, location):
     logger.info("Started " + location + " JSON File.")
-    text_file = open(static_folder + location + "Site.json", "w")
+    text_file = open(temp_location + location + "Site.json", "w")
     logger.info("Started creating " + location + " JSON file. ")
     #JSON File begins
     text_file.write("{\n")
