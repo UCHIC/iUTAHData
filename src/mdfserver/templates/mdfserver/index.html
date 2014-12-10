@@ -24,7 +24,7 @@
 
 
     {% if pages %}
-        <div class="navbar">
+        <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-inner">
                 <div class="center_header">
                     <div id="title_logo">
@@ -37,7 +37,7 @@
                         </a>
                     </div>
                     <div class="container">
-                        <ul class="nav">
+                        <ul class="nav navbar-nav">
                             <li {% if not requested %}class="active"{% else %} class="dropdown" {% endif %}>
                                 <a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a>
                             </li>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </nav>
         </div>
 
         <div class="container">
