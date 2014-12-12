@@ -96,7 +96,7 @@ function raw_data_redirect(site)
         "RB_KF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-knowlton-fork-climate-site-rb-kf-c",
         "RB_TM_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-todd-s-meadow-climate-site-rb-tm-c"
     };
-    window.location.href = siteCodeToLink[site];
+    window.open(siteCodeToLink[site], '_blank');
 }
 
 
