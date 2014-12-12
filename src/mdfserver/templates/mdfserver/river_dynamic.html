@@ -69,59 +69,64 @@
     </div>
 
 
-{% if pics|length != 0 %}
-    <div id="the_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-         aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal_image" id="modal_contents">
-                    <!--<img class="img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">-->
+    {% if pics|length != 0 %}
+        <div id="the_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal_image" id="modal_contents">
+                        <!--<img class="img-responsive" src="{% static "mdfserver/img/RB_ARBR_C_120717_1.jpg" %}" alt="">-->
 
-                    <div id="data-watershed-gallery-modal" class="carousel slide watershed-image-gallery">
-                        <div id="carousel_displayer" class="carousel-inner" data-toggle="modal"
-                             data-target=".bs-example-modal-lg">
-                            {% if pics|length == 0 %}
+                        <div id="data-watershed-gallery-modal" class="carousel slide watershed-image-gallery">
+                            <div id="carousel_displayer" class="carousel-inner" data-toggle="modal"
+                                 data-target=".bs-example-modal-lg">
+                                {% if pics|length == 0 %}
+                                    <div class="item active">
+                                        <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
+                                             class="display img-responsive"
+                                             src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
+
+                                        <p>No images available for this site, sorry.</p>
+                                    </div>
+                                {% endif %}
                                 <div class="item active">
-                                    <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
-                                         class="display img-responsive"
-                                         src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
-
-                                    <p>No images available for this site, sorry.</p>
-                                </div>
-                            {% endif %}
-                            <div class="item active">
-                                <img class="display img-responsive"
-                                     src="
-                                                 {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
-                                     alt="">
-                            </div>
-                            {% for picture in pics %}
-                                {% if forloop.counter0 != 0 %}
-                                <div class="item">
                                     <img class="display img-responsive"
-                                         src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
+                                         src="
+
+
+                                                 {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
                                          alt="">
                                 </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+                                {% for picture in pics %}
+                                    {% if forloop.counter0 != 0 %}
+                                        <div class="item">
+                                            <img class="display img-responsive"
+                                                 src="
 
-                        <!--<div class="carousel-caption" style="height: 19px; padding: 7px;">
-                            <p style="color: #BBB; padding-bottom: 0px;">Multiple instruments are used to collect data.</p>
-                        </div> -->
-                        {% if pics|length >= 2 %}
-                            <a class="carousel-control left" href="#data-watershed-gallery-modal" data-slide="prev">
-                                <span class="icon-prev">‹</span>
-                            </a>
-                            <a class="carousel-control right" href="#data-watershed-gallery-modal" data-slide="next">
-                                <span class="icon-next">›</span>
-                            </a>
-                        {% endif %}
+                                                         {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
+                                                 alt="">
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <!--<div class="carousel-caption" style="height: 19px; padding: 7px;">
+                                <p style="color: #BBB; padding-bottom: 0px;">Multiple instruments are used to collect data.</p>
+                            </div> -->
+                            {% if pics|length >= 2 %}
+                                <a class="carousel-control left" href="#data-watershed-gallery-modal" data-slide="prev">
+                                    <span class="icon-prev">‹</span>
+                                </a>
+                                <a class="carousel-control right" href="#data-watershed-gallery-modal"
+                                   data-slide="next">
+                                    <span class="icon-next">›</span>
+                                </a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endif %}
 
 
@@ -141,7 +146,9 @@
                 <div class="item active">
                     <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
                          class="display img-responsive"
-                         src="{% static "mdfserver/img/iutah_logo.png" %}" alt=""><p>{{ site }} nonon {{ site }}{{ pics|length }}</p>
+                         src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
+
+                    <p>{{ site }} nonon {{ site }}{{ pics|length }}</p>
 
                     <p>No images availabe for this site, sorry.</p>
                 </div>
@@ -170,6 +177,17 @@
 
     <div class="most_recent">
         <!--<div class="info_space"></div>-->
+        <section id="raw_tsa_buttons">
+            <button type="button" class="btn" onclick="javascript:raw_data_redirect('{{ river_data.info.code }}')">
+                Download the raw data for this site.
+            </button>
+            <a target="_blank" href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}">
+                <button type="button" class="btn">
+                    Visualize time series from this site.
+                </button>
+            </a>
+
+        </section>
         <h3 style="margin-top: 18px;clear: both;">Most Recent Instantaneous Measurements</h3>
         <h4 style="margin-bottom: -43px;">Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
 
@@ -190,28 +208,29 @@
             {% elif var.code == "WindDir_Avg" or var.code == "WindDir_D1_WVT" %}
                 <!-- no need to plot anything for wind direction -->
             {% else %}
-            <div class="data_box">
-                <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true&qualitycontrollevelcode=0"
-                   target="_blank">
-                    <div>
-                        <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span></p>
-                        <br>
+                <div class="data_box">
+                    <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true&qualitycontrollevelcode=0"
+                       target="_blank">
+                        <div>
+                            <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span>
+                            </p>
+                            <br>
 
-                        <p class="var_value"{% if var.name|length >= 39 %}
-                           style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
-                        <br>
+                            <p class="var_value"{% if var.name|length >= 39 %}
+                               style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
+                            <br>
 
-                        <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
-                    </div>
-                    <div id="graph{{ forloop.counter0 }}" class="graphContainer"></div>
-                </a>
-            </div>
+                            <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
+                        </div>
+                        <div id="graph{{ forloop.counter0 }}" class="graphContainer"></div>
+                    </a>
+                </div>
             {% endif %}
         {% empty %}
             <div class="no_data_msg"><p>Sorry. No data found for this site</p></div>
         {% endfor %}
 
-    <!-- Call js function to correctly position windrose box -->
+        <!-- Call js function to correctly position windrose box -->
 
         {% if xtra_site != "none" and xtra_site.vars %}
             {% if river_data.info.code == "RB_ARBR_AA" %}
@@ -255,6 +274,198 @@
             resulting
             from their use.</p>
     </div>
+
+    <!-- This table is used with the windrose plot, don't ever modify it!!-->
+
+    <div style="display:none">
+        <!-- Source: http://or.water.usgs.gov/cgi-bin/grapher/graph_windrose.pl -->
+        <table id="freq" border="0" cellspacing="0" cellpadding="0">
+            <tr nowrap bgcolor="#CCCCFF">
+                <th colspan="9" class="hdr">Table of Frequencies (percent)</th>
+            </tr>
+            <tr nowrap bgcolor="#CCCCFF" id="ranges">
+                <th class="freq">Direction</th>
+                <th class="freq">&lt;m/s</th>
+                <th class="freq">m/s</th>
+                <th class="freq"> m/s</th>
+                <th class="freq"> m/s</th>
+                <th class="freq"> m/s</th>
+                <th class="freq">&gt; m/s</th>
+                <th class="freq">Total</th>
+            </tr>
+            <tr nowrap id="n">
+                <td class="dir">N</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="nne">
+                <td class="dir">NNE</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="ne">
+                <td class="dir">NE</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="ene">
+                <td class="dir">ENE</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="e">
+                <td class="dir">E</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="ese">
+                <td class="dir">ESE</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="se">
+                <td class="dir">SE</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="sse">
+                <td class="dir">SSE</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="s">
+                <td class="dir">S</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="ssw">
+                <td class="dir">SSW</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="sw">
+                <td class="dir">SW</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="wsw">
+                <td class="dir">WSW</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="w">
+                <td class="dir">W</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="wnw">
+                <td class="dir">WNW</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="nw">
+                <td class="dir">NW</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap bgcolor="#DDDDDD" id="nnw">
+                <td class="dir">NNW</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+                <td class="data">0.00</td>
+            </tr>
+            <tr nowrap id="total">
+                <td class="totals">Total</td>
+                <td class="totals">0.00</td>
+                <td class="totals">0.00</td>
+                <td class="totals">0.00</td>
+                <td class="totals">0.00</td>
+                <td class="totals">0.00</td>
+                <td class="totals">0.00</td>
+                <td class="totals">&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGtObe6Ic1FeiDvC9Oxt3oWc-HWk8wuTk&sensor=false">
     </script>
@@ -274,197 +485,6 @@
     <script src="http://code.highcharts.com/highcharts-more.js"></script>
     <script src="http://code.highcharts.com/modules/data.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
-
-    <!-- This table is used with the windrose plot, don't ever modify it!!-->
-
-    <div style="display:none">
-	<!-- Source: http://or.water.usgs.gov/cgi-bin/grapher/graph_windrose.pl -->
-	<table id="freq" border="0" cellspacing="0" cellpadding="0">
-		<tr nowrap bgcolor="#CCCCFF">
-			<th colspan="9" class="hdr">Table of Frequencies (percent)</th>
-		</tr>
-		<tr nowrap bgcolor="#CCCCFF" id="ranges">
-			<th class="freq">Direction</th>
-			<th class="freq">&lt;m/s</th>
-			<th class="freq">m/s</th>
-			<th class="freq"> m/s</th>
-			<th class="freq"> m/s</th>
-			<th class="freq"> m/s</th>
-			<th class="freq">&gt;  m/s</th>
-			<th class="freq">Total</th>
-		</tr>
-		<tr nowrap id="n">
-			<td class="dir">N</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="nne">
-			<td class="dir">NNE</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="ne">
-			<td class="dir">NE</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="ene">
-			<td class="dir">ENE</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="e">
-			<td class="dir">E</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="ese">
-			<td class="dir">ESE</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="se">
-			<td class="dir">SE</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="sse">
-			<td class="dir">SSE</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="s">
-			<td class="dir">S</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="ssw">
-			<td class="dir">SSW</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="sw">
-			<td class="dir">SW</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="wsw">
-			<td class="dir">WSW</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="w">
-			<td class="dir">W</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="wnw">
-			<td class="dir">WNW</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="nw">
-			<td class="dir">NW</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap bgcolor="#DDDDDD" id="nnw">
-			<td class="dir">NNW</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-		</tr>
-		<tr nowrap id="total">
-			<td class="totals">Total</td>
-			<td class="totals">0.00</td>
-			<td class="totals">0.00</td>
-			<td class="totals">0.00</td>
-			<td class="totals">0.00</td>
-			<td class="totals">0.00</td>
-			<td class="totals">0.00</td>
-			<td class="totals">&nbsp;</td>
-		</tr>
-	</table>
-</div>
 
 {% endblock %}
 

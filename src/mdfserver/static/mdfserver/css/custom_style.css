@@ -239,6 +239,36 @@ div ul {
     color: #333;
 }
 
+#raw_tsa_buttons
+{
+    margin-bottom: -59px;
+}
+
+#raw_tsa_buttons>button
+{
+    left: -15px;
+    position: relative;
+    top: 15px;
+    width: 469.5px;
+}
+
+#raw_tsa_buttons>a
+{
+   position: relative;
+    top: -45px;
+    left: 456px;
+}
+
+#raw_tsa_buttons>a>button
+{
+   width: 469.5px;
+}
+
+button.btn
+{
+    height: 60px;
+}
+
 #big_image {
     width: 939px;
     height: 404px;

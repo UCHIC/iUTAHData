@@ -62,8 +62,42 @@ function site_selected(element)
     window.location.href = "../"+element.value;
 }
 
+function raw_data_redirect(site)
+{
+    var siteCodeToLink = {
+        //Logan River
+        "LR_Mendon_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-mendon-road-advanced-aquatic-site-lr-mendon-aa",
+        "LR_MainStreet_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-main-street-basic-aquatic-site-lr-mainstreet-ba",
+        "LR_WaterLab_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-the-water-lab-advanced-aquatic-site-lr-waterlab-aa",
+        "LR_TG_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-tony-grove-basic-aquatic-site-lr-tg-ba",
+        "LR_FB_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-franklin-basin-basic-aquatic-site-lr-fb-ba",
+        "LR_FB_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-franklin-basin-climate-site-lr-fb-c",
+        "LR_GC_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-golf-course-climate-site-lr-gc-c",
+        "LR_TG_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-tony-grove-climate-site-lr-tg-c",
+        "LR_TWDEF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-tw-daniels-forest-climate-site-lr-twdef-c",
+        "LR_Wilkins_R":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-wilkins-repeater-site-lr-wilkins-r",
 
+        //Provo River
+        "PR_BJ_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-below-jordanelle-advanced-aquatic-site-pr-bj-aa",
+        "PR_CH_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-near-charleston-advanced-aquatic-site-pr-ch-aa",
+        "PR_CH_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-charleston-climate-site-pr-ch-c",
+        "PR_LM_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-near-lower-midway-basic-aquatic-site-pr-lm-ba",
+        "PR_BD_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-beaver-divide-climate-site-pr-bd-c",
+        "PR_TL_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-trial-lake-climate-site-pr-tl-c",
 
+        //Red Butte Creek
+        "RB_ARBR_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-advanced-aquatic-site-rb-arbr-aa",
+        "RB_CG_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-red-butte-creek-near-cottams-grove-basic-aquatic-site-rb-cg-ba",
+        "RB_FD_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-red-butte-creek-near-foothill-drive-advanced-aquatic-site-rb-fd-aa",
+        "RB_KF_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-knowlton-fork-basic-aquatic-site-rb-kf-ba",
+        "RB_RBG_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-red-butte-gate-basic-aquatic-site-rb-rbg-ba",
+        "RB_ARBR_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-climate-site-rb-arbr-c",
+        "RB_GIRF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-the-green-infrastructure-climate-site-rb-girf-c",
+        "RB_KF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-knowlton-fork-climate-site-rb-kf-c",
+        "RB_TM_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-todd-s-meadow-climate-site-rb-tm-c"
+    };
+    window.location.href = siteCodeToLink[site];
+}
 
 
 
