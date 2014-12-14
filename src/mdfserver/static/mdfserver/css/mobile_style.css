@@ -1,0 +1,71 @@
+#page-header
+{
+	position: static;
+}
+
+#big_image {
+	width: 687px;
+	height: 265px;
+	margin-top: 0px;
+}
+
+#spacer {
+	padding-top: 0px;
+}
+
+.column_left{
+	width: 626px;
+	margin-left: 30px;
+}
+
+.column_right {
+	width: 624px;
+	float: none;
+}
+
+.dropdown-menu {
+	border-radius: 0px;
+	display: block;
+	position: static;
+	float: none;
+	background-color: transparent;
+}
+
+.navbar-inner {
+	height: 83px;
+}
+
+.navbar .nav {
+	width: 27.1%;
+	margin-top: 4px;
+}
+
+.navbar .nav > li {
+	float: none;
+}
+
+#node-1>.content>div:first-child
+{
+    margin-left: -36px;
+}
+
+/*#spacer>div>#site_content {
+    margin-left: 27%;
+}*/
+
+#site_content {
+    margin-left: 27%;
+}
+
+div#content {
+/*margin-left: 27%;*/
+margin-top: -11px;
+}
+
+.watershed-image-gallery {
+    width: 93%;
+    margin-right: 11px;
+}
+
+
+

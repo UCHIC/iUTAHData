@@ -1,3 +1,9 @@
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var mobilelink = document.getElementById('mobilecss');
+    mobilelink.setAttribute("rel", "stylesheet");
+    mobilelink.setAttribute("type", "text/css");
+}
+
 jQuery(document).ready(function ($) {
 
     //This function is to solve this problem: when selected the dynamic content (river_info) the home page was selected in the navbar, because of the similitude of how the homepage and dynamic pages work.
@@ -98,6 +104,7 @@ function raw_data_redirect(site)
     };
     window.open(siteCodeToLink[site], '_blank');
 }
+
 
 
 
