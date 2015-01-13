@@ -74,6 +74,8 @@ def handleConnection(database, text_file):
             vars_to_show = ['CUWCDDischarge']
         elif site.type == "Stream":
             vars_to_show = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage' ]
+        elif site.type == "Storm sewer":
+            vars_to_show = ['Flow', 'Level', 'Velocity', 'Volume', 'WaterTemp_ISCO' ]
         else:
             vars_to_show = [
                 'BP_Avg',
