@@ -164,7 +164,6 @@ div ul {
     position: absolute;
     left: 7px;
     /* top: 6%;*/
-    top: 0.11cm;
 }
 
 #site_select {
@@ -193,23 +192,81 @@ div ul {
 }
 
 .carousel-control.right span {
-    margin-left: 9px;
+    /*margin-left: 9px;
+    left: 2px;*/
+    margin-left: 13px;
     left: 2px;
+    background: black;
+    width: 131%;
+    height: 87.5%;
+    padding-top: 58%;
+    padding-bottom: 23%;
+    border-radius: 43px;
+    padding-right: 121px;
+    padding-left: 1px;
+    border: 3px white solid;
+}
+
+.carousel-control.left span {
+    margin-left: -149px;
+    left: 2px;
+    background: black;
+    width: 131%;
+    height: 87.5%;
+    padding-top: 58%;
+    padding-bottom: 23%;
+    border-radius: 43px;
+    padding-right: 1px;
+    padding-left: 121px;
+    border: 3px white solid;
 }
 
 .carousel-control {
-    top: 46%;
+    top: 42%;
     padding-top: 4px;
     padding-right: 5px;
     width: 33px;
     height: 35px;
     border-radius: 71px;
+    border: none;
+    background: transparent;
+    !important
 }
 
 .carousel-caption {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     color: #333;
+}
+
+#raw_tsa_buttons
+{
+    margin-bottom: -59px;
+}
+
+#raw_tsa_buttons>button
+{
+    left: -15px;
+    position: relative;
+    top: 15px;
+    width: 469.5px;
+}
+
+#raw_tsa_buttons>a
+{
+   position: relative;
+    top: -45px;
+    left: 456px;
+}
+
+#raw_tsa_buttons>a>button
+{
+   width: 469.5px;
+}
+
+button.btn
+{
+    height: 60px;
 }
 
 #big_image {
@@ -334,8 +391,8 @@ p {
 
 h2 + p {
     border-top-style: groove;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 10px;
+    /*border-top-left-radius: 4px;*/
+    border-top-right-radius: 4px;
     margin-top: -12px;
 }
 
@@ -481,8 +538,8 @@ h2 {
     border-bottom: 2px lightgray;
     border-bottom-style: solid;
     border-bottom-style: groove;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 6px;
 }
 
 h3 {
@@ -652,6 +709,7 @@ ul.gamut_list {
     height: 310px;
     text-align: center;
     width: 66%;
+    overflow: hidden;
 }
 
 #data-watershed-gallery {
