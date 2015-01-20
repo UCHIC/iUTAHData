@@ -18,7 +18,7 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 sm = ServiceManager()
  #This variable is to address ocassional 500 errors in the sandbox server.
  #I think these errors are because the files are being generated in the static folder.
-temp_location = "C:\\json_files\\"
+temp_location = "C:\\inetpub\\wwwroot\\mdf\\temp\\json\\"
 
 dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
 static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
