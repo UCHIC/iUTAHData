@@ -90,6 +90,8 @@ function raw_data_redirect(site)
         "PR_LM_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-near-lower-midway-basic-aquatic-site-pr-lm-ba",
         "PR_BD_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-beaver-divide-climate-site-pr-bd-c",
         "PR_TL_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-trial-lake-climate-site-pr-tl-c",
+        "PR_ST_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-soapstone-climate-site-pr-st-c",
+        "PR_TL_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-trial-lake-climate-site-pr-tl-c",
 
         //Red Butte Creek
         "RB_ARBR_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-advanced-aquatic-site-rb-arbr-aa",
@@ -100,7 +102,11 @@ function raw_data_redirect(site)
         "RB_ARBR_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-climate-site-rb-arbr-c",
         "RB_GIRF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-the-green-infrastructure-climate-site-rb-girf-c",
         "RB_KF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-knowlton-fork-climate-site-rb-kf-c",
-        "RB_TM_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-todd-s-meadow-climate-site-rb-tm-c"
+        "RB_TM_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-todd-s-meadow-climate-site-rb-tm-c",
+        "RB_CR_SD": "#",//Change when link is available.
+        "RB_Dent_SD": "#",
+        "RB_FortD_SD": "#",
+        "RB_GIRF_SD": "#"
     };
     window.open(siteCodeToLink[site], '_blank');
 }

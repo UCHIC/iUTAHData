@@ -449,6 +449,10 @@ th {
 
 }
 
+.td-align {
+    width: 32%;
+}
+
 .plain-table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
@@ -461,7 +465,6 @@ th {
 .plain-table a {
     color: #444;
     text-decoration: underline;
-
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
 }
