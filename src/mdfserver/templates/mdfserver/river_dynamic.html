@@ -21,12 +21,6 @@
                 <th></th>
                 <td></td>
             </tr>
-            <!--<tr>
-                <th>Site Name</th>
-                <td>{{ river_data.info.name }}</td>
-                <th>Positional Accuracy</th>
-                <td>{{ river_data.info.pos_accuracy }}</td>
-            </tr> -->
             <tr>
                 <th>Latitude</th>
                 <td>{{ river_data.info.latitude }}</td>
@@ -94,6 +88,7 @@
                                          src="
 
 
+
                                                  {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
                                          alt="">
                                 </div>
@@ -103,16 +98,13 @@
                                             <img class="display img-responsive"
                                                  src="
 
+
                                                          {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
                                                  alt="">
                                         </div>
                                     {% endif %}
                                 {% endfor %}
                             </div>
-
-                            <!--<div class="carousel-caption" style="height: 19px; padding: 7px;">
-                                <p style="color: #BBB; padding-bottom: 0px;">Multiple instruments are used to collect data.</p>
-                            </div> -->
                             {% if pics|length >= 2 %}
                                 <a class="carousel-control left" href="#data-watershed-gallery-modal" data-slide="prev">
                                     <span class="icon-prev">‹</span>
@@ -148,7 +140,7 @@
                          class="display img-responsive"
                          src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
 
-                    <p>{{ site }} nonon {{ site }}{{ pics|length }}</p>
+                    <p>{{ site }} no pictures for  {{ site }}: {{ pics|length }}</p>
 
                     <p>No images availabe for this site, sorry.</p>
                 </div>
@@ -188,13 +180,12 @@
             </a>
 
         </section>
-        <h3 style="margin-top: 18px;clear: both;">Most Recent Instantaneous Measurements</h3>
-        <h4 style="margin-bottom: -43px;">Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
+        <h2 id="graph-title">Most Recent Instantaneous Measurements</h2>
+        <h4>Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
 
         <p id="dyn_disclaimer"></p>
 
-        <p id="warning_sign" class="disclaimer">The data presented here are provisional and subject to revision</p>
-        <br>
+
 
         {% for var in river_data.vars %}
             {% if var.sample == "Air" %}
