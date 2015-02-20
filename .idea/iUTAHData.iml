@@ -14,7 +14,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 2.7.6 virtualenv at C:\Users\Mario\env_i (1)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 2.7.7 virtualenv at C:\Users\Mario\iUTAH_virtualenv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
