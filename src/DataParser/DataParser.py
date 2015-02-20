@@ -18,7 +18,7 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 sm = ServiceManager()
  #This variable is to address ocassional 500 errors in the sandbox server.
  #I think these errors are because the files are being generated in the static folder.
-temp_location = "C:\\json_files\\"
+temp_location = "C:\\inetpub\\wwwroot\\mdf\\temp\\json\\"
 
 dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
 static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
@@ -119,6 +119,9 @@ def handleConnection(database, text_file):
             if database == 'iUTAH_Provo_OD':
                 vars_to_show.insert(0, 'AirTemp_Avg')
                 vars_to_show.insert(7, 'Rain_Tot')
+                if(site.code == 'PR_CH_C' or site.code == 'PR_ST_C'):
+                    vars_to_show.insert(8, 'Precip_Tot_Avg')
+
             else:
                 vars_to_show.insert(0, 'AirTemp_ST110_Avg')
                 vars_to_show.insert(7, 'Precip_Tot_Avg')

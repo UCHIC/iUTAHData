@@ -7,6 +7,10 @@
     shape-rendering: crispEdges;
 }
 
+.spacer h1 {
+    margin: 22px 0px -17px 4px;
+}
+
 .x.axis path {
     display: none;
 }
@@ -754,6 +758,12 @@ ul.gamut_list {
     float: right;
 }
 
+#graph-title {
+    margin-top: 30px;
+    clear: both;
+    border-bottom: 0px;
+}
+
 .most_recent {
     padding: 0px 15px;
     width: 102.9%;
@@ -766,9 +776,12 @@ ul.gamut_list {
 }
 
 .most_recent h4 {
-    margin-top: -6px;
-    margin-bottom: -10px;
     padding-bottom: 0px;
+    margin-top: -14px;
+}
+
+.most_recent h3 {
+    margin-left: 10px;
 }
 
 #warning_sign {
