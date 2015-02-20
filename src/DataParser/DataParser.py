@@ -119,6 +119,9 @@ def handleConnection(database, text_file):
             if database == 'iUTAH_Provo_OD':
                 vars_to_show.insert(0, 'AirTemp_Avg')
                 vars_to_show.insert(7, 'Rain_Tot')
+                if(site.code == 'PR_CH_C' or site.code == 'PR_ST_C'):
+                    vars_to_show.insert(8, 'Precip_Tot_Avg')
+
             else:
                 vars_to_show.insert(0, 'AirTemp_ST110_Avg')
                 vars_to_show.insert(7, 'Precip_Tot_Avg')
