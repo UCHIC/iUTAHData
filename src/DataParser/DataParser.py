@@ -20,8 +20,8 @@ sm = ServiceManager()
  #I think these errors are because the files are being generated in the static folder.
 temp_location = directory + "\\json_temp\\"
 
-dump_location = directory + "..\\mdfserver\\static\\mdfserver\\json\\"
-static_folder = directory + "..\\..\\..\\mdf\\static\\mdfserver\\json\\" #server static folder
+dump_location = os.path.join(directory, os.pardir, "mdfserver\\static\\mdfserver\\json\\")
+static_folder = os.path.join(directory, os.pardir, os.pardir, os.pardir, "mdf\\static\\mdfserver\\json\\") #server static folder
 
 #all the tabs and spaces are added for easier debugging. Don't judge... the performance increase for taking them out is not even significant.
 def handleConnection(database, text_file):
