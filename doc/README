@@ -1,0 +1,9 @@
+Add pictures to site pages
+- Create a folder in img in the static folder (iUTAHData/src/mdfserver/static/img)
+- Put pictures there and name with sequence Site1.jpg, Site2.jpg, Site3.jpg... that's right you know how to count!
+- That's all. The website will just read them when it is accessed.
+
+Add new variables to sites
+- Variables are limited in the dynamic pages by a variable named vars_to_show. To add or remove a variable from showing
+in a site just add it to or remove it from the list.
+
