@@ -469,6 +469,10 @@ th {
     font-size: 12px;
 }
 
+.plain-table th:nth-child(1) {
+    width: 26%;
+}
+
 td {
     padding: 7px 25px;
     border-top: 1px dashed #fff;
@@ -1248,6 +1252,10 @@ ul#images li {
 
 #footerLinks .linksbox a:hover {
     text-decoration: underline;
+}
+
+.site_heading {
+    padding-left: 0.5em;
 }
 
 

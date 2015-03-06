@@ -89,6 +89,13 @@
 
 
 
+
+
+
+
+
+
+
                                                  {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
                                          alt="">
                                 </div>
@@ -97,6 +104,13 @@
                                         <div class="item">
                                             <img class="display img-responsive"
                                                  src="
+
+
+
+
+
+
+
 
 
                                                          {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
@@ -140,7 +154,7 @@
                          class="display img-responsive"
                          src="{% static "mdfserver/img/iutah_logo.png" %}" alt="">
 
-                    <p>{{ site }} no pictures for  {{ site }}: {{ pics|length }}</p>
+                    <p>{{ site }} no pictures for {{ site }}: {{ pics|length }}</p>
 
                     <p>No images availabe for this site, sorry.</p>
                 </div>
@@ -184,8 +198,6 @@
         <h4>Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
 
         <p id="dyn_disclaimer"></p>
-
-
 
         {% for var in river_data.vars %}
             {% if var.sample == "Air" %}
@@ -478,6 +490,10 @@
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
 {% endblock %}
+
+
+
+
 
 
 

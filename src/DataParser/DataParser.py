@@ -1,6 +1,5 @@
 import sys
 import os
-import pyodbc
 import time
 import shutil
 import logging
@@ -17,11 +16,12 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
 sm = ServiceManager()
  #This variable is to address ocassional 500 errors in the sandbox server.
- #I think these errors are because the files are being generated in the static folder.
-temp_location = "C:\\inetpub\\wwwroot\\mdf\\temp\\json\\"
+ #I think these errors are due to the files are being generated in the static folder.
+temp_location = directory + "\\DataParser\\json_temp\\"
 
-dump_location = "C:\\inetpub\\wwwroot\\mdf\\iUTAHData\\src\\mdfserver\\static\\mdfserver\\json\\"
-static_folder = "C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\"
+dump_location = os.path.join(directory,  "mdfserver\\static\\mdfserver\\json\\")
+parent_dir = os.path.join(os.path.join(directory, os.pardir), os.pardir)
+static_folder = os.path.join(parent_dir, "static\\mdfserver\\json\\")
 
 #all the tabs and spaces are added for easier debugging. Don't judge... the performance increase for taking them out is not even significant.
 def handleConnection(database, text_file):
@@ -119,7 +119,7 @@ def handleConnection(database, text_file):
             if database == 'iUTAH_Provo_OD':
                 vars_to_show.insert(0, 'AirTemp_Avg')
                 vars_to_show.insert(7, 'Rain_Tot')
-                if(site.code == 'PR_CH_C' or site.code == 'PR_ST_C'):
+                if site.code == 'PR_CH_C' or site.code == 'PR_ST_C':
                     vars_to_show.insert(8, 'Precip_Tot_Avg')
 
             else:
@@ -155,7 +155,7 @@ def handleConnection(database, text_file):
                 #if variables[len(variables)-1].id != var.id:
                 file_str += ",\n"
             else:
-                loginfo += "\t\t\t\t\t\t\t\t\t   Var code \"" + var_sel + "\" not found in site: " + site.code
+                loginfo += "\t\t\t\t\t\t\t\t\t   Var code \"" + var_sel + "\" not found in site: " + site.code + "\n"
 
         if not novars:
             file_str = file_str[:-2]
