@@ -944,6 +944,27 @@ img.thumbnail {
     margin-bottom: 30px !important;
 }
 
+.afterText2 .imgWrapper2 {
+    display: inline-block;
+    position: relative;
+    margin-left: 30px;
+    margin-bottom: 30px !important;
+}
+
+.afterText2 img {
+    padding: 3px;
+    border: 1px solid;
+    width: inherit;
+}
+
+.wrapperText2 {
+    font-size: 0.9em;
+    width: 183px;
+    padding: 0px;
+    padding-top: 7%;
+    text-align: center;
+}
+
 .smallImage {
     display: inline;
     position: relative;
