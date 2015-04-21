@@ -181,7 +181,7 @@ div ul {
     float: right;
 }
 
-@media screen\0  {
+@media screen\0 {
     .carousel-control span {
         top: 0.2cm;
     !important
@@ -234,7 +234,7 @@ div ul {
     border-radius: 71px;
     border: none;
     background: transparent;
-    !important
+!important
 }
 
 .carousel-caption {
@@ -243,33 +243,28 @@ div ul {
     color: #333;
 }
 
-#raw_tsa_buttons
-{
+#raw_tsa_buttons {
     margin-bottom: -59px;
 }
 
-#raw_tsa_buttons>button
-{
+#raw_tsa_buttons > button {
     left: -15px;
     position: relative;
     top: 15px;
     width: 469.5px;
 }
 
-#raw_tsa_buttons>a
-{
-   position: relative;
+#raw_tsa_buttons > a {
+    position: relative;
     top: -45px;
     left: 456px;
 }
 
-#raw_tsa_buttons>a>button
-{
-   width: 469.5px;
+#raw_tsa_buttons > a > button {
+    width: 469.5px;
 }
 
-button.btn
-{
+button.btn {
     height: 60px;
 }
 
@@ -603,6 +598,8 @@ footer {
     -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
     border: 1px solid #222;
+    border-right-width: 0px;
+    border-left-width: 0px;
 }
 
 #footer-left-image {
@@ -1030,6 +1027,11 @@ div.leftCollagePanel {
     margin-bottom: 0px;
 }
 
+.navbar-inner {
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
 .node-unpublished {
     padding: 20px;
     background-color: rgba(120, 142, 30, 0.06);
@@ -1189,11 +1191,11 @@ ul.nice-menu ul li a {
     border-bottom: #504f51 1px solid;
 }
 
-.highcharts-contextmenu div{
+.highcharts-contextmenu div {
     width: 150px;
 }
 
-.highcharts-contextmenu div div{
+.highcharts-contextmenu div div {
     width: 140px;
 }
 
