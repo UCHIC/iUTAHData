@@ -75,7 +75,7 @@ USE_TZ = True
 #TINYMCE_JS_URL = os.path.join(os.environ['APPL_VIRTUAL_PATH'] + "/", "static/mdfserver/js/tiny_mce/tiny_mce.js")
 TINYMCE_JS_URL = os.path.join("/mdf/", "static/mdfserver/js/tiny_mce/tiny_mce.js")
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "",
+    'plugins': "advlist,autosave,media",
     'theme': "advanced",
     'cleanup_on_startup': False,
     'custom_undo_redo_levels': 10,
