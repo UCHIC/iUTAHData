@@ -549,8 +549,8 @@ h2 {
     border-bottom: 2px lightgray;
     border-bottom-style: solid;
     border-bottom-style: groove;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 6px;
+    /*border-bottom-left-radius: 0px;*/
+    /*border-bottom-right-radius: 6px;*/
 }
 
 h3 {
