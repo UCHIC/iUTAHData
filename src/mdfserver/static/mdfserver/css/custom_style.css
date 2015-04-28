@@ -16,7 +16,7 @@
 }
 
 .line {
-    fill: none;
+    fill: rgb(232, 237, 240);
     stroke: steelblue;
     stroke-width: 1.5px;
 }
@@ -181,7 +181,7 @@ div ul {
     float: right;
 }
 
-@media screen\0  {
+@media screen\0 {
     .carousel-control span {
         top: 0.2cm;
     !important
@@ -234,7 +234,7 @@ div ul {
     border-radius: 71px;
     border: none;
     background: transparent;
-    !important
+!important
 }
 
 .carousel-caption {
@@ -243,33 +243,28 @@ div ul {
     color: #333;
 }
 
-#raw_tsa_buttons
-{
+#raw_tsa_buttons {
     margin-bottom: -59px;
 }
 
-#raw_tsa_buttons>button
-{
+#raw_tsa_buttons > button {
     left: -15px;
     position: relative;
     top: 15px;
     width: 469.5px;
 }
 
-#raw_tsa_buttons>a
-{
-   position: relative;
+#raw_tsa_buttons > a {
+    position: relative;
     top: -45px;
     left: 456px;
 }
 
-#raw_tsa_buttons>a>button
-{
-   width: 469.5px;
+#raw_tsa_buttons > a > button {
+    width: 469.5px;
 }
 
-button.btn
-{
+button.btn {
     height: 60px;
 }
 
@@ -410,7 +405,7 @@ a img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #425766;
+    color: #4c5361;
     letter-spacing: 0em;
 
 }
@@ -603,6 +598,8 @@ footer {
     -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
     border: 1px solid #222;
+    border-right-width: 0px;
+    border-left-width: 0px;
 }
 
 #footer-left-image {
@@ -1030,6 +1027,11 @@ div.leftCollagePanel {
     margin-bottom: 0px;
 }
 
+.navbar-inner {
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
 .node-unpublished {
     padding: 20px;
     background-color: rgba(120, 142, 30, 0.06);
@@ -1189,11 +1191,11 @@ ul.nice-menu ul li a {
     border-bottom: #504f51 1px solid;
 }
 
-.highcharts-contextmenu div{
+.highcharts-contextmenu div {
     width: 150px;
 }
 
-.highcharts-contextmenu div div{
+.highcharts-contextmenu div div {
     width: 140px;
 }
 
@@ -1277,6 +1279,27 @@ ul#images li {
 
 .site_heading {
     padding-left: 0.5em;
+}
+
+audio, video {
+    background: black;
+}
+
+.video-box {
+    display: inline-block;
+    width: 49%;
+    margin-right: 3px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+.video-box video {
+    width: 100%;
+}
+
+.video-box p {
+    padding: 0px 5px 5px 5px;
+    line-height: 1.2em;
 }
 
 
