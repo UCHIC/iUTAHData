@@ -16,7 +16,7 @@
 }
 
 .line {
-    fill: none;
+    fill: rgb(232, 237, 240);
     stroke: steelblue;
     stroke-width: 1.5px;
 }
@@ -405,7 +405,7 @@ a img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #425766;
+    color: #4c5361;
     letter-spacing: 0em;
 
 }
@@ -1279,6 +1279,27 @@ ul#images li {
 
 .site_heading {
     padding-left: 0.5em;
+}
+
+audio, video {
+    background: black;
+}
+
+.video-box {
+    display: inline-block;
+    width: 49%;
+    margin-right: 3px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+.video-box video {
+    width: 100%;
+}
+
+.video-box p {
+    padding: 0px 5px 5px 5px;
+    line-height: 1.2em;
 }
 
 

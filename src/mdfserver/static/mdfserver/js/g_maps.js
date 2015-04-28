@@ -17,9 +17,6 @@ function initialize(lat, long) {
         map.setZoom(8);
         map.setCenter(marker.getPosition());
     });
-
-
-
 }
 
 
