@@ -286,6 +286,10 @@ button.btn {
     width: 100%;
 }
 
+.image_collage img {
+      margin-top: 5%;
+}
+
 .image_msg {
     margin-top: -40px;
     width: 940px;
