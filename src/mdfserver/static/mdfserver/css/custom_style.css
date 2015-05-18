@@ -58,8 +58,13 @@
 }
 
 div ul {
-    /*margin-top: -24px;*/
-    /*margin-bottom: 24px;*/
+    margin-top: -24px;
+    margin-bottom: 24px;
+}
+
+.ul-links ul {
+    margin-top: -7px;
+    margin-bottom: -8px;
 }
 
 .modal.fade {
@@ -287,7 +292,7 @@ button.btn {
 }
 
 .image_collage img {
-      margin-top: 5%;
+    margin-top: 1.7%;
 }
 
 .image_msg {
