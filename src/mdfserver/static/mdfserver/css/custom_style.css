@@ -58,8 +58,8 @@
 }
 
 div ul {
-    margin-top: -24px;
-    margin-bottom: 24px;
+    /*margin-top: -24px;*/
+    /*margin-bottom: 24px;*/
 }
 
 .modal.fade {
@@ -948,7 +948,7 @@ img.thumbnail {
 .afterText2 .imgWrapper2 {
     display: inline-block;
     position: relative;
-    margin-left: 30px;
+    margin-left: 5.1%;
     margin-bottom: 30px !important;
 }
 
