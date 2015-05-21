@@ -80,4 +80,5 @@ TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': False,
     'custom_undo_redo_levels': 10,
 	'relative_urls' : False,
-}
+    'content_css': "/mdf/static/mdfserver/css/bootstrap.css,/mdf/static/mdfserver/css/custom_style.css",
+    }
