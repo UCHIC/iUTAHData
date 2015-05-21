@@ -292,7 +292,7 @@ button.btn {
 }
 
 .image_collage img {
-    margin-top: 1.7%;
+    margin-top: 1.3%;
 }
 
 .image_msg {
@@ -532,7 +532,7 @@ a:hover {
 .region-content {
     margin-left: 15px;
     margin-right: 15px;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
 
 }
 
