@@ -38,7 +38,6 @@ def prepareForHeading(river_data, type):
 
 
 
-
 def index(request):
     pages_in_server = Page.objects.all().order_by('-title')[:5]
     context = {'pages': pages_in_server}

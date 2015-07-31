@@ -1312,4 +1312,50 @@ audio, video {
 }
 
 
+/* style for Questionnaire Survey Pages */
+
+.questionnaire-box {
+    width: 27%;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 5%;
+    border: 1px solid darkgray;
+    float: left;
+    padding: 2%;
+    border-radius: 3px;
+}
+
+.questionnaire-box h2 {
+    text-align: center;
+    border: none;
+}
+
+.questionnaire-box p {
+    border: none;
+}
+
+.questionnaire-img {
+    width: 100%;
+}
+
+#spacer>div {
+    overflow: hidden;
+    min-height: 659px;
+}
+
+.link-button {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #006E90;
+    color: whitesmoke;
+    padding: 3%;
+}
+
+.link-button:hover {
+    background: #0083AC;
+    text-decoration: none;
+    color: white;
+}
+
+
 
