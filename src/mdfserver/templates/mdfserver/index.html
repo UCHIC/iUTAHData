@@ -63,11 +63,11 @@
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         {% for subpage in page.subpage_set.all %}
                                             {% if subpage.url_visible %}
-                                            <li>
-                                                <a href="{% url 'subpages' page subpage.url %}">
-                                                    {{ subpage.title }}
-                                                </a>
-                                            </li>
+                                                <li>
+                                                    <a href="{% url 'subpages' page subpage.url %}">
+                                                        {{ subpage.title }}
+                                                    </a>
+                                                </li>
                                             {% endif %}
                                         {% endfor %}
                                     </ul>
