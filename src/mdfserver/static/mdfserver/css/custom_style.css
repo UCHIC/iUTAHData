@@ -1311,7 +1311,6 @@ audio, video {
     line-height: 1.2em;
 }
 
-
 /*/!* style for Questionnaire Survey Pages *!/*/
 
 .questionnaire-box {
@@ -1348,13 +1347,27 @@ audio, video {
     border-radius: 5px;
     background: #006E90;
     color: whitesmoke;
-    padding: 3%;
+    padding: 6% 3%;
+    position: relative;
 }
 
 .link-button:hover {
     background: #0083AC;
     text-decoration: none;
     color: white;
+}
+
+a.link-button.second {
+    padding-top: 5%;
+    padding-bottom: 7%;
+    top: -9px;
+}
+
+.link-button span {
+    display: inline-block;
+    position: absolute;
+    left: 31.5%;
+    bottom: 36%;
 }
 
 
