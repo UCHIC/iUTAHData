@@ -316,14 +316,14 @@ button.btn {
 }
 
 #slider {
-    margin: 0%;
+    margin: 0;
     width: 1080px;
 }
 
 #site_content {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
     min-height: 575px;
+    border: 1px solid rgb(220, 225, 230);
 }
 
 /*Experimenting from here on*/

@@ -16,6 +16,11 @@ class HomeView(TemplateView):
     template_name = 'mdfserver/index.html'
 
 
+class DevelopmentView(TemplateView):
+    template_name = 'mdfserver/development/development.html'
+
+
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':
