@@ -1,0 +1,107 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>iUTAH | {% block page_title %}{% endblock %}</title>
+        <link rel="shortcut icon" href="{% static "mdfserver/images/favicon.ico" %}" type="image/x-icon">
+        <link rel="icon" href="{% static "mdfserver/images/favicon.ico" %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static "mdfserver/css/bootstrap.css" %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static "mdfserver/css/custom_style.css" %}" type="text/css"/>
+{#        <link rel="stylesheet" href="{% static "mdfserver/css/mobile_style.css" %}" type="text/css" id="mobilecss"/>#}
+    </head>
+    <body>
+        <div id="page-header">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-inner">
+                    <div class="center_header">
+                        <div id="title_logo">
+                            <a id="home_linker" href="{% url 'index' %}">
+                                <img id="iutah_logo" src="{% static "mdfserver/images/common/iutah_logo.png" %}" alt="iUtah Logo"/>
+                                <h1 id="main_title">Modeling and Data Federation</h1>
+                                <h4 id="second_title">innovative Urban Transitions and Aridregion Hydro-sustainability</h4>
+                            </a>
+                        </div>
+
+                        <div class="container">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown" href="/mdf/Development/">Development<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li><a href="/mdf/Development/data_management/">Sensor Data Management</a></li>
+                                        <li><a href="/mdf/Development/Software_Development/">Software Development</a></li>
+                                        <li><a href="/mdf/Development/Hardware_Development/">Hardware Development</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown">Data<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li><a href="/mdf/Data/Data_Policy/">Data Policy and Publication</a></li>
+                                        <li><a href="http://repository.iutahepscor.org">Dataset Repository</a></li>
+                                        <li><a href="/mdf/Data/household_survey/">Household Survey</a></li>
+                                        <li><a href="/mdf/Data/Gamut_Network/">Gamut Network Overview</a></li>
+                                        <li><a href="/mdf/Data/Logan_River/">Logan River</a></li>
+                                        <li><a href="/mdf/Data/Provo_River/">Provo River</a></li>
+                                        <li><a href="/mdf/Data/Red_Butte/">Red Butte Creek</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown">About<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li><a href="/mdf/About/Documentation/">Documentation</a></li>
+                                        <li><a href="/mdf/About/Training_Materials/">Training Materials</a></li>
+                                        <li><a href="/mdf/About/Personnel/">Personnel</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div id="spacer">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer style="height: 220px" class="navbar-inner">
+            <div class="center_header">
+                {% block footer_links %}
+
+                {% endblock %}
+                <div id="footer-left-image">
+                    <a href="http://utepscor.org/" target="_blank"><img
+                            src="{% static "mdfserver/images/common/epscor_logo.jpg" %}" alt="Utah EPSCoR"
+                            width="156"
+                            height="73"></a>
+                </div>
+                <div id="footer-text">
+                    <p>This project is funded through <a
+                            href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1208732"
+                            target="_blank">EPS - 1208732</a>. Any opinions, findings, and
+                        conclusions or recommendations expressed in this material are those of the author(s) and do not
+                        necessarily reflect the views of the National Science Foundation.</p>
+                </div>
+                <aside id="footer-right-image">
+                    <a href="http://www.nsf.gov/div/index.jsp?div=EPSC" target="_blank">
+                        <img src="{% static "mdfserver/images/common/nsf1.png" %}" alt="National Science Foundation" width="80"
+                             height="80">
+                    </a>
+                </aside>
+            </div>
+        </footer>
+
+
+    {% block scripts %}
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="{% static "mdfserver/js/bootstrap.js" %}"></script>
+        <script src="{% static "mdfserver/js/dropdown-hover.js" %}"></script>
+        <script src="{% static "mdfserver/js/code.js" %}"></script>
+        <script src="{% static "mdfserver/js/modal_custom.js" %}"></script>
+    {% endblock %}
+
+    </body>
+</html>

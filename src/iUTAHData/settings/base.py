@@ -9,22 +9,32 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import json
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+# Loads settings configuration data from settings.json file
+data = {}
+try:
+    with open(os.path.join(BASE_DIR, 'settings', 'settings.json')) as data_file:
+        data = json.load(data_file)
+except IOError:
+    print("You need to setup the settings data file (see instructions in base.py file.)")
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+e0s9c#(oe-wi2*%dxl53eqcb+7&5w3r04-#f3f+cl-2f3#uk%'
+try:
+    SECRET_KEY = data["secret_key"]
+except KeyError:
+    print("The secret key is required in the settings.json file.")
+    exit(1)
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,18 +43,37 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mdfserver',
     'tinymce',
-)
+]
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'iUTAHData.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        ,
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = 'iUTAHData.wsgi.application'
 
@@ -52,12 +81,37 @@ WSGI_APPLICATION = 'iUTAHData.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, os.pardir, os.pardir, 'db.sqlite3'),
+DATABASES = {}
+for database in data['databases']:
+    DATABASES[database['name']] = {
+        'ENGINE': database['engine'],
+        'NAME': database['schema'],
+        'USER': database['user'] if 'user' in database else '',
+        'PASSWORD': database['password'] if 'password' in database else '',
+        'HOST': database['host'] if 'host' in database else '',
+        'PORT': database['port'] if 'port' in database else '',
+        'OPTIONS': database['options'] if 'options' in database else {},
+        'TEST': database['test'] if 'test' in database else {},
     }
-}
+
+    # Password validation
+    # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
+
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        # {
+        #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        # },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        # {
+        #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        # },
+    ]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

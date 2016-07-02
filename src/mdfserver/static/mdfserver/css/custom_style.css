@@ -340,15 +340,15 @@ article, aside, figure, footer, header, hgroup, nav, section {
 }
 
 .column_left {
-    width: 350px;
+    width: 380px;
     float: left;
+    border-right: 1px dotted lightblue;
+    padding-right: 30px;
 }
 
 .column_right {
-    width: 460px;
+    width: 425px;
     float: right;
-    border-left: 1px dotted lightblue;
-    padding-left: 30px;
 }
 
 body {
