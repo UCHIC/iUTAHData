@@ -985,6 +985,22 @@ img.thumbnail {
     margin-bottom: 10px;
 }
 
+.centeredImage {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centeredImage img {
+    display: block;
+    padding: 3px;
+    border: 1px solid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
 .leftCollagePanel img {
     max-width: 354px !important;
 }

@@ -24,6 +24,10 @@ class DataManagementView(TemplateView):
     template_name = 'mdfserver/development/data_management.html'
 
 
+class SoftwareDevelopmentView(TemplateView):
+    template_name = 'mdfserver/development/software_development.html'
+
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':
