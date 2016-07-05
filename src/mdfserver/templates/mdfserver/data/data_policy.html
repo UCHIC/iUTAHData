@@ -1,0 +1,59 @@
+{% extends 'mdfserver/base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Data Policy and Publication{% endblock %}
+
+{% block content %}
+    <div id="site_content">
+        <h1>Data Policy and Publication</h1>
+        <div class="region region-content">
+            <h2>Data Policy</h2>
+            <p>To define procedures and timeframes for publishing and sharing data, the CI Team has worked with the
+                iUTAH leadership to develop and implement a data policy for all datasets developed as part of or
+                supported by iUTAH. In general, iUTAH is committed to an open data policy to maximize the impact and
+                broad use of datasets collected within iUTAH facilities and by iUTAH research teams. The Data Policy
+                specifies a data typology and time frames for data and metadata submission and release. The Data Policy
+                also calls for the submission of a Data Collection Plan for all data collection and creation efforts
+                supported by iUTAH. The iUTAH Data Policy can be found <a
+                        href="{% static 'mdfserver/documents/iUTAH_Data_Policy_V1.6_12-8-2014.pdf' %}"
+                        target="_blank">here</a>.</p>
+            <h2>Data Publication System</h2>
+            <p>The iUTAH MDF is developing tools to assist iUTAH participants in discovering, visualizing, and accessing
+                data in which they are interested. Some types of iUTAH data (e.g., GAMUT data) are being published using
+                specialized applications and tools. However, most investigator datasets will be submitted and published
+                using the <a href="http://repository.iutahepscor.org/">iUTAH Data Publication System</a>. This system
+                permits the simultaneous submission and publication of data and metadata with functionality for search
+                and discovery. The system facilitates storage, archival, and curation of important iUTAH datasets. Click
+                <a href="http://repository.iutahepscor.org/">here</a> to submit a dataset or to view and access
+                submitted resources.</p>
+            <h2>Data Collection Plans</h2>
+            <p>For all data creation efforts executed with any funding from iUTAH (salary, travel, sampling, equipment
+                purchase, etc.), a brief plan for data collection should be submitted to the Data Policy Committee prior
+                to the funding of data collection/creation. The Data Collection Plan should include the following
+                information:</p>
+            <ol style="margin-left: 5em; margin-top: -22px;">
+                <li>Identification of the types of data to be created (using the data typology).</li>
+                <li>A brief description of the methods that will be used to create the data.</li>
+                <li>Identification of the data formats that will be used to store the data.</li>
+                <li>A brief description of the data to be created (e.g., what are the final products that will be
+                    uploaded to the iUTAH MDF for publication?).
+                </li>
+                <li>A description of who will have access to the data during data collection and how the data will be
+                    made broadly available after completion and publication.
+                </li>
+            </ol>
+            <p>For more information about data typology and timing of metadata and data submission, please refer to the
+                iUTAH Data Policy Document. Here is a link a <a
+                        href="{% static 'mdfserver/documents/iUTAH_Data_Collection_Plan_TEMPLATE.docx' %}" target="_blank">blank
+                    Data Collection Plan</a> template. Submit data collection plans to <a
+                        href="mailto:amber.jones@usu.edu">amber.jones@usu.edu</a>.</p>
+            <h2>Data Policy Committee</h2>
+            <p>The iUTAH Data Policy was developed by the CI Team in conjunction with the iUTAH Data Policy Committee
+                and approved by the iUTAH Management and Leadership Teams. Consisting of faculty, staff, and student
+                members representing the iUTAH research groups, the Data Policy Committee advises the CI Team on
+                prioritizing data products to include in the iUTAH MDF and advocates the implementation of iUTAH data
+                policies and practices. In addition, the Data Policy Committee reviews and approves Data Collection
+                Plans submitted by iUTAH researchers.</p>
+        </div>
+    </div>
+{% endblock %}
