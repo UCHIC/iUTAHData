@@ -20,6 +20,9 @@ class DevelopmentView(TemplateView):
     template_name = 'mdfserver/development/development.html'
 
 
+class DataManagementView(TemplateView):
+    template_name = 'mdfserver/development/data_management.html'
+
 
 # Getting dynamic content when
 # def deserializeJSON(database):

@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 from mdfserver import views
-from mdfserver.views import HomeView, DevelopmentView
+from mdfserver.views import HomeView, DevelopmentView, DataManagementView
 
 admin.autodiscover()
 
@@ -12,6 +12,8 @@ BASE_URL = settings.SITE_URL[1:]
 urlpatterns = [
     url(r'^' + BASE_URL + '$', HomeView.as_view(), name='index'),
     url(r'^' + BASE_URL + 'Development/$', DevelopmentView.as_view(), name='development'),
+    url(r'^' + BASE_URL + 'Development/data_management/$', DataManagementView.as_view(), name='data_management'),
+
 
     # url(r'^' + BASE_URL + 'admin/', include(admin.site.urls)),
     # # url(r'^' + BASE_URL, include('mdfserver.urls')),

@@ -27,9 +27,9 @@
                         <div class="container">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown" href="/mdf/Development/">Development<b class="caret"></b></a>
+                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'development' %}">Development<b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <li><a href="/mdf/Development/data_management/">Sensor Data Management</a></li>
+                                        <li><a href="{% url 'data_management' %}">Sensor Data Management</a></li>
                                         <li><a href="/mdf/Development/Software_Development/">Software Development</a></li>
                                         <li><a href="/mdf/Development/Hardware_Development/">Hardware Development</a></li>
                                     </ul>

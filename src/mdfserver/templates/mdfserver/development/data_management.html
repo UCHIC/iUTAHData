@@ -1,0 +1,173 @@
+{% extends 'mdfserver/base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}GAMUT Sensor Data Workflow{% endblock %}
+
+{% block content %}
+    <div id="site_content">
+        <div id="content">
+            <h1>GAMUT Sensor Data Workflow</h1>
+            <div class="region region-content">
+                <div id="block-system-main" class="block block-system">
+                    <div class="content">
+                        <div id="node-9" class="node node-page clearfix">
+                            <div class="content">
+                                <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                                    <div class="field-items">
+                                        <div class="field-item even">
+                                            <div id="gamut_image"><img id="data_flow"
+                                                                       src="{% static 'mdfserver/images/development/GAMUTDataFlow.png' %}"
+                                                                       alt="GAMMUT Data Flow" usemap="#gamut_flow"/>
+                                                <map name="gamut_flow">
+                                                    <area title="Logan River" shape="circle" coords="118,155,57"
+                                                          href="/mdf/Data/Logan_River/" alt="Logan River"/>
+
+                                                    <area title="Red Butte Creek" shape="circle" coords="118,287,57"
+                                                          href="/mdf/Data/Red_Butte/" alt="Red Butte Creekr"/>
+
+                                                    <area title="Provo River" shape="circle" coords="118,422,57"
+                                                          href="/mdf/Data/Provo_River/" alt="Provo River"/>
+
+                                                    <area title="Logan ODM DB" shape="rect" coords="492,136,564,202"
+                                                          href="/tsa/?network=Logan%20River" alt="Logan ODM DB"/>
+
+                                                    <area title="Red Butte ODM DB" shape="rect" coords="492,209,564,272"
+                                                          href="/tsa/?network=Red%20Butte%20Creek"
+                                                          alt="Red Butte ODM DB"/>
+
+                                                    <area title="Provo ODM DB" shape="rect" coords="492,287,564,349"
+                                                          href="/tsa/?network=Provo%20River" alt="Provo ODM DB"/>
+
+                                                    <area title="Time Series Analyst" shape="rect"
+                                                          coords="632,134,766,223" href="/tsa/"
+                                                          alt="Time Series Analyst"/>
+
+                                                    <area title="Time Series Display" shape="rect"
+                                                          coords="632,231,766,333"
+                                                          href="/tsa/?sitecode=PR_CH_AA&amp;variablecode=ODO_Sat&amp;view=visualization&amp;plot=true"
+                                                          alt="Time Series Display"/>
+
+                                                    <area title="Data Publication" shape="rect" coords="654,343,745,450"
+                                                          href="http://repository.iutahepscor.org/"
+                                                          alt="Data Publication"/>
+
+                                                    <area title="Water One Flow" shape="rect" coords="654,458,745,531"
+                                                          href="#" alt="Water One Flow"/>
+
+                                                    <area title="ODM Tools Python" shape="rect" coords="465,431,599,525"
+                                                          href="https://github.com/UCHIC/ODMToolsPython"
+                                                          alt="ODM Tools Python"/>
+                                                </map>
+                                            </div>
+                                            <p>This is a workflow illustrating the steps in the flow of GAMUT data and
+                                                the CI tools deployed to support it. The workflow ensures that data are
+                                                continuously ingested with essential metadata. It also addresses the
+                                                challenges related to tracking physical infrastructure, managing data
+                                                streaming from multiple watersheds, and data quality assurance and
+                                                quality control (QA/QC). A detailed description of the workflow can be
+                                                found <a
+                                                        href="{% static 'mdfserver/documents/iEMSs_iUTAH.pdf' %}">here</a>.
+                                            </p>
+                                            <h2>1. Monitoring Site Design and Communications</h2>
+                                            <p>The suite of sensors at each site are connected to a datalogger, which
+                                                provides programming logic to operate the site and onsite data storage.
+                                                A single connected server enables automated communication, scheduled
+                                                download of data, functionality to send new programs and instructions to
+                                                the site, and a variety of communication and data collection diagnostic
+                                                utilities.</p>
+                                            <h2>2. Server Infrastructure</h2>
+                                            <p>The GAMUT data workflow is spread across three virtual servers:</p>
+                                            <ul>
+                                                <li>A server running Campbell Scientific&rsquo;s Loggernet software
+                                                    that manages communication with each site.
+                                                </li>
+                                                <li>A server running Microsoft SQL Server hosts the operational
+                                                    databases into which the streaming sensor data are loaded.
+                                                </li>
+                                                <li>A web server on which several applications are hosted for
+                                                    sharing GAMUT data on the Internet.
+                                                </li>
+                                            </ul>
+                                            <h2>3. Streaming Data Loading</h2>
+                                            <p>Data are downloaded as text files from each of the monitoring sites and
+                                                then the Streaming Data Loader, which is installed on the Loggernet
+                                                server, is used to load the data into Observations Data Model (ODM)
+                                                databases (one for each watershed), housed on the Microsoft SQL Server.
+                                                The Streaming Data Loader and the ODM databases are components of the
+                                                Consortium of Universities for the Advancement of Hydrologic Science,
+                                                Inc. (CUAHSI) <a href="http://his.cuahsi.org/">Hydrologic Information
+                                                    System (HIS)</a> .</p>
+                                            <h2>4. Operational Databases and Data Quality Assurance</h2>
+                                            <p>In addition to the field protocols specified in the <a
+                                                    href="{% static 'mdfserver/documents/GAMUTQAQCVersion1_2.pdf' %}">GAMUT
+                                                QA/QC Plan</a> (e.g., site visits, calibrations, maintenance, etc.), we
+                                                have developed automated data checks as stored procedures on the
+                                                databases. New data are screened for battery voltages below acceptable
+                                                thresholds, values that are outside acceptable ranges, values that are
+                                                persistent, etc. When problematic conditions are detected, email alerts
+                                                notify watershed technicians so that they can investigate.</p>
+                                            <h2>5. Data Quality Control</h2>
+                                            <p>ODM Tools Python is an open source software application that enables the
+                                                watershed technicians to perform quality control edits on the data
+                                                stored in the ODM database. Features include the export of data series
+                                                and associated metadata, plotting and summarizing multiple data series,
+                                                and the recording of quality control edits performed on data series
+                                                through an integrated Python script editor and console. This important
+                                                functionality moves raw data to quality controlled products while
+                                                capturing information about transformations to ensure that the full
+                                                provenance of the data is recorded. ODM Tools Python is available at <a
+                                                        href="https://github.com/UCHIC/ODMToolsPython">https://github.com/UCHIC/ODMToolsPython.</a>
+                                            </p>
+                                            <h2>6. Backups</h2>
+                                            <p>The GAMUT data management workflow contains multiple levels of
+                                                backups.</p>
+                                            <ul>
+                                                <li>Storage on the datalogger at each monitoring site ensures that
+                                                    if the centralized data management system goes offline, data
+                                                    collection will continue uninterrupted.
+                                                </li>
+                                                <li>The Loggernet network is backed up regularly using the built-in
+                                                    backup utility.
+                                                </li>
+                                                <li>The individual text files downloaded from each site are
+                                                    regularly archived ensuring that the original data files will
+                                                    always be available exactly as they were collected.
+                                                </li>
+                                                <li>The operational SQL Server databases have regular file-based
+                                                    backups.
+                                                </li>
+                                                <li>Each of the virtual servers on which the system runs are
+                                                    scheduled for backups using the capabilities of the
+                                                    virtualization software ensuring continuity if the physical
+                                                    hardware were to fail.
+                                                </li>
+                                            </ul>
+                                            <h2>7. Data Sharing on the Internet</h2>
+                                            <p>The data stored in the databases are shared on the Internet using
+                                                multiple mechanisms. The data are published using the CUAHSI HIS
+                                                WaterOneFlow web services, which can be accessed via web service
+                                                requests. We developed a web-based interface including the ability to
+                                                browse available data series, an interactive map, and a variety of plot
+                                                types and descriptive statistics. The web-based data visualization is
+                                                found at <a href="/tsa/">http://data.iutahepscor.org/tsa/.</a></p>
+                                            <h2>8. Equipment Management</h2>
+                                            <p>We developed a database for storing information on the inventory of data
+                                                collection equipment (e.g., sensors, dataloggers, etc.), deployments of
+                                                the equipment, and records of field activities and service events. This
+                                                database is linked to a web application interface enabling the watershed
+                                                technicians to enter information about the equipment, where it is
+                                                deployed, and field activities performed on the equipment. The web
+                                                application is available via GitHUB: <a
+                                                        href="https://github.com/UCHIC/ODM2Sensor/">https://github.com/UCHIC/ODM2Sensor/.</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
