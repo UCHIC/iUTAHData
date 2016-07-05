@@ -36,6 +36,8 @@ class DataPolicyView(TemplateView):
     template_name = 'mdfserver/data/data_policy.html'
 
 
+class HouseholdSurveyView(TemplateView):
+    template_name = 'mdfserver/data/household_survey.html'
 
 
 # Getting dynamic content when

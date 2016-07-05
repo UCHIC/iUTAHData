@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from mdfserver import views
 from mdfserver.views import HomeView, DevelopmentView, DataManagementView, SoftwareDevelopmentView, \
-    HardwareDevelopmentView, DataPolicyView
+    HardwareDevelopmentView, DataPolicyView, HouseholdSurveyView
 
 admin.autodiscover()
 
@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^' + BASE_URL + 'Development/Hardware_Development/$', HardwareDevelopmentView.as_view(), name='hardware_development'),
 
     url(r'^' + BASE_URL + 'Data/Data_Policy/$', DataPolicyView.as_view(), name='data_policy'),
+    url(r'^' + BASE_URL + 'Data/household_survey/$', HouseholdSurveyView.as_view(), name='household_survey'),
 
 
     # url(r'^' + BASE_URL + 'admin/', include(admin.site.urls)),
