@@ -40,6 +40,10 @@ class HouseholdSurveyView(TemplateView):
     template_name = 'mdfserver/data/household_survey.html'
 
 
+class GamutNetworkView(TemplateView):
+    template_name = 'mdfserver/data/gamut_network.html'
+
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':

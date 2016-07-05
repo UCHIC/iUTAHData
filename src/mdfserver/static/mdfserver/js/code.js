@@ -52,15 +52,6 @@ jQuery(document).ready(function ($) {
     $('#data-watershed-gallery-modal').carousel({
          interval: false
        });
-
-    //Adding Dataset Repository Link
-    $('.nav>li>a:contains("Data")')
-        .parent()
-        .find('ul')
-        .children().eq(0).after('<li><a href="http://repository.iutahepscor.org">Dataset Repository</a></li>');
-    //end adding Dataset Link
-
-
 });
 
 function site_selected(element)
