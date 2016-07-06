@@ -76,6 +76,10 @@ class TrainingMaterialsView(TemplateView):
     template_name = 'mdfserver/about/training_materials.html'
 
 
+class PersonnelView(TemplateView):
+    template_name = 'mdfserver/about/personnel.html'
+
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':
