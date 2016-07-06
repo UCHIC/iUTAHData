@@ -1,12 +1,14 @@
-{% extends "mdfserver/index.html" %}
+{% extends "mdfserver/base.html" %}
 {% load static %}
-{% block unique_content %}
-    <div class="container" id="site_select"><select id="st_select" onchange="javascript:site_selected(this)">
-        <option value="" disabled="disabled" selected="selected">See other sites</option>
-        {% for nav_site in db_sites %}
-            <option value="{{ nav_site }}">{{ nav_site }}</option>
-        {% endfor %}
-    </select></div>
+{% block content %}
+    <div class="container" id="site_select">
+        <select id="st_select" onchange="javascript:site_selected(this)">
+            <option value="" disabled="disabled" selected="selected">See other sites</option>
+            {% for nav_site in db_sites %}
+                <option value="{{ nav_site }}">{{ nav_site }}</option>
+            {% endfor %}
+        </select>
+    </div>
     <!-- <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3> -->
     <div id="map-canvas"></div>
     <h1 style="padding-left: 15px">
@@ -69,8 +71,6 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal_image" id="modal_contents">
-                        <!--<img class="img-responsive" src="{% static "mdfserver/img/../../static/mdfserver/images/RB_ARBR_C_120717_1.jpg" %}" alt="">-->
-
                         <div id="data-watershed-gallery-modal" class="carousel slide watershed-image-gallery">
                             <div id="carousel_displayer" class="carousel-inner" data-toggle="modal"
                                  data-target=".bs-example-modal-lg">
@@ -78,44 +78,21 @@
                                     <div class="item active">
                                         <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
                                              class="display img-responsive"
-                                             src="{% static "mdfserver/img/../../static/mdfserver/images/common/iutah_logo.png" %}" alt="">
+                                             src="{% static "mdfserver/images/common/iutah_logo.png" %}" alt="">
 
                                         <p>No images available for this site, sorry.</p>
                                     </div>
                                 {% endif %}
                                 <div class="item active">
                                     <img class="display img-responsive"
-                                         src="
-
-
-
-
-
-
-
-
-
-
-
-                                                 {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
+                                         src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
                                          alt="">
                                 </div>
                                 {% for picture in pics %}
                                     {% if forloop.counter0 != 0 %}
                                         <div class="item">
                                             <img class="display img-responsive"
-                                                 src="
-
-
-
-
-
-
-
-
-
-
-                                                         {% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
+                                                 src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
                                                  alt="">
                                         </div>
                                     {% endif %}
@@ -154,7 +131,7 @@
                 <div class="item active">
                     <img style="width: 405px; height: 166px; margin-top: 79px; min-height: 122px;"
                          class="display img-responsive"
-                         src="{% static "mdfserver/img/../../static/mdfserver/images/common/iutah_logo.png" %}" alt="">
+                         src="{% static "mdfserver/images/common/iutah_logo.png" %}" alt="">
 
                     <p>{{ site }} no pictures for {{ site }}: {{ pics|length }}</p>
 
@@ -164,7 +141,7 @@
             {% for picture in pics %}
                 <div class="item">
                     <img class="display img-responsive"
-                         src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}" alt="">
+                         src="{% static 'mdfserver/img/' %}{{ site }}/{{ river_data.info.code }}/{{ picture }}" alt="">
                 </div>
             {% endfor %}
         </div>
@@ -470,6 +447,8 @@
             </tr>
         </table>
     </div>
+
+    <input id="txtStaticUrl" type="hidden" value="{{ static_url }}">
 
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGtObe6Ic1FeiDvC9Oxt3oWc-HWk8wuTk&sensor=false">

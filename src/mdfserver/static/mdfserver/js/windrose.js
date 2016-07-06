@@ -54,7 +54,7 @@ function drawWindRose($) {//drawWindRose() has to complete before createWindRose
     var site = filenames[database];
 
     //categorize data
-    $.getJSON("/mdf/static/mdfserver/json/" + site + "Site.json").done(function (data) {
+    $.getJSON($('#txtStaticUrl').val() + "mdfserver/json/" + site + "Site.json").done(function (data) {
         var captureRegex = new RegExp(database + "/(.[^/]*)/", "g");
         d = captureRegex.exec(document.URL)[1];
 

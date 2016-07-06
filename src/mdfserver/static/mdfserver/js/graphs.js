@@ -33,7 +33,7 @@ function drawSeries() {
     //console.log("site: " + site + "\n");
 
 
-    $.getJSON("/mdf/static/mdfserver/json/" + site + "Site.json").done(function (data) {
+    $.getJSON($('#txtStaticUrl').val() + "mdfserver/json/" + site + "Site.json").done(function (data) {
         var graphCounter = -1;
         var captureRegex = new RegExp(database + "/(.[^/]*)/", "g");
         d = captureRegex.exec(document.URL)[1];

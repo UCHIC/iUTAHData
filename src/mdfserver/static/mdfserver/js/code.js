@@ -82,7 +82,6 @@ function raw_data_redirect(site)
         "PR_BD_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-beaver-divide-climate-site-pr-bd-c",
         "PR_TL_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-trial-lake-climate-site-pr-tl-c",
         "PR_ST_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-soapstone-climate-site-pr-st-c",
-        "PR_TL_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-trial-lake-climate-site-pr-tl-c",
 
         //Red Butte Creek
         "RB_ARBR_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-advanced-aquatic-site-rb-arbr-aa",
