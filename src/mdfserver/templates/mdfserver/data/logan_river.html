@@ -1,0 +1,237 @@
+{% extends 'mdfserver/base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Logan River{% endblock %}
+
+{% block content %}
+    <div id="site_content">
+        <div id="content">
+            <h1>Logan River</h1>
+            <div class="region region-content">
+                <div id="block-system-main" class="block block-system">
+                    <div class="content">
+                        <div id="node-20" class="node node-article clearfix">
+                            <div class="content">
+                                <div id="the_modal" class="modal fade bs-example-modal-lg">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div id="modal_contents" class="modal_image">
+                                                <div id="data-watershed-gallery-modal"
+                                                     class="carousel slide watershed-image-gallery">
+                                                    <div id="carousel_displayer" class="carousel-inner"
+                                                         style="border: 1px solid #404040;" data-toggle="modal"
+                                                         data-target=".bs-example-modal-lg">
+                                                        <div class="item active">
+                                                            <img class="display img-responsive" src="{% static 'mdfserver/images/data/logan_river/logan_river_1.jpg' %}"/>
+                                                        </div>
+                                                        <div class="item">
+                                                            <img class="display img-responsive" src="{% static 'mdfserver/images/data/logan_river/logan_river_2.jpg' %}">
+                                                        </div>
+                                                        <div class="item">
+                                                            <img class="display img-responsive" src="{% static 'mdfserver/images/data/logan_river/logan_river_3.jpg' %}">
+                                                        </div>
+                                                        <div class="item">
+                                                            <img class="display img-responsive" src="{% static 'mdfserver/images/data/logan_river/logan_river_4.jpg' %}">
+                                                        </div>
+                                                        <div class="item">
+                                                            <img class="display img-responsive" src="{% static 'mdfserver/images/data/logan_river/logan_river_5.jpg' %}">
+                                                        </div>
+                                                    </div>
+                                                    <a class="carousel-control left"
+                                                                      href="#data-watershed-gallery-modal"
+                                                                      data-slide="prev"> <span
+                                                        class="icon-prev">&lsaquo;</span> </a> <a
+                                                        class="carousel-control right"
+                                                        href="#data-watershed-gallery-modal" data-slide="next"> <span
+                                                        class="icon-next">&rsaquo;</span> </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                                    <div class="field-items">
+                                        <div class="field-item even">
+                                            <div class="leftPanel">
+                                                <div class="watershed-info">
+                                                    <div id="site-carousels"
+                                                         class="carousel slide watershed-image-gallery">
+                                                        <ol class="carousel-indicators">
+                                                            <li class="active" style="color: white;"
+                                                                data-target="#data-watershed-gallery" data-slide-to="0">
+                                                                .
+                                                            </li>
+                                                            <li style="color: white;"
+                                                                data-target="#data-watershed-gallery" data-slide-to="1">
+                                                                .
+                                                            </li>
+                                                            <li style="color: white;"
+                                                                data-target="#data-watershed-gallery" data-slide-to="2">
+                                                                .
+                                                            </li>
+                                                            <li style="color: white;"
+                                                                data-target="#data-watershed-gallery" data-slide-to="3">
+                                                                .
+                                                            </li>
+                                                            <li style="color: white;"
+                                                                data-target="#data-watershed-gallery" data-slide-to="4">
+                                                                .
+                                                            </li>
+                                                        </ol>
+                                                        <div class="carousel-inner" onclick="changeModal();"
+                                                             data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <div class="item active"><img class="display img-responsive"
+                                                                                          style="border: 1px solid #404040;"
+                                                                                          src="{% static 'mdfserver/images/data/logan_river/logan_river_1.jpg' %}"
+                                                                                          alt=""/></div>
+                                                            <div class="item"><img class="display img-responsive"
+                                                                                   style="border: 1px solid #404040;"
+                                                                                   src="{% static 'mdfserver/images/data/logan_river/logan_river_2.jpg' %}"
+                                                                                   alt=""/></div>
+                                                            <div class="item"><img class="display img-responsive"
+                                                                                   style="border: 1px solid #404040;"
+                                                                                   src="{% static 'mdfserver/images/data/logan_river/logan_river_3.jpg' %}"
+                                                                                   alt=""/></div>
+                                                            <div class="item"><img class="display img-responsive"
+                                                                                   style="border: 1px solid #404040;"
+                                                                                   src="{% static 'mdfserver/images/data/logan_river/logan_river_4.jpg' %}"
+                                                                                   alt=""/></div>
+                                                            <div class="item"><img class="display img-responsive"
+                                                                                   style="border: 1px solid #404040;"
+                                                                                   src="{% static 'mdfserver/images/data/logan_river/logan_river_5.jpg' %}"
+                                                                                   alt=""/></div>
+                                                        </div>
+                                                        <div class="carousel-caption"
+                                                             style="height: 19px; padding: 7px;">
+                                                            <p style="color: #bbb; padding-bottom: 0;">Multiple
+                                                                instruments are used to collect data.
+                                                            </p>
+                                                        </div>
+                                                        <a class="carousel-control left" href="#site-carousels"
+                                                           data-slide="prev"> <span class="icon-prev">&lsaquo;</span>
+                                                        </a> <a class="carousel-control right" href="#site-carousels"
+                                                                data-slide="next"> <span
+                                                            class="icon-next">&rsaquo;</span> </a></div>
+                                                    <p>The Logan River watershed is located in the heart of the Bear
+                                                        River range with headwaters near the Utah-Idaho border. The
+                                                        river flows southwest through Logan Canyon - a landscape
+                                                        dominated by formerly glaciated peaks, limestone cliffs, and the
+                                                        occasional sinkhole. The underlying bedrock has numerous caves
+                                                        that create natural springs that contribute to the river&rsquo;s
+                                                        year-round discharge. Near the canyon&rsquo;s mouth, the river
+                                                        is dammed in three locations (First, Second, and Third dams) for
+                                                        hydroelectric generation. After exiting the mountains, the river
+                                                        flows west through Cache Valley and is impacted by a mixture of
+                                                        agricultural and urban environments. The Logan River converges
+                                                        with the Little Bear River in central Cache Valley before
+                                                        flowing north to the main stem of the Bear River and Cutler
+                                                        Reservoir.</p>
+                                                </div>
+                                                <div class="monitoring-sites-table">
+                                                    <p class="disclaimer">The data presented here are provisional and
+                                                        subject to revision</p>
+                                                    <h3>Monitoring Sites: <span>Click on a site code to visualize and download data</span>
+                                                    </h3>
+                                                    <h3 class="site_heading">Climate Sites</h3>
+                                                    <table class="plain-table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Site Code</th>
+                                                            <th>Site Name</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="/mdf/river_info/iUTAH_Logan_OD/LR_FB_C">LR_FB_C</a>
+                                                            </td>
+                                                            <td>Franklin Basin Climate</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="/mdf/river_info/iUTAH_Logan_OD/LR_GC_C">LR_GC_C</a>
+                                                            </td>
+                                                            <td>Golf Course Climate</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="/mdf/river_info/iUTAH_Logan_OD/LR_TG_C">LR_TG_C</a>
+                                                            </td>
+                                                            <td>Tony Grove Climate</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="/mdf/river_info/iUTAH_Logan_OD/LR_TWDEF_C">LR_TWDEF_C</a>
+                                                            </td>
+                                                            <td>Experimental Forest Climate</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="/mdf/river_info/iUTAH_Logan_OD/LR_Wilkins_R">LR_Wilkins_R</a>
+                                                            </td>
+                                                            <td>Wilkins Repeater</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h3 class="site_heading">Aquatic Sites</h3>
+                                                    <table class="plain-table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Site Code</th>
+                                                            <th>Site Name</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td><a href="/mdf/river_info/iUTAH_Logan_OD/LR_Mendon_AA">LR_Mendon_AA</a>
+                                                            </td>
+                                                            <td>Logan River at Mendon Road (600 South) Aquatic</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="/mdf/river_info/iUTAH_Logan_OD/LR_MainStreet_BA">LR_MainStreet_BA</a>
+                                                            </td>
+                                                            <td>Logan River at the Main Street Bridge Aquatic</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="/mdf/river_info/iUTAH_Logan_OD/LR_WaterLab_AA">LR_WaterLab_AA</a>
+                                                            </td>
+                                                            <td>Logan River at the USU Water Lab Aquatic</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="/mdf/river_info/iUTAH_Logan_OD/LR_TG_BA">LR_TG_BA</a>
+                                                            </td>
+                                                            <td>Logan River near Tony Grove Aquatic</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="/mdf/river_info/iUTAH_Logan_OD/LR_FB_BA">LR_FB_BA</a>
+                                                            </td>
+                                                            <td>Logan River near Franklin Basin</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="rightPanel">
+                                                <div>
+                                                    <a href="/tsa/?network=Logan%20River" target="_blank">
+                                                        <img src="{% static 'mdfserver/images/data/tsa_map_sites.jpg' %}">
+                                                    </a>
+                                                </div>
+                                                <p>Visualize Logan River data</p>
+                                                <div>
+                                                    <a href="/LoganRiverWOF/" target="_blank">
+                                                        <img src="{% static 'mdfserver/images/data/watershed_web_services.jpg' %}">
+                                                    </a>
+                                                </div>
+                                                <p>Web Services for Logan River</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
