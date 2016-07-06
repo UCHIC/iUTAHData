@@ -1,0 +1,58 @@
+{% extends 'mdfserver/base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Cuestionarios en Español{% endblock %}
+
+{% block content %}
+    <div id="site_content">
+        <h1>VERSIONES DE LA LENGUA ESPAÑOLA</h1>
+        <div class="questionnaire-box box-1">
+            <h2 style="text-align: center;"><strong>CUESTIONARIOS DE CACHE VALLEY</strong></h2>
+            <p><img class="questionnaire-img" src="{% static 'mdfserver/images/data/questionnaires/cache_questionnaire_es.jpg' %}"></p>
+            <p>Vecindarios de Logan City</p>
+            <ul>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_BRIDGER_final.pdf">Bridger</a></li>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_CLIFFSIDE_final.pdf">Cliffside</a></li>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_DOWNTOWN_final.pdf">Downtown</a></li>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_GREEN_MEADOWS_final.pdf">Green Meadows</a></li>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_WILSON_final.pdf">Wilson</a></li>
+            </ul>
+            <p>Otros Vecindarios en Cache County</p>
+            <ul>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_NIBLEY_final.pdf">Nibley</a></li>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_NORTH_LOGAN_final.pdf">North Logan</a></li>
+                <li><a href="/mdf/reports/CACHE_HH_Survey_Spanish_SPRING_CREEK_final.pdf">Spring Creek (River Heights y
+                    Providence)</a></li>
+            </ul>
+        </div>
+        <div class="questionnaire-box box-2">
+            <h2 style="text-align: center;"><strong>CUESTIONARIOS DE SALT LAKE VALLEY</strong></h2>
+            <p><img class="questionnaire-img" src="{% static 'mdfserver/images/data/questionnaires/salt_lake_questionnaire_es.jpg' %}"></p>
+            <p>Vecindarios de Salt Lake City</p>
+            <ul>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_9thN9th_final.pdf">9<sup>th</sup> E &amp; 9<sup>th</sup>
+                    S</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_LIBERTY_WELLS_final.pdf">Liberty Wells</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_POPLAR_GROVE_final.pdf">Polar Grove</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_PEOPLES_FREEWAY_final.pdf">People's Freeway</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_WEST_HIGH_final.pdf">West High</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_YALECREST_final.pdf">Yalecrest</a></li>
+            </ul>
+            <p>Otros Vecindarios en Salt Lake County</p>
+            <ul>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_CANYON_RIM_final.pdf">Canyon Rim</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_MILLCREEK_final.pdf">Lower Millcreek</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_RIVERTON_final.pdf">Riverton</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_SOUTH_JORDAN_final.pdf">South Jordan</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_WEST_JORDAN_final.pdf">West Jordan</a></li>
+                <li><a href="/mdf/reports/SLC_HH_Survey_Spanish_WEST_VALLEY_CITY_final.pdf">West Valley City</a></li>
+            </ul>
+        </div>
+        <div class="questionnaire-box box-3">
+            <h2 style="text-align: center;"><strong>CUESTIONARIOS DE HEBER VALLEY</strong></h2>
+            <p><img class="questionnaire-img" src="{% static 'mdfserver/images/data/questionnaires/heber_questionnaire_es.jpg' %}"></p>
+            <p><a href="/mdf/reports/WASATCH_HH_Survey_Spanish_HEBER_final.pdf">Heber City</a></p>
+            <p><a href="/mdf/reports/WASATCH_HH_Survey_Spanish_MIDWAY_final.pdf">Midway City</a></p>
+        </div>
+    </div>
+{% endblock %}

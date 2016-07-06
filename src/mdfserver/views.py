@@ -55,6 +55,18 @@ class ProvoRiverView(TemplateView):
 class RedButteCreekView(TemplateView):
     template_name = 'mdfserver/data/red_butte_creek.html'
 
+
+class HouseHoldQuestionnairesView(TemplateView):
+    template_name = 'mdfserver/data/household_questionnaires.html'
+
+
+class HouseHoldQuestionnairesEnglishView(TemplateView):
+    template_name = 'mdfserver/data/household_questionnaires_en.html'
+
+
+class HouseHoldQuestionnairesSpanishView(TemplateView):
+    template_name = 'mdfserver/data/household_questionnaires_es.html'
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':

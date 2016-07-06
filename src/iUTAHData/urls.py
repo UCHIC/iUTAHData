@@ -5,7 +5,8 @@ from django.contrib import admin
 from mdfserver import views
 from mdfserver.views import HomeView, DevelopmentView, DataManagementView, SoftwareDevelopmentView, \
     HardwareDevelopmentView, DataPolicyView, HouseholdSurveyView, GamutNetworkView, LoganRiverView, ProvoRiverView, \
-    RedButteCreekView
+    RedButteCreekView, HouseHoldQuestionnairesView, HouseHoldQuestionnairesEnglishView, \
+    HouseHoldQuestionnairesSpanishView
 
 admin.autodiscover()
 
@@ -25,6 +26,9 @@ urlpatterns = [
     url(r'^' + BASE_URL + 'Data/Logan_River/$', LoganRiverView.as_view(), name='logan_river'),
     url(r'^' + BASE_URL + 'Data/Provo_River/$', ProvoRiverView.as_view(), name='provo_river'),
     url(r'^' + BASE_URL + 'Data/Red_Butte/$', RedButteCreekView.as_view(), name='red_butte_creek'),
+    url(r'^' + BASE_URL + 'Data/household_survey_instrument/$', HouseHoldQuestionnairesView.as_view(), name='household_questionnaries'),
+    url(r'^' + BASE_URL + 'Data/household_survey_instrument_English/$', HouseHoldQuestionnairesEnglishView.as_view(), name='household_questionnaires_en'),
+    url(r'^' + BASE_URL + 'Data/household_survey_instrument_Espanol/$', HouseHoldQuestionnairesSpanishView.as_view(), name='household_questionnaires_es'),
 
 
     # url(r'^' + BASE_URL + 'admin/', include(admin.site.urls)),
