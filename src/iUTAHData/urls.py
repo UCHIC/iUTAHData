@@ -6,7 +6,7 @@ from mdfserver import views
 from mdfserver.views import HomeView, DevelopmentView, DataManagementView, SoftwareDevelopmentView, \
     HardwareDevelopmentView, DataPolicyView, HouseholdSurveyView, GamutNetworkView, LoganRiverView, ProvoRiverView, \
     RedButteCreekView, HouseHoldQuestionnairesView, HouseHoldQuestionnairesEnglishView, \
-    HouseHoldQuestionnairesSpanishView
+    HouseHoldQuestionnairesSpanishView, DocumentationView
 
 admin.autodiscover()
 
@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^' + BASE_URL + 'Data/household_survey_instrument/$', HouseHoldQuestionnairesView.as_view(), name='household_questionnaries'),
     url(r'^' + BASE_URL + 'Data/household_survey_instrument_English/$', HouseHoldQuestionnairesEnglishView.as_view(), name='household_questionnaires_en'),
     url(r'^' + BASE_URL + 'Data/household_survey_instrument_Espanol/$', HouseHoldQuestionnairesSpanishView.as_view(), name='household_questionnaires_es'),
+
+    url(r'^' + BASE_URL + 'About/Documentation/$', DocumentationView.as_view(), name='documentation'),
 
 
     # url(r'^' + BASE_URL + 'admin/', include(admin.site.urls)),

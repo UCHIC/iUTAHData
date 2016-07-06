@@ -67,6 +67,10 @@ class HouseHoldQuestionnairesEnglishView(TemplateView):
 class HouseHoldQuestionnairesSpanishView(TemplateView):
     template_name = 'mdfserver/data/household_questionnaires_es.html'
 
+
+class DocumentationView(TemplateView):
+    template_name = 'mdfserver/about/documentation.html'
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':
