@@ -47,6 +47,11 @@ class GamutNetworkView(TemplateView):
 class LoganRiverView(TemplateView):
     template_name = 'mdfserver/data/logan_river.html'
 
+
+class ProvoRiverView(TemplateView):
+    template_name = 'mdfserver/data/provo_river.html'
+
+
 # Getting dynamic content when
 # def deserializeJSON(database):
 #     if database == 'iUTAH_Logan_OD':
