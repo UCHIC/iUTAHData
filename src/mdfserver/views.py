@@ -120,7 +120,7 @@ def river_dynamic(request, database, site_code):
     data_river = deserialize_json(database)
     pics = []
     counter = 1
-    while finders.find('mdfserver/img/' + database + '/' + site_code + '/Site' + str(counter) + '.jpg') is not None:
+    while finders.find('mdfserver/images/site_images/' + database + '/' + site_code + '/Site' + str(counter) + '.jpg') is not None:
         pics.append('Site' + str(counter) + '.jpg')
         counter += 1
 

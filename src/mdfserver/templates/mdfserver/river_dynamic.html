@@ -85,14 +85,14 @@
                                 {% endif %}
                                 <div class="item active">
                                     <img class="display img-responsive"
-                                         src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
+                                         src="{% static "mdfserver/images/site_images/" %}{{ site }}/{{ river_data.info.code }}/{{ pics.0 }}"
                                          alt="">
                                 </div>
                                 {% for picture in pics %}
                                     {% if forloop.counter0 != 0 %}
                                         <div class="item">
                                             <img class="display img-responsive"
-                                                 src="{% static "mdfserver/img/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
+                                                 src="{% static "mdfserver/images/site_images/" %}{{ site }}/{{ river_data.info.code }}/{{ picture }}"
                                                  alt="">
                                         </div>
                                     {% endif %}
@@ -141,7 +141,7 @@
             {% for picture in pics %}
                 <div class="item">
                     <img class="display img-responsive"
-                         src="{% static 'mdfserver/img/' %}{{ site }}/{{ river_data.info.code }}/{{ picture }}" alt="">
+                         src="{% static 'mdfserver/images/site_images/' %}{{ site }}/{{ river_data.info.code }}/{{ picture }}" alt="">
                 </div>
             {% endfor %}
         </div>
