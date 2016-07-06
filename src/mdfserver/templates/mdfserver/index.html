@@ -77,9 +77,9 @@
                                                         <strong>Site and Watershed Pages: </strong>
                                                         Dynamic content pages provide preview of current conditions and
                                                         sites in the iUTAH GAMUT network. <br>
-                                                        Check out sites located in the <a href="/mdf/Data/Logan_River/">Logan
-                                                        River</a>, <a href="/mdf/Data/Provo_River/">Provo River</a> and
-                                                        <a href="/mdf/Data/Red_Butte/">Red Butte Creek</a> watersheds.
+                                                        Check out sites located in the <a href="{% url 'logan_river' %}">Logan
+                                                        River</a>, <a href="{% url 'provo_river' %}">Provo River</a> and
+                                                        <a href="{% url 'red_butte_creek' %}">Red Butte Creek</a> watersheds.
                                                     </p>
 
 
@@ -104,7 +104,7 @@
                                                         wide audience and provides citations of data products results
                                                         from iUTAH research efforts. <strong style="font-size:0.93em;">Video
                                                             tutorials for using the repository are available <a
-                                                                    href="/mdf/About/Training_Materials/">here.</a></strong>
+                                                                    href="{% url 'training_materials' %}">here.</a></strong>
                                                     </p>
                                                 </section>
                                             </div>
@@ -133,16 +133,16 @@
         </div>
         <div class="linksbox">
             <ul>
-                <li><a href="/mdf/Data/Gamut_Network">GAMUT Data Overview</a></li>
+                <li><a href="{% url 'gamut_network' %}">GAMUT Data Overview</a></li>
                 <li><a href="http://data.iutahepscor.org/tsa/" target="_blank">GAMUT Data Viewer</a></li>
-                <li><a href="/mdf/Development/Software_Development">Software Development</a></li>
+                <li><a href="{% url 'software_development' %}">Software Development</a></li>
             </ul>
         </div>
         <div class="linksbox lastbox">
             <ul>
-                <li><a href="/mdf/About/Documentation">Documentation</a></li>
-                <li><a href="/mdf/About/Training_Materials">Training Materials</a></li>
-                <li><a href="/mdf/About/Personnel">Contact Us</a></li>
+                <li><a href="{% url 'documentation' %}">Documentation</a></li>
+                <li><a href="{% url 'training_materials' %}">Training Materials</a></li>
+                <li><a href="{% url 'personnel' %}">Contact Us</a></li>
             </ul>
         </div>
     </div>

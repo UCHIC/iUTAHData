@@ -20,31 +20,31 @@
                                                                        alt="GAMMUT Data Flow" usemap="#gamut_flow"/>
                                                 <map name="gamut_flow">
                                                     <area title="Logan River" shape="circle" coords="118,155,57"
-                                                          href="/mdf/Data/Logan_River/" alt="Logan River"/>
+                                                          href="{% url 'logan_river' %}" alt="Logan River"/>
 
                                                     <area title="Red Butte Creek" shape="circle" coords="118,287,57"
-                                                          href="/mdf/Data/Red_Butte/" alt="Red Butte Creekr"/>
+                                                          href="{% url 'red_butte_creek' %}" alt="Red Butte Creekr"/>
 
                                                     <area title="Provo River" shape="circle" coords="118,422,57"
-                                                          href="/mdf/Data/Provo_River/" alt="Provo River"/>
+                                                          href="{% url 'provo_river' %}" alt="Provo River"/>
 
                                                     <area title="Logan ODM DB" shape="rect" coords="492,136,564,202"
-                                                          href="/tsa/?network=Logan%20River" alt="Logan ODM DB"/>
+                                                          href="http://data.iutahepscor.org/tsa/?network=Logan%20River" alt="Logan ODM DB"/>
 
                                                     <area title="Red Butte ODM DB" shape="rect" coords="492,209,564,272"
-                                                          href="/tsa/?network=Red%20Butte%20Creek"
+                                                          href="http://data.iutahepscor.org/tsa/?network=Red%20Butte%20Creek"
                                                           alt="Red Butte ODM DB"/>
 
                                                     <area title="Provo ODM DB" shape="rect" coords="492,287,564,349"
-                                                          href="/tsa/?network=Provo%20River" alt="Provo ODM DB"/>
+                                                          href="http://data.iutahepscor.org/tsa/?network=Provo%20River" alt="Provo ODM DB"/>
 
                                                     <area title="Time Series Analyst" shape="rect"
-                                                          coords="632,134,766,223" href="/tsa/"
+                                                          coords="632,134,766,223" href="http://data.iutahepscor.org/tsa/"
                                                           alt="Time Series Analyst"/>
 
                                                     <area title="Time Series Display" shape="rect"
                                                           coords="632,231,766,333"
-                                                          href="/tsa/?sitecode=PR_CH_AA&amp;variablecode=ODO_Sat&amp;view=visualization&amp;plot=true"
+                                                          href="http://data.iutahepscor.org/tsa/?sitecode=PR_CH_AA&amp;variablecode=ODO_Sat&amp;view=visualization&amp;plot=true"
                                                           alt="Time Series Display"/>
 
                                                     <area title="Data Publication" shape="rect" coords="654,343,745,450"
@@ -149,7 +149,7 @@
                                                 requests. We developed a web-based interface including the ability to
                                                 browse available data series, an interactive map, and a variety of plot
                                                 types and descriptive statistics. The web-based data visualization is
-                                                found at <a href="/tsa/">http://data.iutahepscor.org/tsa/.</a></p>
+                                                found at <a href="http://data.iutahepscor.org/tsa/">http://data.iutahepscor.org/tsa/.</a></p>
                                             <h2>8. Equipment Management</h2>
                                             <p>We developed a database for storing information on the inventory of data
                                                 collection equipment (e.g., sensors, dataloggers, etc.), deployments of

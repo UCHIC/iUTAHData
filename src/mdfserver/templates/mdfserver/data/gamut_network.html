@@ -39,9 +39,9 @@
             <p>There are three watersheds with sites in the GAMUT Network. Click on the links to preview data and learn
                 more about each watershed.</p>
             <ul class="gamut_list">
-                <li><a href="/mdf/Data/Logan_River/">The Logan River</a></li>
-                <li><a href="/mdf/Data/Red_Butte/">Red Butte Creek</a></li>
-                <li><a href="/mdf/Data/Provo_River/">The Provo River</a></li>
+                <li><a href="{% url 'logan_river' %}">The Logan River</a></li>
+                <li><a href="{% url 'red_butte_creek' %}">Red Butte Creek</a></li>
+                <li><a href="{% url 'provo_river' %}">The Provo River</a></li>
             </ul>
             <h2>GAMUT Monitoring Sites</h2>
             <p>GAMUT includes state-of-the-art sensors at aquatic and terrestrial sites for real-time monitoring of
@@ -59,7 +59,7 @@
                         href="{% static 'mdfserver/documents/GAMUTDataFlow.pdf' %}">workflow</a>. This allows iUTAH&rsquo;s
                 research teams to interact with the data to better understand Utah&rsquo;s water cycle. Access to
                 real-time sensor data from the GAMUT network is available to researchers, educators, and other
-                stakeholders via <a href="/tsa/">online visualization</a>.</p>
+                stakeholders via <a href="http://data.iutahepscor.org/tsa/">online visualization</a>.</p>
             <div class="afterText">
                 <div class="imgWrapper">
                     <img src="{% static 'mdfserver/images/data/tsa_map.jpg' %}" alt="Time Series Analyst - Map View"/>
