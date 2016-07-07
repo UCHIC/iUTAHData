@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mdfserver',
-    'tinymce',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -125,14 +124,3 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-#TINYMCE_JS_URL = os.path.join(os.environ['APPL_VIRTUAL_PATH'] + "/", "static/mdfserver/js/tiny_mce/tiny_mce.js")
-TINYMCE_JS_URL = os.path.join("/mdf/", "static/mdfserver/js/tiny_mce/tiny_mce.js")
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "advlist,autosave,media",
-    'theme': "advanced",
-    'cleanup_on_startup': False,
-    'custom_undo_redo_levels': 10,
-	'relative_urls' : False,
-    'content_css': "/mdf/static/mdfserver/css/bootstrap.css,/mdf/static/mdfserver/css/custom_style.css",
-    }
