@@ -26,15 +26,15 @@
 
                         <div class="container">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'development' %}">Development<b class="caret"></b></a>
+                                <li class="{% block home_classes %}{% endblock %}"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'index' %}">Home</a></li>
+                                <li class="{% block development_classes %}dropdown{% endblock %}"><a class="dropdown-toggle" data-hover="dropdown" href="{% url 'development' %}">Development<b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li><a href="{% url 'data_management' %}">Sensor Data Management</a></li>
                                         <li><a href="{% url 'software_development' %}">Software Development</a></li>
                                         <li><a href="{% url 'hardware_development' %}">Hardware Development</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown">Data<b class="caret"></b></a>
+                                <li class="{% block data_classes %}dropdown{% endblock %}"><a class="dropdown-toggle" data-hover="dropdown">Data<b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li><a href="{% url 'data_policy' %}">Data Policy and Publication</a></li>
                                         <li><a href="http://repository.iutahepscor.org">Dataset Repository</a></li>
@@ -45,7 +45,7 @@
                                         <li><a href="{% url 'red_butte_creek' %}">Red Butte Creek</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-hover="dropdown">About<b class="caret"></b></a>
+                                <li class="{% block about_classes %}dropdown{% endblock %}"><a class="dropdown-toggle" data-hover="dropdown">About<b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li><a href="{% url 'documentation' %}">Documentation</a></li>
                                         <li><a href="{% url 'training_materials' %}">Training Materials</a></li>

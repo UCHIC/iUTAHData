@@ -339,6 +339,15 @@ article, aside, figure, footer, header, hgroup, nav, section {
     display: block;
 }
 
+.navbar .nav .dropdown-toggle .caret {
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+.navbar .nav > li > a {
+    padding: 10px 20px 10px;
+}
+
 .column_left {
     width: 380px;
     float: left;

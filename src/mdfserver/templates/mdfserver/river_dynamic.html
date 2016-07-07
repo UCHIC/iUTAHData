@@ -1,5 +1,9 @@
 {% extends "mdfserver/base.html" %}
 {% load static %}
+
+{% block page_title %}Site Information{% endblock %}
+{% block data_classes %}{{ block.super }} active{% endblock %}
+
 {% block content %}
     <div class="container" id="site_select">
         <select id="st_select" onchange="javascript:site_selected(this)">

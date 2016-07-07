@@ -7,27 +7,29 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 jQuery(document).ready(function ($) {
 
     //This function is to solve this problem: when selected the dynamic content (river_info) the home page was selected in the navbar, because of the similitude of how the homepage and dynamic pages work.
-    $("#map-canvas").ready(function menuActive() {
-        if (document.getElementById("map-canvas")) {
-            $("li.active").addClass("dropdown");
-            $("li").removeClass("active");
-            var dataLI = $('li.dropdown:contains("Data")');
-            var count = 0;
-            var toGetOut = [];
-            var i, len = dataLI.length;
-            for(i = 0; i<len; i++)
-            {
-                if(dataLI[i].getElementsByTagName('a')[0].innerText === "Data ")
-                {
-                    dataLI[i].className = dataLI[i].className + " active";
-                }
-            }
 
-            $('.dropdown-menu li.active').removeClass("active"); //removes active from data policy menu item.
-
-
-        }
-    });
+    // HOW? HOW IN THE NAME OF GOD? WHY?
+    // $("#map-canvas").ready(function menuActive() {
+    //     if (document.getElementById("map-canvas")) {
+    //         $("li.active").addClass("dropdown");
+    //         // $("li").removeClass("active");
+    //         var dataLI = $('li.dropdown:contains("Data")');
+    //         var count = 0;
+    //         var toGetOut = [];
+    //         var i, len = dataLI.length;
+    //         for(i = 0; i<len; i++)
+    //         {
+    //             if(dataLI[i].getElementsByTagName('a')[0].innerText === "Data ")
+    //             {
+    //                 dataLI[i].className = dataLI[i].className + " active";
+    //             }
+    //         }
+    //
+    //         // $('.dropdown-menu li.active').removeClass("active"); //removes active from data policy menu item.
+    //
+    //
+    //     }
+    // });
 
     $('area').hover(function showArea()
         {
@@ -37,7 +39,6 @@ jQuery(document).ready(function ($) {
 
     if (document.URL.indexOf("river_info") != -1)
     {
-        document.title = "iUTAH | Site Information";
         drawSeries();
     }
 

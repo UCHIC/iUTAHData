@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block page_title %}Home{% endblock %}
+{% block home_classes %}{{ block.super }} active{% endblock %}
 
 {% block content %}
     <div style="border: 1px solid rgb(220, 225, 230); padding: 0 0 20px 0;" id="site_content">
