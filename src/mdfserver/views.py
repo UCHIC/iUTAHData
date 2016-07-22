@@ -139,7 +139,7 @@ def river_dynamic(request, database, site_code):
                     xtra_site = data_river['PR_UM_CUWCD']
 
     sites_for_select = ['LR_Mendon_AA', 'LR_MainStreet_BA', 'LR_WaterLab_AA', 'LR_TG_BA', 'LR_FB_BA', 'LR_FB_C',
-                        'LR_GC_C', 'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R',
+                        'LR_GC_C', 'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R', 'BSF_CONF_BA',
                         'PR_BJ_AA', 'PR_CH_AA', 'PR_CH_C', 'PR_LM_BA', 'PR_BD_C', 'PR_ST_BA', 'PR_ST_C', 'PR_TL_C',
                         'RB_ARBR_AA', 'RB_CG_BA', 'RB_FD_AA', 'RB_KF_BA', 'RB_RBG_BA', 'RB_ARBR_C', 'RB_GIRF_C',
                         'RB_KF_C', 'RB_TM_C', 'RB_CR_SD', 'RB_Dent_SD', 'RB_FortD_SD', 'RB_GIRF_SD']
