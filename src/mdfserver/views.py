@@ -125,18 +125,29 @@ def river_dynamic(request, database, site_code):
         counter += 1
 
     # i'm not even gonna try here...
+    # We're pretty sure this developer didn't know about 'elif' statements...
+    # xtra_site = "none"
+    # if site_code == "RB_ARBR_AA":
+    #     xtra_site = data_river['RB_ARBR_USGS']
+    # else:
+    #     if site_code == "PR_BJ_AA":
+    #         xtra_site = data_river['PR_BJ_CUWCD']
+    #     else:
+    #         if site_code == "PR_CH_AA":
+    #             xtra_site = data_river['PR_CH_CUWCD']
+    #         else:
+    #             if site_code == "PR_LM_BA":
+    #                 xtra_site = data_river['PR_UM_CUWCD']
+
     xtra_site = "none"
     if site_code == "RB_ARBR_AA":
         xtra_site = data_river['RB_ARBR_USGS']
-    else:
-        if site_code == "PR_BJ_AA":
+    elif site_code == "PR_BJ_AA":
             xtra_site = data_river['PR_BJ_CUWCD']
-        else:
-            if site_code == "PR_CH_AA":
-                xtra_site = data_river['PR_CH_CUWCD']
-            else:
-                if site_code == "PR_LM_BA":
-                    xtra_site = data_river['PR_UM_CUWCD']
+    elif site_code == "PR_CH_AA":
+            xtra_site = data_river['PR_CH_CUWCD']
+    elif site_code == "PR_LM_BA":
+            xtra_site = data_river['PR_UM_CUWCD']
 
     sites_for_select = ['LR_Mendon_AA', 'LR_MainStreet_BA', 'LR_WaterLab_AA', 'LR_TG_BA', 'LR_FB_BA', 'LR_FB_C',
                         'LR_GC_C', 'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R', 'BSF_CONF_BA',
@@ -147,7 +158,8 @@ def river_dynamic(request, database, site_code):
     db_sites = data_river.keys()
     approved_sites = []
 
-    # this comment has no other purpose but to point out that, for some reason that's beyond be, there was a variable called variab here. it was just 2 letters away from kinda making sense...
+    # this comment has no other purpose but to point out that, for some reason that's beyond me,
+    # there was a variable called variab here. it was just 2 letters away from kinda making sense...
     for variable in sites_for_select:
         var_print = next((var for var in db_sites if var == variable), None)
         if var_print is not None:

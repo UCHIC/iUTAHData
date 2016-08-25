@@ -167,9 +167,10 @@ class SeriesService():
         return times
  
         
-    def get_ninety_six_values_by_site_id_and_var_id(self, my_site_id, var_id):
+    def get_num_of_values_by_site_id_and_var_id(self, my_site_id, var_id, count):
         try:
-            return self._edit_session.query(DataValue).filter_by(site_id=my_site_id, variable_id=var_id).order_by(desc(DataValue.local_date_time)).limit(96).all()#descending
+            return self._edit_session.query(DataValue).filter_by(site_id=my_site_id, variable_id=var_id).order_by(
+                    desc(DataValue.local_date_time)).limit(count).all()#descending
         except:
             return []
 			

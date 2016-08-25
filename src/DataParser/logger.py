@@ -19,9 +19,15 @@ class LoggerTool():
         #formatter = logging.Formatter('%(asctime)s : %(message)s')
         formatter = logging.Formatter(self.formatString)
 
-        logPath = "C:\\inetpub\\wwwroot\\mdf\\log"
-        if not os.path.exists(logPath):
-            os.mkdir(logPath, 0755)
+        relative_path = "inetpub\\wwwroot\\mdf\\log"
+        try:
+            logPath = "c:\\" + relative_path
+            if not os.path.exists(logPath):
+                os.makedirs(logPath, 0755)
+        except:
+            logPath = os.path.expanduser("~") + "\\" + relative_path
+            if not os.path.exists(logPath):
+                os.makedirs(logPath, 0755)
         fileHandler = logging.FileHandler(logPath + logFile, mode=m)
         fileHandler.setFormatter(formatter)
         streamHandler = logging.StreamHandler()
