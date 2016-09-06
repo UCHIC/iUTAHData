@@ -84,20 +84,7 @@ def deserialize_json(database_name):
         'iUTAH_Logan_OD': 'Logan',
         'iUTAH_Provo_OD': 'Provo',
         'iUTAH_RedButte_OD': 'RedButte'
-
     }
-
-    # damn son...
-    # i'm commenting and not deleting this for no reason.
-
-    # if database == 'iUTAH_Logan_OD':
-    #     fileselection = 'Logan'
-    # else:
-    #     if database == 'iUTAH_Provo_OD':
-    #         fileselection = 'Provo'
-    #     else:
-    #         if database == 'iUTAH_RedButte_OD':
-    #             fileselection = 'RedButte'
 
     river_data = open(BASE_DIR + '/../mdfserver/static/mdfserver/json/' + network_map[database_name] + 'Site.json')
     json_data = json.load(river_data)
@@ -118,6 +105,9 @@ def prepare_for_heading(river_data, type):
 
 def river_dynamic(request, database, site_code):
     data_river = deserialize_json(database)
+
+    print(data_river)
+
     pics = []
     counter = 1
     while finders.find('mdfserver/images/site_images/' + database + '/' + site_code + '/Site' + str(counter) + '.jpg') is not None:
@@ -168,6 +158,10 @@ def river_dynamic(request, database, site_code):
     data_river = prepare_for_heading(data_river[site_code], "Soil")
     data_river = prepare_for_heading(data_river, "Air")
 
-    context = {'site': database, 'river_data': data_river, 'pics': pics,
-               'xtra_site': xtra_site, 'db_sites': approved_sites, 'static_url': settings.STATIC_URL}
+    context = {'site': database,
+               'river_data': data_river,
+               'pics': pics,
+               'xtra_site': xtra_site,
+               'db_sites': approved_sites,
+               'static_url': settings.STATIC_URL}
     return render(request, 'mdfserver/river_dynamic.html', context)

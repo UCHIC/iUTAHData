@@ -86,14 +86,14 @@ def handleConnection(database, text_file):
         file_str += "\t\t\"state\": \"{}\",\n".format(site.state)
         file_str += "\t\t\"county\": \"{}\",\n".format(site.county)
         file_str += "\t\t\"comments\": \"{}\",\n".format(site.comments)
-        file_str += "\t\t\"type\": \"{}\",\n".format(site.type)
+        file_str += "\t\t\"type\": \"{}\"\n".format(site.type)
         file_str += "\t\t},\n\n"
 
         #process data update time
         update_time = ss.get_min_and_max_value_dates_by_site_id(site.id)
         file_str += "\t\"update_time\": {\n"
         file_str += "\t\t\"min\": \"{}\",\n".format(update_time[0].local_date_time if update_time[0] else "None")
-        file_str += "\t\t\"max\": \"{}\",\n".format(update_time[1].local_date_time if update_time[1] else "None")
+        file_str += "\t\t\"max\": \"{}\"\n".format(update_time[1].local_date_time if update_time[1] else "None")
         file_str += "\t\t},\n\n"
 
         #print each variable and its value here, bye
@@ -138,19 +138,18 @@ def handleConnection(database, text_file):
         file_str += "\n\n"
         text_file.write(file_str)
     logger.info("Finished getting sites for " + database)
-    pass
 
 
 def dataParser():
     logger.info("\n========================================================\n")
-    #logan database is loaded here
-    logger.info("Started creating files.")
-    databaseParser('iUTAH_Logan_OD', 'Logan')
-    #provo database is loaded here
-    databaseParser('iUTAH_Provo_OD', 'Provo')
-    #red butte creek database is loaded here
-    databaseParser('iUTAH_RedButte_OD', 'RedButte')
-    logger.info("Finished Program and Provo Site. ")
+    # #logan database is loaded here
+    # logger.info("Started creating files.")
+    # databaseParser('iUTAH_Logan_OD', 'Logan')
+    # #provo database is loaded here
+    # databaseParser('iUTAH_Provo_OD', 'Provo')
+    # #red butte creek database is loaded here
+    # databaseParser('iUTAH_RedButte_OD', 'RedButte')
+    # logger.info("Finished Program and Provo Site. ")
 
     logger.info("Started moving JSON files to static folder. ")
     moveToStaticFolders("LoganSite.json")
@@ -162,8 +161,8 @@ def dataParser():
 
 
 def moveToStaticFolders(fileSite):
-    shutil.copy(temp_location + fileSite, static_folder)
     shutil.copy(temp_location + fileSite, dump_location)
+    shutil.copy(temp_location + fileSite, static_folder)
 
 
 def databaseParser(database, location):
