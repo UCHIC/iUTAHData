@@ -21,40 +21,51 @@ dump_location = os.path.join(directory,  "mdfserver\\static\\mdfserver\\json\\")
 parent_dir = os.path.join(os.path.join(directory, os.pardir), os.pardir)
 static_folder = os.path.join(parent_dir, "static\\mdfserver\\json\\")
 NINETY_SIX = 96
-DEFAULT_SITE_VARS = ['BP_Avg', 'RH', 'DewPt_Avg', 'VaporPress_Avg', 'WindSp_Avg', 'WindDir_Avg', 'JuddDepth_Avg',
-                     'PARIn_Avg', 'PAROut_Avg', 'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'NetRad_NR01_Avg',
-                     'LWOut_Cor_NR01_Avg','LWIn_Cor_NR01_Avg', 'Evapotrans_ETo', 'Evapotrans_ETr', 'VWC_5cm_Avg',
-                     'SoilTemp_5cm_Avg', 'Permittivity_5cm_Avg', 'VWC_10cm_Avg', 'SoilTemp_10cm_Avg',
-                     'Permittivity_10cm_Avg', 'VWC_20cm_Avg', 'SoilTemp_20cm_Avg', 'Permittivity_20cm_Avg',
-                     'VWC_50cm_Avg', 'SoilTemp_50cm_Avg', 'Permittivity_50cm_Avg', 'VWC_100cm_Avg',
-                     'SoilTemp_100cm_Avg', 'Permittivity_100cm_Avg']
-STREAM_SITE_VARS = ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA', 'Chlorophyll', 'fDOM', 'Stage']
-STORM_SEWER_SITE_VARS = ['Flow', 'Level', 'Velocity', 'Volume', 'WaterTemp_ISCO']
+
+site_variables = {
+    "climate": ['BP_Avg', 'RH', 'DewPt_Avg', 'VaporPress_Avg', 'WindSp_Avg',
+                'WindDir_Avg', 'JuddDepth_Avg', 'PARIn_Avg', 'PAROut_Avg',
+                'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'NetRad_NR01_Avg', 'LWOut_Cor_NR01_Avg','LWIn_Cor_NR01_Avg',
+                'Evapotrans_ETo', 'Evapotrans_ETr', 'VWC_5cm_Avg', 'SoilTemp_5cm_Avg', 'Permittivity_5cm_Avg',
+                'VWC_10cm_Avg', 'SoilTemp_10cm_Avg', 'Permittivity_10cm_Avg', 'VWC_20cm_Avg', 'SoilTemp_20cm_Avg',
+                'Permittivity_20cm_Avg', 'VWC_50cm_Avg', 'SoilTemp_50cm_Avg', 'Permittivity_50cm_Avg',
+                'VWC_100cm_Avg', 'SoilTemp_100cm_Avg', 'Permittivity_100cm_Avg'],
+    "aquatic": ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA',
+                'Chlorophyll', 'fDOM', 'Stage', 'Nitrate-N'],
+    "storm_drain": ['Level_ISCO', 'Velocity_ISCO', 'Flow_ISCO', 'Volume_ISCO', 'WaterTemp_ISCO'],
+
+    "wilkins_repeater": ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_D1_WVT'],
+    "rb_dent_sd__rb_cr_sd": ['Level_Judd', 'JuddTemp', 'Flow_Manning'],
+    "rb_900w_ba": ['Level_ISCO'],
+    'rb_ldf_a': ['Discharge_cms']
+}
 
 
 def getSiteVars(site, database):
-    if site.code == "LR_Wilkins_R":
-        return ['AirTemp_HMP50_Avg', 'RH_HMP51', 'WindSp_S_WVT', 'WindDir_D1_WVT']
-    elif site.code == "RB_ARBR_USGS":
-        return ['USGSTemp', 'USGSStage', 'USGSDischarge']
-    elif site.code != 'PR_TC_CUWCD' and site.code != 'RB_RBR_CUWCD' and site.code[-5:] == 'CUWCD':
-        return ['CUWCDDischarge']
-    elif site.type == "Stream":
-        return STREAM_SITE_VARS
-    elif site.type == "Storm sewer":
-        return STORM_SEWER_SITE_VARS
-    vars_to_show = []
-    vars_to_show.extend(DEFAULT_SITE_VARS)
-    if database == 'iUTAH_Provo_OD':
-        vars_to_show.insert(0, 'AirTemp_Avg')
-        vars_to_show.insert(7, 'Rain_Tot')
-        if site.code == 'PR_CH_C' or site.code == 'PR_ST_C':
-            vars_to_show.insert(8, 'Precip_Tot_Avg')
-    else:
-        vars_to_show.insert(0, 'AirTemp_ST110_Avg')
-        vars_to_show.insert(7, 'Precip_Tot_Avg')
+    variables = []
+    if site.type in ['Land', 'Atmosphere']:
+        variables.extend(site_variables['climate'])
+        if database == 'iUTAH_Provo_OD':
+            variables.insert(0, 'AirTemp_Avg')
+            variables.insert(7, 'Rain_Tot')
+        else:
+            variables.insert(0, 'AirTemp_ST110_Avg')
+            variables.insert(7, 'Precip_Tot_Avg')
+    elif site.type == 'Stream':
+        variables.extend(site_variables['aquatic'])
+    elif site.type == 'Storm sewer':
+        variables.extend(site_variables['storm_drain'])
 
-    return vars_to_show
+    if site.code == 'LR_Wilkins_R':
+        variables = site_variables['wilkins_repeater']
+    elif site.code in ['RB_Dent_SD', 'RB_CR_SD']:
+        variables = site_variables['rb_dent_sd__rb_cr_sd']
+    elif site.code == 'RB_LKF_A':
+        variables.extend(site_variables['rb_ldf_a'])
+    elif site.code == 'RB_900W_BA':
+        variables.extend(site_variables['rb_900w_ba'])
+
+    return variables
 
 
 # all the tabs and spaces are added for easier debugging.
@@ -142,14 +153,14 @@ def handleConnection(database, text_file):
 
 def dataParser():
     logger.info("\n========================================================\n")
-    # #logan database is loaded here
-    # logger.info("Started creating files.")
-    # databaseParser('iUTAH_Logan_OD', 'Logan')
-    # #provo database is loaded here
-    # databaseParser('iUTAH_Provo_OD', 'Provo')
-    # #red butte creek database is loaded here
-    # databaseParser('iUTAH_RedButte_OD', 'RedButte')
-    # logger.info("Finished Program and Provo Site. ")
+    # logan database is loaded here
+    logger.info("Started creating files.")
+    databaseParser('iUTAH_Logan_OD', 'Logan')
+    # provo database is loaded here
+    databaseParser('iUTAH_Provo_OD', 'Provo')
+    # red butte creek database is loaded here
+    databaseParser('iUTAH_RedButte_OD', 'RedButte')
+    logger.info("Finished Program and Provo Site. ")
 
     logger.info("Started moving JSON files to static folder. ")
     moveToStaticFolders("LoganSite.json")
