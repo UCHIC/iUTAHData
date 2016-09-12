@@ -326,6 +326,13 @@ button.btn {
     border: 1px solid rgb(220, 225, 230);
 }
 
+span.site_subheader {
+    padding-left: 15px;
+    font-size: 1.2em;
+    color: red;
+    display: block;
+}
+
 /*Experimenting from here on*/
 
 * {

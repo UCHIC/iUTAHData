@@ -105,6 +105,13 @@ def prepare_for_heading(river_data, type):
 
 def river_dynamic(request, database, site_code):
     data_river = deserialize_json(database)
+    deprecated_sites = {
+        "RB_KF_BA": {
+            "deprecation_time": 'August 8, 2016',
+            "new_site_network": "iUTAH_RedButte_OD",
+            "new_site_code": "RB_LKF_A"
+        }
+    }
 
     print(data_river)
 
@@ -148,8 +155,8 @@ def river_dynamic(request, database, site_code):
     db_sites = data_river.keys()
     approved_sites = []
 
-    # this comment has no other purpose but to point out that, for some reason that's beyond me,
-    # there was a variable called variab here. it was just 2 letters away from kinda making sense...
+    # this comment has no other purpose but to point out that, for some reason beyond me,
+    # there was a variable called variab here. it was just 2 letters away from being correctly spelled...
     for variable in sites_for_select:
         var_print = next((var for var in db_sites if var == variable), None)
         if var_print is not None:
@@ -157,6 +164,11 @@ def river_dynamic(request, database, site_code):
 
     data_river = prepare_for_heading(data_river[site_code], "Soil")
     data_river = prepare_for_heading(data_river, "Air")
+
+    data_river['active'] = site_code not in deprecated_sites
+    data_river['deprecation_date'] = deprecated_sites[site_code]['deprecation_time'] if not data_river['active'] else None
+    data_river['new_site_network'] = deprecated_sites[site_code]['new_site_network'] if not data_river['active'] else None
+    data_river['new_site_code'] = deprecated_sites[site_code]['new_site_code'] if not data_river['active'] else None
 
     context = {'site': database,
                'river_data': data_river,

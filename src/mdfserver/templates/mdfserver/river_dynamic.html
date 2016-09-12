@@ -18,6 +18,12 @@
     <h1 style="padding-left: 15px">
         {{ river_data.info.name }}
     </h1><!-- Change this according to the river showed -->
+    {% if not river_data.active %}
+        <span class="site_subheader">This site was decommissioned on {{ river_data.deprecation_date }}.</span>
+        <span class="site_subheader">Data collection is now occurring at a nearby location <a href="{% url 'dynamic' river_data.new_site_network river_data.new_site_code %}">({{ river_data.new_site_code }})</a>.</span>
+    {% endif %}
+
+
     <div class="site_data">
         <table>
             <tbody>
@@ -164,101 +170,104 @@
         {% endif %}
     </div>
 
-    <div class="most_recent">
-        <!--<div class="info_space"></div>-->
-        <section id="raw_tsa_buttons">
-            <button type="button" class="btn" onclick="javascript:raw_data_redirect('{{ river_data.info.code }}')">
-                Download the raw data for this site.
-            </button>
-            <a target="_blank" href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}">
-                <button type="button" class="btn">
-                    Visualize time series from this site.
+    {% if river_data.active %}
+        <div class="most_recent">
+            <!--<div class="info_space"></div>-->
+            <section id="raw_tsa_buttons">
+                <button type="button" class="btn" onclick="javascript:raw_data_redirect('{{ river_data.info.code }}')">
+                    Download the raw data for this site.
                 </button>
-            </a>
+                <a target="_blank" href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}">
+                    <button type="button" class="btn">
+                        Visualize time series from this site.
+                    </button>
+                </a>
 
-        </section>
-        <h2 id="graph-title">Most Recent Instantaneous Measurements</h2>
-        <h4>Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
+            </section>
 
-        <p id="dyn_disclaimer"></p>
+            <h2 id="graph-title">Most Recent Instantaneous Measurements</h2>
+            <h4>Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
 
-        {% for var in river_data.vars %}
-            {% if var.sample == "Air" %}
-                <h3 style="clear: both; margin-top: -10px;">Standard Variables</h3>
-            {% endif %}
-            {% if var.sample == "Soil" %}
-                <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3>
-            {% endif %}
-            {% if var.code == "WindSp_Avg" or var.code == "WindSp_S_WVT" %}
-                <div class="data_box" id="windrose_box" style="height: 310px;"></div>
-            {% elif var.code == "WindDir_Avg" or var.code == "WindDir_D1_WVT" %}
-                <!-- no need to plot anything for wind direction -->
-            {% else %}
-                <div class="data_box">
-                    <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true&qualitycontrollevelcode=0"
-                       target="_blank">
-                        <div>
-                            <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span>
-                            </p>
-                            <br>
+            <p id="dyn_disclaimer"></p>
 
-                            <p class="var_value"{% if var.name|length >= 39 %}
-                               style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
-                            <br>
+            {% for var in river_data.vars %}
+                {% if var.sample == "Air" %}
+                    <h3 style="clear: both; margin-top: -10px;">Standard Variables</h3>
+                {% endif %}
+                {% if var.sample == "Soil" %}
+                    <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3>
+                {% endif %}
+                {% if var.code == "WindSp_Avg" or var.code == "WindSp_S_WVT" %}
+                    <div class="data_box" id="windrose_box" style="height: 310px;"></div>
+                {% elif var.code == "WindDir_Avg" or var.code == "WindDir_D1_WVT" %}
+                    <!-- no need to plot anything for wind direction -->
+                {% else %}
+                    <div class="data_box">
+                        <a href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}&variablecode={{ var.code }}&view=visualization&plot=true&qualitycontrollevelcode=0"
+                           target="_blank">
+                            <div>
+                                <p class="var_name">{{ var.name }}<br><span style="font-size: 0.66em;">{{ var.code }}</span>
+                                </p>
+                                <br>
 
-                            <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
-                        </div>
-                        <div id="graph{{ forloop.counter0 }}" class="graphContainer"></div>
-                    </a>
-                </div>
-            {% endif %}
-        {% empty %}
-            <div class="no_data_msg"><p>Sorry. No data found for this site</p></div>
-        {% endfor %}
+                                <p class="var_value"{% if var.name|length >= 39 %}
+                                   style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
+                                <br>
 
-        <!-- Call js function to correctly position windrose box -->
-
-        {% if xtra_site != "none" and xtra_site.vars %}
-            {% if river_data.info.code == "RB_ARBR_AA" %}
-                <h3 style="clear: both; margin-top: -10px;">Variables Measured by USGS (United States Geological
-                    Survey)</h3>
-            {% elif river_data.info.code == "PR_BJ_AA" or river_data.info.code == "PR_CH_AA" or river_data.info.code == "PR_LM_BA" %}
-                <h3 style="clear: both; margin-top: -10px;">Variables Measured by CUWCD (Central Utah Water Conservancy
-                    District)</h3>
-            {% endif %}
-            {% for var in xtra_site.vars %}
-                <div class="data_box">
-                    <a href="http://data.iutahepscor.org/tsa/?sitecode={{ xtra_site.info.code }}&variablecode={{ var.code }}&view=visualization&plot=truequalitycontrollevelcode=0"
-                       target="_blank">
-                        <div>
-                            <p class="var_name">{{ var.name }}<br><span
-                                    style="font-size: 0.66em;">{{ var.code }}</span>
-                            </p>
-                            <br>
-
-                            <p class="var_value"{% if var.name|length >= 39 %}
-                               style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
-                            <br>
-
-                            <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
-                        </div>
-                        <div id="graphx{{ forloop.counter0 }}" class="graphContainer"></div>
-                    </a>
-                </div>
+                                <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
+                            </div>
+                            <div id="graph{{ forloop.counter0 }}" class="graphContainer"></div>
+                        </a>
+                    </div>
+                {% endif %}
             {% empty %}
-                <p style="margin-left: 21px;color: red;margin-bottom: 9px">No data found.</p>
+                <div class="no_data_msg"><p>Sorry. No data found for this site</p></div>
             {% endfor %}
 
+            <!-- Call js function to correctly position windrose box -->
 
-        {% endif %}
+            {% if xtra_site != "none" and xtra_site.vars %}
+                {% if river_data.info.code == "RB_ARBR_AA" %}
+                    <h3 style="clear: both; margin-top: -10px;">Variables Measured by USGS (United States Geological
+                        Survey)</h3>
+                {% elif river_data.info.code == "PR_BJ_AA" or river_data.info.code == "PR_CH_AA" or river_data.info.code == "PR_LM_BA" %}
+                    <h3 style="clear: both; margin-top: -10px;">Variables Measured by CUWCD (Central Utah Water Conservancy
+                        District)</h3>
+                {% endif %}
+                {% for var in xtra_site.vars %}
+                    <div class="data_box">
+                        <a href="http://data.iutahepscor.org/tsa/?sitecode={{ xtra_site.info.code }}&variablecode={{ var.code }}&view=visualization&plot=truequalitycontrollevelcode=0"
+                           target="_blank">
+                            <div>
+                                <p class="var_name">{{ var.name }}<br><span
+                                        style="font-size: 0.66em;">{{ var.code }}</span>
+                                </p>
+                                <br>
+
+                                <p class="var_value"{% if var.name|length >= 39 %}
+                                   style="margin-top: 5px;margin-bottom: 5px;"{% endif %}>{{ var.values.0|floatformat:-3 }}</p>
+                                <br>
+
+                                <p style="clear: both;"><span style="margin-left: -10px;">{{ var.unit }}</span></p>
+                            </div>
+                            <div id="graphx{{ forloop.counter0 }}" class="graphContainer"></div>
+                        </a>
+                    </div>
+                {% empty %}
+                    <p style="margin-left: 21px;color: red;margin-bottom: 9px">No data found.</p>
+                {% endfor %}
 
 
-        <p class="disclaimer" style="clear: both; margin-bottom: 37px; margin-left: 17px;width: 877px;">
-            WARNING: These data may be provisional and subject to revision. The data are released on the condition that
-            neither iUTAH, Utah State University, Brigham Young University, nor the University of Utah may be held
-            liable for any damages resulting from their use.
-        </p>
-    </div>
+            {% endif %}
+
+
+            <p class="disclaimer" style="clear: both; margin-bottom: 37px; margin-left: 17px;width: 877px;">
+                WARNING: These data may be provisional and subject to revision. The data are released on the condition that
+                neither iUTAH, Utah State University, Brigham Young University, nor the University of Utah may be held
+                liable for any damages resulting from their use.
+            </p>
+        </div>
+    {% endif %}
 
     <!-- This table is used with the windrose plot, don't ever modify it!!-->
 
