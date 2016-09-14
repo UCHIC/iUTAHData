@@ -170,21 +170,22 @@
         {% endif %}
     </div>
 
-    {% if river_data.active %}
-        <div class="most_recent">
-            <!--<div class="info_space"></div>-->
-            <section id="raw_tsa_buttons">
-                <button type="button" class="btn" onclick="javascript:raw_data_redirect('{{ river_data.info.code }}')">
-                    Download the raw data for this site.
+
+    <div class="most_recent">
+        <!--<div class="info_space"></div>-->
+        <section id="raw_tsa_buttons">
+            <button type="button" class="btn" onclick="javascript:raw_data_redirect('{{ river_data.info.code }}')">
+                Download the raw data for this site.
+            </button>
+            <a target="_blank" href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}">
+                <button type="button" class="btn">
+                    Visualize time series from this site.
                 </button>
-                <a target="_blank" href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}">
-                    <button type="button" class="btn">
-                        Visualize time series from this site.
-                    </button>
-                </a>
+            </a>
 
-            </section>
+        </section>
 
+        {% if river_data.active %}
             <h2 id="graph-title">Most Recent Instantaneous Measurements</h2>
             <h4>Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
 
@@ -266,8 +267,8 @@
                 neither iUTAH, Utah State University, Brigham Young University, nor the University of Utah may be held
                 liable for any damages resulting from their use.
             </p>
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 
     <!-- This table is used with the windrose plot, don't ever modify it!!-->
 

@@ -250,6 +250,7 @@ div ul {
 
 #raw_tsa_buttons {
     margin-bottom: -59px;
+    display: inline;
 }
 
 #raw_tsa_buttons > button {
