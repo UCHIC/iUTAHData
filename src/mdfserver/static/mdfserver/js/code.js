@@ -64,60 +64,60 @@ function raw_data_redirect(site)
 {
     var siteCodeToLink = {
         //Logan River
-        "LR_FB_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-franklin-basin-climate-site-lr-fb-c",
-        "LR_GC_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-golf-course-climate-site-lr-gc-c",
-        "LR_TG_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-tony-grove-climate-site-lr-tg-c",
-        "LR_TWDEF_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-tw-daniels-forest-climate-site-lr-twdef-c",
-        "LR_Wilkins_R": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-wilkins-repeater-site-lr-wilkins-r",
+        "LR_FB_C": "https://www.hydroshare.org/resource/965dc124cabc4587955e6f1f722fc33b/",
+        "LR_GC_C": "https://www.hydroshare.org/resource/96310f82dd5247ba8201955750093923/",
+        "LR_TG_C": "https://www.hydroshare.org/resource/8db626f2625c4b689638f845b75e8e23/",
+        "LR_TWDEF_C": "https://www.hydroshare.org/resource/47e6ae5461a7474dbf37abe475a0d6da/",
+        "LR_Wilkins_R": "https://www.hydroshare.org/resource/b653f3cf03214e52aa765f6cb65fbc22/",
 
-        "LR_Mendon_AA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-mendon-road-advanced-aquatic-site-lr-mendon-aa",
-        "LR_MainStreet_BA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-main-street-basic-aquatic-site-lr-mainstreet-ba",
-        "LR_WaterLab_AA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-the-water-lab-advanced-aquatic-site-lr-waterlab-aa",
-        "LR_TG_BA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-tony-grove-basic-aquatic-site-lr-tg-ba",
-        "LR_FB_BA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-logan-river-near-franklin-basin-basic-aquatic-site-lr-fb-ba",
-        "BSF_CONF_BA": "#",
+        "LR_Mendon_AA": "https://www.hydroshare.org/resource/728566f42906412698b09f6fe2f7cd02/",
+        "LR_MainStreet_BA": "https://www.hydroshare.org/resource/23650489df6646edaf412cffa9881279/",
+        "LR_WaterLab_AA": "https://www.hydroshare.org/resource/ecb77926c2484e068f28acda434f8772/",
+        "LR_TG_BA": "https://www.hydroshare.org/resource/5cc3cf79eab2413fa46da70435a43265/",
+        "LR_FB_BA": "https://www.hydroshare.org/resource/8971ca6bab084779913f925e0e485008/",
+        "BSF_CONF_BA": "https://www.hydroshare.org/resource/94bcad20fbfb4c44ac7f98a0fdfa5e79/",
 
-        "LR_RH_SD": "#",
-        "LR_SC_SD": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-spring-creek-storm-drain-lr-sc-sd",
+        "LR_RH_SD": "https://www.hydroshare.org/resource/29ddd49f7e1149c6b14246eada15713b/",
+        "LR_SC_SD": "https://www.hydroshare.org/resource/fd7e56d92c06427583cd83eddf4adf42/",
 
 
         //Provo River
-        "PR_BD_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-beaver-divide-climate-site-pr-bd-c",
-        "PR_CH_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-charleston-climate-site-pr-ch-c",
-        "PR_ST_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-soapstone-climate-site-pr-st-c",
-        "PR_TL_C": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-trial-lake-climate-site-pr-tl-c",
+        "PR_BD_C": "https://www.hydroshare.org/resource/4a5bb3a976004f0ea63991323335b170/",
+        "PR_CH_C": "https://www.hydroshare.org/resource/6aa75450ee2744cdb34ed8dde929a84a/",
+        "PR_ST_C": "https://www.hydroshare.org/resource/e8d904f8041544eaa7809ae4414be665/",
+        "PR_TL_C": "https://www.hydroshare.org/resource/3ebf244bd2084cfaa68b83b7f91e9587/",
 
-        "PR_BJ_AA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-below-jordanelle-advanced-aquatic-site-pr-bj-aa",
-        "PR_CH_AA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-near-charleston-advanced-aquatic-site-pr-ch-aa",
-        "PR_LM_BA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-near-lower-midway-basic-aquatic-site-pr-lm-ba",
-        "PR_ST_BA": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-provo-river-near-soapstone-basic-aquatic-site-pr-st-ba",
-        "PR_WD_BA": "#",
+        "PR_BJ_AA": "https://www.hydroshare.org/resource/9a25a259ab024411ae85b7b39765de19/",
+        "PR_CH_AA": "https://www.hydroshare.org/resource/887180409e4545018c8372f0bd6f8ff3/",
+        "PR_LM_BA": "https://www.hydroshare.org/resource/765afb955526499888f283947cbb26d9/",
+        "PR_ST_BA": "https://www.hydroshare.org/resource/8ebd6dd4342b408ba5bc5903d698cbe3/",
+        "PR_WD_BA": "https://www.hydroshare.org/resource/6f2eadbc6aa34f2fb5ce55cd7e3f234a/",
 
-        "PR_SageCreek_canal": "#",
-        "PR_Flood_canal": "#",
+        "PR_SageCreek_canal": "https://www.hydroshare.org/resource/657b90c8a14c41b98d5fab75951ccc84/",
+        "PR_Flood_canal": "https://www.hydroshare.org/resource/b27302c4466945b190c39547b632bd0a/",
 
 
 
 
         //Red Butte Creek
-        "RB_ARBR_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-climate-site-rb-arbr-c",
-        "RB_GIRF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-the-green-infrastructure-climate-site-rb-girf-c",
-        "RB_KF_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-knowlton-fork-climate-site-rb-kf-c",
-        "RB_TM_C":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-todd-s-meadow-climate-site-rb-tm-c",
+        "RB_ARBR_C":"https://www.hydroshare.org/resource/916041be57be47a1b19c63f328fb086c/",
+        "RB_GIRF_C":"https://www.hydroshare.org/resource/325b21d55b2c49658a91944fabd896cf/",
+        "RB_KF_C":"https://www.hydroshare.org/resource/5e80dd7cbaf04a5e98d850609c7e534b/",
+        "RB_TM_C":"https://www.hydroshare.org/resource/aff4e6dfc09a4070ac15a6ec0741fd02/",
 
-        "RB_ARBR_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-above-red-butte-reservoir-advanced-aquatic-site-rb-arbr-aa",
-        "RB_CG_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-red-butte-creek-near-cottams-grove-basic-aquatic-site-rb-cg-ba",
-        "RB_FD_AA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-red-butte-creek-near-foothill-drive-advanced-aquatic-site-rb-fd-aa",
-        "RB_KF_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-knowlton-fork-basic-aquatic-site-rb-kf-ba",
-        "RB_RBG_BA":"http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-red-butte-gate-basic-aquatic-site-rb-rbg-ba",
-        "RB_900W_BA": "#",
-        "RB_1300E_A": "#",
-        "RB_LKF_A": "#",
+        "RB_ARBR_AA":"https://www.hydroshare.org/resource/e2043ae155514391b6d7f04af226f221/",
+        "RB_CG_BA":"https://www.hydroshare.org/resource/0aef2fa4a34d49adbd7251d1e67a5531/",
+        "RB_FD_AA":"https://www.hydroshare.org/resource/7999192b91bf489c981a1059fc95ebc2/",
+        "RB_KF_BA":"https://www.hydroshare.org/resource/dd1a2ffbc2e4422682a3fbd552620c32/",
+        "RB_RBG_BA":"https://www.hydroshare.org/resource/40655b4fc21142d090a5a4b835c14220/",
+        "RB_900W_BA": "https://www.hydroshare.org/resource/1846b79a648a4088aad987cc7241656f/",
+        "RB_1300E_A": "https://www.hydroshare.org/resource/c3ecee31a0c64490bf6a2fcb4841cee4/",
+        "RB_LKF_A": "https://www.hydroshare.org/resource/a56608d8948c43fdb302e1438cf09169/",
 
-        "RB_CR_SD": "#",//Change when link is available.
-        "RB_Dent_SD": "#",
-        "RB_FortD_SD": "http://repository.iutahepscor.org/dataset/iutah-gamut-network-raw-data-at-fort-douglas-storm-drain-rb-fortd-sd",
-        "RB_GIRF_SD": "#"
+        "RB_CR_SD": "https://www.hydroshare.org/resource/a22bbdfb431c44a68959534c94e96392/",
+        "RB_Dent_SD": "https://www.hydroshare.org/resource/bc16655330b64bcaa366d464b00e45f0/",
+        "RB_FortD_SD": "https://www.hydroshare.org/resource/9e5e99125d1646c69dde9fc43e137667/",
+        "RB_GIRF_SD": "https://www.hydroshare.org/resource/2e9db97be020401c9aa03017cb7ee505/"
     };
     window.open(siteCodeToLink[site], '_blank');
 }
