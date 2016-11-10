@@ -92,12 +92,11 @@ function raw_data_redirect(site)
         "PR_LM_BA": "https://www.hydroshare.org/resource/765afb955526499888f283947cbb26d9/",
         "PR_ST_BA": "https://www.hydroshare.org/resource/8ebd6dd4342b408ba5bc5903d698cbe3/",
         "PR_WD_BA": "https://www.hydroshare.org/resource/6f2eadbc6aa34f2fb5ce55cd7e3f234a/",
+        // "PR_RW_A": "",
 
         "PR_SageCreek_canal": "https://www.hydroshare.org/resource/657b90c8a14c41b98d5fab75951ccc84/",
         "PR_Flood_canal": "https://www.hydroshare.org/resource/b27302c4466945b190c39547b632bd0a/",
-
-
-
+        
 
         //Red Butte Creek
         "RB_ARBR_C":"https://www.hydroshare.org/resource/916041be57be47a1b19c63f328fb086c/",
