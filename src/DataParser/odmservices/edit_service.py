@@ -1,10 +1,9 @@
 import sqlite3
 
-from odmdata import SessionFactory
-from odmdata import DataValue
-from series_service import SeriesService
-from odmdata import series as series_module
-
+from DataParser.odmdata import DataValue
+from DataParser.odmdata import SessionFactory
+from DataParser.odmdata import series as series_module
+from DataParser.odmservices.series_service import SeriesService
 
 
 class EditService():
@@ -19,13 +18,13 @@ class EditService():
             self._session_factory = SessionFactory(connection_string, debug)
             self._series_service = SeriesService(connection_string, debug)
         elif (factory is not None):
-            #TODO code has changed to no longer use a session factory, refactor so it is correct SR
+            # TODO code has changed to no longer use a session factory, refactor so it is correct SR
             self._session_factory = factory
             service_manager = ServiceManager()
             self._series_service = service_manager.get_series_service()
-        #else:
+            # else:
             # One or the other must be set
-             # TODO throw an exception
+            # TODO throw an exception
 
         self._edit_session = self._session_factory.get_session()
 
@@ -53,7 +52,6 @@ class EditService():
         results = self._cursor.fetchall()
 
         self._series_points = results
-
 
     def _test_filter_previous(self):
         if not self._filter_from_selection:
@@ -171,7 +169,7 @@ class EditService():
 
         # This should be either one or the other. If it's both, id is used first.
         # If neither are set this function does nothing.
-        if len(id_list)>0:
+        if len(id_list) > 0:
             for i in range(len(self._series_points)):
                 if self._series_points[i][0] in id_list:
                     self._filter_list[i] = True
@@ -183,13 +181,11 @@ class EditService():
         else:
             pass
 
-
     def reset_filter(self):
         self._filter_list = [False] * len(self._series_points)
 
     def toggle_filter_previous(self):
         self._filter_from_selection = not self._filter_from_selection
-
 
     ###################
     # Gets
@@ -198,11 +194,11 @@ class EditService():
         return self._series_service.get_series_by_id(self._series_id)
 
     def get_series_points(self):
-        #all point in the series
+        # all point in the series
         return self._series_points
 
     def get_filtered_points(self):
-        #list of selected points
+        # list of selected points
         tmp = []
         for i in range(len(self._series_points)):
             if self._filter_list[i]:
@@ -211,20 +207,17 @@ class EditService():
         return tmp
 
     def get_filter_list(self):
-        #true or false list the length of the entire series. true indicate the point is selected
+        # true or false list the length of the entire series. true indicate the point is selected
         return self._filter_list
 
     def get_qcl(self, qcl_id):
         return self._series_service.get_qcl_by_id(qcl_id)
-
-
 
     def get_method(self, method_id):
         return self._series_service.get_method_by_id(method_id)
 
     def get_variable(self, variable_id):
         return self._series_service.get_variable_by_id(variable_id)
-
 
     #################
     # Edits
@@ -383,11 +376,11 @@ class EditService():
             self._cursor.execute("UPDATE DataValues SET MethodID = %s" % (method.id))
             is_new_series = True
         # check that the code is not zero
-        #if qcl is not None and qcl.code != 0:
+        # if qcl is not None and qcl.code != 0:
         if qcl is not None:
             self._cursor.execute("UPDATE DataValues SET QualityControlLevelID = %s" % (qcl.id))
             is_new_series = True
-        #else:
+        # else:
         #    raise ValueError("Quality Control Level cannot be zero")
 
         self._cursor.execute("SELECT * FROM DataValues ORDER BY LocalDateTime")
@@ -440,7 +433,6 @@ class EditService():
 
         series.data_values = dvs
         self._series_service.save_series(series, dvs, isSave)
-           
 
     def create_qcl(self, code, definition, explanation):
         return self._series_service.create_qcl(code, definition, explanation)

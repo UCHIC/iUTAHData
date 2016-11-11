@@ -1,5 +1,3 @@
-
-
 class RecordService():
     # Script header (imports etc.) will be set up in Main when record is clicked.
     def __init__(self, script, edit_service, connection_string, record=False):
@@ -26,12 +24,10 @@ class RecordService():
         if self._record:
             self._script("edit_service.data_gaps(%s, '%s')\n" % (value, time_period), 'black')
 
-
     def value_change_threshold(self, value):
         self._edit_service.value_change_threshold(value)
         if self._record:
             self._script("edit_service.value_change_threshold(%s)\n" % (value), 'black')
-
 
     def toggle_filter_previous(self):
         self._edit_service.toggle_filter_previous()
@@ -39,16 +35,17 @@ class RecordService():
     def select_points_tf(self, tf_list):
         self._edit_service.select_points_tf(tf_list)
         if self._record:
-            #print [x[2] for x in self._edit_service.get_filtered_points()]
-            self._script("edit_service.select_points({list})\n".format(list=[x[2] for x in self._edit_service.get_filtered_points()]))
+            # print [x[2] for x in self._edit_service.get_filtered_points()]
+            self._script("edit_service.select_points({list})\n".format(
+                list=[x[2] for x in self._edit_service.get_filtered_points()]))
 
     def select_points(self, id_list=[], datetime_list=[]):
         self._edit_service.select_points(id_list, datetime_list)
         if self._record:
-            #print [x[2] for x in self._edit_service.get_filtered_points()]
-            self._script("edit_service.select_points({list})\n".format(list=[x[2] for x in self._edit_service.get_filtered_points()]))
-            #print self._edit_service.get_filtered_points()
-
+            # print [x[2] for x in self._edit_service.get_filtered_points()]
+            self._script("edit_service.select_points({list})\n".format(
+                list=[x[2] for x in self._edit_service.get_filtered_points()]))
+            # print self._edit_service.get_filtered_points()
 
     ###################
     # Editing
@@ -136,7 +133,6 @@ class RecordService():
             self._script('new_variable = series_service.get_variable_by_id(%s)\n' % (var.id))
         return var
 
-
     def toggle_record(self):
         if self._record:
             self._record = False
@@ -169,8 +165,8 @@ class RecordService():
     def write_header(self):
         self._script("from odmservices import EditService\n", 'black')
         self._script("from odmservices import SeriesService\n", 'black')
-        self._script("edit_service  = EditService(series_id={id}, connection_string='{con}')\n".format(id=self._edit_service._series_id, con=self._connection_string), 'black')
+        self._script("edit_service  = EditService(series_id={id}, connection_string='{con}')\n".format(
+            id=self._edit_service._series_id, con=self._connection_string), 'black')
         self._script("series_service = SeriesService(connection_string='%s')\n" % (self._connection_string), 'black')
         self._script("## To run commands from the python console uncomment and run the following command ##\n", 'black')
         self._script("#edit_service = Tools\n", 'black')
-

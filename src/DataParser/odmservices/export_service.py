@@ -1,6 +1,6 @@
 import csv
-import xml.etree.cElementTree as ET
 import datetime
+import xml.etree.cElementTree as ET
 
 
 class ExportService():
@@ -19,11 +19,10 @@ class ExportService():
             return False
 
         writer = csv.writer(open(filename, 'wb'))
-        print "filename: ", filename
+        print "log_file: ", filename
         self.write_data_header(writer, utc, site, var, offset, qual, src, qcl)
         for dv in series.data_values:
             self.write_data_row(writer, series, dv, utc, site, var, offset, qual, src, qcl)
-
 
     def write_data_row(self, writer, series, dv, utc, site, var, offset, qual, src, qcl):
         data = []
@@ -78,7 +77,6 @@ class ExportService():
         data.append(dv.sample_id)
 
         writer.writerow(data)
-
 
     def write_data_header(self, writer, utc, site, var, offset, qual, src, qcl):
         # Build header list

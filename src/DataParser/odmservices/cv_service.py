@@ -1,20 +1,19 @@
 # CV imports
-from odmdata import SessionFactory
-from odmdata import VerticalDatumCV
-from odmdata import SiteTypeCV
-from odmdata import VariableNameCV
-from odmdata import SpeciationCV
-from odmdata import SampleMediumCV
-from odmdata import ValueTypeCV
-from odmdata import DataTypeCV
-from odmdata import GeneralCategoryCV
-from odmdata import CensorCodeCV
-from odmdata import TopicCategoryCV
-from odmdata import SampleTypeCV
-from odmdata import OffsetType
-from odmdata import Sample
-from odmdata import Qualifier
-from odmdata import Unit
+from DataParser.odmdata import CensorCodeCV
+from DataParser.odmdata import DataTypeCV
+from DataParser.odmdata import GeneralCategoryCV
+from DataParser.odmdata import OffsetType
+from DataParser.odmdata import Qualifier
+from DataParser.odmdata import Sample
+from DataParser.odmdata import SampleMediumCV
+from DataParser.odmdata import SampleTypeCV
+from DataParser.odmdata import SessionFactory
+from DataParser.odmdata import SiteTypeCV
+from DataParser.odmdata import SpeciationCV
+from DataParser.odmdata import Unit
+from DataParser.odmdata import ValueTypeCV
+from DataParser.odmdata import VariableNameCV
+from DataParser.odmdata import VerticalDatumCV
 
 
 class CVService():
@@ -28,7 +27,7 @@ class CVService():
 
 
 
-    #return a list of all terms in the cv
+    # return a list of all terms in the cv
     def get_vertical_datum_cvs(self):
         session = self._session_factory.get_session()
         result = session.query(VerticalDatumCV).order_by(VerticalDatumCV.term).all()
@@ -116,7 +115,6 @@ class CVService():
         result = self._edit_session.query(Unit).all()
         session.close()
         return result
-
 
     # return a single cv
 

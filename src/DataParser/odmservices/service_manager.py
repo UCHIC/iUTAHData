@@ -1,17 +1,15 @@
+import os
 import sys
 import urllib
-import os
 
 from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 
 import utilities as util
-from series_service import SeriesService
 from cv_service import CVService
 from edit_service import EditService
-from record_service import RecordService
 from export_service import ExportService
-
-
+from record_service import RecordService
+from series_service import SeriesService
 
 
 class ServiceManager():
@@ -48,7 +46,6 @@ class ServiceManager():
 
         f.close()
 
-
     def get_connections(self):
         return self._connections
 
@@ -72,7 +69,7 @@ class ServiceManager():
             self.version = self.get_db_version(conn_dict)
         except DBAPIError:
             pass
-            #print e.message
+            # print e.message
         except SQLAlchemyError:
             return False
         return True
