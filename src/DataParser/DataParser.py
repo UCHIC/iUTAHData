@@ -1,31 +1,27 @@
-import sys
+import json
+import logging
 import os
 import shutil
-import logging
+from datetime import datetime
+import sys
 
-this_file = os.path.realpath(__file__)
-directory = os.path.dirname(os.path.dirname(this_file))
+src_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir)
+root_directory = os.path.realpath(os.path.join(src_directory, os.pardir, os.pardir))
+static_folder = os.path.join(root_directory, 'static', 'mdfserver', 'json')
+sys.path.insert(0, src_directory)
 
-sys.path.insert(0, directory)
 from odmservices import ServiceManager
 from logger import LoggerTool
 
 tool = LoggerTool()
 logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
-sm = ServiceManager()
-# This variable is to address ocassional 500 errors in the sandbox server.
-# I think these errors are due to the files are being generated in the static folder.
-temp_location = directory + "\\DataParser\\json_temp\\"
-dump_location = os.path.join(directory,  "mdfserver\\static\\mdfserver\\json\\")
-parent_dir = os.path.join(os.path.join(directory, os.pardir), os.pardir)
-static_folder = os.path.join(parent_dir, "static\\mdfserver\\json\\")
-NINETY_SIX = 96
+service_manager = ServiceManager()
 
 site_variables = {
     "climate": ['BP_Avg', 'RH', 'DewPt_Avg', 'VaporPress_Avg', 'WindSp_Avg',
                 'WindDir_Avg', 'JuddDepth_Avg', 'PARIn_Avg', 'PAROut_Avg',
-                'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'NetRad_NR01_Avg', 'LWOut_Cor_NR01_Avg','LWIn_Cor_NR01_Avg',
+                'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'NetRad_NR01_Avg', 'LWOut_Cor_NR01_Avg', 'LWIn_Cor_NR01_Avg',
                 'Evapotrans_ETo', 'Evapotrans_ETr', 'VWC_5cm_Avg', 'SoilTemp_5cm_Avg', 'Permittivity_5cm_Avg',
                 'VWC_10cm_Avg', 'SoilTemp_10cm_Avg', 'Permittivity_10cm_Avg', 'VWC_20cm_Avg', 'SoilTemp_20cm_Avg',
                 'Permittivity_20cm_Avg', 'VWC_50cm_Avg', 'SoilTemp_50cm_Avg', 'Permittivity_50cm_Avg',
@@ -40,8 +36,10 @@ site_variables = {
     'rb_ldf_a': ['Discharge_cms']
 }
 
+decommissioned_sites = ['RB_KF_R', 'PR_TC_CUWCD', 'RB_RBR_CUWCD']
 
-def getSiteVars(site, database):
+
+def get_site_variables(site, database):
     variables = []
     if site.type in ['Land', 'Atmosphere']:
         variables.extend(site_variables['climate'])
@@ -68,123 +66,82 @@ def getSiteVars(site, database):
     return variables
 
 
-# all the tabs and spaces are added for easier debugging.
-# Don't judge... the performance increase for taking them out is not even significant.
-def handleConnection(database, text_file):
-    sm._current_connection = {'engine': 'mssql', 'user': 'webapplication', 'password': 'W3bAppl1c4t10n!',
-                              'address': 'iutahdbs.uwrl.usu.edu', 'db': database}
-    ss = sm.get_series_service()
-    sites = ss.get_all_sites()
+def load_watershed_data(watershed_database):
+    # HEY! LET'S ADD THE FILE CONTAINING THE PRODUCTION DATABASE LOGIN TO A PUBLIC REPOSITORY!
+    # TODO: for all that is sacred, remove the database authentication info from here.
+    service_manager._current_connection = {
+        'engine': 'mssql',
+        'user': 'webapplication',
+        'password': 'W3bAppl1c4t10n!',
+        'address': 'iutahdbs.uwrl.usu.edu',
+        'db': watershed_database
+    }
 
-    # lets print all the sites, shall we?
-    logger.info("Started getting sites for " + database)
+    watershed = {}
+    logger.info("Getting sites for %s" % watershed_database)
+    series_service = service_manager.get_series_service()
+
+    sites = series_service.get_all_sites()
+    raw_qc_level_id = series_service.get_raw_qc_level_id()
+
     for site in sites:
-        # Print all info for each site here
-        file_str = ""
-        file_str += "\"" + str(site.code) +"\": {\n"
-        file_str += "\t\"info\": {\n"
-        file_str += "\t\t\"code\": \"{}\",\n".format(site.code)
-        file_str += "\t\t\"name\": \"{}\",\n".format(site.name)
-        file_str += "\t\t\"latitude\": \"{}\",\n".format(site.latitude)
-        file_str += "\t\t\"longitude\": \"{}\",\n".format(site.longitude)
-        file_str += "\t\t\"lat_long_datum\": \"{}\",\n".format(site.spatial_ref.srs_name)
-        file_str += "\t\t\"elevation\": \"{}\",\n".format(site.elevation_m)
-        file_str += "\t\t\"local_x\": \"{}\",\n".format(site.local_x)
-        file_str += "\t\t\"local_y\": \"{}\",\n".format(site.local_y)
-        file_str += "\t\t\"local_projection\": \"{}\",\n".format(site.local_spatial_ref.srs_name
-                                                                 if site.local_spatial_ref else "None")
-        file_str += "\t\t\"pos_accuracy\": \"{}\",\n".format(site.pos_accuracy_m)
-        file_str += "\t\t\"state\": \"{}\",\n".format(site.state)
-        file_str += "\t\t\"county\": \"{}\",\n".format(site.county)
-        file_str += "\t\t\"comments\": \"{}\",\n".format(site.comments)
-        file_str += "\t\t\"type\": \"{}\"\n".format(site.type)
-        file_str += "\t\t},\n\n"
+        if site.code in decommissioned_sites:
+            logger.info("Skipping site %s" % site.code)
+            continue
 
-        #process data update time
-        update_time = ss.get_min_and_max_value_dates_by_site_id(site.id)
-        file_str += "\t\"update_time\": {\n"
-        file_str += "\t\t\"min\": \"{}\",\n".format(update_time[0].local_date_time if update_time[0] else "None")
-        file_str += "\t\t\"max\": \"{}\"\n".format(update_time[1].local_date_time if update_time[1] else "None")
-        file_str += "\t\t},\n\n"
+        logger.info("Getting data for site %s" % site.code)
+        last_observation_time = series_service.get_site_last_observation_time(site.id)
+        site_series = series_service.get_site_series_by_variable_codes(site.id, raw_qc_level_id,
+                                                                       get_site_variables(site, watershed_database))
+        data_values = series_service.get_site_variables_raw_values(site.id, raw_qc_level_id,
+                                                                   [series.variable_id for series in site_series],
+                                                                   last_observation_time)
 
-        #print each variable and its value here, bye
-        logger.info("Started getting variables for site: " + site.name + " in " + database)
-        file_str += "\t\"vars\": [\n"
-        vars_to_show = getSiteVars(site, database)
+        site_dict = {
+            'info': site.get_site_dict(),
+            'last_observation': str(last_observation_time),
+            'vars': []
+        }
 
-        log_info = "\n"
-        no_vars = True
-        variables = ss.get_variables_by_site_code(site.code)
-        for var_sel in vars_to_show:
-            var_print = next((var for var in variables if var.code == var_sel), None)
+        for series in site_series:
+            values = data_values.loc[data_values['VariableID'] == series.variable_id]['DataValue'].tolist()
+            logger.info("Collected %s data points for site variable %s" % (len(values), series.variable_code))
+            site_dict['vars'].append({
+                'name': series.variable_name,
+                'unit': series.variable_units_name,
+                'code': series.variable_code,
+                'sample': series.sample_medium,
+                'values': values
+            })
+        watershed[site.code] = site_dict
+        logger.info("Finished site data collection for for %s" % site.code)
 
-            if var_print is not None:
-                no_vars = False
-                file_str += "\t{\n"
-                file_str += "\t\t\"name\": \"{}\",\n".format(var_print.name)
-                file_str += "\t\t\"unit\": \"{}\",\n".format(var_print.variable_unit.abbreviation)
-                file_str += "\t\t\"code\": \"{}\",\n".format(var_print.code)
-                file_str += "\t\t\"sample\": \"{}\",\n".format(var_print.sample_medium)
-                file_str += "\t\t\"values\": ["
-                log_info += "\t\t   Now getting values for {}\n".format(var_print.name)
-                var_values = ss.get_num_of_values_by_site_id_and_var_id(site.id, var_print.id, NINETY_SIX)
-                threshold = NINETY_SIX
-                if len(var_values) < threshold:
-                    threshold = len(var_values)
-                for x in range(0, threshold):
-                    file_str += str(var_values[x].data_value)
-                    if x != (threshold - 1):
-                        file_str += ", "
-                file_str += "]\n\t},\n"
-            else:
-                log_info += "\t\t\tVar code \"" + var_sel + "\" not found in site: " + site.code + "\n"
-        if not no_vars:
-            file_str = file_str[:-2]
-            
-        logger.info(log_info)
-        logger.info("Finished getting variables for site: " + site.name + " in " + database)
-        file_str += "\n\t]\n}"
-        if sites[len(sites) - 1] != site:
-            file_str += ","
-        file_str += "\n\n"
-        text_file.write(file_str)
-    logger.info("Finished getting sites for " + database)
+    return watershed
 
 
-def dataParser():
+def parse_data():
     logger.info("\n========================================================\n")
+    logger.info("Creating data files.")
+
     # logan database is loaded here
-    logger.info("Started creating files.")
-    databaseParser('iUTAH_Logan_OD', 'Logan')
+    logan_watershed = load_watershed_data('iUTAH_Logan_OD')
+    write_json(logan_watershed, 'Logan')
+
     # provo database is loaded here
-    databaseParser('iUTAH_Provo_OD', 'Provo')
-    # red butte creek database is loaded here
-    databaseParser('iUTAH_RedButte_OD', 'RedButte')
-    logger.info("Finished Program and Provo Site. ")
+    provo_watershed = load_watershed_data('iUTAH_Provo_OD')
+    write_json(provo_watershed, 'Provo')
 
-    logger.info("Started moving JSON files to static folder. ")
-    moveToStaticFolders("LoganSite.json")
-    moveToStaticFolders("ProvoSite.json")
-    moveToStaticFolders("RedButteSite.json")
+    # red butte creek
+    red_butte_watershed = load_watershed_data('iUTAH_RedButte_OD')
+    write_json(red_butte_watershed, 'RedButte')
 
-    logger.info("Finished moving JSON files to static folder. ")
+    logger.info("Finished creating data files.")
     logger.info("\n========================================================\n")
 
 
-def moveToStaticFolders(fileSite):
-    shutil.copy(temp_location + fileSite, dump_location)
-    shutil.copy(temp_location + fileSite, static_folder)
+def write_json(watershed_dictionary, watershed_name):
+    with open(os.path.join('%s', '%sSite.json') % (static_folder, watershed_name), "w") as out_file:
+        json.dump(watershed_dictionary, out_file)
 
 
-def databaseParser(database, location):
-    logger.info("Started " + location + " JSON File.")
-    text_file = open(temp_location + location + "Site.json", "w")
-    logger.info("Started creating " + location + " JSON file. ")
-    #JSON File begins
-    text_file.write("{\n")
-    handleConnection(database, text_file)
-    text_file.write("}")
-    text_file.close()
-    logger.info("Finished creating " + location + " JSON file. ")
-
-dataParser()
+parse_data()

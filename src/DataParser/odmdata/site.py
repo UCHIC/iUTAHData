@@ -28,12 +28,32 @@ class Site(Base):
     type = Column('SiteType', String)
 
     # relationships
-    spatial_ref = relationship(SpatialReference, primaryjoin=("SpatialReference.id==Site.lat_long_datum_id"))
-    local_spatial_ref = relationship(SpatialReference, primaryjoin=("SpatialReference.id==Site.local_projection_id"))
+    spatial_ref = relationship(SpatialReference, primaryjoin=("SpatialReference.id==Site.lat_long_datum_id"), lazy='subquery')
+    local_spatial_ref = relationship(SpatialReference, primaryjoin=("SpatialReference.id==Site.local_projection_id"), lazy='subquery')
 
     def __init__(self, site_code, site_name):
         self.code = site_code
         self.name = site_name
+
+    def get_site_dict(self):
+        return {
+            "code": self.code,
+            "name": self.name,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "lat_long_datum": self.spatial_ref.srs_name,
+            "elevation": self.elevation_m,
+            "local_x": self.local_x,
+            "local_y": self.local_y,
+            "local_projection": self.local_spatial_ref.srs_name if self.local_spatial_ref else 'None',
+            "pos_accuracy": self.pos_accuracy_m,
+            "state": self.state,
+            "county": self.county,
+            "comments": self.comments,
+            "type": self.type
+        }
+
+
 
     def __repr__(self):
         return "<Site('%s', '%s')>" % (self.code, self.name)

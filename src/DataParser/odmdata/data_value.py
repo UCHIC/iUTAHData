@@ -58,6 +58,7 @@ class DataValue(Base):
 
     # relationships
     site = relationship(Site)
+    
     variable = relationship(Variable)
     method = relationship(Method)
     source = relationship(Source)
