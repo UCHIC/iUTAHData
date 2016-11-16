@@ -253,25 +253,15 @@ div ul {
     display: inline;
 }
 
-#raw_tsa_buttons > button {
+#raw_tsa_buttons > input[type="button"] {
     left: -15px;
     position: relative;
     top: 15px;
-    width: 469.5px;
+    width: 32%;
 }
 
-#raw_tsa_buttons > a {
-    position: relative;
-    top: -45px;
-    left: 456px;
-}
-
-#raw_tsa_buttons > a > button {
-    width: 469.5px;
-}
-
-button.btn {
-    height: 60px;
+input[type="button"].btn {
+    height: 40px;
 }
 
 #big_image {

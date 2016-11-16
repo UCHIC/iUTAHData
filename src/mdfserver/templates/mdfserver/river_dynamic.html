@@ -165,25 +165,20 @@
             </a>
         {% endif %}
     </div>
+    <div class="clearfix"></div>
 
 
     <div class="most_recent">
         <!--<div class="info_space"></div>-->
         <section id="raw_tsa_buttons">
-            <button type="button" class="btn" onclick="javascript:raw_data_redirect('{{ river_data.info.code }}')">
-                Download the raw data for this site.
-            </button>
-            <a target="_blank" href="http://data.iutahepscor.org/tsa/?sitecode={{ river_data.info.code }}">
-                <button type="button" class="btn">
-                    Visualize time series from this site.
-                </button>
-            </a>
-
+            <input id="raw-quality-download" type="button" class="btn" data-site="{{ river_data.info.code }}" value="Download the raw data for this site">
+            <input id="quality-controlled-download" type="button" class="btn" data-site="{{ river_data.info.code }}" value="Download the QC Level 1 data for this site">
+            <input id="tsa-visualization" type="button" class="btn" data-site="{{ river_data.info.code }}" value="Visualize time series from this site">
         </section>
 
         {% if river_data.active %}
             <h2 id="graph-title">Most Recent Instantaneous Measurements</h2>
-            <h4>Data update time: {{ river_data.update_time.max }}, past 24 hours shown. </h4>
+            <h4>Last Observation: {{ river_data.last_observation }}, latest 24 hours shown. </h4>
 
             <p id="dyn_disclaimer"></p>
 
