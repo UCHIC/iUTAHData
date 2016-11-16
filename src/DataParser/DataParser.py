@@ -105,10 +105,13 @@ def load_watershed_data(watershed_database):
 
         for series in site_series:
             values = data_values.loc[data_values['VariableID'] == series.variable_id]['DataValue'].tolist()
-            logger.info("Collected %s data points for site variable %s" % (len(values), series.variable_code))
+            if len(values) == 0:
+                logger.info("No data points for variable %s" % series.variable_code)
+                continue
+            logger.info("Collected %s data points for variable %s" % (len(values), series.variable_code))
             site_dict['vars'].append({
                 'name': series.variable_name,
-                'unit': series.variable_units_name,
+                'unit': series.units.abbreviation,
                 'code': series.variable_code,
                 'sample': series.sample_medium,
                 'values': values
@@ -141,7 +144,7 @@ def parse_data():
 
 def write_json(watershed_dictionary, watershed_name):
     with open(os.path.join('%s', '%sSite.json') % (static_folder, watershed_name), "w") as out_file:
-        json.dump(watershed_dictionary, out_file)
+        json.dump(watershed_dictionary, out_file, indent=4)
 
 
 parse_data()

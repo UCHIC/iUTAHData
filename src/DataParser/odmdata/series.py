@@ -3,6 +3,7 @@ from collections import OrderedDict  # Requires Python 2.7 >=
 from sqlalchemy import Column, Integer, ForeignKey, String, Float, DateTime
 from sqlalchemy.orm import relationship
 
+from DataParser.odmdata.unit import Unit
 from base import Base
 from method import Method
 from quality_control_level import QualityControlLevel
@@ -94,6 +95,7 @@ class Series(Base):
     method = relationship(Method)
     source = relationship(Source)
     quality_control_level = relationship(QualityControlLevel)
+    units = relationship(Unit, primaryjoin="Unit.id==Series.variable_units_id", foreign_keys="[Series.variable_units_id]", lazy='subquery')
 
     def __repr__(self):
         return "<Series('%s', '%s', '%s', '%s')>" % (self.id, self.site_name, self.variable_code, self.variable_name)
