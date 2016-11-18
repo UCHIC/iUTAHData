@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import TemplateView
 
 from iUTAHData.settings.base import *
@@ -86,11 +87,9 @@ def deserialize_json(database_name):
         'iUTAH_RedButte_OD': 'RedButte'
     }
 
-    river_data = open(BASE_DIR + '/../mdfserver/static/mdfserver/json/' + network_map[database_name] + 'Site.json')
-    json_data = json.load(river_data)
-    river_data.close()
+    with staticfiles_storage.open('mdfserver/json/%sSite.json' % network_map[database_name]) as river_data:
+        json_data = json.load(river_data)
     return json_data
-
 
 def prepare_for_heading(river_data, type):
     found = False
