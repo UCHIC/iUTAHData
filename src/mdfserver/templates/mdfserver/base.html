@@ -14,6 +14,10 @@
           ga('send', 'pageview');
 
         </script>
+
+        {% block preload_scripts %}
+
+        {% endblock %}
         <title>iUTAH | {% block page_title %}{% endblock %}</title>
         <link rel="shortcut icon" href="{% static "mdfserver/images/favicon.ico" %}" type="image/x-icon">
         <link rel="icon" href="{% static "mdfserver/images/favicon.ico" %}" type="image/x-icon">
@@ -54,6 +58,7 @@
                                         <li><a href="{% url 'logan_river' %}">Logan River</a></li>
                                         <li><a href="{% url 'provo_river' %}">Provo River</a></li>
                                         <li><a href="{% url 'red_butte_creek' %}">Red Butte Creek</a></li>
+                                        <li><a href="{% url 'gamut_webcams' %}">Gamut Webcams</a></li>
                                     </ul>
                                 </li>
                                 <li class="{% block about_classes %}dropdown{% endblock %}"><a class="dropdown-toggle" data-hover="dropdown">About<b class="caret"></b></a>
@@ -105,13 +110,16 @@
             </div>
         </footer>
 
-
     {% block scripts %}
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="{% static "mdfserver/js/bootstrap.js" %}"></script>
         <script src="{% static "mdfserver/js/dropdown-hover.js" %}"></script>
         <script src="{% static "mdfserver/js/code.js" %}"></script>
         <script src="{% static "mdfserver/js/modal_custom.js" %}"></script>
+    {% endblock %}
+
+    {% block full_page_overlay %}
+
     {% endblock %}
 
     </body>

@@ -1,6 +1,10 @@
 import json
+import re
+import glob
 
+import datetime
 from django.contrib.staticfiles.storage import staticfiles_storage
+from django.http.response import Http404, JsonResponse
 from django.views.generic.base import TemplateView
 
 from iUTAHData.settings.base import *
@@ -91,6 +95,7 @@ def deserialize_json(database_name):
         json_data = json.load(river_data)
     return json_data
 
+
 def prepare_for_heading(river_data, type):
     found = False
     for idx, variables in enumerate(river_data['vars']):
@@ -116,34 +121,20 @@ def river_dynamic(request, database, site_code):
 
     pics = []
     counter = 1
-    while finders.find('mdfserver/images/site_images/' + database + '/' + site_code + '/Site (' + str(counter) + ').jpg') is not None:
+    while finders.find('mdfserver/images/site_images/' + database + '/' + site_code + '/Site (' + str(
+            counter) + ').jpg') is not None:
         pics.append('Site (' + str(counter) + ').jpg')
         counter += 1
-
-    # i'm not even gonna try here...
-    # We're pretty sure this developer didn't know about 'elif' statements...
-    # xtra_site = "none"
-    # if site_code == "RB_ARBR_AA":
-    #     xtra_site = data_river['RB_ARBR_USGS']
-    # else:
-    #     if site_code == "PR_BJ_AA":
-    #         xtra_site = data_river['PR_BJ_CUWCD']
-    #     else:
-    #         if site_code == "PR_CH_AA":
-    #             xtra_site = data_river['PR_CH_CUWCD']
-    #         else:
-    #             if site_code == "PR_LM_BA":
-    #                 xtra_site = data_river['PR_UM_CUWCD']
 
     xtra_site = "none"
     if site_code == "RB_ARBR_AA":
         xtra_site = data_river['RB_ARBR_USGS']
     elif site_code == "PR_BJ_AA":
-            xtra_site = data_river['PR_BJ_CUWCD']
+        xtra_site = data_river['PR_BJ_CUWCD']
     elif site_code == "PR_CH_AA":
-            xtra_site = data_river['PR_CH_CUWCD']
+        xtra_site = data_river['PR_CH_CUWCD']
     elif site_code == "PR_LM_BA":
-            xtra_site = data_river['PR_UM_CUWCD']
+        xtra_site = data_river['PR_UM_CUWCD']
 
     sites_for_select = ['LR_Mendon_AA', 'LR_MainStreet_BA', 'LR_WaterLab_AA', 'LR_TG_BA', 'LR_FB_BA', 'LR_FB_C',
                         'LR_GC_C', 'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R', 'BSF_CONF_BA',
@@ -154,8 +145,6 @@ def river_dynamic(request, database, site_code):
     db_sites = data_river.keys()
     approved_sites = []
 
-    # this comment has no other purpose but to point out that, for some reason beyond me,
-    # there was a variable called variab here. it was just 2 letters away from being correctly spelled...
     for variable in sites_for_select:
         var_print = next((var for var in db_sites if var == variable), None)
         if var_print is not None:
@@ -165,8 +154,10 @@ def river_dynamic(request, database, site_code):
     data_river = prepare_for_heading(data_river, "Air")
 
     data_river['active'] = site_code not in deprecated_sites
-    data_river['deprecation_date'] = deprecated_sites[site_code]['deprecation_time'] if not data_river['active'] else None
-    data_river['new_site_network'] = deprecated_sites[site_code]['new_site_network'] if not data_river['active'] else None
+    data_river['deprecation_date'] = deprecated_sites[site_code]['deprecation_time'] if not data_river[
+        'active'] else None
+    data_river['new_site_network'] = deprecated_sites[site_code]['new_site_network'] if not data_river[
+        'active'] else None
     data_river['new_site_code'] = deprecated_sites[site_code]['new_site_code'] if not data_river['active'] else None
 
     context = {'site': database,
@@ -176,3 +167,39 @@ def river_dynamic(request, database, site_code):
                'db_sites': approved_sites,
                'static_url': settings.STATIC_URL}
     return render(request, 'mdfserver/river_dynamic.html', context)
+
+
+def gamut_webcams_view(request):
+    gamut_webcam_dir = os.path.join(settings.STATIC_ROOT, 'mdfserver\\images\\gamutphotos\\')
+    site_details = json.load(open(os.path.join(gamut_webcam_dir, 'webcam_details.json')))
+    context = {'static_url': settings.STATIC_URL}
+    photos_per_page = 8
+
+    if request.is_ajax():
+        if 'site' in request.GET and 'network' in request.GET:
+            site = request.GET.get('site')
+            network = request.GET.get('network')
+            index = int(request.GET.get('index'))
+            folder = site_details[network][site]['img_dir']
+
+            context['site_selected'] = site
+            context['site_name'] = site_details[network][site]['site_name']
+            context['network'] = network
+            context['index'] = index
+            context['img_dir'] = folder
+            context['img_name'] = site_details[network][site]['img_name']
+            context['img_date'] = site_details[network][site]['img_date']
+
+            ordered_files = json.load(open(os.path.join(gamut_webcam_dir, 'ordered_dir_listings.json')))
+            photo_count = len(ordered_files[folder])
+            first_index = photos_per_page * index if (index * photos_per_page < photo_count) else None
+            last_index = photos_per_page * (index + 1) if (photos_per_page * (index + 1) < photo_count) else -1
+
+            if first_index is not None:
+                context['next_photos'] = ordered_files[folder][first_index:last_index]
+                context['img_name'] = context['next_photos'][0]['name']
+            return render(request, 'mdfserver/data/image_overlay.html', context)
+    else:
+        context['networks'] = site_details
+
+    return render(request, 'mdfserver/data/gamut_webcams.html', context)

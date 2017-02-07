@@ -1,0 +1,61 @@
+{% extends 'mdfserver/base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Gamut Network Webcams{% endblock %}
+{% block data_classes %}{{ block.super }} active{% endblock %}
+
+{% block preload_scripts %}
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGtObe6Ic1FeiDvC9Oxt3oWc-HWk8wuTk"></script>
+    <script src="{% static "mdfserver/js/gamut_webcams.js" %}"></script>
+{#    <script>#}
+{#        google.maps.event.addDomListener(window, 'load', add_marker(41.72, -111.59, 8{% comment %}{{ river_data.info.latitude }}, {{ river_data.info.longitude }}{% endcomment %}));#}
+{#    </script>#}
+{% endblock %}
+
+{% block content %}
+<div id="site_content">
+    <div id="content">
+        <h1 style="margin-bottom: -25px;">
+            GAMUT Network Webcams
+        </h1>
+        <br/>
+
+{#            Map canvas for displaying sites #}
+        <div id="map-canvas"></div>
+
+        {% for network, sites in networks.items %}
+            <h2>{{ network }} River</h2>
+            <div class="webcamThumbnailBlock">
+            {% for site, info in sites.items %}
+                <div class="webcamItem" onclick="load_image_overlay('{{ network }}', '{{ site }}', 0);">
+                    <img class="webcamThumbnail" id="{{ network }}_{{ site }}"
+                         src="{% static "mdfserver/images/gamutphotos/" %}{{ info.img_dir }}/{{ info.img_name }}"
+                         alt="Photo from {{ info.site_name }} dated {{ info.img_date }}">
+                    <div class="webcamSubtext" id="subtext_{{ network }}_{{ site }}">
+                        {{ info.site_name }} <br> {{ info.img_date }}
+                    </div>
+                </div>
+                <script>
+                    google.maps.event.addDomListener(window, 'load',
+                        add_site_to_map('{{ network }}', '{{ site }}', '{{ info.lat }}', '{{ info.lon }}'));
+                </script>
+            {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+
+</script>
+
+{% endblock %}
+
+{% block full_page_overlay %}
+    <div id="overlay_container">
+        {% include "mdfserver/data/image_overlay.html" %}
+    </div>
+{% endblock %}
