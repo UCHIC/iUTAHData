@@ -1461,6 +1461,8 @@ div.webcamItem:hover {
 
 img#overlay_image {
     width: 920px;
+    height: 517px;
+    overflow: hidden;
 }
 
 .popup {
@@ -1530,8 +1532,9 @@ div#image_scroll {
 }
 
 #image_scroll img {
-    max-width: 11%;
-    max-height: 70px;
+    width: 11%;
+    height: 57px;
+    overflow: hidden;
     margin-right: 4px;
     margin-left: 4px;
     margin-top: 4px;
@@ -1542,9 +1545,15 @@ div#image_scroll {
 
 img#img_nav {
     width: 13px;
-    padding-top: 19px;
+    height: 25px;
+    padding-top: 15px;
     padding-bottom: 20px;
     display: inline;
     position: relative;
     float: left;
+}
+
+h2#river_title {
+    margin-top: 10px;
+    margin-bottom: 15px;
 }

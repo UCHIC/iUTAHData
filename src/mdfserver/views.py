@@ -187,8 +187,8 @@ def gamut_webcams_view(request):
             context['network'] = network
             context['index'] = index
             context['img_dir'] = folder
-            context['img_name'] = site_details[network][site]['img_name']
-            context['img_date'] = site_details[network][site]['img_date']
+            # context['img_name'] = site_details[network][site]['img_name']
+            # context['img_date'] = site_details[network][site]['img_date']
 
             ordered_files = json.load(open(os.path.join(gamut_webcam_dir, 'ordered_dir_listings.json')))
             photo_count = len(ordered_files[folder])
@@ -198,8 +198,10 @@ def gamut_webcams_view(request):
             if first_index is not None:
                 context['next_photos'] = ordered_files[folder][first_index:last_index]
                 context['img_name'] = context['next_photos'][0]['name']
-            return render(request, 'mdfserver/data/image_overlay.html', context)
+                context['img_date'] = context['next_photos'][0]['date']
+                context['end_of_list'] = len(context['next_photos']) < photos_per_page
+                return render(request, 'mdfserver/data/image_overlay.html', context)
+            return Http404
     else:
         context['networks'] = site_details
-
-    return render(request, 'mdfserver/data/gamut_webcams.html', context)
+        return render(request, 'mdfserver/data/gamut_webcams.html', context)

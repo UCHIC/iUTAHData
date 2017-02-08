@@ -14,8 +14,13 @@
                  alt="{{ site_name }} ({{ photo.date }})" id="thumb_{{ forloop.counter }}"
                  onclick="view_large({{ forloop.counter }})">
         {% endfor %}
+        {% if end_of_list %}
+            <script> end_of_list = true; </script>
+        {% else %}
+            <script> end_of_list = false; </script>
+        {% endif %}
         <img id="img_nav" class="load_next" src="{% static "mdfserver/images/common/right_arrow.png" %}"
-            onclick="load_next('{{ network }}', '{{ site_selected }}', {{ index }});">
+             onclick="load_next('{{ network }}', '{{ site_selected }}', {{ index }});">
     </div>
 {% endif %}
 </div>

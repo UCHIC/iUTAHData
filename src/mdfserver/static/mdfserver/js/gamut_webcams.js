@@ -1,14 +1,11 @@
-// /**
-//  * Created by fryarludwig on 1/27/2017.
-//  */
 // Populate map markers, load images
-
 function close_overlay() {
     $('#full_size_overlay').fadeOut();
     $('#overlay_content').fadeOut();
 }
 
 function load_image_overlay (network, site, index) {
+    current_index = index;
     $.ajax({
         url: "view_images",
         data: {'network': network, 'site': site, 'index': index},
@@ -19,13 +16,17 @@ function load_image_overlay (network, site, index) {
                 $('#overlay_content').fadeIn();
             }
         },
+
         safe: false
     });
 }
 
 function load_next(network, site, index) {
-    load_image_overlay(network, site, index + 1);
+    if (!end_of_list){
+        load_image_overlay(network, site, index + 1);
+    }
 }
+
 
 function load_prev(network, site, index) {
     if (index > 0) {
@@ -63,15 +64,16 @@ var add_site_to_map = function (network, name, lat, lon) {
 };
 
 var map = null;
-var selected_thumb = 0;
+var selected_thumb = 1;
 var thumb_count = 8;
+var current_index = 0;
+var end_of_list = false;
 
 var infowindow = new google.maps.InfoWindow({
     content: ''
 });
 
 function initialize_map() {
-    console.info("Initializing map");
     var myCenter = new google.maps.LatLng(41.3, -111.79);
     var mapOptions = {
         center: myCenter,
@@ -98,36 +100,32 @@ $(document).ready(function () {
 
     $(document).keydown(function (e) {
         if (!$('#full_size_overlay').is(':hidden')) {
-            console.info('Test');
-            console.info(e.keyCode);
-            console.info(e);
-
             if (e.keyCode == 37){ // left
                 if (selected_thumb > 1 && selected_thumb <= thumb_count) {
                     view_large(selected_thumb - 1);
                 }
-                else if (selected_thumb == 1) {
+                else if (selected_thumb == 1 && current_index > 0) {
                     $('.load_prev').click();
                     selected_thumb = 8;
                 }
             }
             else if (e.keyCode == 39){ // right
-                if (selected_thumb < thumb_count) {
+                if (selected_thumb < thumb_count && !end_of_list) {
                     view_large(selected_thumb + 1);
                 }
-                else if (selected_thumb == thumb_count) {
+                else if (selected_thumb == thumb_count && !end_of_list) {
                     $('.load_next').click();
                     selected_thumb = 1;
                 }
             }
-            else if (e.keyCode == 38) { // up
-                $('.load_next').click();
-                selected_thumb = 1;
-            }
-            else if (e.keyCode == 40) { // down
-                $('.load_prev').click();
-                selected_thumb = 1;
-            }
+            // else if (e.keyCode == 40 && !end_of_list) { // down
+            //     $('.load_next').click();
+            //     selected_thumb = 1;
+            // }
+            // else if (e.keyCode == 38) { // up
+            //     $('.load_prev').click();
+            //     selected_thumb = 1;
+            // }
 
             event.preventDefault();
         }
