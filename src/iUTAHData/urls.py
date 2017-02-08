@@ -34,4 +34,6 @@ urlpatterns = [
     url(r'^' + BASE_URL + 'About/Training_Materials/$', TrainingMaterialsView.as_view(), name='training_materials'),
     url(r'^' + BASE_URL + 'About/Personnel/$', PersonnelView.as_view(), name='personnel'),
     url(r'^' + BASE_URL + 'river_info/(?P<database>[\w\s]*)/(?P<site_code>[\w\s]*[/]?)/$', views.river_dynamic, name='dynamic'),
+
+    url(r'^' + BASE_URL + 'Data/Gamut_Webcams/.*$', views.gamut_webcams_view, name='gamut_webcams'),
 ]
