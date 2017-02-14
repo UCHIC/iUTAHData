@@ -10,7 +10,7 @@
     <img id="overlay_image" src="{% static "mdfserver/images/gamutphotos/" %}{{ img_dir }}/{{ img_name }}"/>
     <div id="image_scroll">
         <img id="img_nav" class="load_prev" src="{% static "mdfserver/images/common/left_arrow.png" %}"
-             onclick="load_prev('{{ network }}', '{{ site_selected }}', {{ index }});">
+             onclick="load_next('{{ network }}', '{{ site_selected }}', {{ index }});">
         {% for photo in next_photos reversed %}
             <img src="{% static "mdfserver/images/gamutphotos/" %}{{ img_dir }}/{{ photo.name }}"
                  alt="{{ site_name }} ({{ photo.date }})" id="thumb_{{ forloop.revcounter }}"
@@ -22,7 +22,7 @@
             <script> end_of_list = false; </script>
         {% endif %}
         <img id="img_nav" class="load_next" src="{% static "mdfserver/images/common/right_arrow.png" %}"
-             onclick="load_next('{{ network }}', '{{ site_selected }}', {{ index }});">
+             onclick="load_prev('{{ network }}', '{{ site_selected }}', {{ index }});">
     </div>
 {% endif %}
 </div>
