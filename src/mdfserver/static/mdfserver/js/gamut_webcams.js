@@ -2,6 +2,9 @@
 function close_overlay() {
     $('#full_size_overlay').fadeOut();
     $('#overlay_content').fadeOut();
+    selected_thumb = 1;
+    current_index = 0;
+    end_of_list = false;
 }
 
 function show_popup(network, site) {
@@ -9,6 +12,7 @@ function show_popup(network, site) {
 }
 
 function load_image_overlay (network, site, index) {
+    response_waiting = true;
     current_index = index;
     $.ajax({
         url: "view_images",
@@ -21,27 +25,34 @@ function load_image_overlay (network, site, index) {
             }
 
             view_large('thumb_' + String(selected_thumb), selected_thumb);
+            response_waiting = false;
         },
-
+        error: function (result) {
+            console.error(result.toString());
+            response_waiting = false;
+        },
         safe: false
     });
-
 }
 
 function load_next(network, site, index) {
-    if (!end_of_list){
+    if (!end_of_list && !response_waiting){
+        selected_thumb = 1;
         load_image_overlay(network, site, index + 1);
     }
 }
 
 
 function load_prev(network, site, index) {
-    if (index > 0) {
+    if (index > 0 && !response_waiting) {
+        selected_thumb = 8;
         load_image_overlay(network, site, index - 1);
     }
 }
 
 function view_large(thumb_id, index) {
+    if (response_waiting) {return;}
+
     var prev_id = 'thumb_' + String(selected_thumb);
     var selected_id = 'selected_thumb';
 
@@ -82,6 +93,7 @@ var selected_thumb = 1;
 var thumb_count = 8;
 var current_index = 0;
 var end_of_list = false;
+var response_waiting = false;
 
 var infowindow = new google.maps.InfoWindow({
     content: ''
@@ -114,25 +126,21 @@ $(document).ready(function () {
 
     $(document).keydown(function (e) {
         if (!$('#full_size_overlay').is(':hidden')) {
-
             var new_index = 0;
 
             if (e.keyCode == 39){ // right
                 if (selected_thumb > 1 && selected_thumb <= thumb_count) {
                     new_index = selected_thumb - 1;
-                    // view_large(selected_id, selected_thumb - 1);
                 }
                 else if (selected_thumb == 1 && current_index > 0) {
                     $('.load_prev').click();
-                    selected_thumb = 8;
                 }
             }
             else if (e.keyCode == 37){ // left
                 if (selected_thumb < thumb_count && !end_of_list) {
                     new_index = selected_thumb + 1;
                 }
-                else if (selected_thumb == thumb_count && !end_of_list) {
-                    selected_thumb = 1;
+                else if (selected_thumb >= thumb_count && !end_of_list) {
                     $('.load_next').click();
                 }
             }
