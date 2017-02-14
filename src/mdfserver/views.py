@@ -187,8 +187,6 @@ def gamut_webcams_view(request):
             context['network'] = network
             context['index'] = index
             context['img_dir'] = folder
-            # context['img_name'] = site_details[network][site]['img_name']
-            # context['img_date'] = site_details[network][site]['img_date']
 
             ordered_files = json.load(open(os.path.join(gamut_webcam_dir, 'ordered_dir_listings.json')))
             photo_count = len(ordered_files[folder])

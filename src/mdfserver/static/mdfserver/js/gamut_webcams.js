@@ -4,6 +4,10 @@ function close_overlay() {
     $('#overlay_content').fadeOut();
 }
 
+function show_popup(network, site) {
+    load_image_overlay(network, site, 0);
+}
+
 function load_image_overlay (network, site, index) {
     current_index = index;
     $.ajax({
@@ -15,10 +19,13 @@ function load_image_overlay (network, site, index) {
                 $('#full_size_overlay').fadeIn();
                 $('#overlay_content').fadeIn();
             }
+
+            view_large('thumb_' + String(selected_thumb), selected_thumb);
         },
 
         safe: false
     });
+
 }
 
 function load_next(network, site, index) {
@@ -34,10 +41,17 @@ function load_prev(network, site, index) {
     }
 }
 
-function view_large(thumb_id) {
-    selected_thumb = thumb_id;
-    document.getElementById('overlay_image').src = document.getElementById('thumb_' + String(thumb_id)).src;
-    document.getElementById('overlay_header').innerHTML = document.getElementById('thumb_' + String(thumb_id)).alt;
+function view_large(thumb_id, index) {
+    var prev_id = 'thumb_' + String(selected_thumb);
+    var selected_id = 'selected_thumb';
+
+    if (document.getElementById(selected_id) != null) {
+        document.getElementById(selected_id).setAttribute("id", prev_id);
+    }
+    selected_thumb = index;
+    document.getElementById('overlay_image').src = document.getElementById(thumb_id).src;
+    document.getElementById('overlay_header').innerHTML = document.getElementById(thumb_id).alt;
+    document.getElementById(thumb_id).setAttribute("id", selected_id);
 }
 
 var add_site_to_map = function (network, name, lat, lon) {
@@ -100,33 +114,33 @@ $(document).ready(function () {
 
     $(document).keydown(function (e) {
         if (!$('#full_size_overlay').is(':hidden')) {
-            if (e.keyCode == 37){ // left
+
+            var new_index = 0;
+
+            if (e.keyCode == 39){ // right
                 if (selected_thumb > 1 && selected_thumb <= thumb_count) {
-                    view_large(selected_thumb - 1);
+                    new_index = selected_thumb - 1;
+                    // view_large(selected_id, selected_thumb - 1);
                 }
                 else if (selected_thumb == 1 && current_index > 0) {
                     $('.load_prev').click();
                     selected_thumb = 8;
                 }
             }
-            else if (e.keyCode == 39){ // right
+            else if (e.keyCode == 37){ // left
                 if (selected_thumb < thumb_count && !end_of_list) {
-                    view_large(selected_thumb + 1);
+                    new_index = selected_thumb + 1;
                 }
                 else if (selected_thumb == thumb_count && !end_of_list) {
-                    $('.load_next').click();
                     selected_thumb = 1;
+                    $('.load_next').click();
                 }
             }
-            // else if (e.keyCode == 40 && !end_of_list) { // down
-            //     $('.load_next').click();
-            //     selected_thumb = 1;
-            // }
-            // else if (e.keyCode == 38) { // up
-            //     $('.load_prev').click();
-            //     selected_thumb = 1;
-            // }
 
+            if (new_index > 0) {
+                var selected_id = 'thumb_' + String(new_index);
+                view_large(selected_id, new_index);
+            }
             event.preventDefault();
         }
     });

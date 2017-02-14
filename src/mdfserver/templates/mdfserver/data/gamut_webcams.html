@@ -15,6 +15,9 @@
 {% block content %}
 <div id="site_content">
     <div id="content">
+        <a id="header-link" target="_blank" href="http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos/">
+            View Web Directory</a>
+
         <h1 style="margin-bottom: -25px;">
             GAMUT Network Webcams
         </h1>
@@ -23,15 +26,21 @@
         <div id="map-canvas"></div>
 
         {% for network, sites in networks.items %}
-            <h2 id="river_title">{{ network }} River</h2>
+            {% if network == 'RedButte' %}
+                <h2 id="river_title">Red Butte Creek</h2>
+            {% else %}
+                <h2 id="river_title">{{ network }} River</h2>
+            {% endif %}
             <div class="webcamThumbnailBlock">
             {% for site, info in sites.items %}
-                <div class="webcamItem" onclick="load_image_overlay('{{ network }}', '{{ site }}', 0);">
+                <div class="webcamItem {% if not info.active_webcam %} inactive {% endif %}"
+                         onclick="show_popup('{{ network }}', '{{ site }}');">
                     <img class="webcamThumbnail" id="{{ network }}_{{ site }}"
-                         src="{% static "mdfserver/images/gamutphotos/" %}{{ info.img_dir }}/{{ info.img_name }}"
-                         alt="Photo from {{ info.site_name }} dated {{ info.img_date }}">
+                             src="{% static "mdfserver/images/gamutphotos/" %}{{ info.img_dir }}/{{ info.img_name }}"
+                             alt="Photo from {{ info.site_name }} dated {{ info.img_date }}">
                     <div class="webcamSubtext" id="subtext_{{ network }}_{{ site }}">
                         {{ info.site_name }} <br> {{ info.img_date }}
+                        {% if not info.active_webcam %} (webcam deactivated) {% endif %}
                     </div>
                 </div>
                 <script>

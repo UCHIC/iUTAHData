@@ -1443,6 +1443,20 @@ div.webcamItem {
     transition: all 0.3s ease-out;
 }
 
+div.webcamItem.inactive {
+    max-width: 47%;
+    display: inline;
+    position: relative;
+    float: left;
+    padding: 5px 5px 0px 5px;
+    margin-left: 10px;
+    margin-bottom: 10px !important;
+    font-size: 14px;
+    color: #868686;
+    transition: all 0.3s ease-out;
+    border: solid thin darkgray;
+}
+
 .webcamSubtext {
     display: inline-block;
     position: relative;
@@ -1482,6 +1496,8 @@ img#overlay_image {
     margin-top: 0;
     color: #333;
     font-family: Tahoma, Arial, sans-serif;
+    font-size: 15pt;
+    padding-bottom: 3px;
 }
 
 .popup .close {
@@ -1556,4 +1572,49 @@ img#img_nav {
 h2#river_title {
     margin-top: 10px;
     margin-bottom: 15px;
+}
+
+img#selected_thumb {
+    border: solid black 1.9px;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-top: 3px;
+}
+
+#header-link {
+    position: relative;
+    float: right;
+    text-decoration: none;
+    padding: 1px 5px 0 5px;
+    border: solid thin lightgray;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    transition: all 0.3s ease-out;
+}
+
+#header-link:hover {
+    background-color: lightgray;
+    text-decoration-color: #0A0A0A;
+    text-decoration: solid;
+    color: #0A0A0A;
+}
+
+#sub-header-link {
+    position: relative;
+    float: right;
+    text-decoration: none;
+    padding: 1px 5px 0 5px;
+    border: solid thin lightgray;
+    border-radius: 5px;
+    margin-right: 45px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease-out;
+}
+
+#sub-header-link:hover {
+    background-color: lightgray;
+    text-decoration-color: #0A0A0A;
+    text-decoration: solid;
+    color: #0A0A0A;
 }
