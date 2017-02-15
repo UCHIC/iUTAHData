@@ -24,8 +24,8 @@ function load_image_overlay (network, site, index) {
                 $('#overlay_content').fadeIn();
             }
 
-            view_large('thumb_' + String(selected_thumb), selected_thumb);
             response_waiting = false;
+            view_large('thumb_' + String(selected_thumb), selected_thumb);
         },
         error: function (result) {
             console.error(result.toString());
