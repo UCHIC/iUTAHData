@@ -121,8 +121,8 @@ def river_dynamic(request, database, site_code):
 
     pics = []
     counter = 1
-    while finders.find('mdfserver/images/site_images/' + database + '/' + site_code + '/Site (' + str(
-            counter) + ').jpg') is not None:
+    file_path_proto = 'mdfserver/images/site_images/{0}/{1}/Site ({2}).jpg'
+    while finders.find(file_path_proto.format(database, site_code, counter)) is not None:
         pics.append('Site (' + str(counter) + ').jpg')
         counter += 1
 
