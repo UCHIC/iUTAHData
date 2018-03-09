@@ -10,7 +10,7 @@ class OffsetType(Base):
 
     id = Column('OffsetTypeID', Integer, primary_key=True)
     unit_id = Column('OffsetUnitsID', Integer, ForeignKey('Units.UnitsID'), nullable=False)
-    description = Column('OffsetDescription', String)
+    description = Column('OffsetDescription', String(255))
 
     # relationships
     unit = relationship(Unit)

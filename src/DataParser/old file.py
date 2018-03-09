@@ -8,6 +8,7 @@ sys.path.insert(0, directory)
 from odmservices import ServiceManager
 sm = ServiceManager()
 
+# TODO: Remove database credentials...
 sm._current_connection= {'engine':'mssql', 'user':'webapplication' , 'password':'W3bAppl1c4t10n!', 'address':'iutahdbs.uwrl.usu.edu', 'db':'iUTAH_RedButte_OD'}
 #conn = 'mssql:pyodbc//webapplication:w3bAppl1cat10n!@iutahdbs.uwrl.usu.edu/iUTAH_Logan_OD'
 conn_dict = sm.get_current_connection()

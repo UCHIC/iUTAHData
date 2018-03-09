@@ -6,7 +6,7 @@ from DataParser.odmdata import series as series_module
 from DataParser.odmservices.series_service import SeriesService
 
 
-class EditService():
+class EditService:
     # Mutual exclusion: cursor, or connection_string
     def __init__(self, series_id, connection=None, connection_string="", debug=False):
         self._connection = connection
