@@ -97,7 +97,19 @@
                                                                 data-slide="next"> <span
                                                             class="icon-next">&rsaquo;</span> </a>
                                                     </div>
-                                                    <p>The Provo River Watershed encompasses an area of 1743 km <sup>2</sup> with elevations between 1368 and 2993 meters, and average annual stream flow of 6 m <sup>3</sup> /s. The Provo River originates at Trial Lake in the Uinta Mountains, is retained by Jordanelle Dam and Deer Creek Dam, then flows west through Provo Canyon and the developed cities of Orem and Provo before discharging to Utah Lake. The iUTAH monitoring sites are focused on the Middle Provo River in the Heber Valley between Jordanelle and Deer Creek Reservoirs, which is undergoing a rapid rural to urban transition. This stretch of the river has also been the focus of a recent restoration project to improve diversity of the natural habitat and productivity of the fishery to maintain the Provo River&rsquo;s Blue Ribbon Fishery status.</p>
+                                                        <p>
+                                                        The Provo River Watershed encompasses an area of 1743 km<sup>2</sup> with elevations between 1368 and 2993 meters,
+                                                        and average annual stream flow of 6 m<sup>3</sup>/s. The Provo River originates at Trial Lake in the Uinta Mountains,
+                                                        is retained by Jordanelle Dam and Deer Creek Dam, then flows west through Provo Canyon and the developed
+                                                        cities of Orem and Provo before discharging to Utah Lake.
+                                                        </p>
+                                                        <p>
+                                                        The iUTAH monitoring sites were initially focused on the Middle Provo River in the Heber Valley between
+                                                        Jordanelle and Deer Creek Reservoirs, which is undergoing a rapid rural to urban transition. This stretch of
+                                                        the river has also been the focus of a recent restoration project to improve diversity of the natural habitat
+                                                        and productivity of the fishery to maintain the Provo River’s Blue Ribbon Fishery status. Currently, the focus
+                                                        of monitoring is shifting to the Lower Provo River and its influence on the geochemistry and hydrology of Utah Lake.
+                                                        </p>
                                                 </div>
                                                 <div class="monitoring-sites-table">
                                                     <p class="disclaimer">The data presented here are provisional and
@@ -110,6 +122,7 @@
                                                         <tr>
                                                             <th>Site Code</th>
                                                             <th>Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -118,24 +131,28 @@
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_BD_C' %}">PR_BD_C</a>
                                                             </td>
                                                             <td>Beaver Divide Climate</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_CH_C' %}">PR_CH_C</a>
                                                             </td>
                                                             <td>Charleston Climate</td>
+                                                            <td>Operational</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_ST_C' %}">PR_ST_C</a>
                                                             </td>
                                                             <td>Soapstone Climate</td>
+                                                            <td>Operational</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_TL_C' %}">PR_TL_C</a>
                                                             </td>
                                                             <td>Trial Lake Climate</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -145,6 +162,7 @@
                                                         <tr>
                                                             <th>Site Code</th>
                                                             <th>Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -152,40 +170,47 @@
                                                             <td><a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_BJ_AA' %}">PR_BJ_AA</a>
                                                             </td>
                                                             <td>Provo River below Jordanelle Reservoir</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         <tr>
                                                             <td><a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_CH_AA' %}">PR_CH_AA</a>
                                                             </td>
                                                             <td>Provo River at Charleston, Utah Aquatic</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_HD_AA' %}">PR_HD_AA</a>
                                                             </td>
                                                             <td>Provo River at Harbor Drive Advanced Aquatic</td>
+                                                            <td>Operational</td>
                                                         </tr>
                                                         <tr>
                                                             <td><a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_LM_BA' %}">PR_LM_BA</a>
                                                             </td>
                                                             <td>Provo River at Lower Midway Aquatic</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_ST_BA' %}">PR_ST_BA</a>
                                                             </td>
                                                             <td>Provo River near Soapstone Basic Aquatic</td>
+                                                            <td>Operational</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_WD_BA' %}">PR_WD_BA</a>
                                                             </td>
                                                             <td>Provo River near Woodland Basic Aquatic</td>
+                                                            <td>Operational</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_RW_A' %}">PR_RW_A</a>
                                                             </td>
                                                             <td>Provo River at Riverwoods Aquatic</td>
+                                                            <td>Operational</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -195,6 +220,7 @@
                                                         <tr>
                                                             <th>Site Code</th>
                                                             <th>Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -203,12 +229,14 @@
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_SageCreek_canal' %}">PR_SageCreek_canal</a>
                                                             </td>
                                                             <td>Sage Creek Canal</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <a href="{% url 'dynamic' 'iUTAH_Provo_OD' 'PR_Flood_canal' %}">PR_Flood_canal</a>
                                                             </td>
                                                             <td>Flood Canal</td>
+                                                            <td>Retired</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
