@@ -120,11 +120,11 @@ def river_dynamic(request, database, site_code):
     print(data_river)
 
     pics = []
-    counter = 1
-    file_path_proto = 'mdfserver/images/site_images/{0}/{1}/Site ({2}).jpg'
-    while finders.find(file_path_proto.format(database, site_code, counter)) is not None:
-        pics.append('Site (' + str(counter) + ').jpg')
-        counter += 1
+    site_images_directory = finders.find('mdfserver/images/site_images/{0}/{1}/'.format(database, site_code))
+    image_filenames = [photo for photo in os.listdir(site_images_directory)]
+    for filename in image_filenames:
+        if re.match(r'.*\.(jpg|png)$', filename, re.IGNORECASE):
+            pics.append(filename)
 
     xtra_site = "none"
     if site_code == "RB_ARBR_AA":
