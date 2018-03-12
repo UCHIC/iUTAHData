@@ -19,6 +19,7 @@
                                 <div class="field field-name-body field-type-text-with-summary field-label-hidden">
                                     <div class="field-items">
                                         <div class="field-item even">
+                                            <br>
                                             <span>Gradients Along Mountain to Urban Transitions</span></div>
                                     </div>
                                 </div>
@@ -27,40 +28,63 @@
                     </div>
                 </div>
             </div>
-            <div class="sideIMG"><img src="{% static 'mdfserver/images/data/gamut_map.jpg' %}" alt="iUTAH Modeling Sites"/></div>
-            <h2>GAMUT Background</h2>
-            <p>iUTAH researchers have developed and deployed an ecohydrologic observatory to study water in &lsquo;Gradients
-                Along Mountain to Urban Transitions&rsquo; (GAMUT). The GAMUT Network measures aspects of climate,
-                hydrology, and water quality along a mountain-to-urban gradient in three watersheds that share common
-                water sources (winter-derived precipitation) but differ in the human and biophysical nature of land-use
-                transitions. Designing GAMUT was a 12-month process involving faculty and technicians from across Utah&rsquo;s
-                research-intensive institutions: Brigham Young University, the University of Utah, and Utah State
-                University.</p>
-            <h2>GAMUT Watersheds</h2>
-            <p>There are three watersheds with sites in the GAMUT Network. Click on the links to preview data and learn
-                more about each watershed.</p>
-            <ul class="gamut_list">
-                <li><a href="{% url 'logan_river' %}">The Logan River</a></li>
-                <li><a href="{% url 'red_butte_creek' %}">Red Butte Creek</a></li>
-                <li><a href="{% url 'provo_river' %}">The Provo River</a></li>
-            </ul>
+
+            <div class="row">
+                <div class="col-12-sm col-6">
+                    <div class="sideIMG"><img src="{% static 'mdfserver/images/data/gamut_map.jpg' %}" alt="iUTAH Modeling Sites"/></div>
+                </div>
+                <div class="col-12-sm col-6">
+                    <h2>GAMUT Background</h2>
+                    <p>iUTAH researchers developed and deployed an ecohydrologic observatory to study water in ‘Gradients Along
+                        Mountain to Urban Transitions’ (GAMUT). The GAMUT Network measures aspects of climate, hydrology, and
+                        water quality along a mountain-to-urban gradient in three watersheds that share common water sources
+                        (winter-derived precipitation) but differ in the human and biophysical nature of land-use transitions.
+                        See this
+                        <a href="http://onlinelibrary.wiley.com/doi/10.1111/1752-1688.12557/abstract" target="_blank">
+                        published paper
+                        </a>
+                        for more information on the design and implementation of GAMUT.
+                    </p>
+                    <h2>GAMUT Watersheds</h2>
+                    <p>There are three watersheds with sites in the GAMUT Network. Click on the links to preview data and learn
+                        more about each watershed.</p>
+                    <ul class="gamut_list">
+                        <li><a href="{% url 'logan_river' %}">The Logan River</a></li>
+                        <li><a href="{% url 'red_butte_creek' %}">Red Butte Creek</a></li>
+                        <li><a href="{% url 'provo_river' %}">The Provo River</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
             <h2>GAMUT Monitoring Sites</h2>
             <p>GAMUT includes state-of-the-art sensors at aquatic and terrestrial sites for real-time monitoring of
                 common meteorological variables, snow accumulation and melt, soil moisture, surface water flow, and
                 surface water quality. These figures show a typical GAMUT climate site and a typical GAMUT water quality
                 site.</p>
             <div class="sideIMGR">
-                <img src="{% static 'mdfserver/images/data/gamut_aquatic.jpg' %}" alt="GAMUT Aquatic"/>
                 <img src="{% static 'mdfserver/images/data/gamut_climate.jpg' %}" alt="GAMUT Climate"/>
+                <img src="{% static 'mdfserver/images/data/gamut_aquatic.jpg' %}" alt="GAMUT Aquatic"/>
             </div>
 
             <h2>Cyberinfrastructure</h2>
-            <p>The collection and dissemination of data from the GAMUT Network is supported by various
-                cyberinfrastructure applications illustrated by this <a
-                        href="{% static 'mdfserver/documents/GAMUTDataFlow.pdf' %}">workflow</a>. This allows iUTAH&rsquo;s
-                research teams to interact with the data to better understand Utah&rsquo;s water cycle. Access to
-                real-time sensor data from the GAMUT network is available to researchers, educators, and other
-                stakeholders via <a href="http://data.iutahepscor.org/tsa/">online visualization</a>.</p>
+            <p>
+                The collection and dissemination of data from the GAMUT Network is supported by various
+                cyberinfrastructure applications illustrated by this
+                <a href="http://data.iutahepscor.org/mdf/static/mdfserver/documents/GAMUTDataFlow.pdf">
+                workflow
+                </a>
+                and described in this
+                <a href="https://link.springer.com/article/10.1007/s10661-015-4594-3">
+                published paper.
+                </a>
+                Access to real-time sensor data from the GAMUT network is available to researchers, educators, and other
+                stakeholders via
+                <a href="http://data.iutahepscor.org/tsa/">
+                online visualization
+                </a>.
+            </p>
             <div class="afterText">
                 <div class="imgWrapper">
                     <img src="{% static 'mdfserver/images/data/tsa_map.jpg' %}" alt="Time Series Analyst - Map View"/>
@@ -73,13 +97,12 @@
                 </div>
             </div>
             <h2>Applications</h2>
-            <p>Data produced so far have been used as preliminary results for several new grant proposals and are being
-                included in manuscripts for publication. GAMUT data are also being used by other stakeholders. The Utah
-                Department of Environmental Quality&rsquo;s Division of Water Quality has used GAMUT sensor output to
-                screen for water quality violations and will look to GAMUT as a guide for their own continuous
-                monitoring and data management efforts. Several university faculty have used GAMUT data in teaching
-                their classes. Synergy is also achieved with other climate and water monitoring being conducted within
-                Utah.</p>
+            <p>GAMUT data have been used as preliminary results for grant proposals and are included in manuscripts for
+                publication. GAMUT data are also being used by other stakeholders. The Utah Department of Environmental
+                Quality’s Division of Water Quality has used GAMUT sensor output to screen for water quality violations
+                and has used to GAMUT as a guide for their own continuous monitoring and data management efforts. Several
+                university faculty have used GAMUT data in teaching their classes. Synergy is also achieved with other
+                climate and water monitoring being conducted within the GAMUT watersheds.</p>
         </div>
     </div>
 {% endblock %}

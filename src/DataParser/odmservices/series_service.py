@@ -26,7 +26,7 @@ logger = logging.getLogger('main')
 DAY_LIMIT = 96
 
 
-class SeriesService():
+class SeriesService:
     # Accepts a string for creating a SessionFactory, default uses odmdata/connection.cfg
     def __init__(self, connection_string="", debug=False):
         self._session_factory = SessionFactory(connection_string, debug)

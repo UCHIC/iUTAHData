@@ -70,18 +70,29 @@ def load_watershed_data(watershed_database):
     # HEY! LET'S ADD THE FILE CONTAINING THE PRODUCTION DATABASE LOGIN TO A PUBLIC REPOSITORY!
     # TODO: for all that is sacred, remove the database authentication info from here.
     service_manager._current_connection = {
-        'engine': 'mssql',
-        'user': 'webapplication',
-        'password': 'W3bAppl1c4t10n!',
-        'address': 'iutahdbs.uwrl.usu.edu',
+        'engine': os.getenv('IUTAH_DB_ENGINE'),
+        'user': os.getenv('IUTAH_DB_USER'),
+        'password': os.getenv('IUTAH_DB_PASSWORD'),
+        'address': os.getenv('IUTAH_DB_ADDRESS'),
+        'port': os.getenv('IUTAH_DB_PORT'),
         'db': watershed_database
     }
+
+    # service_manager._current_connection = {
+    #     'engine': 'mysql',
+    #     'user': 'root',
+    #     'password': 'password',
+    #     'address': 'localhost',
+    #     'port': 1443,
+    #     'db': watershed_database
+    # }
 
     watershed = {}
     logger.info("Getting sites for %s" % watershed_database)
     series_service = service_manager.get_series_service()
 
     sites = series_service.get_all_sites()
+
     raw_qc_level_id = series_service.get_raw_qc_level_id()
 
     for site in sites:
@@ -143,8 +154,53 @@ def parse_data():
 
 
 def write_json(watershed_dictionary, watershed_name):
-    with open(os.path.join('%s', '%sSite.json') % (static_folder, watershed_name), "w") as out_file:
+    if sys.platform != 'win32':
+        path = os.path.join(os.getcwd(), os.pardir, 'mdfserver', 'static', 'mdfserver', 'json', '%sSite.json' % watershed_name)
+        path = os.path.realpath(path)
+    else:
+        path = os.path.join('%s', '%sSite.json') % (static_folder, watershed_name)
+    with open(path, "w") as out_file:
         json.dump(watershed_dictionary, out_file, indent=4)
 
 
+def initialize_database():
+    """
+    Run this method for first time setup of database. Creates database(s) based on the models in the odmdata folder.
+
+    For some reason, which we may never know, you need to add connection information in a file named
+    'connection.config', located in a directory determined by 'odmservices.utilities.util.resource_path()'.
+
+    To add a database connection info, add a line in 'connection.config' in the format of:
+        <engine> <user_name> <password> <address> <database_name>
+
+    Example of 'connection.config' with three connections:
+    ================================================
+    mysql root password localhost iUTAH_Logan_OD
+    mysql root password localhost iUTAH_RedButte_OD
+    mssql admin_1 soopersekretpaswurd database.somewhere.else.com iUTAH_Provo_OD
+    ================================================
+
+    Yup, pretty genius.
+
+    My sincerest hope is this project will burn to the ground before anyone else might find this comment useful.
+    """
+    for conn in service_manager.get_connections():
+        if service_manager.database_exists(conn_dict=conn):
+            continue
+
+        try:
+            service_manager.create_database(conn_dict=conn)
+
+            try:
+                service_manager.create_tables(conn_dict=conn)
+            except Exception:
+                raise Exception("Failed to create tables for database '{0}'".format(conn['db']))
+
+        except Exception:
+            raise Exception("Failed to create database '{0}'".format(conn.get('db', 'N/A')))
+
+
+# initialize_database()
+
 parse_data()
+

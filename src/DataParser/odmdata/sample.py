@@ -9,8 +9,8 @@ class Sample(Base):
     __tablename__ = 'Samples'
 
     id = Column('SampleID', Integer, primary_key=True)
-    type = Column('SampleType', String, nullable=False)
-    lab_sample_code = Column('LabSampleCode', String, nullable=False)
+    type = Column('SampleType', String(255), nullable=False)
+    lab_sample_code = Column('LabSampleCode', String(255), nullable=False)
     lab_method_id = Column('LabMethodID', Integer, ForeignKey('LabMethods.LabMethodID'), nullable=False)
 
     # relationships

@@ -16,7 +16,11 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
+<<<<<<< Updated upstream
     <orderEntry type="jdk" jdkName="Python 2.7 (ENViUTAHData)" jdkType="Python SDK" />
+=======
+    <orderEntry type="jdk" jdkName="Python 2.7 (iUTAH_ENV)" jdkType="Python SDK" />
+>>>>>>> Stashed changes
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
