@@ -1625,3 +1625,7 @@ img#selected_thumb {
     text-decoration: solid;
     color: #0A0A0A;
 }
+
+.border-none{
+    border: none;
+}
