@@ -13,7 +13,6 @@ sys.path.insert(0, src_directory)
 from odmservices import ServiceManager
 from logger import LoggerTool
 
-
 tool = LoggerTool()
 logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
@@ -71,11 +70,11 @@ def load_watershed_data(watershed_database):
     # HEY! LET'S ADD THE FILE CONTAINING THE PRODUCTION DATABASE LOGIN TO A PUBLIC REPOSITORY!
     # TODO: for all that is sacred, remove the database authentication info from here.
     service_manager._current_connection = {
-        'engine': 'mssql',
-        'user': 'webapplication',
-        'password': 'W3bAppl1c4t10n!',
-        'address': 'iutahdbs.uwrl.usu.edu',
-        'port': 1443,
+        'engine': os.getenv('IUTAH_DB_ENGINE'),
+        'user': os.getenv('IUTAH_DB_USER'),
+        'password': os.getenv('IUTAH_DB_PASSWORD'),
+        'address': os.getenv('IUTAH_DB_ADDRESS'),
+        'port': os.getenv('IUTAH_DB_PORT'),
         'db': watershed_database
     }
 

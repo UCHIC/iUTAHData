@@ -1,0 +1,5 @@
+django==1.8
+pyodbc==4.0.22
+mysql-python==1.2.5
+sqlalchemy==1.2.5
+pandas==0.22.0

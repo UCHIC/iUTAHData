@@ -1440,3 +1440,52 @@
 2018-03-09 15:55:04,200 - INFO - __main__.parse_data() (154): 
 ========================================================
 
+2018-03-12 09:04:22,827 - INFO - __main__.parse_data() (138): 
+========================================================
+
+2018-03-12 09:04:22,830 - INFO - __main__.parse_data() (139): Creating data files.
+2018-03-12 09:04:22,830 - INFO - __main__.load_watershed_data() (92): Getting sites for iUTAH_Logan_OD
+2018-03-12 09:04:56,108 - INFO - __main__.parse_data() (138): 
+========================================================
+
+2018-03-12 09:04:56,109 - INFO - __main__.parse_data() (139): Creating data files.
+2018-03-12 09:04:56,109 - INFO - __main__.load_watershed_data() (92): Getting sites for iUTAH_Logan_OD
+2018-03-12 09:40:02,440 - INFO - __main__.parse_data() (138): 
+========================================================
+
+2018-03-12 09:40:02,440 - INFO - __main__.parse_data() (139): Creating data files.
+2018-03-12 09:49:12,987 - INFO - __main__.parse_data() (145): 
+========================================================
+
+2018-03-12 09:49:12,988 - INFO - __main__.parse_data() (146): Creating data files.
+2018-03-12 09:49:31,449 - INFO - __main__.load_watershed_data() (99): Getting sites for iUTAH_Logan_OD
+2018-03-12 09:49:49,851 - INFO - __main__.parse_data() (145): 
+========================================================
+
+2018-03-12 09:49:49,851 - INFO - __main__.parse_data() (146): Creating data files.
+2018-03-12 09:49:51,152 - INFO - __main__.load_watershed_data() (99): Getting sites for iUTAH_Logan_OD
+2018-03-12 09:51:05,011 - INFO - __main__.parse_data() (137): 
+========================================================
+
+2018-03-12 09:51:05,012 - INFO - __main__.parse_data() (138): Creating data files.
+2018-03-12 09:51:14,226 - INFO - __main__.load_watershed_data() (91): Getting sites for iUTAH_Logan_OD
+2018-03-12 09:51:31,220 - INFO - __main__.parse_data() (137): 
+========================================================
+
+2018-03-12 09:51:31,220 - INFO - __main__.parse_data() (138): Creating data files.
+2018-03-12 09:51:31,221 - INFO - __main__.load_watershed_data() (91): Getting sites for iUTAH_Logan_OD
+2018-03-12 09:52:14,604 - INFO - __main__.parse_data() (137): 
+========================================================
+
+2018-03-12 09:52:14,605 - INFO - __main__.parse_data() (138): Creating data files.
+2018-03-12 09:52:14,605 - INFO - __main__.load_watershed_data() (91): Getting sites for iUTAH_Logan_OD
+2018-03-12 10:04:43,758 - INFO - __main__.parse_data() (137): 
+========================================================
+
+2018-03-12 10:04:43,759 - INFO - __main__.parse_data() (138): Creating data files.
+2018-03-12 10:04:43,760 - INFO - __main__.load_watershed_data() (91): Getting sites for iUTAH_Logan_OD
+2018-03-12 10:05:04,865 - INFO - __main__.parse_data() (137): 
+========================================================
+
+2018-03-12 10:05:04,866 - INFO - __main__.parse_data() (138): Creating data files.
+2018-03-12 10:05:04,866 - INFO - __main__.load_watershed_data() (91): Getting sites for iUTAH_Logan_OD

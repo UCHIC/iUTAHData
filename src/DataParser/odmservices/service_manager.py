@@ -94,8 +94,8 @@ class ServiceManager:
 
     def get_series_service(self):
         conn_string = self.__build_connection_string(self._current_connection)
-        # if not self.database_exists():
-        #     pass
+        if not self.database_exists():
+            pass
         return SeriesService(conn_string, self.debug)
 
     def get_cv_service(self):
