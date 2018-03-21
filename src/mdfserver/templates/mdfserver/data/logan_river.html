@@ -132,38 +132,20 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Site Code</th>
-                                                            <th>Site Name</th>
+                                                            <th class="sites-table-name-header">Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+                                                        {% for site in climate_sites %}
                                                         <tr>
                                                             <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_FB_C' %}">LR_FB_C</a>
+                                                                <a href="{% url 'dynamic' db_name site.site_code %}">{{ site.site_code }}</a>
                                                             </td>
-                                                            <td>Franklin Basin Climate</td>
+                                                            <td>{{ site.data.info.name }}</td>
+                                                            <td>{{ site.data.info.status }}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_GC_C' %}">LR_GC_C</a>
-                                                            </td>
-                                                            <td>Golf Course Climate</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_TG_C' %}">LR_TG_C</a>
-                                                            </td>
-                                                            <td>Tony Grove Climate</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_TWDEF_C' %}">LR_TWDEF_C</a>
-                                                            </td>
-                                                            <td>Experimental Forest Climate</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_Wilkins_R' %}">LR_Wilkins_R</a>
-                                                            </td>
-                                                            <td>Wilkins Repeater</td>
-                                                        </tr>
+                                                        {% endfor %}
                                                         </tbody>
                                                     </table>
                                                     <h3 class="site_heading">Aquatic Sites</h3>
@@ -171,42 +153,20 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Site Code</th>
-                                                            <th>Site Name</th>
+                                                            <th class="sites-table-name-header">Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_Mendon_AA' %}">LR_Mendon_AA</a>
-                                                                </td>
-                                                                <td>Logan River at Mendon Road (600 South) Aquatic</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_MainStreet_BA' %}">LR_MainStreet_BA</a>
-                                                                </td>
-                                                                <td>Logan River at the Main Street Bridge Aquatic</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_WaterLab_AA' %}">LR_WaterLab_AA</a>
-                                                                </td>
-                                                                <td>Logan River at the USU Water Lab Aquatic</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_TG_BA' %}">LR_TG_BA</a>
-                                                                </td>
-                                                                <td>Logan River near Tony Grove Aquatic</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_FB_BA' %}">LR_FB_BA</a>
-                                                                </td>
-                                                                <td>Logan River near Franklin Basin</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'BSF_CONF_BA' %}">BSF_CONF_BA</a>
-                                                                </td>
-                                                                <td>Blacksmith Fork above confluence with Logan
-                                                                    River</td>
-                                                            </tr>
+                                                        {% for site in aquatic_sites %}
+                                                        <tr>
+                                                            <td>
+                                                                <a href="{% url 'dynamic' db_name site.site_code %}">{{ site.site_code }}</a>
+                                                            </td>
+                                                            <td>{{ site.data.info.name }}</td>
+                                                            <td>{{ site.data.info.status }}</td>
+                                                        </tr>
+                                                        {% endfor %}
                                                         </tbody>
                                                     </table>
 
@@ -215,21 +175,20 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Site Code</th>
-                                                            <th>Site Name</th>
+                                                            <th class="sites-table-name-header">Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td><a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_RH_SD' %}">LR_RH_SD</a>
-                                                                </td>
-                                                                <td>River Heights Bridge Storm Drain</td>
-                                                            </tr>
+                                                        {% for site in storm_drain_sites %}
                                                             <tr>
                                                                 <td>
-                                                                    <a href="{% url 'dynamic' 'iUTAH_Logan_OD' 'LR_SC_SD' %}">LR_SC_SD</a>
+                                                                    <a href="{% url 'dynamic' db_name site.site_code %}">{{ site.site_code }}</a>
                                                                 </td>
-                                                                <td>Spring Creek Storm Drain</td>
+                                                                <td>{{ site.data.info.name }}</td>
+                                                                <td>{{ site.data.info.status }}</td>
                                                             </tr>
+                                                        {% endfor %}
                                                         </tbody>
                                                     </table>
                                                 </div>

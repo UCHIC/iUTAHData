@@ -16,71 +16,104 @@ from django.http import HttpResponse
 from django.contrib.staticfiles import finders
 
 
-class HomeView(TemplateView):
+class MDFBaseView(TemplateView):
+    pass
+
+class HomeView(MDFBaseView):
     template_name = 'mdfserver/index.html'
 
 
-class DevelopmentView(TemplateView):
+class DevelopmentView(MDFBaseView):
     template_name = 'mdfserver/development/development.html'
 
 
-class DataManagementView(TemplateView):
+class DataManagementView(MDFBaseView):
     template_name = 'mdfserver/development/data_management.html'
 
 
-class SoftwareDevelopmentView(TemplateView):
+class SoftwareDevelopmentView(MDFBaseView):
     template_name = 'mdfserver/development/software_development.html'
 
 
-class HardwareDevelopmentView(TemplateView):
+class HardwareDevelopmentView(MDFBaseView):
     template_name = 'mdfserver/development/hardware_development.html'
 
 
-class DataPolicyView(TemplateView):
+class DataPolicyView(MDFBaseView):
     template_name = 'mdfserver/data/data_policy.html'
 
 
-class HouseholdSurveyView(TemplateView):
+class HouseholdSurveyView(MDFBaseView):
     template_name = 'mdfserver/data/household_survey.html'
 
 
-class GamutNetworkView(TemplateView):
+class GamutNetworkView(MDFBaseView):
     template_name = 'mdfserver/data/gamut_network.html'
 
 
-class LoganRiverView(TemplateView):
+class BaseRiverView(MDFBaseView):
+    db_name = None
+
+    def get_sites_by_type(self, sites, type_, order_by='elevation', reverse=True):
+        # filter out sites by type and restructure data to use for template
+        sites = [{'site_code': code, 'data': value} for code, value in sites.iteritems()
+                 if value['info']['type'] == type_]
+
+        # sort sites before returning
+        sites.sort(key=lambda site: site['data']['info'][order_by], reverse=reverse)
+
+        return sites
+
+    def get_context_data(self, **kwargs):
+        context = super(BaseRiverView, self).get_context_data(**kwargs)
+
+        context['db_name'] = self.db_name
+
+        sites = deserialize_json(self.db_name)
+
+        context['climate_sites'] = self.get_sites_by_type(sites, 'Atmosphere')
+        context['aquatic_sites'] = self.get_sites_by_type(sites, 'Stream')
+        context['storm_drain_sites'] = self.get_sites_by_type(sites, 'Storm sewer')
+
+        return context
+
+
+class LoganRiverView(BaseRiverView):
     template_name = 'mdfserver/data/logan_river.html'
+    db_name = 'iUTAH_Logan_OD'
 
 
-class ProvoRiverView(TemplateView):
+class ProvoRiverView(BaseRiverView):
     template_name = 'mdfserver/data/provo_river.html'
+    db_name = 'iUTAH_Provo_OD'
 
 
-class RedButteCreekView(TemplateView):
+class RedButteCreekView(BaseRiverView):
     template_name = 'mdfserver/data/red_butte_creek.html'
+    db_name = 'iUTAH_RedButte_OD'
 
 
-class HouseHoldQuestionnairesView(TemplateView):
+class HouseHoldQuestionnairesView(MDFBaseView):
     template_name = 'mdfserver/data/household_questionnaires.html'
 
 
-class HouseHoldQuestionnairesEnglishView(TemplateView):
+class HouseHoldQuestionnairesEnglishView(MDFBaseView):
     template_name = 'mdfserver/data/household_questionnaires_en.html'
 
 
-class HouseHoldQuestionnairesSpanishView(TemplateView):
+class HouseHoldQuestionnairesSpanishView(MDFBaseView):
     template_name = 'mdfserver/data/household_questionnaires_es.html'
 
 
-class DocumentationView(TemplateView):
+class DocumentationView(MDFBaseView):
     template_name = 'mdfserver/about/documentation.html'
 
 
-class TrainingMaterialsView(TemplateView):
+class TrainingMaterialsView(MDFBaseView):
     template_name = 'mdfserver/about/training_materials.html'
 
 
-class PersonnelView(TemplateView):
+class PersonnelView(MDFBaseView):
     template_name = 'mdfserver/about/personnel.html'
 
 
@@ -93,6 +126,17 @@ def deserialize_json(database_name):
 
     with staticfiles_storage.open('mdfserver/json/%sSite.json' % network_map[database_name]) as river_data:
         json_data = json.load(river_data)
+
+    # I know this is terrible... but so was this project before I ever touched it.
+    retired_sites = ['PR_BD_C', 'PR_TL_C', 'PR_BJ_AA', 'PR_CH_AA', 'PR_LM_BA', 'PR_SageCreek_canal', 'PR_Flood_canal',
+                     'RB_KF_BA']
+    for key, value in json_data.iteritems():
+        value['info']['status'] = 'Retired' if key in retired_sites else 'Operational'
+
+    non_displayed_sites = ['RB_KF_S', 'RB_ARBR_USGS', 'PR_WD_USGS', 'PR_BJ_CUWCD', 'PR_UM_CUWCD', 'PR_CH_CUWCD',
+                           'PR_HD_USGS', 'LR_Mendon_AA']
+    json_data = {key: value for key, value in json_data.iteritems() if key not in non_displayed_sites}
+
     return json_data
 
 
@@ -107,8 +151,8 @@ def prepare_for_heading(river_data, type):
     return river_data
 
 
-def river_dynamic(request, database, site_code):
-    data_river = deserialize_json(database)
+def river_dynamic(request, db_name, site_code):
+    data_river = deserialize_json(db_name)
     deprecated_sites = {
         "RB_KF_BA": {
             "deprecation_time": 'August 8, 2016',
@@ -117,11 +161,9 @@ def river_dynamic(request, database, site_code):
         }
     }
 
-    print(data_river)
-
     pics = []
-    site_images_directory = finders.find('mdfserver/images/site_images/{0}/{1}/'.format(database, site_code))
-    image_filenames = [photo for photo in os.listdir(site_images_directory)]
+    photo_dir = finders.find('mdfserver/images/site_images/{0}/{1}/'.format(db_name, site_code))
+    image_filenames = [photo for photo in os.listdir(photo_dir)] if photo_dir is not None else list()
     for filename in image_filenames:
         if re.match(r'.*\.(jpg|png)$', filename, re.IGNORECASE):
             pics.append(filename)
@@ -160,7 +202,18 @@ def river_dynamic(request, database, site_code):
         'active'] else None
     data_river['new_site_code'] = deprecated_sites[site_code]['new_site_code'] if not data_river['active'] else None
 
-    context = {'site': database,
+    def filter_variable_code(var, code):
+        return var.get('code', '') != code
+
+    # filter out 'DewPt_Avg' variable from climate sites (i.e. data_river['info']['type'] == Atmosphere)
+    if data_river['info']['type'] == 'Atmosphere':
+        data_river['vars'] = filter(lambda var: filter_variable_code(var, 'DewPt_Avg'), data_river['vars'])
+
+    # filter out 'ODO_Sat' variable from aquate sites (i.e. data_river['info']['type'] == Stream)
+    if data_river['info']['type'] == 'Stream':
+        data_river['vars'] = filter(lambda var: filter_variable_code(var, 'ODO_Sat'), data_river['vars'])
+
+    context = {'site': db_name,
                'river_data': data_river,
                'pics': pics,
                'xtra_site': xtra_site,

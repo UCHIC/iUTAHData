@@ -1629,3 +1629,7 @@ img#selected_thumb {
 .border-none{
     border: none;
 }
+
+table th.sites-table-name-header {
+    width: 280px;
+}

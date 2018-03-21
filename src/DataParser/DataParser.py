@@ -19,14 +19,14 @@ logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 service_manager = ServiceManager()
 
 site_variables = {
-    "climate": ['BP_Avg', 'RH', 'DewPt_Avg', 'VaporPress_Avg', 'WindSp_Avg',
+    "climate": ['BP_Avg', 'RH', 'VaporPress_Avg', 'WindSp_Avg',
                 'WindDir_Avg', 'JuddDepth_Avg', 'PARIn_Avg', 'PAROut_Avg',
                 'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'NetRad_NR01_Avg', 'LWOut_Cor_NR01_Avg', 'LWIn_Cor_NR01_Avg',
                 'Evapotrans_ETo', 'Evapotrans_ETr', 'VWC_5cm_Avg', 'SoilTemp_5cm_Avg', 'Permittivity_5cm_Avg',
                 'VWC_10cm_Avg', 'SoilTemp_10cm_Avg', 'Permittivity_10cm_Avg', 'VWC_20cm_Avg', 'SoilTemp_20cm_Avg',
                 'Permittivity_20cm_Avg', 'VWC_50cm_Avg', 'SoilTemp_50cm_Avg', 'Permittivity_50cm_Avg',
                 'VWC_100cm_Avg', 'SoilTemp_100cm_Avg', 'Permittivity_100cm_Avg'],
-    "aquatic": ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA',
+    "aquatic": ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Local', 'TurbMed', 'BGA',
                 'Chlorophyll', 'fDOM', 'Stage', 'Nitrate-N'],
     "storm_drain": ['Level_ISCO', 'Velocity_ISCO', 'Flow_ISCO', 'Volume_ISCO', 'WaterTemp_ISCO'],
 
@@ -43,11 +43,11 @@ def get_site_variables(site, database):
     variables = []
     if site.type in ['Land', 'Atmosphere']:
         variables.extend(site_variables['climate'])
+        variables.append('AirTemp_ST110_Avg')
         if database == 'iUTAH_Provo_OD':
             variables.insert(0, 'AirTemp_Avg')
             variables.insert(7, 'Rain_Tot')
         else:
-            variables.insert(0, 'AirTemp_ST110_Avg')
             variables.insert(7, 'Precip_Tot_Avg')
     elif site.type == 'Stream':
         variables.extend(site_variables['aquatic'])
@@ -67,8 +67,7 @@ def get_site_variables(site, database):
 
 
 def load_watershed_data(watershed_database):
-    # HEY! LET'S ADD THE FILE CONTAINING THE PRODUCTION DATABASE LOGIN TO A PUBLIC REPOSITORY!
-    # TODO: for all that is sacred, remove the database authentication info from here.
+
     service_manager._current_connection = {
         'engine': os.getenv('IUTAH_DB_ENGINE'),
         'user': os.getenv('IUTAH_DB_USER'),

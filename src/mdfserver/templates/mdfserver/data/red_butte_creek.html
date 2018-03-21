@@ -136,30 +136,20 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Site Code</th>
-                                                            <th>Site Name</th>
+                                                            <th class="sites-table-name-header">Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_ARBR_C' %}">RB_ARBR_C</a>
-                                                            </td>
-                                                            <td>Red Butte Creek Above Red Butte Reservoir Climate</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_GIRF_C' %}">RB_GIRF_C</a>
-                                                            </td>
-                                                            <td>Green Infrastructure Climate</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_KF_C' %}">RB_KF_C</a>
-                                                            </td>
-                                                            <td>Knowlton Fork Climate</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_TM_C' %}">RB_TM_C </a>
-                                                            </td>
-                                                            <td>Todd's Meadow Climate</td>
-                                                        </tr>
+                                                        {% for site in climate_sites %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{% url 'dynamic' db_name site.site_code %}">{{ site.site_code }}</a>
+                                                                </td>
+                                                                <td>{{ site.data.info.name }}</td>
+                                                                <td>{{ site.data.info.status|default:"Operational" }}</td>
+                                                            </tr>
+                                                        {% endfor %}
                                                         </tbody>
                                                     </table>
                                                     <h3 class="site_heading">Aquatic Sites</h3>
@@ -167,56 +157,20 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Site Code</th>
-                                                            <th>Site Name</th>
+                                                            <th class="sites-table-name-header">Site Name</th>
+                                                            <th>Site Status</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_ARBR_AA' %}">RB_ARBR_AA</a>
-                                                            </td>
-                                                            <td>Red Butte Creek Above Red Butte Reservoir Advanced
-                                                                Aquatic
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_CG_BA' %}">RB_CG_BA</a>
-                                                            </td>
-                                                            <td>Red Butte Creek at Cottom's Grove Basic Aquatic</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_FD_AA' %}">RB_FD_AA</a>
-                                                            </td>
-                                                            <td>Red Butte Creek at Foothill Drive Advanced Aquatic</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_KF_BA' %}">RB_KF_BA</a>
-                                                            </td>
-                                                            <td>Knowlton Fork Aquatic</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_RBG_BA' %}">RB_RBG_BA</a>
-                                                            </td>
-                                                            <td>Red Butte Creek Gate Basic Aquatic</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_900W_BA' %}">RB_900W_BA</a>
-                                                            </td>
-                                                            <td>900 W (1300 South) Basic Aquatic</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_1300E_A' %}">RB_1300E_A</a>
-                                                            </td>
-                                                            <td>1300 East Aquatic</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_LKF_A' %}">RB_LKF_A</a>
-                                                            </td>
-                                                            <td>Lower Knowlton Fork Aquatic</td>
-                                                        </tr>
+                                                        {% for site in aquatic_sites %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{% url 'dynamic' db_name site.site_code %}">{{ site.site_code }}</a>
+                                                                </td>
+                                                                <td>{{ site.data.info.name }}</td>
+                                                                <td>{{ site.data.info.status|default:"Operational" }}</td>
+                                                            </tr>
+                                                        {% endfor %}
                                                         </tbody>
                                                     </table>
                                                     <h3 class="site_heading">Storm Drain Sites</h3>
@@ -224,31 +178,20 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Site Code</th>
-                                                            <th>Site Name</th>
-                                                            <!--<th>Site Type</th> #This comments were left in case the site type is needed back, delete after issue #57 is reviewed and closed-->
+                                                            <th class="sites-table-name-header">Site Name</th>
+                                                            <th>Site Type</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_CR_SD' %}">RB_CR_SD</a>
-                                                            </td>
-                                                            <td>Connor Road Storm Drain</td>
-                                                            <!--<td>Storm Drain</td>--></tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_Dent_SD' %}">RB_Dent_SD</a>
-                                                            </td>
-                                                            <td>Dentristy Building Storm Drain</td>
-                                                            <!--<td>Storm Drain</td>--></tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_FortD_SD' %}">RB_FortD_SD</a>
-                                                            </td>
-                                                            <td>Fort Douglas Storm Drain</td>
-                                                            <!--<td>Storm Drain</td>--></tr>
-                                                        <tr>
-                                                            <td><a href="{% url 'dynamic' 'iUTAH_RedButte_OD' 'RB_GIRF_SD' %}">RB_GIRF_SD</a>
-                                                            </td>
-                                                            <td>GIRF Storm Drain</td>
-                                                            <!--<td>Storm Drain</td>--></tr>
+                                                        {% for site in storm_drain_sites %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{% url 'dynamic' db_name site.site_code %}">{{ site.site_code }}</a>
+                                                                </td>
+                                                                <td>{{ site.data.info.name }}</td>
+                                                                <td>{{ site.data.info.status|default:"Operational" }}</td>
+                                                            </tr>
+                                                        {% endfor %}
                                                         </tbody>
                                                     </table>
                                                 </div>
