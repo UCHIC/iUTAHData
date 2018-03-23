@@ -1,3 +1,4 @@
+# coding=utf-8
 import json
 import re
 import glob
@@ -117,6 +118,7 @@ class PersonnelView(MDFBaseView):
     template_name = 'mdfserver/about/personnel.html'
 
 
+# noinspection PyNonAsciiChar
 def deserialize_json(database_name):
     network_map = {
         'iUTAH_Logan_OD': 'Logan',
@@ -124,18 +126,32 @@ def deserialize_json(database_name):
         'iUTAH_RedButte_OD': 'RedButte'
     }
 
-    with staticfiles_storage.open('mdfserver/json/%sSite.json' % network_map[database_name]) as river_data:
-        json_data = json.load(river_data)
-
     # I know this is terrible... but so was this project before I ever touched it.
     retired_sites = ['PR_BD_C', 'PR_TL_C', 'PR_BJ_AA', 'PR_CH_AA', 'PR_LM_BA', 'PR_SageCreek_canal', 'PR_Flood_canal',
                      'RB_KF_BA']
-    for key, value in json_data.iteritems():
-        value['info']['status'] = 'Retired' if key in retired_sites else 'Operational'
-
     non_displayed_sites = ['RB_KF_S', 'RB_ARBR_USGS', 'PR_WD_USGS', 'PR_BJ_CUWCD', 'PR_UM_CUWCD', 'PR_CH_CUWCD',
                            'PR_HD_USGS', 'LR_Mendon_AA']
+
+    with staticfiles_storage.open('mdfserver/json/%sSite.json' % network_map[database_name]) as river_data:
+        json_data = json.load(river_data)
+
+    # set site status
+    for key, value in json_data.iteritems():
+        value['info']['status'] = 'Retired' if key in retired_sites else 'Operational'
+    # remove non-displayed-sites
     json_data = {key: value for key, value in json_data.iteritems() if key not in non_displayed_sites}
+
+    def filter_duplicates(variables):
+        new_vars = list()
+        for var in variables:
+            code_occurance = [x['code'] for x in new_vars if x['code'] == var['code']]
+            if len(code_occurance) < 1:
+                new_vars.append(var)
+        return new_vars
+
+    # remove duplicate variables... because they exist for some reason... ¯\_(ツ)_/¯
+    for key, value in json_data.iteritems():
+        value['vars'] = filter_duplicates(value['vars'])
 
     return json_data
 
