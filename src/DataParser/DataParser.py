@@ -1,20 +1,15 @@
 import json
-import logging
+import logging as logger
 import os
-import shutil
-from datetime import datetime
 import sys
+from odmservices import ServiceManager
+
+logger.basicConfig(level=logger.DEBUG)
 
 src_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir)
 root_directory = os.path.realpath(os.path.join(src_directory, os.pardir, os.pardir))
 static_folder = os.path.join(root_directory, 'static', 'mdfserver', 'json')
 sys.path.insert(0, src_directory)
-
-from odmservices import ServiceManager
-from logger import LoggerTool
-
-tool = LoggerTool()
-logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
 
 service_manager = ServiceManager()
 

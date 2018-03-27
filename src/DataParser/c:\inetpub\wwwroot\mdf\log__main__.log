@@ -2961,3 +2961,9 @@
 2018-03-21 15:30:29,521 - INFO - __main__.parse_data() (152): 
 ========================================================
 
+2018-03-27 10:14:29,326 - INFO - __main__.parse_data() (136): 
+========================================================
+
+2018-03-27 10:14:29,326 - INFO - __main__.parse_data() (137): Creating data files.
+2018-03-27 10:14:29,326 - INFO - __main__.load_watershed_data() (90): Getting sites for iUTAH_Logan_OD
+2018-03-27 10:14:30,097 - INFO - __main__.load_watershed_data() (102): Getting data for site LR_WaterLab_AA
