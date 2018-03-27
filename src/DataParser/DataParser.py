@@ -72,15 +72,6 @@ def load_watershed_data(watershed_database):
         'db': watershed_database
     }
 
-    # service_manager._current_connection = {
-    #     'engine': 'mysql',
-    #     'user': 'root',
-    #     'password': 'password',
-    #     'address': 'localhost',
-    #     'port': 1443,
-    #     'db': watershed_database
-    # }
-
     watershed = {}
     logger.info("Getting sites for %s" % watershed_database)
     series_service = service_manager.get_series_service()
