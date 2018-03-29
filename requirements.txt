@@ -3,3 +3,5 @@ pyodbc==4.0.22
 mysql-python==1.2.*
 sqlalchemy==1.2.*
 pandas==0.22.0
+gunicorn==19.7.1
+psycopg2==2.7.4
