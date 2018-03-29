@@ -47,7 +47,7 @@ class DataValue(Base):
     variable_id = Column('VariableID', Integer, ForeignKey('Variables.VariableID'), nullable=False)
     offset_value = Column('OffsetValue', Float)
     offset_type_id = Column('OffsetTypeID', Integer, ForeignKey('OffsetTypes.OffsetTypeID'))
-    censor_code = Column('CensorCode', String)
+    censor_code = Column('CensorCode', String(255))
     qualifier_id = Column('QualifierID', Integer, ForeignKey('Qualifiers.QualifierID'))
     method_id = Column('MethodID', Integer, ForeignKey('Methods.MethodID'), nullable=False)
     source_id = Column('SourceID', Integer, ForeignKey('Sources.SourceID'), nullable=False)

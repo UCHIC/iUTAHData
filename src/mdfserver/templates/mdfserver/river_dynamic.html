@@ -183,9 +183,6 @@
             <p id="dyn_disclaimer"></p>
 
             {% for var in river_data.vars %}
-                {% if var.sample == "Air" %}
-                    <h3 style="clear: both; margin-top: -10px;">Standard Variables</h3>
-                {% endif %}
                 {% if var.sample == "Soil" %}
                     <h3 style="clear: both; margin-top: -10px;">Soil Moisture Variables</h3>
                 {% endif %}

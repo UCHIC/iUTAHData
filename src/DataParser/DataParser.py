@@ -1,9 +1,8 @@
 import json
-import logging
+import logging as logger
 import os
-import shutil
-from datetime import datetime
 import sys
+
 
 src_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir)
 root_directory = os.path.realpath(os.path.join(src_directory, os.pardir, os.pardir))
@@ -11,22 +10,20 @@ static_folder = os.path.join(root_directory, 'static', 'mdfserver', 'json')
 sys.path.insert(0, src_directory)
 
 from odmservices import ServiceManager
-from logger import LoggerTool
 
-tool = LoggerTool()
-logger = tool.setupLogger(__name__, __name__ + '.log', 'a', logging.DEBUG)
+logger.basicConfig(level=logger.DEBUG)
 
 service_manager = ServiceManager()
 
 site_variables = {
-    "climate": ['BP_Avg', 'RH', 'DewPt_Avg', 'VaporPress_Avg', 'WindSp_Avg',
+    "climate": ['BP_Avg', 'RH', 'VaporPress_Avg', 'WindSp_Avg',
                 'WindDir_Avg', 'JuddDepth_Avg', 'PARIn_Avg', 'PAROut_Avg',
                 'SWOut_NR01_Avg', 'SWIn_NR01_Avg', 'NetRad_NR01_Avg', 'LWOut_Cor_NR01_Avg', 'LWIn_Cor_NR01_Avg',
                 'Evapotrans_ETo', 'Evapotrans_ETr', 'VWC_5cm_Avg', 'SoilTemp_5cm_Avg', 'Permittivity_5cm_Avg',
                 'VWC_10cm_Avg', 'SoilTemp_10cm_Avg', 'Permittivity_10cm_Avg', 'VWC_20cm_Avg', 'SoilTemp_20cm_Avg',
                 'Permittivity_20cm_Avg', 'VWC_50cm_Avg', 'SoilTemp_50cm_Avg', 'Permittivity_50cm_Avg',
                 'VWC_100cm_Avg', 'SoilTemp_100cm_Avg', 'Permittivity_100cm_Avg'],
-    "aquatic": ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Sat', 'TurbMed', 'BGA',
+    "aquatic": ['WaterTemp_EXO', 'SpCond', 'pH', 'ODO', 'ODO_Local', 'TurbMed', 'BGA',
                 'Chlorophyll', 'fDOM', 'Stage', 'Nitrate-N'],
     "storm_drain": ['Level_ISCO', 'Velocity_ISCO', 'Flow_ISCO', 'Volume_ISCO', 'WaterTemp_ISCO'],
 
@@ -43,11 +40,11 @@ def get_site_variables(site, database):
     variables = []
     if site.type in ['Land', 'Atmosphere']:
         variables.extend(site_variables['climate'])
+        variables.append('AirTemp_ST110_Avg')
         if database == 'iUTAH_Provo_OD':
             variables.insert(0, 'AirTemp_Avg')
             variables.insert(7, 'Rain_Tot')
         else:
-            variables.insert(0, 'AirTemp_ST110_Avg')
             variables.insert(7, 'Precip_Tot_Avg')
     elif site.type == 'Stream':
         variables.extend(site_variables['aquatic'])
@@ -67,13 +64,13 @@ def get_site_variables(site, database):
 
 
 def load_watershed_data(watershed_database):
-    # HEY! LET'S ADD THE FILE CONTAINING THE PRODUCTION DATABASE LOGIN TO A PUBLIC REPOSITORY!
-    # TODO: for all that is sacred, remove the database authentication info from here.
+
     service_manager._current_connection = {
-        'engine': 'mssql',
-        'user': 'webapplication',
-        'password': 'W3bAppl1c4t10n!',
-        'address': 'iutahdbs.uwrl.usu.edu',
+        'engine': os.getenv('IUTAH_DB_ENGINE'),
+        'user': os.getenv('IUTAH_DB_USER'),
+        'password': os.getenv('IUTAH_DB_PASSWORD'),
+        'address': os.getenv('IUTAH_DB_ADDRESS'),
+        'port': os.getenv('IUTAH_DB_PORT'),
         'db': watershed_database
     }
 
@@ -82,6 +79,7 @@ def load_watershed_data(watershed_database):
     series_service = service_manager.get_series_service()
 
     sites = series_service.get_all_sites()
+
     raw_qc_level_id = series_service.get_raw_qc_level_id()
 
     for site in sites:
@@ -143,8 +141,53 @@ def parse_data():
 
 
 def write_json(watershed_dictionary, watershed_name):
-    with open(os.path.join('%s', '%sSite.json') % (static_folder, watershed_name), "w") as out_file:
+    if sys.platform != 'win32':
+        path = os.path.join(os.getcwd(), os.pardir, 'mdfserver', 'static', 'mdfserver', 'json', '%sSite.json' % watershed_name)
+        path = os.path.realpath(path)
+    else:
+        path = os.path.join('%s', '%sSite.json') % (static_folder, watershed_name)
+    with open(path, "w") as out_file:
         json.dump(watershed_dictionary, out_file, indent=4)
 
 
+def initialize_database():
+    """
+    Run this method for first time setup of database. Creates database(s) based on the models in the odmdata folder.
+
+    For some reason, which we may never know, you need to add connection information in a file named
+    'connection.config', located in a directory determined by 'odmservices.utilities.util.resource_path()'.
+
+    To add a database connection info, add a line in 'connection.config' in the format of:
+        <engine> <user_name> <password> <address> <database_name>
+
+    Example of 'connection.config' with three connections:
+    ================================================
+    mysql root password localhost iUTAH_Logan_OD
+    mysql root password localhost iUTAH_RedButte_OD
+    mssql admin_1 soopersekretpaswurd database.somewhere.else.com iUTAH_Provo_OD
+    ================================================
+
+    Yup, pretty genius.
+
+    My sincerest hope is this project will burn to the ground before anyone else might find this comment useful.
+    """
+    for conn in service_manager.get_connections():
+        if service_manager.database_exists(conn_dict=conn):
+            continue
+
+        try:
+            service_manager.create_database(conn_dict=conn)
+
+            try:
+                service_manager.create_tables(conn_dict=conn)
+            except Exception:
+                raise Exception("Failed to create tables for database '{0}'".format(conn['db']))
+
+        except Exception:
+            raise Exception("Failed to create database '{0}'".format(conn.get('db', 'N/A')))
+
+
+# initialize_database()
+
 parse_data()
+

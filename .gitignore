@@ -1,6 +1,6 @@
 /src/iUTAHData/settings/settings.json
 /src/DataParser/config.json
-.idea/*
+.idea/
 
 # Ignore configuration files that may contain sensitive information.
 sites/*/*settings*.php
@@ -51,3 +51,6 @@ __pycache__/
 
 # IPython Notebook
 .ipynb_checkpoints
+
+# Misc
+*.log

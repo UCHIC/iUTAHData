@@ -18,7 +18,7 @@ def resource_path(relative=None):
 
 
 def slash():
-    if sys.platform.lower() == 'Darwin' or sys.platform.lower() == 'mac':
+    if sys.platform.lower() == 'darwin' or sys.platform.lower() == 'mac':
         return '/'
     elif 'win' in sys.platform:
         return '\\'

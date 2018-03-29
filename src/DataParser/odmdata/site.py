@@ -10,22 +10,22 @@ class Site(Base):
     __tablename__ = 'Sites'
 
     id = Column('SiteID', Integer, primary_key=True)
-    code = Column('SiteCode', String)
-    name = Column('SiteName', String)
+    code = Column('SiteCode', String(255))
+    name = Column('SiteName', String(255))
     latitude = Column('Latitude', Float)
     longitude = Column('Longitude', Float)
     lat_long_datum_id = Column('LatLongDatumID', Integer, ForeignKey('SpatialReferences.SpatialReferenceID'))
     elevation_m = Column('Elevation_m', Float)
-    vertical_datum = Column('VerticalDatum', String)
+    vertical_datum = Column('VerticalDatum', String(255))
     local_x = Column('LocalX', Float)
     local_y = Column('LocalY', Float)
     local_projection_id = Column('LocalProjectionID', Integer, ForeignKey('SpatialReferences.SpatialReferenceID'))
     pos_accuracy_m = Column('PosAccuracy_m', Float)
-    state = Column('State', String)
-    county = Column('County', String)
-    comments = Column('Comments', String)
+    state = Column('State', String(255))
+    county = Column('County', String(255))
+    comments = Column('Comments', String(255))
 
-    type = Column('SiteType', String)
+    type = Column('SiteType', String(255))
 
     # relationships
     spatial_ref = relationship(SpatialReference, primaryjoin=("SpatialReference.id==Site.lat_long_datum_id"), lazy='subquery')

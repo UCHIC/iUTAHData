@@ -2,7 +2,10 @@ import os
 import sys
 import urllib
 
-from sqlalchemy.exc import SQLAlchemyError, DBAPIError
+from sqlalchemy.exc import SQLAlchemyError, DBAPIError, ProgrammingError
+from sqlalchemy import create_engine
+
+from DataParser.odmdata.base import create_database, create_tables
 
 import utilities as util
 from cv_service import CVService
@@ -12,7 +15,7 @@ from record_service import RecordService
 from series_service import SeriesService
 
 
-class ServiceManager():
+class ServiceManager:
     def __init__(self, debug=False):
         self.debug = debug
         f = self.__get_file('r')
@@ -29,7 +32,7 @@ class ServiceManager():
                 line = line.split()
 
                 if len(line) >= 5:
-                    line_dict = {}
+                    line_dict = dict()
 
                     line_dict['engine'] = line[0]
                     line_dict['user'] = line[1]
@@ -64,13 +67,17 @@ class ServiceManager():
         # write changes to connection file
         self.__save_connections()
 
-    def test_connection(self, conn_dict):
+    def test_connection(self, conn_dict=None):
+        if conn_dict is None:
+            conn_dict = self._current_connection
         try:
             self.version = self.get_db_version(conn_dict)
         except DBAPIError:
             pass
             # print e.message
         except SQLAlchemyError:
+            return False
+        except ProgrammingError:
             return False
         return True
 
@@ -87,6 +94,8 @@ class ServiceManager():
 
     def get_series_service(self):
         conn_string = self.__build_connection_string(self._current_connection)
+        if not self.database_exists():
+            pass
         return SeriesService(conn_string, self.debug)
 
     def get_cv_service(self):
@@ -104,9 +113,40 @@ class ServiceManager():
     def get_export_service(self):
         return ExportService(self.get_series_service())
 
-    ## ###################
-    # private variables
-    ## ###################
+    def create_database(self, conn_dict=None):
+        if conn_dict is None:
+            conn_dict = self._current_connection
+
+        db_config_copy = conn_dict.copy()
+        del db_config_copy['db']
+
+        engine = create_engine(self.__build_connection_string(db_config_copy))
+        create_database(engine, conn_dict['db'])
+
+    def create_tables(self, conn_dict=None):
+        if conn_dict is None:
+            conn_dict = self._current_connection
+        engine = create_engine(self.__build_connection_string(conn_dict))
+        create_tables(engine)
+
+    def database_exists(self, db_config=None):
+        if db_config is None:
+            db_config = self._current_connection
+
+        if not db_config.get('db', None):
+            raise AttributeError("conn_dict has no attribute 'db', database name not found")
+
+        connection_uri = self.__build_connection_string(db_config)
+        engine = create_engine(connection_uri)
+        conn = engine.connect()
+
+        databases = list()
+        if engine.name == 'mssql':
+            databases = [db[0] for db in conn.execute("SELECT * FROM sys.databases")]
+        elif engine.name == 'mysql' or engine.name == 'sqlite':
+            databases = [db[0] for db in conn.execute("SHOW DATABASES")]
+
+        return db_config['db'] in databases
 
     def __get_file(self, mode):
         fn = util.resource_path('connection.config')
@@ -124,14 +164,30 @@ class ServiceManager():
         self._connection_format = "%s+%s://%s:%s@%s/%s"
 
         if conn_dict['engine'] == 'mssql' and sys.platform != 'win32':
-            driver = "pyodbc"
-            quoted = urllib.quote_plus(
-                'DRIVER={FreeTDS};DSN=%s;UID=%s;PWD=%s;' % (conn_dict['address'], conn_dict['user'],
-                                                            conn_dict['password']))
-            # quoted = urllib.quote_plus('DRIVER={FreeTDS};DSN=%s;UID=%s;PWD=%s;DATABASE=%s' %
-            #                            (conn_dict['address'], conn_dict['user'], conn_dict['password'],conn_dict['db'],
-            #                             ))
-            conn_string = 'mssql+pyodbc:///?odbc_connect={}'.format(quoted)
+            """
+            For unix users:
+            Just go freaking define a data source name (DSN) in /etc/odbc.ini.
+            
+            Also, to use the correct driver in the example below, install msodbcsql:
+                sudo apt-get install msodbcsql
+            
+            odbc.ini Example:
+            =====================
+            [iUTAH_Logan_OD]
+            Driver          = ODBC Driver 13 for SQL Server
+            Description     = Database for data.iutahepscor.org
+            Trace           = No
+            Server          = iutahdbs.uwrl.usu.edu
+            Database        = iUTAH_Logan_OD
+            =====================
+            
+            You might find information at this link useful:
+                https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Linux-or-Mac
+            """
+
+            conn_string = 'mssql+pyodbc://{UID}:{PWD}@{DNS}'.format(UID=conn_dict['user'],
+                                                                    PWD=conn_dict['password'],
+                                                                    DNS=conn_dict['db'])
 
         elif conn_dict['engine'] == 'sqlite':
             connformat = "%s:///%s"
@@ -145,7 +201,7 @@ class ServiceManager():
                 self._connection_format = conn
                 conn_string = self._connection_format % (
                     conn_dict['engine'], driver, conn_dict['user'], conn_dict['password'], conn_dict['address'],
-                    conn_dict['db'])
+                    conn_dict.get('db', ''))
             elif conn_dict['engine'] == 'mysql':
                 driver = "pymysql"
                 conn_string = self.constringBuilder(conn_dict, driver)
@@ -160,14 +216,14 @@ class ServiceManager():
         return conn_string
 
     def constringBuilder(self, conn_dict, driver):
-        if conn_dict['password'] is None or not conn_dict['password']:
+        if conn_dict.get('password', None) is None or not conn_dict['password']:
             conn_string = self._connection_format_nopassword % (
                 conn_dict['engine'], driver, conn_dict['user'], conn_dict['address'],
-                conn_dict['db'])
+                conn_dict.get('db', ''))
         else:
             conn_string = self._connection_format % (
                 conn_dict['engine'], driver, conn_dict['user'], conn_dict['password'], conn_dict['address'],
-                conn_dict['db'])
+                conn_dict.get('db', ''))
         return conn_string
 
     def __save_connections(self):
