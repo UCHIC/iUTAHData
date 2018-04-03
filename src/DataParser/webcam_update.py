@@ -1,21 +1,18 @@
 import os
 import re
 import datetime
-import time
 import json
 
-from operator import itemgetter
-
-STATIC_ROOT = r'C:\\inetpub\\wwwroot\\mdf\\static\\'
-JSON_ROOT = r'C:\\inetpub\\wwwroot\\mdf\\static\\mdfserver\\json\\'
-GAMUT_PHOTOS_DIR = os.path.join(STATIC_ROOT, 'mdfserver\\images\\gamutphotos\\')
+STATIC_ROOT = os.getenv('STATIC_ROOT')  # Something like 'path/to/project/mdf/static/'
+JSON_ROOT = os.getenv('JSON_ROOT')  # Something like 'path/to/project/mdf/static/mdfserver/json'
+GAMUT_PHOTOS_DIR = os.path.join(STATIC_ROOT, 'mdfserver', 'images', 'gamutphotos')
 DIR_REGEX = re.compile('(?P<host>^[A-Z]{2,})_(?P<site>([A-Z]{2,}_){2}[A-Z]+)$', re.IGNORECASE)
 FILE_REGEX = re.compile('.*([0-9]*_)?(?P<site>([a-z]+_)+[a-z]+)_{1,2}(?P<date>\d{4}_(\d{2}_){4}\d{2})\.jpg$', re.IGNORECASE)
 MIN_FILE_SIZE = 5000
 SITES_TO_SHOW = ['PR_CH_AA', 'PR_SC_Canal', 'LR_FB_BA', 'LR_TWDEF_C', 'RB_FD_AA', 'RB_KF_BA']
 NETWORK_CODES = {'LoganSite.json': 'Logan', 'ProvoSite.json': 'Provo', 'RedButteSite.json': 'RedButte'}
-
 INACTIVE_DATE = datetime.datetime.now() - datetime.timedelta(days=14)
+
 
 def get_latest_webcam_photos():
     site_photos = {}
@@ -55,6 +52,7 @@ def get_site_info():
                                   'img_dir': latest_photos[key]['dir'], 'img_date': latest_photos[key]['date'], 'active_webcam': latest_photos[key]['active']}
                 sites[NETWORK_CODES[site_file]][key] = temp_site_info
     return sites
+
 
 def get_site_photos():
     site_photos = {}

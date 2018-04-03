@@ -7,7 +7,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 DEBUG = True
 
-SITE_ROOT = os.path.join(BASE_DIR, os.pardir)
+SITE_ROOT = os.path.realpath(os.path.join(BASE_DIR, os.pardir))
 
 STATIC_ROOT = os.path.join(SITE_ROOT, 'mdfserver', 'static')
 STATIC_URL = '/static/'
