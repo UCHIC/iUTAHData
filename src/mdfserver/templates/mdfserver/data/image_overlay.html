@@ -7,12 +7,12 @@
        href="http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos/{{ img_dir }}/">View Directory</a>
     <h2 id="overlay_header">{{ site_name }} ({{ img_date }})</h2>
     <div class="close" onclick="close_overlay();">x</div>
-    <img id="overlay_image" src="{% static "mdfserver/images/gamutphotos/" %}{{ img_dir }}/{{ img_name }}"/>
+    <img id="overlay_image" src="{{ static_url }}/{{ img_dir }}/{{ img_name }}"/>
     <div id="image_scroll">
         <img id="img_nav" class="load_next" src="{% static "mdfserver/images/common/left_arrow.png" %}"
              onclick="load_next('{{ network }}', '{{ site_selected }}', {{ index }});">
         {% for photo in next_photos reversed %}
-            <img src="{% static "mdfserver/images/gamutphotos/" %}{{ img_dir }}/{{ photo.name }}"
+            <img src="{{ static_url }}/{{ img_dir }}/{{ photo.name }}"
                  alt="{{ site_name }} ({{ photo.date }})" id="thumb_{{ forloop.revcounter }}"
                  onclick="view_large('thumb_{{ forloop.revcounter }}', {{ forloop.revcounter }})">
         {% endfor %}

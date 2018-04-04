@@ -259,7 +259,9 @@ def gamut_webcams_view(request):
             context['index'] = index
             context['img_dir'] = folder
 
-            ordered_files = json.load(open(os.path.join(settings.GAMUTPHOTOS_ROOT, 'ordered_dir_listings.json')))
+            req = requests.request('GET', 'http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos/ordered_dir_listings.json')
+            ordered_files = req.json()
+
             photo_count = len(ordered_files[folder])
             first_index = photos_per_page * index if (index * photos_per_page < photo_count) else None
             last_index = photos_per_page * (index + 1) if (photos_per_page * (index + 1) < photo_count) else -1
