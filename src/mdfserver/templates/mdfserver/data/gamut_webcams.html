@@ -36,7 +36,7 @@
                 <div class="webcamItem {% if not info.active_webcam %} inactive {% endif %}"
                          onclick="show_popup('{{ network }}', '{{ site }}');">
                     <img class="webcamThumbnail" id="{{ network }}_{{ site }}"
-                             src="{% static "mdfserver/images/gamutphotos/" %}{{ info.img_dir }}/{{ info.img_name }}"
+                             src="{{ static_url }}/{{ info.img_dir }}/{{ info.img_name }}"
                              alt="Photo from {{ info.site_name }} dated {{ info.img_date }}">
                     <div class="webcamSubtext" id="subtext_{{ network }}_{{ site }}">
                         {{ info.site_name }} <br> {{ info.img_date }}

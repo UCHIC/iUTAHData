@@ -2,7 +2,7 @@
 import json
 import re
 import glob
-
+import requests
 import datetime
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.http.response import Http404, JsonResponse
@@ -239,9 +239,11 @@ def river_dynamic(request, db_name, site_code):
 
 
 def gamut_webcams_view(request):
-    gamut_webcam_dir = os.path.join(settings.STATIC_ROOT, 'mdfserver', 'images', 'gamutphotos')
-    site_details = json.load(open(os.path.join(gamut_webcam_dir, 'webcam_details.json')))
-    context = {'static_url': settings.STATIC_URL}
+    # Using the 'requests' library is just temporary until data.iutahepscor.org is moved permanently over to the linux server
+    req = requests.request('GET', 'http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos/webcam_details.json')
+    site_details = req.json()
+    context = {'static_url': "http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos"}
+
     photos_per_page = 8
 
     if request.is_ajax():
@@ -257,7 +259,7 @@ def gamut_webcams_view(request):
             context['index'] = index
             context['img_dir'] = folder
 
-            ordered_files = json.load(open(os.path.join(gamut_webcam_dir, 'ordered_dir_listings.json')))
+            ordered_files = json.load(open(os.path.join(settings.GAMUTPHOTOS_ROOT, 'ordered_dir_listings.json')))
             photo_count = len(ordered_files[folder])
             first_index = photos_per_page * index if (index * photos_per_page < photo_count) else None
             last_index = photos_per_page * (index + 1) if (photos_per_page * (index + 1) < photo_count) else -1
