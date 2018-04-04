@@ -1,28 +1,17 @@
 import logging
-from datetime import datetime
 from datetime import timedelta
-
 import pandas
-from sqlalchemy import distinct, func
-from sqlalchemy.orm import subqueryload
 from sqlalchemy.orm.exc import NoResultFound
 
 from DataParser.odmdata import DataValue
-from DataParser.odmdata import Method
 from DataParser.odmdata import ODMVersion
-from DataParser.odmdata import OffsetType
-from DataParser.odmdata import Qualifier
 from DataParser.odmdata import QualityControlLevel
-from DataParser.odmdata import Sample
 from DataParser.odmdata import Series
 from DataParser.odmdata import SessionFactory
 from DataParser.odmdata import Site
-from DataParser.odmdata import Unit
-from DataParser.odmdata import Variable
 
-# tool = LoggerTool()
-# logger = tool.setupLogger(__name__, __name__ + '.log', 'w', logging.DEBUG)
 logger = logging.getLogger('main')
+
 DAY_LIMIT = 96
 
 
