@@ -1,6 +1,7 @@
 /src/iUTAHData/settings/settings.json
 /src/DataParser/config.json
 static/mdfserver/json/*.json
+mdfserver/static/mdfserver/images/gamutphotos/*
 .idea/
 
 # Ignore configuration files that may contain sensitive information.

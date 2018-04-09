@@ -1,6 +1,4 @@
-import os
-import shutil
-import logging
+import os, errno, shutil, json, logging
 from requests import Request, Session, PreparedRequest
 
 GAMUTPHOTOS_ROOT = os.environ['GAMUTPHOTOS_ROOT']
@@ -8,7 +6,7 @@ STATIC_PHOTO_URL = 'http://data.iutahepscor.org/mdf/static/mdfserver/images/gamu
 
 class GamutPhotoUpdater(object):
     """
-
+    Gets latest webcam detail info from data.iutahepscor.org and downloads images into specified directory.
     """
 
     WEBCAM_DETAILS = 'webcam_details.json'
@@ -19,7 +17,14 @@ class GamutPhotoUpdater(object):
 
     def _get_webcam_details(self):
         req = self.session.get(STATIC_PHOTO_URL.format(self.WEBCAM_DETAILS))
-        return req.json()
+
+        res = req.json()
+
+        fp = os.path.join(GAMUTPHOTOS_ROOT, 'webcam_details.json')
+        with open(fp, 'w') as fout:
+            json.dump(res, fout, indent=4)
+
+        return res
 
     def update_photos(self):
         site_images = []
@@ -28,7 +33,7 @@ class GamutPhotoUpdater(object):
             for network_key, network in details.iteritems():
 
                 for site_key, site in network.iteritems():
-                    image_dir = site.get('site_name', None)
+                    image_dir = site.get('img_dir', None)
                     image_name = site.get('img_name', None)
 
                     if image_dir and image_name:
@@ -63,8 +68,18 @@ class SiteImage(object):
         if self.image is None:
             return
 
-        path = os.path.join(GAMUTPHOTOS_ROOT, self.par_dir, self.name)
-        with open(path, 'wb') as fout:
+        directory = os.path.join(GAMUTPHOTOS_ROOT, self.par_dir)
+
+        try:
+            os.makedirs(directory)
+        except OSError as err:
+            if err.errno == errno.EEXIST and os.path.isdir(directory):
+                pass
+            else:
+                raise
+
+        file_path = "%s/%s" % (directory, self.name)
+        with open(file_path, 'wb') as fout:
             shutil.copyfileobj(self.image, fout)
 
 
