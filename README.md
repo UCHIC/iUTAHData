@@ -3,7 +3,7 @@ iUTAHData
 
 This project contains the code for the iUTAH Modeling and Data Federation website - data.iutahepscor.org.
 
-<p align="center"><img src="https://github.com/UCHIC/iUTAHData/raw/master/doc/images/data.jpg"></p>
+<p align="center"><img src="https://github.com/UCHIC/iUTAHData/blob/master/src/mdfserver/static/mdfserver/images/common/iutah_logo.png"></p>
 
 Installation
 ============
@@ -53,7 +53,7 @@ For Mac users:
 Sponsors
 ---------
 
-![iUTAH](/doc/images/iutah_eu_horz_sm.png)    ![NSF](/doc/images/nsf.gif)
+![iUTAH](/src/mdfserver/static/mdfserver/images/common/iutah_logo.png)    ![NSF](/src/mdfserver/static/mdfserver/images/common/nsf1.png)
 
 This material is based on work supported by National Science Foundation Grant EPS 1208732 awarded to Utah State University.  Any opinions, findings, and conclusions or recommendations expressed are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
 
