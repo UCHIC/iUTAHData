@@ -16,39 +16,64 @@ Installing [iODBC](http://www.iodbc.org/) on your system should fix this error.
 
 **Linux/Debian**
 
-```
+```bash
 sudo apt-get install libiodbc2 iodbc msodbcsql
 ```
 
 **macOS** (using [HomeBrew](https://brew.sh/))
 
-```
+```bash
 brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
 brew update
 brew install --no-sandbox msodbcsql@13.1.9.2 mssql-tools@14.0.6.0 unixodbc
 ```
 
-It might be necessary to connect to the production database during
+Database Connections
+===
+
+This section is only applicable to systems running Unix or Linux. 
+
+Proceeding is not for the faint of heart.
+
+It might be necessary to connect to the production database for
 development, testing, or deployment. The production database runs on a
-Microsoft SQL Server (MSSQL).
-For developers working on a unix system, you will need to configure
+Microsoft SQL Server (MSSQL). For developers working on a Unix system, you will need to configure
 [FreeTDS](http://www.freetds.org/faq.html#What.is.FreeTDS) on your system
 to connect to an MSSQL server.
 
 > FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.
 
-For the purposes of iUTAHData, FreeTDS uses the drivers provided by
-iODBC to communicate with the MSSQL production database from a unix system.
+FreeTDS uses iODBC to communicate with the MSSQL production database from a Unix system.
 
-For Linux/Debian users:
+**Installing FreeTDS**
 
-1. Install FreeTDS: `sudo apt-get install freetds-bin tdsodbc`
-2. Create a Database Server Name (DSN) configuration file
+Linux/Debian: `sudo apt-get install freetds-bin tdsodbc`
 
-For Mac users:
+MacOS: `brew install freetds`
 
-1. Install FreeTDS: `brew install freetds`
-2. Create a Database Server Name (DSN) configuration file
+**Configuring FreeTDS**
+
+Configure a _Data Source Name_ (DSN) file, which is usually located at `/etc/odbc.ini` on linux. A DSN is a configuration file that tells iODBC how to connect to a database.
+```bash
+# /etc/odbc.ini
+[iUTAH_Logan_OD]
+Driver          = ODBC Driver 13 for SQL Server
+Description     = iUTAHDBS
+Trace           = No
+Server          = iutahdbs.uwrl.usu.edu
+Database        = iUTAH_Logan_OD
+```
+**Important**: The value for `Driver` will change depending on which version of `msodbcsql` you have installed. A quick way to check the version is: 
+```bash
+~$: sudo apt-get list msodbcsql
+Listing... Done
+msodbcsql/xenial,now XX.A.B.C-D amd64 [installed]
+```
+Replace the `13` in `Driver = ODBC Driver 13 for SQL Server` with XX. 
+
+More information on this may be found in [Microsoft's documentation for installing odbc driver for sql-server](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017).
+
+When FreeTDS and iODBC are configured properly, `DataParser.py` will automatically configure a connection string to connect to the database.
 
 Sponsors
 ---------
