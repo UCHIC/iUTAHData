@@ -22,6 +22,7 @@ class ServiceManager:
         self._connections = []
         self.version = 0
         self._connection_format = "%s+%s://%s:%s@%s/%s"
+        self._connection_format_nopassword = ""
 
         # Read all lines (connections) in the connection.cfg file
         while True:
@@ -94,8 +95,6 @@ class ServiceManager:
 
     def get_series_service(self):
         conn_string = self.__build_connection_string(self._current_connection)
-        if not self.database_exists():
-            pass
         return SeriesService(conn_string, self.debug)
 
     def get_cv_service(self):
@@ -160,8 +159,6 @@ class ServiceManager:
         return config_file
 
     def __build_connection_string(self, conn_dict):
-
-        self._connection_format = "%s+%s://%s:%s@%s/%s"
 
         if conn_dict['engine'] == 'mssql' and sys.platform != 'win32':
             """

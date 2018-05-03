@@ -1,5 +1,6 @@
 /src/iUTAHData/settings/settings.json
 /src/DataParser/config.json
+static/mdfserver/json/*.json
 .idea/
 
 # Ignore configuration files that may contain sensitive information.

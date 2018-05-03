@@ -239,7 +239,7 @@ def river_dynamic(request, db_name, site_code):
 
 
 def gamut_webcams_view(request):
-    gamut_webcam_dir = os.path.join(settings.STATIC_ROOT, 'mdfserver\\images\\gamutphotos\\')
+    gamut_webcam_dir = os.path.join(settings.STATIC_ROOT, 'mdfserver', 'images', 'gamutphotos')
     site_details = json.load(open(os.path.join(gamut_webcam_dir, 'webcam_details.json')))
     context = {'static_url': settings.STATIC_URL}
     photos_per_page = 8

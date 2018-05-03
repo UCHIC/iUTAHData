@@ -142,7 +142,8 @@ def parse_data():
 
 def write_json(watershed_dictionary, watershed_name):
     if sys.platform != 'win32':
-        path = os.path.join(os.getcwd(), os.pardir, 'mdfserver', 'static', 'mdfserver', 'json', '%sSite.json' % watershed_name)
+        site_root = os.getenv('SITE_ROOT', '')
+        path = os.path.join(site_root, 'mdfserver', 'static', 'mdfserver', 'json', '%sSite.json' % watershed_name)
         path = os.path.realpath(path)
     else:
         path = os.path.join('%s', '%sSite.json') % (static_folder, watershed_name)
