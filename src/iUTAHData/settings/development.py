@@ -12,4 +12,4 @@ SITE_ROOT = os.path.realpath(os.path.join(BASE_DIR, os.pardir))
 STATIC_ROOT = os.path.join(SITE_ROOT, 'mdfserver', 'static')
 # STATIC_ROOT = '/opt/iUTAHDataEnvironment/static/'
 STATIC_URL = '/static/'
-SITE_URL = ''
+BASE_URL = 'mdf/'
