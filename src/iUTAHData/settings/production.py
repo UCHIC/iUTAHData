@@ -1,4 +1,3 @@
-import sys
 import django
 
 from iUTAHData.settings.base import *

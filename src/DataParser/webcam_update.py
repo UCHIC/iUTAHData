@@ -4,7 +4,7 @@ import datetime
 import json
 
 STATIC_ROOT = os.getenv('STATIC_ROOT')  # Something like 'path/to/project/mdf/static/'
-JSON_ROOT = os.getenv('JSON_ROOT')  # Something like 'path/to/project/mdf/static/mdfserver/json'
+JSON_ROOT = os.path.join(STATIC_ROOT, 'mdfserver', 'json')
 GAMUT_PHOTOS_DIR = os.path.join(STATIC_ROOT, 'mdfserver', 'images', 'gamutphotos')
 DIR_REGEX = re.compile('(?P<host>^[A-Z]{2,})_(?P<site>([A-Z]{2,}_){2}[A-Z]+)$', re.IGNORECASE)
 FILE_REGEX = re.compile('.*([0-9]*_)?(?P<site>([a-z]+_)+[a-z]+)_{1,2}(?P<date>\d{4}_(\d{2}_){4}\d{2})\.jpg$', re.IGNORECASE)
@@ -23,11 +23,11 @@ def get_latest_webcam_photos():
             continue
         temp_date = '2000_00_00_00_00_00'
         temp_name = ''
-        for filename in os.listdir(GAMUT_PHOTOS_DIR + folder):
+        for filename in os.listdir(os.path.join(GAMUT_PHOTOS_DIR, folder)):
             re_match = FILE_REGEX.match(filename)
             if re_match is None or temp_date > re_match.groupdict()['date']:
                 continue
-            if os.path.getsize(os.path.join(GAMUT_PHOTOS_DIR + folder, filename)) < MIN_FILE_SIZE:
+            if os.path.getsize(os.path.join(GAMUT_PHOTOS_DIR, folder, filename)) < MIN_FILE_SIZE:
                 continue
             temp_date = re_match.groupdict()['date']
             temp_name = filename
@@ -44,7 +44,7 @@ def get_site_info():
     json_site_files = ['LoganSite.json', 'ProvoSite.json', 'RedButteSite.json']
     for site_file in json_site_files:
         sites[NETWORK_CODES[site_file]] = {}
-        temp = json.loads(open(os.path.join(STATIC_ROOT, 'mdfserver/json/' + site_file)).read())
+        temp = json.loads(open(os.path.join(STATIC_ROOT, 'mdfserver', 'json', site_file)).read())
         for key in temp.keys():
             if key in latest_photos.keys():
                 temp_site_info = {'lat': str(temp[key]['info']['latitude']), 'lon': str(temp[key]['info']['longitude']),
@@ -63,9 +63,9 @@ def get_site_photos():
             continue
         temp_date = '2000_00_00_00_00_00'
         temp_name = ''
-        for filename in os.listdir(GAMUT_PHOTOS_DIR + folder):
+        for filename in os.listdir(os.path.join(GAMUT_PHOTOS_DIR, folder)):
             re_match = FILE_REGEX.match(filename)
-            if re_match is None or os.path.getsize(os.path.join(GAMUT_PHOTOS_DIR + folder, filename)) < MIN_FILE_SIZE:
+            if re_match is None or os.path.getsize(os.path.join(GAMUT_PHOTOS_DIR, folder, filename)) < MIN_FILE_SIZE:
                 continue
             if folder not in site_photos:
                 site_photos[folder] = []
@@ -78,8 +78,13 @@ def get_site_photos():
     return site_photos
 
 
-file_out = open(GAMUT_PHOTOS_DIR + '/webcam_details.json', 'w')
-file_out.write(json.dumps(get_site_info()))
+def main():
+    file_out = open(os.path.join(GAMUT_PHOTOS_DIR, 'webcam_details.json'), 'w')
+    file_out.write(json.dumps(get_site_info()))
 
-file_out = open(GAMUT_PHOTOS_DIR + '/ordered_dir_listings.json', 'w')
-file_out.write(json.dumps(get_site_photos()))
+    file_out = open(os.path.join(GAMUT_PHOTOS_DIR, 'ordered_dir_listings.json'), 'w')
+    file_out.write(json.dumps(get_site_photos()))
+
+
+if __name__ == "__main__":
+    main()

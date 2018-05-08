@@ -109,6 +109,11 @@ class ImageRequester(object):
             image.save()
 
 
+def main():
+    updater = GamutPhotoUpdater()
+    updater.update_photos()
+
+
 __all__ = [
     'GamutPhotoUpdater',
     'SiteImage',
@@ -116,5 +121,4 @@ __all__ = [
 ]
 
 if __name__ == "__main__":
-    updater = GamutPhotoUpdater()
-    updater.update_photos()
+    main()
