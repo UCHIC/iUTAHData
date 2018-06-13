@@ -130,7 +130,7 @@ def deserialize_json(database_name):
     retired_sites = ['PR_BD_C', 'PR_TL_C', 'PR_BJ_AA', 'PR_CH_AA', 'PR_LM_BA', 'PR_SageCreek_canal', 'PR_Flood_canal',
                      'RB_KF_BA']
     non_displayed_sites = ['RB_KF_S', 'RB_ARBR_USGS', 'PR_WD_USGS', 'PR_BJ_CUWCD', 'PR_UM_CUWCD', 'PR_CH_CUWCD',
-                           'PR_HD_USGS', 'LR_Mendon_AA']
+                           'PR_HD_USGS']
 
     with staticfiles_storage.open('mdfserver/json/%sSite.json' % network_map[database_name]) as river_data:
         json_data = json.load(river_data)
