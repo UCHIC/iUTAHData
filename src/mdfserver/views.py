@@ -138,14 +138,15 @@ def deserialize_json(database_name):
     # set site status
     for key, value in json_data.iteritems():
         value['info']['status'] = 'Retired' if key in retired_sites else 'Operational'
+
     # remove non-displayed-sites
     json_data = {key: value for key, value in json_data.iteritems() if key not in non_displayed_sites}
 
     def filter_duplicates(variables):
         new_vars = list()
         for var in variables:
-            code_occurance = [x['code'] for x in new_vars if x['code'] == var['code']]
-            if len(code_occurance) < 1:
+            code_occurrence = [x['code'] for x in new_vars if x['code'] == var['code']]
+            if len(code_occurrence) < 1:
                 new_vars.append(var)
         return new_vars
 
@@ -186,13 +187,13 @@ def river_dynamic(request, db_name, site_code):
 
     xtra_site = "none"
     if site_code == "RB_ARBR_AA":
-        xtra_site = data_river['RB_ARBR_USGS']
+        xtra_site = data_river.get('RB_ARBR_USGS', 'none')
     elif site_code == "PR_BJ_AA":
-        xtra_site = data_river['PR_BJ_CUWCD']
+        xtra_site = data_river.get('PR_BJ_CUWCD', 'none')
     elif site_code == "PR_CH_AA":
-        xtra_site = data_river['PR_CH_CUWCD']
+        xtra_site = data_river.get('PR_CH_CUWCD', 'none')
     elif site_code == "PR_LM_BA":
-        xtra_site = data_river['PR_UM_CUWCD']
+        xtra_site = data_river.get('PR_UM_CUWCD', 'none')
 
     sites_for_select = ['LR_Mendon_AA', 'LR_MainStreet_BA', 'LR_WaterLab_AA', 'LR_TG_BA', 'LR_FB_BA', 'LR_FB_C',
                         'LR_GC_C', 'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R', 'BSF_CONF_BA',
