@@ -6,3 +6,4 @@ pandas==0.17.1
 gunicorn==19.7.1
 psycopg2==2.7.4
 pandas==0.17.1
+requests==2.18.4

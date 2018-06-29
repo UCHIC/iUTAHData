@@ -3,7 +3,6 @@ import logging as logger
 import os
 import sys
 
-
 src_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir)
 root_directory = os.path.realpath(os.path.join(src_directory, os.pardir, os.pardir))
 static_folder = os.path.join(root_directory, 'static', 'mdfserver', 'json')

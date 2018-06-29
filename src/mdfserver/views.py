@@ -2,7 +2,7 @@
 import json
 import re
 import glob
-
+import requests
 import datetime
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.http.response import Http404, JsonResponse
@@ -138,14 +138,15 @@ def deserialize_json(database_name):
     # set site status
     for key, value in json_data.iteritems():
         value['info']['status'] = 'Retired' if key in retired_sites else 'Operational'
+
     # remove non-displayed-sites
     json_data = {key: value for key, value in json_data.iteritems() if key not in non_displayed_sites}
 
     def filter_duplicates(variables):
         new_vars = list()
         for var in variables:
-            code_occurance = [x['code'] for x in new_vars if x['code'] == var['code']]
-            if len(code_occurance) < 1:
+            code_occurrence = [x['code'] for x in new_vars if x['code'] == var['code']]
+            if len(code_occurrence) < 1:
                 new_vars.append(var)
         return new_vars
 
@@ -186,13 +187,13 @@ def river_dynamic(request, db_name, site_code):
 
     xtra_site = "none"
     if site_code == "RB_ARBR_AA":
-        xtra_site = data_river['RB_ARBR_USGS']
+        xtra_site = data_river.get('RB_ARBR_USGS', 'none')
     elif site_code == "PR_BJ_AA":
-        xtra_site = data_river['PR_BJ_CUWCD']
+        xtra_site = data_river.get('PR_BJ_CUWCD', 'none')
     elif site_code == "PR_CH_AA":
-        xtra_site = data_river['PR_CH_CUWCD']
+        xtra_site = data_river.get('PR_CH_CUWCD', 'none')
     elif site_code == "PR_LM_BA":
-        xtra_site = data_river['PR_UM_CUWCD']
+        xtra_site = data_river.get('PR_UM_CUWCD', 'none')
 
     sites_for_select = ['LR_Mendon_AA', 'LR_MainStreet_BA', 'LR_WaterLab_AA', 'LR_TG_BA', 'LR_FB_BA', 'LR_FB_C',
                         'LR_GC_C', 'LR_TG_C', 'LR_TWDEF_C', 'LR_Wilkins_R', 'BSF_CONF_BA',
@@ -239,9 +240,11 @@ def river_dynamic(request, db_name, site_code):
 
 
 def gamut_webcams_view(request):
-    gamut_webcam_dir = os.path.join(settings.STATIC_ROOT, 'mdfserver', 'images', 'gamutphotos')
-    site_details = json.load(open(os.path.join(gamut_webcam_dir, 'webcam_details.json')))
-    context = {'static_url': settings.STATIC_URL}
+    # Using the 'requests' library is just temporary until data.iutahepscor.org is moved permanently over to the linux server
+    req = requests.request('GET', 'http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos/webcam_details.json')
+    site_details = req.json()
+    context = {'static_url': "http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos"}
+
     photos_per_page = 8
 
     if request.is_ajax():
@@ -257,7 +260,9 @@ def gamut_webcams_view(request):
             context['index'] = index
             context['img_dir'] = folder
 
-            ordered_files = json.load(open(os.path.join(gamut_webcam_dir, 'ordered_dir_listings.json')))
+            req = requests.request('GET', 'http://data.iutahepscor.org/mdf/static/mdfserver/images/gamutphotos/ordered_dir_listings.json')
+            ordered_files = req.json()
+
             photo_count = len(ordered_files[folder])
             first_index = photos_per_page * index if (index * photos_per_page < photo_count) else None
             last_index = photos_per_page * (index + 1) if (photos_per_page * (index + 1) < photo_count) else -1

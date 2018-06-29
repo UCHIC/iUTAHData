@@ -1,6 +1,5 @@
 import os
 import sys
-import urllib
 
 from sqlalchemy.exc import SQLAlchemyError, DBAPIError, ProgrammingError
 from sqlalchemy import create_engine
@@ -135,9 +134,12 @@ class ServiceManager:
         if not db_config.get('db', None):
             raise AttributeError("conn_dict has no attribute 'db', database name not found")
 
-        connection_uri = self.__build_connection_string(db_config)
-        engine = create_engine(connection_uri)
-        conn = engine.connect()
+        try:
+            connection_uri = self.__build_connection_string(db_config)
+            engine = create_engine(connection_uri)
+            conn = engine.connect()
+        except:
+            return None
 
         databases = list()
         if engine.name == 'mssql':
@@ -228,3 +230,8 @@ class ServiceManager:
         for conn in self._connections:
             f.write("%s %s %s %s %s\n" % (conn['engine'], conn['user'], conn['password'], conn['address'], conn['db']))
         f.close()
+
+
+__all__ = [
+    'ServiceManager'
+]
