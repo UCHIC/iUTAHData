@@ -1,4 +1,4 @@
-django==1.8
+django==1.11.28
 pyodbc==4.0.22
 mysql-python==1.2.*
 sqlalchemy==1.2.*
