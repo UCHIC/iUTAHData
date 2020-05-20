@@ -12,5 +12,3 @@ if "host_alt" in data:
 SITE_URL = 'mdf/'
 STATIC_ROOT = data["static_root"]
 STATIC_URL = SITE_URL + data["static_url"]
-MEDIA_ROOT = data["media_root"]
-MEDIA_URL = SITE_URL + data["media_url"]
