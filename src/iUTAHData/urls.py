@@ -5,8 +5,8 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-BASE_URL = settings.BASE_URL
+SITE_URL = settings.SITE_URL
 
 urlpatterns = [
-    url(r'^' + BASE_URL, include('mdfserver.urls'))
+    url(r'^' + SITE_URL, include('mdfserver.urls'))
 ]
